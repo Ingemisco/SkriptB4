@@ -1,0 +1,139 @@
+\documentclass{book}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{inputenc}
+\usepackage[german]{babel}
+\usepackage{fancyhdr}
+\usepackage[pass]{geometry}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\MakeOuterQuote{"}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\comment}[1]{}
+
+\newcommand{\brac}[1]{\left( #1 \right)}
+\newcommand{\bracB}[1]{\left[ #1 \right]}
+\newcommand{\bracC}[1]{\left< #1 \right>}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\renewcommand{\headrulewidth}{2pt}
+
+\begin{document}
+	\begin{titlepage}
+		\newgeometry{margin=3cm}
+		\centering
+		
+		\vfill
+		
+		\Large Algebra II
+		
+		\vfill
+
+	\end{titlepage}
+	
+	
+	\chapter*{1 Moduln}\addcontentsline{toc}{chapter}{1 Moduln}
+	
+	
+	\section*{1.1 Definitionen und grundlegende Tatsachen}\addcontentsline{toc}{section}{1.1 Definitionen und grundlegende Tatsachen}
+	
+	\subsection*{1.1.1 Definition}\addcontentsline{toc}{subsection}{1.1.1 Definition Modul}
+	Ein {\bf Modul} ist ein Tupel $(R, +_R, \cdot_R, M, +, \cdot)$, wobei $(R, +_R, \cdot_R)$ ein Ring (mit $1$, nicht notwendigerweise kommutativ), $(M, +)$ eine abelsche Gruppe und \\\noindent$\cdot:R\times M \to M$ eine (meist gar nicht oder infix geschriebene) Abbildung mit folgenden Eigenschaften
+	
+	\begin{itemize}
+		\item[$(\overset{\rightarrow}{D})$] $\forall a \in R: \forall x, y \in M: a(x + y) = ax + ay$ \hfill "distributiv"
+		
+		\item[$(D')$] $\forall a, b \in R: \forall x \in M: (a+b)x = ax + bx$ \hfill "distributiv"
+		
+		\item[$(N)$] $\forall x \in M: 1_R \cdot x = x$ \hfill "normiert"
+		
+		\item[$(V)$] $\forall a, b \in R: \forall x \in M: (ab)x = a(bx)$ \hfill "vertr\"aglich"
+	\end{itemize}
+	
+	
+	\subsection*{1.1.2 Bemerkung}\addcontentsline{toc}{subsection}{1.1.2 Bemerkung}
+	
+	\begin{enumerate}[(a)]
+		\item Schlampiger Sprachgebrauch: 
+		\begin{itemize}
+			\item "Sei $M$ ein $R$-Modul" statt "Sei $(R, +_R, \cdot_R, M, +, \cdot)$ ein Modul"
+			
+			\item "Sei $M$ ein Modul" statt "Es gebe einen Ring $R$ so, dass $M$ ein $R$-Modul ist"
+		\end{itemize}
+		
+		\item Statt "$R$-Modul" sagt man auch "Modul \"uber $R$"	
+		
+		\item Vektorr\"aume sind Moduln \"uber K\"orper. Viele Sprechweisen (wie "Skalar", "Linearkombination", nicht jedoch "Vektor") \"ubertragen wir stillschweigend von Vektorr\"aumen auf Moduln, ebenso 
+		Konventionen (wie "Punkt vor Strich").
+		
+		\item Abelsche Gruppen "sind" $\Z$-Moduln. Sei $G$ eine abelsche Gruppe. Dann gibt es genau eine Skalarmultiplikation $\cdot:\Z\times G \to G$ verm\"oge derer $G$ zu einem $\Z$-Modul wird, n\"amlich die nat\"urliche, die durch 
+			\[n \cdot a := \begin{cases}
+				\underbrace{a + a + \cdots + a}_{n\textrm{-mal}} & \textrm{falls } n > 0\\
+				0 & \textrm{falls } n = 0\\
+				\underbrace{-a - a - \cdots - a}_{(-n)\textrm{-mal}} & \textrm{falls } n < 0
+			\end{cases}\]
+		gegeben ist.
+		
+		\item $(\overset{\rightarrow}{D})$ besagt, dass f\"ur alle $a \in R$ die Abbildung $M \to M, x \mapsto ax$ ein Gruppenhomomorphismus ist. Insbesondere gilt $a \cdot 0 = 0$ und $a \cdot (-x) = -ax$ f\"ur alle $a \in R, x \in M$.
+		
+		$(D')$ besagt, dass f\"ur alle $x \in M$ die Abbildung $R \to M, a \mapsto ax$ ein Gruppenhomomorphismus ist. Insbesondere gilt $0 \cdot x = 0$ und $(-a) \cdot x = -ax$ f\"ur alle $a \in R, x \in M$.
+	\end{enumerate}
+
+	\subsection*{1.1.3 Beispiele}\addcontentsline{toc}{subsection}{1.1.3 Beispiele}
+	\begin{enumerate}[(a)]
+		\item Nullmoduln $\set{0}$
+		
+		\item Sei $A$ ein Unterring des Ringes $B$. Dann ist $B$ ein $A$-Modul verm\"oge der Skalarmultiplikation $\cdot: A \times B \to B, (a, x) \mapsto ax$
+		
+		Insbesondere ist jeder Ring ein Modul \"uber sich selbst.
+		
+		\item Sei $R$ ein kommutativer Ring und $n \in \N_0$. Dann wird die abelsche Gruppe $R^n$ zu einem $R^{n\times n}$-Modul verm\"oge der Skalarmultiplikation
+			\[\cdot: R^{n\times n} \times R^n \to R^n, (A, x) \mapsto Ax\]
+		Dies folgt aus den Rechenregeln f\"ur Matrixmultiplikation.
+	\end{enumerate}
+
+	\subsection*{1.1.4 Definitionen, Propositionen, S\"atze und Notationen}\addcontentsline{toc}{subsection}{1.1.4 Definition, Propositionen, S\"atze und Notationen}
+	Sei $R$ ein Ring. Die folgenden f\"ur die Theorie der $R$-Moduln grundlegenden Begriffe und Resultate sind eine direkte Verallgemeinerung der entsprechenden Tatsachen f\"ur Vektorr\"aume (also f\"ur den Fall, dass $R$ ein K\"orper) und f\"ur abelsche Gruppen (also $R = \Z$) aus der Linearen Algebra:
+	
+	\begin{enumerate}[(a)]
+		\item Genauso wie bei Vektorr\"aumen f\"uhrt man {\bf direkte Produkte} von $R$-Moduln ein.
+		
+		\item Sind $M$ und $N$ $R$-Moduln, so hei\ss t $N$ ein {\bf Untermodul} von $M$, wenn die $N$ zugrunde liegende abelsche Gruppe eine Untergruppe der $M$ zugrunde liegenden abelschen Gruppe ist und 
+			\[\forall a \in R: \forall x \in M: a \cdot_N x = a \cdot_M x\]
+			
+		Ein Untermodul eines Moduls ist offenbar durch seine Tr\"agermenge (d.h. seine zugrunde liegende Menge) eindeutig bestimmt.
+		
+		Ist $M$ ein $R$-Modul und $N \subseteq M$, so ist $N$ offenbar genau dann (Tr\"agermenge) ein(e) Untermodul(s) von $M$, wenn $0\in N, \forall x, y\in N: x + y \in N, \forall a \in R: \forall x \in N: ax \in N$
+		
+		\item Sei $M$ ein Modul und $(N_i)_{i \in I}$ eine Familie von Untermoduln von $M$. Dann ist 
+		$\bigcap_{i \in I} N_i := \bigcap \set{N_i | i \in I}$ (mit $\bigcap_{i \in I} N_i = M$, falls $I = \emptyset$)
+		wieder ein Untermodul von $M$ und zwar der gr\"o\ss te Untermodul von $M$, der in allen $N_i$ enthalten ist.
+		
+		Weiter ist auch $\sum_{i \in I} N_i := \set{\sum_{i \in I} x_i | (x_i)_{i \in I} \in \prod_{i\in I} N_i, \set{i \in I| x_i \neq 0} \textrm{endlich}}$ Untermodul von $M$ und zwar der kleinste Untermodul von $M$, der alle $N_i$ enth\"alt.
+		
+		\item Sei $M$ ein $R$-Modul. Ist $x \in M$, so ist $Rx := \set{ax| a \in R}$ ein Untermodul von $M$ und zwar der kleinste Untermodul, der $x$ enth\"alt.
+		
+		Ist $(x_i)_{i \in I}$ eine Familie von Elementen von $M$, so ist $\sum_{i \in I} Rx_i$ der kleinste Untermodul von $M$, der alle $x_i$ enth\"alt.
+		
+		Man nennt ihn den von den $x_i$ ($i \in I$) (oder $\set{x_i|i \in I}$) erzeugten Untermodul von $M$ (oder lineare H\"ulle der Span von $\set{x_i| i \in I}$). 
+		
+		Man nennt $M$ {\bf zyklisch}, wenn $M$ von einem Element erzeugt wird, d.h. es ein $x \in M$ gibt mit $M = Rx$. Man nennt $M$ endlich erzeugt (e.e.), wenn $M$ von endlich vielen Elementen
+		erzeugt wird, d.h. es ein $n \in \N_0$ und $x_1, \dots, x_n \in M$ gibt mit 
+		\[M = Rx_1 + \cdots + Rx_n := \sum_{i=1}^{n} Rx_i := \sum_{i \in \set{1, \dots, n}} Rx_i\] 
+	\end{enumerate}
+
+
+	\tableofcontents
+\end{document}
