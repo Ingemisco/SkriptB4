@@ -1,13 +1,50 @@
-\documentclass{book}
+\documentclass[
+twoside=semi,
+fontsize=12,
+DIV=12, 
+cleardoublepage=current,
+leqno,
+headings=optiontoheadandtoc, 
+toc=idx
+]{scrbook}
+
+\usepackage{imakeidx}
+\makeindex
+
+\usepackage[german]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{datetime}
+
+
+\usepackage[headsepline]{scrlayer-scrpage}
+\setkomafont{pageheadfoot}{\normalfont}
+\setkomafont{pagefoot}{\slshape}
+
+\defpagestyle{scrheadings}{%
+	{}{}{}
+}{
+	{\pagemark\hfill}{\hfill \pagemark}{}
+}
+
+\defpagestyle{plain}{%
+	{}{}{}(0pt,0pt)
+}{
+	{\pagemark \hfill}{\hfill \pagemark}{}
+}
+
+\usepackage{chngcntr}\counterwithout{equation}{section}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
 \usepackage{enumerate}
-\usepackage{inputenc}
-\usepackage[german]{babel}
-\usepackage{fancyhdr}
 \usepackage[pass]{geometry}
 \usepackage{csquotes}
+
+
 \usepackage{hyperref}
 \MakeOuterQuote{"}
 
@@ -25,115 +62,220 @@
 \newcommand{\abs}[1]{\left| #1 \right|}
 \newcommand{\set}[1]{\left\{ #1 \right\}}
 
-\pagestyle{fancy}
-\fancyhf{}
+\newcommand*{\ORIGchapterheadstartvskip}{}%
+\let\ORIGchapterheadstartvskip=\chapterheadstartvskip
+\renewcommand*{\chapterheadstartvskip}{%
+	\ORIGchapterheadstartvskip
+	\noindent\rule[\baselineskip]{\linewidth}{4pt}\par
+}
+\newcommand*{\ORIGchapterheadendvskip}{}%
+\let\ORIGchapterheadendvskip=\chapterheadendvskip
+\renewcommand*{\chapterheadendvskip}{%
+	\ORIGchapterheadendvskip
+	\noindent\rule[\baselineskip]{\linewidth}{4pt}\par
+}
 
-\renewcommand{\headrulewidth}{2pt}
+\DeclareMathOperator{\im}{im}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{bemerkung}[definition]{Bemerkung}
+\newtheorem{beispiele}[definition]{Beispiele}
+\newtheorem{warnung}[definition]{Warnung}
+\newtheorem{def-prop-satz-not}[definition]{Definitionen, Propositionen, S\"atze und Notationen}
 
 \begin{document}
-	\begin{titlepage}
-		\newgeometry{margin=3cm}
-		\centering
+	\pagenumbering{Alph}
+	\pagestyle{empty}
+	\tableofcontents
+	\mainmatter
+	\pagestyle{scrheadings}
+	\chapter[tocentry={Moduln}]{Moduln}
+	
+	
+	\section{Definitionen und grundlegende Tatsachen}
+	\setcounter{chapter}{1}
+	\setcounter{section}{1}
+	\begin{definition}
+		\label{1.1.1}
 		
-		\vfill
+		Ein \emph{Modul}\index{Modul@\textbf{Modul}} ist ein Tupel $(R, +_R, \cdot_R, M, +, \cdot)$, wobei $(R, +_R, \cdot_R)$ ein Ring (mit $1$, nicht notwendigerweise kommutativ), $(M, +)$ eine abelsche Gruppe und \\\noindent$\cdot:R\times M \to M$ eine (meist gar nicht oder infix geschriebene) Abbildung mit folgenden Eigenschaften
 		
-		\Large Algebra II
-		
-		\vfill
-
-	\end{titlepage}
-	
-	
-	\chapter*{1 Moduln}\addcontentsline{toc}{chapter}{1 Moduln}
-	
-	
-	\section*{1.1 Definitionen und grundlegende Tatsachen}\addcontentsline{toc}{section}{1.1 Definitionen und grundlegende Tatsachen}
-	
-	\subsection*{1.1.1 Definition}\addcontentsline{toc}{subsection}{1.1.1 Definition Modul}
-	Ein {\bf Modul} ist ein Tupel $(R, +_R, \cdot_R, M, +, \cdot)$, wobei $(R, +_R, \cdot_R)$ ein Ring (mit $1$, nicht notwendigerweise kommutativ), $(M, +)$ eine abelsche Gruppe und \\\noindent$\cdot:R\times M \to M$ eine (meist gar nicht oder infix geschriebene) Abbildung mit folgenden Eigenschaften
-	
-	\begin{itemize}
-		\item[$(\overset{\rightarrow}{D})$] $\forall a \in R: \forall x, y \in M: a(x + y) = ax + ay$ \hfill "distributiv"
-		
-		\item[$(D')$] $\forall a, b \in R: \forall x \in M: (a+b)x = ax + bx$ \hfill "distributiv"
-		
-		\item[$(N)$] $\forall x \in M: 1_R \cdot x = x$ \hfill "normiert"
-		
-		\item[$(V)$] $\forall a, b \in R: \forall x \in M: (ab)x = a(bx)$ \hfill "vertr\"aglich"
-	\end{itemize}
-	
-	
-	\subsection*{1.1.2 Bemerkung}\addcontentsline{toc}{subsection}{1.1.2 Bemerkung}
-	
-	\begin{enumerate}[(a)]
-		\item Schlampiger Sprachgebrauch: 
 		\begin{itemize}
-			\item "Sei $M$ ein $R$-Modul" statt "Sei $(R, +_R, \cdot_R, M, +, \cdot)$ ein Modul"
+			\item[$(\overset{\rightarrow}{D})$] $\forall a \in R: \forall x, y \in M: a(x + y) = ax + ay$ \hfill "distributiv"
 			
-			\item "Sei $M$ ein Modul" statt "Es gebe einen Ring $R$ so, dass $M$ ein $R$-Modul ist"
+			\item[$(D')$] $\forall a, b \in R: \forall x \in M: (a+b)x = ax + bx$ \hfill "distributiv"
+			
+			\item[$(N)$] $\forall x \in M: 1_R \cdot x = x$ \hfill "normiert"
+			
+			\item[$(V)$] $\forall a, b \in R: \forall x \in M: (ab)x = a(bx)$ \hfill "vertr\"aglich"
 		\end{itemize}
-		
-		\item Statt "$R$-Modul" sagt man auch "Modul \"uber $R$"	
-		
-		\item Vektorr\"aume sind Moduln \"uber K\"orper. Viele Sprechweisen (wie "Skalar", "Linearkombination", nicht jedoch "Vektor") \"ubertragen wir stillschweigend von Vektorr\"aumen auf Moduln, ebenso 
-		Konventionen (wie "Punkt vor Strich").
-		
-		\item Abelsche Gruppen "sind" $\Z$-Moduln. Sei $G$ eine abelsche Gruppe. Dann gibt es genau eine Skalarmultiplikation $\cdot:\Z\times G \to G$ verm\"oge derer $G$ zu einem $\Z$-Modul wird, n\"amlich die nat\"urliche, die durch 
+	\end{definition}
+	
+	
+	\begin{bemerkung}\label{1.1.2}
+			
+			\begin{enumerate}[(a)]
+			\item Schlampiger Sprachgebrauch: 
+			\begin{itemize}
+				\item "Sei $M$ ein $R$-Modul" statt "Sei $(R, +_R, \cdot_R, M, +, \cdot)$ ein Modul"
+				
+				\item "Sei $M$ ein Modul" statt "Es gebe einen Ring $R$ so, dass $M$ ein $R$-Modul ist"
+			\end{itemize}
+			
+			\item Statt "$R$-Modul" sagt man auch "Modul \"uber $R$"	
+			
+			\item Vektorr\"aume sind Moduln \"uber K\"orper. Viele Sprechweisen (wie "Skalar", "Linearkombination", nicht jedoch "Vektor") \"ubertragen wir stillschweigend von Vektorr\"aumen auf Moduln, ebenso 
+			Konventionen (wie "Punkt vor Strich").
+			
+			\item Abelsche Gruppen "sind" $\Z$-Moduln. Sei $G$ eine abelsche Gruppe. Dann gibt es genau eine Skalarmultiplikation $\cdot:\Z\times G \to G$ verm\"oge derer $G$ zu einem $\Z$-Modul wird, n\"amlich die nat\"urliche, die durch 
 			\[n \cdot a := \begin{cases}
 				\underbrace{a + a + \cdots + a}_{n\textrm{-mal}} & \textrm{falls } n > 0\\
 				0 & \textrm{falls } n = 0\\
 				\underbrace{-a - a - \cdots - a}_{(-n)\textrm{-mal}} & \textrm{falls } n < 0
 			\end{cases}\]
-		gegeben ist.
+			gegeben ist.
+			
+			\item $(\overset{\rightarrow}{D})$ besagt, dass f\"ur alle $a \in R$ die Abbildung $M \to M, x \mapsto ax$ ein Gruppenhomomorphismus ist. Insbesondere gilt $a \cdot 0 = 0$ und $a \cdot (-x) = -ax$ f\"ur alle $a \in R, x \in M$.
+			
+			$(D')$ besagt, dass f\"ur alle $x \in M$ die Abbildung $R \to M, a \mapsto ax$ ein Gruppenhomomorphismus ist. Insbesondere gilt $0 \cdot x = 0$ und $(-a) \cdot x = -ax$ f\"ur alle $a \in R, x \in M$.
+		\end{enumerate}
 		
-		\item $(\overset{\rightarrow}{D})$ besagt, dass f\"ur alle $a \in R$ die Abbildung $M \to M, x \mapsto ax$ ein Gruppenhomomorphismus ist. Insbesondere gilt $a \cdot 0 = 0$ und $a \cdot (-x) = -ax$ f\"ur alle $a \in R, x \in M$.
-		
-		$(D')$ besagt, dass f\"ur alle $x \in M$ die Abbildung $R \to M, a \mapsto ax$ ein Gruppenhomomorphismus ist. Insbesondere gilt $0 \cdot x = 0$ und $(-a) \cdot x = -ax$ f\"ur alle $a \in R, x \in M$.
-	\end{enumerate}
-
-	\subsection*{1.1.3 Beispiele}\addcontentsline{toc}{subsection}{1.1.3 Beispiele}
-	\begin{enumerate}[(a)]
-		\item Nullmoduln $\set{0}$
-		
-		\item Sei $A$ ein Unterring des Ringes $B$. Dann ist $B$ ein $A$-Modul verm\"oge der Skalarmultiplikation $\cdot: A \times B \to B, (a, x) \mapsto ax$
-		
-		Insbesondere ist jeder Ring ein Modul \"uber sich selbst.
-		
-		\item Sei $R$ ein kommutativer Ring und $n \in \N_0$. Dann wird die abelsche Gruppe $R^n$ zu einem $R^{n\times n}$-Modul verm\"oge der Skalarmultiplikation
-			\[\cdot: R^{n\times n} \times R^n \to R^n, (A, x) \mapsto Ax\]
-		Dies folgt aus den Rechenregeln f\"ur Matrixmultiplikation.
-	\end{enumerate}
-
-	\subsection*{1.1.4 Definitionen, Propositionen, S\"atze und Notationen}\addcontentsline{toc}{subsection}{1.1.4 Definition, Propositionen, S\"atze und Notationen}
-	Sei $R$ ein Ring. Die folgenden f\"ur die Theorie der $R$-Moduln grundlegenden Begriffe und Resultate sind eine direkte Verallgemeinerung der entsprechenden Tatsachen f\"ur Vektorr\"aume (also f\"ur den Fall, dass $R$ ein K\"orper) und f\"ur abelsche Gruppen (also $R = \Z$) aus der Linearen Algebra:
+	\end{bemerkung}
 	
-	\begin{enumerate}[(a)]
-		\item Genauso wie bei Vektorr\"aumen f\"uhrt man {\bf direkte Produkte} von $R$-Moduln ein.
+	\begin{beispiele}\label{1.1.3}
+			\begin{enumerate}[(a)]
+			\item Nullmoduln $\set{0}$
+			
+			\item Sei $A$ ein Unterring des Ringes $B$. Dann ist $B$ ein $A$-Modul verm\"oge der Skalarmultiplikation $\cdot: A \times B \to B, (a, x) \mapsto ax$
+			
+			Insbesondere ist jeder Ring ein Modul \"uber sich selbst.
+			
+			\item Sei $R$ ein kommutativer Ring und $n \in \N_0$. Dann wird die abelsche Gruppe $R^n$ zu einem $R^{n\times n}$-Modul verm\"oge der Skalarmultiplikation
+			\[\cdot: R^{n\times n} \times R^n \to R^n, (A, x) \mapsto Ax\]
+			Dies folgt aus den Rechenregeln f\"ur Matrixmultiplikation.
+		\end{enumerate}
+	\end{beispiele}
+	
+	\begin{def-prop-satz-not}\label{1.1.4}
+		Sei $R$ ein Ring. Die folgenden f\"ur die Theorie der $R$-Moduln grundlegenden Begriffe und Resultate sind eine direkte Verallgemeinerung der entsprechenden Tatsachen f\"ur Vektorr\"aume (also f\"ur den Fall, dass $R$ ein K\"orper) und f\"ur abelsche Gruppen (also $R = \Z$) aus der Linearen Algebra:
 		
-		\item Sind $M$ und $N$ $R$-Moduln, so hei\ss t $N$ ein {\bf Untermodul} von $M$, wenn die $N$ zugrunde liegende abelsche Gruppe eine Untergruppe der $M$ zugrunde liegenden abelschen Gruppe ist und 
+		\begin{enumerate}[(a)]
+			\item Genauso wie bei Vektorr\"aumen f\"uhrt man \emph{direkte Produkte}\index{Modul@\textbf{Modul}!Direktes Produkt} von $R$-Moduln ein.
+			
+			\item Sind $M$ und $N$ $R$-Moduln, so hei\ss t $N$ ein \emph{Untermodul}\index{Modul@\textbf{Modul}!Untermodul} von $M$, wenn die $N$ zugrunde liegende abelsche Gruppe eine Untergruppe der $M$ zugrunde liegenden abelschen Gruppe ist und 
 			\[\forall a \in R: \forall x \in M: a \cdot_N x = a \cdot_M x\]
 			
-		Ein Untermodul eines Moduls ist offenbar durch seine Tr\"agermenge (d.h. seine zugrunde liegende Menge) eindeutig bestimmt.
-		
-		Ist $M$ ein $R$-Modul und $N \subseteq M$, so ist $N$ offenbar genau dann (Tr\"agermenge) ein(e) Untermodul(s) von $M$, wenn $0\in N, \forall x, y\in N: x + y \in N, \forall a \in R: \forall x \in N: ax \in N$
-		
-		\item Sei $M$ ein Modul und $(N_i)_{i \in I}$ eine Familie von Untermoduln von $M$. Dann ist 
-		$\bigcap_{i \in I} N_i := \bigcap \set{N_i | i \in I}$ (mit $\bigcap_{i \in I} N_i = M$, falls $I = \emptyset$)
-		wieder ein Untermodul von $M$ und zwar der gr\"o\ss te Untermodul von $M$, der in allen $N_i$ enthalten ist.
-		
-		Weiter ist auch $\sum_{i \in I} N_i := \set{\sum_{i \in I} x_i | (x_i)_{i \in I} \in \prod_{i\in I} N_i, \set{i \in I| x_i \neq 0} \textrm{endlich}}$ Untermodul von $M$ und zwar der kleinste Untermodul von $M$, der alle $N_i$ enth\"alt.
-		
-		\item Sei $M$ ein $R$-Modul. Ist $x \in M$, so ist $Rx := \set{ax| a \in R}$ ein Untermodul von $M$ und zwar der kleinste Untermodul, der $x$ enth\"alt.
-		
-		Ist $(x_i)_{i \in I}$ eine Familie von Elementen von $M$, so ist $\sum_{i \in I} Rx_i$ der kleinste Untermodul von $M$, der alle $x_i$ enth\"alt.
-		
-		Man nennt ihn den von den $x_i$ ($i \in I$) (oder $\set{x_i|i \in I}$) erzeugten Untermodul von $M$ (oder lineare H\"ulle der Span von $\set{x_i| i \in I}$). 
-		
-		Man nennt $M$ {\bf zyklisch}, wenn $M$ von einem Element erzeugt wird, d.h. es ein $x \in M$ gibt mit $M = Rx$. Man nennt $M$ endlich erzeugt (e.e.), wenn $M$ von endlich vielen Elementen
-		erzeugt wird, d.h. es ein $n \in \N_0$ und $x_1, \dots, x_n \in M$ gibt mit 
-		\[M = Rx_1 + \cdots + Rx_n := \sum_{i=1}^{n} Rx_i := \sum_{i \in \set{1, \dots, n}} Rx_i\] 
-	\end{enumerate}
+			Ein Untermodul eines Moduls ist offenbar durch seine Tr\"agermenge (d.h. seine zugrunde liegende Menge) eindeutig bestimmt.
+			
+			Ist $M$ ein $R$-Modul und $N \subseteq M$, so ist $N$ offenbar genau dann (Tr\"agermenge) ein(e) Untermodul(s) von $M$, wenn $0\in N, \forall x, y\in N: x + y \in N, \forall a \in R: \forall x \in N: ax \in N$
+			
+			\item Sei $M$ ein Modul und $(N_i)_{i \in I}$ eine Familie von Untermoduln von $M$. Dann ist 
+			$\bigcap_{i \in I} N_i := \bigcap \set{N_i | i \in I}$ (mit $\bigcap_{i \in I} N_i = M$, falls $I = \emptyset$)
+			wieder ein Untermodul von $M$ und zwar der gr\"o\ss te Untermodul von $M$, der in allen $N_i$ enthalten ist.
+			
+			Weiter ist auch $\sum_{i \in I} N_i := \set{\sum_{i \in I} x_i | (x_i)_{i \in I} \in \prod_{i\in I} N_i, \set{i \in I| x_i \neq 0} \textrm{endlich}}$ Untermodul von $M$ und zwar der kleinste Untermodul von $M$, der alle $N_i$ enth\"alt.
+			
+			\item Sei $M$ ein $R$-Modul. Ist $x \in M$, so ist $Rx := \set{ax| a \in R}$ ein Untermodul von $M$ und zwar der kleinste Untermodul, der $x$ enth\"alt.
+			
+			Ist $(x_i)_{i \in I}$ eine Familie von Elementen von $M$, so ist $\sum_{i \in I} Rx_i$ der kleinste Untermodul von $M$, der alle $x_i$ enth\"alt.
+			
+			Man nennt ihn den von den $x_i$ ($i \in I$) (oder $\set{x_i|i \in I}$) erzeugten Untermodul von $M$ (oder lineare H\"ulle der Span von $\set{x_i| i \in I}$). 
+			
+			Man nennt $M$ \emph{zyklisch}\index{Modul@\textbf{Modul}!Zyklische Moduln}, wenn $M$ von einem Element erzeugt wird, d.h. es ein $x \in M$ gibt mit $M = Rx$. Man nennt $M$ endlich erzeugt (e.e.), wenn $M$ von endlich vielen Elementen
+			erzeugt wird, d.h. es ein $n \in \N_0$ und $x_1, \dots, x_n \in M$ gibt mit 
+			\[M = Rx_1 + \cdots + Rx_n := \sum_{i=1}^{n} Rx_i := \sum_{i \in \set{1, \dots, n}} Rx_i\] 
+			
+			\item Sei $M$ ein $R$-Modul. Eine Familie $(x_i)_{i\in I}$ in $M$ hei\ss t \emph{linear unabh\"angig}\index{Modul@\textbf{Modul}!Linear unabh\"angig (l.u.)} (l.u.), wenn f\"ur alle $n\in \N_0$, alle paarweise verschiedenen $i_1, \dots, i_n \in I$ und alle $a_1, \dots, a_n \in I$ gilt 
+			\[\sum_{j=1}^{n} a_jx_{i_j} = 0 \Rightarrow a_1 = \cdots = a_n = 0\]
+			
+			Weiter nennt man $x_1, \dots, x_n$ linear unabh\"angig, wenn $(x_1, \dots, x_n) = (x_i)_{i \in \set{1, \dots, n}}$ linear unabhängig ist, d.h. f\"ur alle $a_1, \dots, a_n \in R$ gilt 
+			\begin{align}
+				a_1x_1 + \cdots a_nx_n = 0 \Rightarrow a_1 = \cdots = a_n = 0 \label{lin_ind}
+			\end{align}
+			
+			Schlie\ss lich hei\ss t eine Menge $F\subseteq M$ linear unabh\"angig, wenn $(x)_{x \in F}$ linear unabh\"angig ist, d.h. f\"ur alle $n\in \N_0$, alle paarweise verschiedenen $x_1, \dots, x_n \in F$ und alle $a_1, \dots, a_n \in R$ wieder \ref{lin_ind} gilt.
+			
+			\item Sei $M$ ein Modul. Eine Familie $(x_i)_{i \in I}$ in $M$ hei\ss t eine \emph{Basis}\index{Modul@\textbf{Modul}!Basis} von $M$, wenn sie $M$ erzeugt und linear unabh\"angig ist. Weiter
+			sagt man $x_1, \dots, x_n \in M$ bilden eine Basis von $M$, wenn $(x_1, \dots, x_n) = (x_i)_{i \in \set{1, \dots, n}}$ eine Basis von $M$ ist. Schlie\ss lich hei\ss t $B \subseteq M$ eine Basis, wenn $B$ den Modul $M$ erzeugt und linear unabh\"angig ist.
+			
+			\item Seien $M$ und $N$ $R$-Moduln. Dann hei\ss t $f$ ein \emph{($R$-)(Modul-)Homomorphismus}\index{Modul@\textbf{Modul}!Homomorphismus} oder eine $(R-)$ lineare Abbildung von $M$ nach $N$, wenn $f:M\to N$ ein Gruppenhomomorphismus der $M$ und $N$ zugrundeliegenden abelschen Gruppen ist und 
+			\[\forall a \in R: \forall x \in M: f(ax) = af(x) \]
+			
+			Ein Modulhomomorphismus $f:M\to N$ hei\ss t Einbettung/Monomorphismus (Epimorphismus, Isomorphismus), wenn $f$ injektiv (surjektiv, bijektiv) ist. 
+			
+			Ein Modulhomomorphismus $f:M \to M$ hei\ss t \emph{(Modul-)Endomorphismus}\index{Modul@\textbf{Modul}!Homomorphismus!Endomorphismus} von $M$. Ein Endomorphismus, der ein Isomorphismus ist, hei\ss t \emph{Automorphismus}\index{Modul@\textbf{Modul}!Automorphismus}. Es heißen $M$ und $N$ \emph{isomorph}, in Zeichen $M \cong N$, wenn es einen Isomorphismus $M \to N$ gibt.
+			
+			Hintereinanderschaltungen von Modulhomomorphismen sind wieder Modulhomomorphismen. Umkehrabbildungen von Modulisomorphismen sind wieder Modulisomorphismen.
+			
+			\item Sei $M$ ein $R$-Modul. Eine \emph{Kongruenzrelation}\index{Modul@\textbf{Modul}!Kongruenzrelation} auf $M$ ist eine \"Aquivalenzrelation $\equiv$ der $M$ zugrundeliegenden Menge, f\"ur die gilt
+			\[\forall x, y, x', y' \in M: (x \equiv x' \land y \equiv y') \Rightarrow x + y \equiv x' + y'\]
+			und
+			\[\forall x, x' \in M: \forall a \in R: x \equiv x' \Rightarrow ax \equiv ax'\]
+			
+			Diese Definition wurde gerade so gemacht, dass 
+			\[+:( M/\equiv) \times (M/\equiv) \to (M/\equiv), (\overline{x}, \overline{y}) \mapsto \overline{x + y}\]
+			und
+			\[\cdot: R \times (M/\equiv) \to (M/\equiv), (a, \overline{x}) \mapsto \overline{ax}\]
+			wohldefiniert sind.
+			
+			Ist $M$ ein $R$-Modul und $\equiv$ eine Kongruenzrelation auf $M$, so wird die Quotientenmenge $M/\equiv$ verm\"oge der Addition $+$ und der Skalarmultiplikation $\cdot$ ein $R$-Modul, wie man
+			durch direktes Nachrechnen sieht. Die Zuordnungen
+			\begin{align*}
+				\equiv  &\overset{f}{\mapsto} \overline{0}\\
+				\equiv_N &\overset{g}{\mapsfrom} N
+			\end{align*}
+			vermitteln eine Bijektion zwischen der Menge der Kongruenzrelationen auf $M$ und der Menge der Untermoduln von $M$, wobei $\equiv_N$ gegeben ist durch
+			\[a \equiv_N b :\Leftrightarrow a - b \in N\]
+			f\"ur $a, b \in M$.
+			
+			Ist $N$ ein Untermodul von $M$, so nennt man $M/N := M/\equiv_N$ auch den \emph{Quotientenmodul}\index{Modul@\textbf{Modul}!Quotientenmodul} von $M$ nach $N$.
+			
+			\item Sind $M$ und $N$ $R$-Moduln und $f:M \to N$ ein Modulhomomorphismus, so ist der \emph{Kern}\index{Modul@\textbf{Modul}!Homomorphismus!Kern} $\ker f := \set{x \in M| f(x) = 0}$ von $f$ ein Untermodul von $M$ und das \emph{Bild}\index{Modul@\textbf{Modul}!Homomorphismus!Bild} $\im f := \set{f(x) | x \in M}$ von $f$ ist ein Untermodul von $N$.
+			
+			\item Homomorphiesatz: Seien $M$ und $N$ $R$-Moduln und $L$ ein Untermodul von $M$ und $f:M \to N$ ein Modulhomomorphismus mit $L \subseteq \ker f$. Dann gibt es (genau) einen Modulhomomorphismus $\overline{f}: (M/L) \to N$ mit $\overline{f}(\overline{x}) = f(x)$ f\"ur alle $x \in M$.
+			
+			Ferner gilt, dass
+			\begin{itemize}
+				\item $\overline{f}$ ist injektiv $\Leftrightarrow L = \ker f$ und
+				\item $\overline{f}$ ist surjektiv $\Leftrightarrow f$ ist surjektiv
+			\end{itemize}
+			
+			\item Isomorphiesatz: Seien $M$ und $N$ $R$-Moduln und $f:M \to N$ ein Modulhomomorphismus. Dann ist $\overline{f}:(M/\ker f) \to \im f$ definiert durch $\overline{f}(\overline{x}) = f(x)$ f\"ur alle $x\in M$ ein $R$-Modulisomorphismus. Insbesondere ist $M/\ker f \cong \im f$
+		\end{enumerate}
+	\end{def-prop-satz-not}
+	
+	\begin{bemerkung}\label{1.1.5}
+		Sei $R$ ein kommutativer Ring. Dann sind die Untermoduln des $R$-Modul $R$ [$\to$\ref{1.1.3}(b)] (oder kurz gesagt die $R$-Untermoduln von $R$) genau die Ideale des Ringes $R$.
+		Insbesondere sind zum Beispiel das von einem $a \in R$ erzeugte Ideal und der davon erzeugte Untermodul als Menge dasselbe $(a)_R = Ra \overset{R\ komm.}{=} \set{ab | b \in R} = aR$.
+		Trotzdem macht es vom Sinn her einen Unterschied. ob man $(a)$ oder $Ra$ schreibt. Zum Beispiel meint man mit $R/(a)$ den Ring und mit $R/aR$ den $R$-Modul (deren zugrundeliegenden abelschen Gruppen dieselben sind)
+	\end{bemerkung}
 
+	\begin{warnung}\label{1.1.6}
+		F\"ur den mit Vektorr\"aumen, aber nicht mit Moduln vertrauten H\"orern ist Vorsicht geboten:
+		\begin{enumerate}[(a)]
+			\item In einem $R$-Modul $M$ kann $ax = 0$ f\"ur ein $a \in R$ und ein $x \in M$ gelten, ohne dass $a = 0$ oder $x = 0$ gilt (zum Beispiel $2 \cdot \overline{1} = \overline{2} = 0$ im $\Z$-Modul $\Z/2\Z$)
+			
+			\item Nicht jeder Modul hat eine Basis:
+			zum Beispiel ist jedes Element des $\Z$-Moduls $\Z/2\Z$ linear abh\"angig, denn $1 \cdot \overline{0} = \overline{0} = 0$ und $2 \cdot \overline{1} = \overline{2} = 0$ in $\Z/2\Z$, womit die einzige linear unabh\"angige Teilmenge von $\Z/2\Z$ die leere Menge is, welche aber $\Z/2\Z$ nicht erzeugt.
+		\end{enumerate}
+	\end{warnung}	
 
-	\tableofcontents
+	\begin{beispiele}\label{1.1.7}
+		\begin{enumerate}[(a)]
+			\item F\"ur jeden Ring $R$ ist $R^n$ ein $R$-Modul mit der \emph{Standardbasis}\index{Modul@\textbf{Modul}!Standardbasis} $\underline{e} = (e_1, \dots, e_n)$, wobei $e_i := \begin{pmatrix}
+				0\\
+				\vdots\\
+				0\\
+				1\\
+				0\\
+				\vdots\\
+				0
+			\end{pmatrix}$ mit einer $1$ an der $i$-ten Stelle.
+		
+			\item $\R^2$ ist ein zyklischer $\R^{2 \times 2}$ Modul [$\to$\ref{1.1.3}(c)], welcher von jedem $x \in \R^{2\times 2} \setminus \set{0}$ erzeugt ist. Da aber jedes $x \in \R^{2 \times 2}$ linear abh\"angig ist, hat dieser Modul keine Basis.  
+		\end{enumerate}
+	\end{beispiele}
+\backmatter
+\printindex
 \end{document}
