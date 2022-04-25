@@ -76,12 +76,19 @@ toc=idx
 }
 
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\id}{id}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{bemerkung}[definition]{Bemerkung}
 \newtheorem{beispiele}[definition]{Beispiele}
 \newtheorem{warnung}[definition]{Warnung}
+\newtheorem{satz}[definition]{Satz}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{prop-def}[definition]{Proposition und Definition}
 \newtheorem{def-prop-satz-not}[definition]{Definitionen, Propositionen, S\"atze und Notationen}
 
 \begin{document}
@@ -276,6 +283,113 @@ toc=idx
 			\item $\R^2$ ist ein zyklischer $\R^{2 \times 2}$ Modul [$\to$\ref{1.1.3}(c)], welcher von jedem $x \in \R^{2\times 2} \setminus \set{0}$ erzeugt ist. Da aber jedes $x \in \R^{2 \times 2}$ linear abh\"angig ist, hat dieser Modul keine Basis.  
 		\end{enumerate}
 	\end{beispiele}
+
+
+	\section{Direkte Summen von Moduln und freie Moduln}
+	\begin{definition}\label{1.2.1}
+		Sei $R$ ein Ring und $(M_i)_{i \in I}$ eine Familie von $R$-Moduln. Dann nennt man den $R$-Untermodul 
+			\[\bigoplus_{i \in I} M_i := \set{x \in \prod_{i\in I}M_i| \supp(x)\ \mathrm{endlich} } \]
+		von $\displaystyle\prod_{i\in I} M_i$ \emph{die (\"au\ss ere) direkte Summe}\index{Modul@\textbf{Modul}!\"Au\ss ere Direkte Summe} der $M_i$ ($i \in I$). Man fasst $M_j$ ($j \in I$ h\"aufig) als Untermodul von $\displaystyle\bigoplus_{i \in I} M_i$ auf verm\"oge der Einbettung 
+		 \[\rho_j:M_j \to \prod_{i\in I} M_i, x \mapsto \brac{i \mapsto \begin{cases}
+		 		x & \textrm{falls } i = j\\
+		 		0 & \textrm{sonst}
+		 \end{cases}}\] 
+	 	
+	 	\noindent Ist $M_i = M$ f\"ur alle $i \in I$, so schreibt man \[M^{(I)} := \bigoplus_{i \in I} M \subseteq \prod_{i\in I} M = M^I\]
+	\end{definition}
+	
+	\begin{proposition}\label{1.2.2}
+		Sei $R$ ein Ring, $(M_i)_{i \in I}$ eine Familie von Modulhomomorphismen $f_i: M_i \to N$. Dann gibt es genau einen Modulhomomorphismus $f:\bigoplus_{i \in I} M_i \to N$ mit $f\big|_{M_i} = f_i$ f\"ur alle $i \in I$ ($f \circ \rho_i = f_i$ f\"ur $i \in I$).
+	\end{proposition}
+	\begin{proof}
+		F\"ur jedes $x \in \bigoplus_{i \in I} M_i$ gilt $x = \sum_{i \in \supp(x)} \rho_i (x(i))$. Um $f \circ \rho_i = f_i$ f\"ur $i \in I$ zu erf\"ullen, kann man daher nur 
+		\[f: \bigoplus_{i \in I} M_i \to N, x \mapsto \sum_{i \in I} f_i(x(i))\] 
+		definieren. Man \"uberpr\"uft sofort, dass das so definierte $f$ ein Homomorphismus ist.
+	\end{proof}
+	
+	\begin{prop-def}\label{1.2.3}
+		Sei $R$ ein Ring, $M$ ein $R$-Modul und $(N_i)_{i \in I}$ eine Familie von Untermoduln on $M$. Dann sind die folgenden Bedingungen \"aquivalent
+		\begin{enumerate}[(a)]
+			\item Die Abbildung von der \"au\ss eren direkten Summe $\bigoplus_{i \in I} N_i$ nach $M$, die auf $N_i$ die Identit\"at ist, ist ein Isomorphismus
+			\item $M = \sum_{i \in I} N_i$ und f\"ur alle $n \in \N$, paarweise verschiedenen $i_1, \dots, i_n \in I$ und alle $x_1 \in N_{i_1}, \dots, x_n \in N_{i_n}$ gilt 
+				\[(x_1 + \cdots + x_n = 0) \Rightarrow (x_1 = \cdots = x_n = 0)\]  
+		\end{enumerate}
+	Gelten diese Bedingungen, so nennt man $M$ die \emph{(innere) direkte Summe}\index{Modul@\textbf{Modul}!Innere Direkte Summe} der $N_i$ ($i \in I$) und schreibt (angesichts der Isomorphismus aus $(a)$) wieder $M = \bigoplus_{i \in I} N_i$
+	\end{prop-def}
+
+	\begin{definition}\label{1.2.4}
+		Sei $R$ ein Ring, $M$ ein $R$-Modul und $x \in M$. Der Kern des $R$-Modulhomomorphismus $R \to M, a \mapsto ax$ nennt man \emph{Annihilator}\index{Modul@\textbf{Modul}!Annihilator} von $x$, in Zeichen $\ann(x) = \set{a \in R| ax = 0}$.\newline
+		Es hei\ss t $x$ ein \emph{Torsionselement}\index{Modul@\textbf{Modul}!Torsionselement} von $M$ wenn $\ann(x) \neq \set{0}$.
+	\end{definition}
+
+	\begin{satz}\label{1.2.5}
+		Sei $R$ ein Ring, $M$ ein $R$-Modul und $B \subseteq M$. Dann sind \"aquivalent
+		\begin{enumerate}[(a)]
+			\item $B$ ist eine Basis von $M$
+			\item $M = \bigoplus_{x \in B} Rx$ und $B$ enth\"alt kein Torsionselement
+			\item F\"ur jeden $R$-Modul $N$ und jede Abbildung $g:B \to N$ gibt e genau einen Homomorphismus $f:M \to N$ mit $f\big|_b = g$.
+		\end{enumerate}
+	
+		\begin{proof}\hfill
+			\begin{enumerate}
+				\item[$(a) \Rightarrow (b)$] klar
+				\item[$(b) \Rightarrow (c)$] Gelte (b). Sei $N$ ein $R$-Modul und $g:B \to N$ eine Abbildung. Zu zeigen sind Existenz und Eindeutigkeit eines Homomorphismus $f: M \to N$ mit $f\big|_B = g$
+					\begin{itemize}
+						\item Eindeutigkeit: klar aus $M = \sum_{x \in B} Rx$
+						\item Existenz: Fixiere zun\"achst $x \in B$. Dann ist $R \to Rx, a \mapsto ax$ ein Isomorphismus (mit Kern $\ann(x)$), dessen Umkehrfunktion ein Isomorphismus $Rx \to R$ ist, der $x$ auf $1$ abbildet. Schaltet man den Homomorphismus $R \to N, a \mapsto ag(x)$ dahinter, so erh\"alt man einen Homomorphismus $Rx \to N$, der $x$ auf $g(x)$ abbildet. Da $x \in B$ beliebig war, erh\"alt man mit \ref{1.2.2} einen Homomorphismus $f: M = \bigoplus_{x \in B} Rx \to N$, der jedes $x \in B$ auf $g(x)$ abbildet.  
+					\end{itemize}
+				\item[$(c) \Rightarrow (a)$] Gelte (c). Zu zeigen ist, dass $B$ linear unabh\"angig ist und $M$ erzeugt.
+				\begin{enumerate}[1.]
+					\item $B$ linear unabh\"angig: Seien $x_1, \dots, x_n \in B$ paarweise verschieden und $a_1, \dots, a_n \in R$ mit $a_1x_1 + \cdots + a_nx_n = 0$. Sei $i \in \set{1, \dots, n}$. Zu zeigen ist $a_i = 0$. Gem\"a\ss (c) gibt es einen Homomorphismus $f: M \to R$ mit $f(x_i) = 1$ und $f(x_j) = 0$ f\"ur $j \in \set{1, \dots, n} \setminus \set{i}$.
+					Dann \[0 = f(0) = f\brac{\sum_{j=1}^n a_jx_j} = \sum_{j=1}a_jf(x_j) = a_if(x_i) = a_i\]
+					
+					\item $B$ erzeugt $M$: Nach (c) gibt es einen Homomorphismus $M \to M$, der auf $B$ die Identit\"at ist. Einerseits ist $\id_M$ ein solcher, andererseits auch $\rho \circ f$, wobei $f: M \to N:= \sum_{x \in B} Rx$ der nach (c) existierende Homomorphismus mit $f\big|_{B} = \id_B$ ist und $\iota: N \hookrightarrow M, x \mapsto x$ die Inklusion. Also $\id_M = \iota \circ f$, insbesondere $M = \im(\id_M) = \im(f) = N$
+				\end{enumerate}
+ 			\end{enumerate}
+		\end{proof}
+	\end{satz}
+
+	\begin{definition}\label{1.2.6}
+		Ein Modul hei\ss t \emph{frei}\index{Modul@\textbf{Modul}!Freie Moduln}, wenn er eine Basis besitzt.
+	\end{definition}
+
+	\begin{bemerkung}\label{1.2.7}
+		Sei $R$ ein Ring, $M$ ein $R$-Modul, $n \in \N_0$ und $x_1, \dots, x_n \in M$. Dann bilden $x_1, \dots, x_n$ genau dann eine Basis von $M$, wenn der Homomorphismus 
+		\[R^n \to M, \begin{pmatrix}
+			a_1\\\vdots\\a_n
+		\end{pmatrix} \mapsto \sum_{i=1}^n a_ix_i\] ein Isomorphismus ist.
+	\end{bemerkung}
+	
+	\begin{bemerkung}\label{1.2.8}
+		Ist $M$ ein $\set{0}$-Modul, so ist $M = \set{0}$, denn ist $x \in M$, so ist $x=1 \cdot x = 0 \cdot x = 0$
+	\end{bemerkung}
+
+	\begin{lemma}\label{1.2.9}
+		Ein endlich erzeugter Modul hat niemals eine unendliche Basis.
+		
+		\begin{proof}
+			Sei $M$ ein endlich erzeugter $R$-Modul, etwa $M = \sum_{i=1}^n Rx_i$ mit $x_1, \dots, x_n \in M$. \newline
+			Annahme: $B$ ist eine unendliche Basis von $M$. Dann gibt es f\"ur jedes $i \in \set{1, \dots, n}$ ein endliches $B_i \subseteq B$ mit $x_i \in \sum_{y \in B_i}Ry$. Dann ist $B' := B_1 \cup \cdots \cup B_n \subseteq B$ endlich mit $M = \sum_{y \in B'}Ry$. Da $B$ unendlich h ist, gibt es ein $z \in B\setminus B'$
+			
+			Nun gilt $z \in \sum_{y \in B'}Ry$, was im Widerspruch zur linearen Unabh\"angigkeit von $B$ steh, au\ss er wenn $1 = 0$ in $R$, d.h. $R = \set{0}$. Im letzten Fall ist aber nach \ref{1.2.8} nichts zu zeigen.
+		\end{proof}
+	\end{lemma}
+
+	\begin{bemerkung}\label{1.2.10}
+		\begin{enumerate}[(a)]
+			\item 
+			Jeder Modul \"uber dem Nullring hat genau zwei Basen, n\"amlich $\emptyset$ und $\set{0}$. In der Tat: Nach \ref{1.2.8} handelt es sich um den Nullmodul und in einem $\set{0}$-Modul ist $0$ linear unabh\"angig.
+			\item In den \"Ubungen geben wir einen Ring $R \neq 0$, der als $R$-Modul zu $R^2$ isomorph ist. Durch Induktion schlie\ss t man, dass $R \cong R^n$ f\"ur alle $n \in \N$. Damit besitzt $R$ als $R$-Modul f\"ur jedes $n \in \N$ eine $n$-elementige Basis, aber nach \ref{1.2.9} keine unendliche Basis.
+		\end{enumerate}
+	\end{bemerkung}
+
+	\begin{satz}\label{1.2.11}
+		Sei $R$ ein kommutativer Ring mit $1 \neq 0$. Dann sind je zwei Basen eines $R$-Moduls entweder beide unendlich oder beide endlich mit der selben Anzahl von Elementen
+		
+		\begin{proof}
+			Sei $M$ ein $R$-Modul mit Basen $B$ und $C$. Im Fall von $|B| =  \infty = |C|$ sind wir fertig, sonst ist $M$ endlich erzeugt und daher $m = |B|, n = |C| \in \N_0$ nach Lemma \ref{1.2.9}. Nach \ref{1.2.7} gilt $R^n \cong M \cong R^m$, somit reicht es zu zeigen: Sei $R$ ein kommutativer Ring und $m, n \in \N_0, m > n$ mit $R^m \cong R^n$ als $R$-Modul, dann gilt $1 = 0$ in $R$. 
+		\end{proof}
+	\end{satz}
 \backmatter
 \printindex
 \end{document}
