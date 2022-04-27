@@ -79,6 +79,7 @@ toc=idx
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\ann}{ann}
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\rk}{rk}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -88,8 +89,10 @@ toc=idx
 \newtheorem{satz}[definition]{Satz}
 \newtheorem{lemma}[definition]{Lemma}
 \newtheorem{proposition}[definition]{Proposition}
+\newtheorem{notation}[definition]{Notation}
 \newtheorem{prop-def}[definition]{Proposition und Definition}
 \newtheorem{def-prop-satz-not}[definition]{Definitionen, Propositionen, S\"atze und Notationen}
+
 
 \begin{document}
 	\pagenumbering{Alph}
@@ -283,13 +286,13 @@ toc=idx
 			\item $\R^2$ ist ein zyklischer $\R^{2 \times 2}$ Modul [$\to$\ref{1.1.3}(c)], welcher von jedem $x \in \R^{2\times 2} \setminus \set{0}$ erzeugt ist. Da aber jedes $x \in \R^{2 \times 2}$ linear abh\"angig ist, hat dieser Modul keine Basis.  
 		\end{enumerate}
 	\end{beispiele}
-
+	\newpage
 
 	\section{Direkte Summen von Moduln und freie Moduln}
 	\begin{definition}\label{1.2.1}
 		Sei $R$ ein Ring und $(M_i)_{i \in I}$ eine Familie von $R$-Moduln. Dann nennt man den $R$-Untermodul 
 			\[\bigoplus_{i \in I} M_i := \set{x \in \prod_{i\in I}M_i| \supp(x)\ \mathrm{endlich} } \]
-		von $\displaystyle\prod_{i\in I} M_i$ \emph{die (\"au\ss ere) direkte Summe}\index{Modul@\textbf{Modul}!\"Au\ss ere Direkte Summe} der $M_i$ ($i \in I$). Man fasst $M_j$ ($j \in I$ h\"aufig) als Untermodul von $\displaystyle\bigoplus_{i \in I} M_i$ auf verm\"oge der Einbettung 
+		von $\displaystyle\prod_{i\in I} M_i$ die \emph{(\"au\ss ere) direkte Summe}\index{Modul@\textbf{Modul}!\"Au\ss ere Direkte Summe} der $M_i$ ($i \in I$). Man fasst $M_j$ ($j \in I$ h\"aufig) als Untermodul von $\displaystyle\bigoplus_{i \in I} M_i$ auf verm\"oge der Einbettung 
 		 \[\rho_j:M_j \to \prod_{i\in I} M_i, x \mapsto \brac{i \mapsto \begin{cases}
 		 		x & \textrm{falls } i = j\\
 		 		0 & \textrm{sonst}
@@ -388,8 +391,107 @@ toc=idx
 		
 		\begin{proof}
 			Sei $M$ ein $R$-Modul mit Basen $B$ und $C$. Im Fall von $|B| =  \infty = |C|$ sind wir fertig, sonst ist $M$ endlich erzeugt und daher $m = |B|, n = |C| \in \N_0$ nach Lemma \ref{1.2.9}. Nach \ref{1.2.7} gilt $R^n \cong M \cong R^m$, somit reicht es zu zeigen: Sei $R$ ein kommutativer Ring und $m, n \in \N_0, m > n$ mit $R^m \cong R^n$ als $R$-Modul, dann gilt $1 = 0$ in $R$. 
+			
+			\noindent Um dies zu zeigen, w\"ahle zueinander inverse $R$-Modulisomorphismen $f:R^n \to R^m, g: R^m \to R^n$. Bezeichne mit $\underline{x} = (x_1, \dots, x_n)$ und $\underline{y} = (y_1, \dotsm y_m)$ die Standardbasen des $R^n$ und $R^m$. W\"ahle $A=(a_{ij})_{1\leq i \leq m, 1 \leq j \leq n}\in R^{m \times n}$ mit $f(x_j) = \sum_{i=1}^m a_{ij}y_i$ f\"ur $j \in \set{1, \dots, n}$ und $B = (b_{ji})_{1 \leq j \leq n, 1 \leq i \leq m} \in R^{n \times m}$ mit $f(y_i) = \sum_{j=1}^n b_{ji}x_j$ f\"ur $i \in \set{1, \dots, m}$. Dann gilt f\"ur $k \in \set{1, \dots, m}$
+				\begin{align*}
+					y_k &= (f \circ g)(y_k) = f(g(y_k))\\
+					&= f\brac{\sum_{j=1}^n b_{jk}x_j}\\
+					&= \sum_{j=1}^n b_{jk}f(x_j)\\
+					&= \sum_{j=1}^n b_{jk}\sum_{i=1}^ma_{ij}y_i\\
+					&= \sum_{i=1}^m\brac{\sum_{j=1}^n b_{jk}a_{ij} }y_i \overset{R\ \mathrm{komm.}}{=} \sum_{i=1}^m\brac{\sum_{j=1}^n a_{ij}b_{jk} }y_i
+				\end{align*} 
+			und daher
+			\[\sum_{j=1}^n a_{ij}b_{jk} = \begin{cases}
+				1 & \mathrm{falls }\ k = i\\
+				0 & \mathrm{sonst}
+			\end{cases}\] 
+			f\"ur alle $i, k \in \set{1, \dots, m}$, d.h. $AB = I_m$.\newline
+			Wegen $n < m$ k\"onnen wir $\displaystyle A' := (A\ \underbrace{0}_{(m-n)-\mathrm{Spalten}}) \in R^{m\times m}$ und $B' := \begin{pmatrix}
+				B\\0
+			\end{pmatrix} \in R^{m \times m}$ (mit $m-n$ $0$-Zeilen) setzen, so dass $A'B' = AB = I_m$. \newline
+			Mit dem Determinantenproduktsatz folgt 
+			\[0 = 0\cdot 0 = (\det A')(\det B') = \det(A'B') = 1\] 
 		\end{proof}
 	\end{satz}
+
+	\begin{bemerkung}\label{1.2.12}
+		Statt den Determinantenproduktsatz \"uber kommutativen Ringen zu verwenden, kann man den Beweis des letzten Satzes auch mit der Theorie kommutativer Ringe auf die Dimensionstheorie von Vektorr\"aumen zur\"uckspielen. 
+		
+		\noindent Sei $R$ ein kommutativer Ring mit $1 \neq 0$, $m, n\in \N_0$ mit $R^m \cong R^n$. Wir zeigen $m = n$.
+		
+		\begin{proof}
+			W\"ahle ein maximales Ideal $\mathfrak{m}$ von $R$. W\"ahle einen $R$-Modulisomorphismus $f:R^m \to R^n$. Betrachte die $R$-Untermoduln
+			\[\mathfrak{m}R^m := \set{\sum_{i=1}^n a_ix_i|n \in \N_0, a_i \in \mathfrak{m}, x_i \in R^m} = \mathfrak{m}^m\]
+			von $R^m$ und 
+			\[f(\mathfrak{m}R^n) = \set{\sum_{i=1}^n a_iy_i|n \in \N_0, a_i \in \mathfrak{m}, y_i \in R^n} = \mathfrak{m}^n\]
+			von $R^n$
+			
+			\noindent Mit dem Isomorphiesatz erhalten wir einen Modulisomorphismus $R^m/\mathfrak{m}^m \to R^n/\mathfrak{m}^n$ und offensichtlich gilt $R^m/\mathfrak{m}^m  \cong (R/\mathfrak{m})^m$ (betrachte z.B. $R^m \to (R/\mathfrak{m})^m$).\newline
+			Da nun $(R/\mathfrak{m})^m$ und $(R/\mathfrak{m})^n$ als $R$-Moduln isomorph sind, sind sie auch als $(R/\mathfrak{m})$-Moduln isomorph. F\"ur den K\"orper $K:= R/\mathfrak{m}$ gilt also 
+			\[m = \dim_K K^m = \dim_K K^n = n\]
+		\end{proof}
+	\end{bemerkung}
+
+	\begin{definition}\label{1.2.13}
+		Sei $R$ ein kommutativer Ring mit $1 \neq 0$ und $M$ ein freier $R$-Modul mit Basis $B$. Dann hei\ss t $\rk M := |B| \in \N_0 \cup \set{\infty}$ der \emph{Rang}\index{Modul@\textbf{Modul}!Rang} von $M$ [h\"angt nach \ref{1.2.11} nicht von der Wahl der Basis $B$ ab ]
+	\end{definition}
+	\newpage
+	
+	\section{Halbeinfache Moduln}
+	\begin{notation}\label{1.3.1}
+		$0 := \set{0}$ Nullmodul
+	\end{notation}
+	
+	\begin{definition}\label{1.3.2}
+		Ein Modul $M$ hei\ss t \emph{einfach}\index{Modul@\textbf{Modul}!Einfache Moduln} (oder irreduzibel), falls $M \neq 0$ und $0$ und $M$ die einzigen Untermoduln von $M$ sind.
+	\end{definition}
+	
+	\begin{bemerkung}\label{1.3.3}
+		Sei $N$ ein Untermoduln von $M$.
+		\begin{enumerate}[(a)]
+			\item Bezeichne $\varphi: M \to M/N$ den kanonischen Epimorphismus. Dann vermitteln die Zuordnungen
+			\begin{align*}
+				L &\mapsto L/N = \varphi(L) \\
+				\varphi^{-1}(P) &\mapsfrom P
+			\end{align*}
+			Eine Bijektion zwischen der Menge der Untermoduln $L$ von $M$ mit $N \subseteq L$ und der Menge der Untermoduln von $M/N$
+					
+			\item Es folgt, dass $M/N$ einfach ist genau dann, wenn $N$ ein maximaler echter Untermodul ist.
+		\end{enumerate}
+	\end{bemerkung}
+
+	\begin{beispiele}\label{1.3.4}
+		\begin{enumerate}[(a)]
+			\item Sei $R$ ein kommutativer Ring und $I$ ein $R$-Untermodul von $R$, d.h. ein Ideal von $R$ [$\to$\ref{1.1.5}]. Dann ist $R/I$ ein einfacher $R$-Modul $\Leftrightarrow$ $I$ ist ein maximales Ideal von $R$ $\Leftrightarrow$ $R/I$ ist ein K\"orper.
+			
+			\item Sei $b$ ein Hauptidealring und $p \in R\setminus \set{0}$. Dann ist $R/pR$ ein einfacher Modul genau dann, wenn $p$ irreduzibel in $R$ ist.
+			
+			\begin{proof}
+				\begin{itemize}
+					\item[$\Rightarrow$] Ist $(p)$ ein maximales Ideal von $R$, so auch ein Primideal, d.h. $p$ ist prim in $R$ und daher auch irreduzibel in $R$ (wegen $p \neq 0$) 
+					
+					\item[$\Leftarrow$] Ist $p$ irreduzibel in $R$, so ist $R/(p)$ ein K\"orper und daher ist $(p)$ ein maximales Ideal in $R$.
+				\end{itemize}
+			\end{proof}
+		\end{enumerate}
+	\end{beispiele}
+
+	\begin{lemma}\label{1.3.5}
+		Sei $R$ ein Ring und $M$ ein $R$-Modul. Es sind \"aquivalent:
+		\begin{enumerate}[(i)]
+			\item $M$ ist einfach
+			\item $M \neq 0$ und jedes Element von $M \setminus \set{0}$ erzeugt $M$
+			\item Es gibt einen maximalen echten $R$-Untermodul $N$ von $R$ mit $R/N \cong M$
+		\end{enumerate}
+	
+		\begin{proof}\hfill
+			\begin{enumerate}
+				\item[$(a) \Rightarrow (c)$] Gelte (a) W\"ahle $x \in M \setminus \set{0}$. Dann ist der Homomorphismus $\varphi:R \to M, a \mapsto ax$ surjektiv und daher $R/N \cong M$ mit $N:=\ker \varphi$. Mit $M$ ist auch $R/N$ einfach, weswegen nach \ref{1.3.3}(b) $N$ ein maximaler echter Untermodul von $R$ ist.
+				\item[$(c) \Rightarrow (b)$] trivial
+				\item[$(b) \Rightarrow (a)$] trivial
+			\end{enumerate}
+		\end{proof}
+	\end{lemma}
 \backmatter
 \printindex
 \end{document}
