@@ -90,6 +90,7 @@ toc=idx
 \newtheorem{lemma}[definition]{Lemma}
 \newtheorem{proposition}[definition]{Proposition}
 \newtheorem{notation}[definition]{Notation}
+\newtheorem{korollar}[definition]{Korollar}
 \newtheorem{prop-def}[definition]{Proposition und Definition}
 \newtheorem{def-prop-satz-not}[definition]{Definitionen, Propositionen, S\"atze und Notationen}
 
@@ -213,7 +214,7 @@ toc=idx
 			
 			Ein Modulhomomorphismus $f:M\to N$ hei\ss t Einbettung/Monomorphismus (Epimorphismus, Isomorphismus), wenn $f$ injektiv (surjektiv, bijektiv) ist. 
 			
-			Ein Modulhomomorphismus $f:M \to M$ hei\ss t \emph{(Modul-)Endomorphismus}\index{Modul@\textbf{Modul}!Homomorphismus!Endomorphismus} von $M$. Ein Endomorphismus, der ein Isomorphismus ist, hei\ss t \emph{Automorphismus}\index{Modul@\textbf{Modul}!Automorphismus}. Es heißen $M$ und $N$ \emph{isomorph}, in Zeichen $M \cong N$, wenn es einen Isomorphismus $M \to N$ gibt.
+			Ein Modulhomomorphismus $f:M \to M$ hei\ss t \emph{(Modul-)Endomorphismus}\index{Modul@\textbf{Modul}!Homomorphismus!Endomorphismus} von $M$. Ein Endomorphismus, der ein Isomorphismus ist, hei\ss t \emph{Automorphismus}\index{Modul@\textbf{Modul}!Automorphismus}. Es hei\ss en $M$ und $N$ \emph{isomorph}, in Zeichen $M \cong N$, wenn es einen Isomorphismus $M \to N$ gibt.
 			
 			Hintereinanderschaltungen von Modulhomomorphismen sind wieder Modulhomomorphismen. Umkehrabbildungen von Modulisomorphismen sind wieder Modulisomorphismen.
 			
@@ -491,6 +492,114 @@ toc=idx
 			\end{enumerate}
 		\end{proof}
 	\end{lemma}
+
+	\begin{lemma}\label{1.3.6}
+		Lemma von Schur. \newline
+		Sei $R$ ein Ring, $M$ und $N$ einfache $R$-Moduln und $f:M \to N$ ein Homomorphismus. Dann ist $f$ entweder die Nullabbildung oder ein Isomorphismus
+		
+		\begin{proof}
+			Ist $f\neq 0$, so ist $\ker f \neq M$ und $\im f \neq 0$, also $\ker f = 0$ und $\im f = N$.
+		\end{proof}
+	\end{lemma}
+
+	\begin{definition}\label{1.3.7}
+		Ein Modul hei\ss t \emph{halbeinfach}\index{Modul@\textbf{Modul}!Halbeinfache Moduln} (oder vollst\"andig reduzibel), wenn er direkte Summe von einfachen Moduln ist.
+	\end{definition}
+
+	\begin{lemma}\label{1.3.8}
+		Jeder endlich erzeugte Modul $\neq 0$ besitzt einen einfachen Quotienten.
+		
+		\begin{proof}
+			Sei $M$ ein $R$-Modul und seinen $x_1, \dots, x_n \in M$ mit $0 \neq M = Rx_1 + \cdots + Rx_n$. Zu zeigen: Es gibt einen Untermodul $N$ von $M$ mit $M/N$ einfach.
+			
+			\noindent Betrachte die durch Inklusion halbgeordnete Menge 
+				\[X:=\set{P|P\ \mathrm{Untermodul von} \ M, P \subsetneq M} = \set{P|P\ \mathrm{Untermodul von} \ M, \set{x_1, \dots, x_n} \nsubseteq P}\]
+			
+			\noindent Jede Kette $K \subseteq X$ besitzt eine obere Schranke in $X$ ($0$ f\"ur $K = \emptyset$, da $M \neq 0$ und $\bigcup K$ f\"ur $K \neq \emptyset$, da $\set{x_1, \dots, x_n}$ endlich)
+			
+			\noindent Nach dem Lemma von Zorn gibt es daher ein maximales Element $N$ in $X$. Gem\"a\ss \ \ref{1.3.3}(b) ist $M/N$ einfach. 
+		\end{proof}
+	\end{lemma}
+
+	\begin{definition}\label{1.3.9}
+		Sei $M$ ein Modul und $N$ ein Untermodul von $M$. Dann hei\ss t $N$ ein \emph{direkter Summand}\index{Modul@\textbf{Modul}!Direkter Summand} von $m$, wenn es einen Untermodul $P$ von $M$ gibt mit $M = N \oplus P$.
+	\end{definition}
+
+	\begin{satz}\label{1.3.10}
+		Sei $M$ ein Modul. Dann sind folgende Aussage \"aquivalent
+		\begin{enumerate}[(a)]
+			\item $M$ ist halbeinfach
+			
+			\item $M$ ist die Summe seiner einfacher Untermoduln
+			
+			\item Jeder Untermodul von $M$ ist ein direkter Summand von $M$.
+		\end{enumerate}	
+		
+		\begin{proof}\hfill\newline
+			(a)$\Rightarrow$(b) ist klar\newline
+			(b)$\Rightarrow$(c). Gelte (b) und sei $N$ ein Untermodul von $M$.
+				\[X:= \set{P| P \ \mathrm{Untermodul von }\ M, N \cap P = 0}\]
+			
+			\noindent Jede Kette $K \subseteq X$ besitzt eine obere Schranke in $X$ ($0$ f\"ur $K = \emptyset$, $\bigcup K$ f\"ur $K \neq \emptyset$)
+			
+			\noindent Nach dem Lemma von Zorn gibt es daher ein maximales Element $P$ in $X$. Um $M = N + P$ zu zeigen, reicht es wegen (b) zu zeigen, dass jeder einfache Untermodul $L$ von $M$ in $N + P$ enthalten ist. Sei also $L$ ein einfacher Untermodul von $M$. Dann ist entweder $L \cap (N + P) = 0$ oder $L \cap (N + P) = L$. Im letzteren Fall sind wir fertig.
+			
+			\noindent Der erste Fall tritt aber nicht ein:\newline
+			Ist $L \cap (N+P) = 0$, so $(L+P)\cap N = 0$ (ist $x \in L$ und $y \in P$ mit $x+y \in N$, so $x \in L\cap (N+P) = 0$ und daher $y \in N\cap P = 0$), woraus wegen der Maximalit\"at von $P$ folgt $P = L + P$, also $L \subseteq P \lightning$
+			
+			
+			\noindent (c)$\Rightarrow$(a). Gelte (c).\newline
+			Hilfsbehauptung: Jeder Untermodul eines Untermoduls $N$ von $M$ ist ein direkter Summand von $N$.
+			
+			\noindent Begr\"undung: Sei $N$ ein Untermodul von $M$ und $P$ ein Untermodul von $N$.
+			W\"ahle $Q$ mit $M = P \oplus Q$. Setze $R = Q \cap N$. Wir zeigen $N = P \oplus R$. Es ist klar, dass $P \cap R = 0$ (denn $P \cap Q = 0$) und $P + R \subseteq N$. Zu zeigen it also noch $N \subseteq P + R$. \newline
+			Sei hierzu $x \in N$. Schreibe $x = p + q$ mit $p \in P$ und $q \in Q$, dann $q = x - p \in N \cap Q = R$.  
+			
+			\noindent Betrachte nun die durch Inklusion halbgeordnete Menge 
+				\[X:= \set{Y\big|Y\ \mathrm{Menge\ von\ einfachen\ Untermoduln\ von}\ M\ \mathrm{mit}\ \sum_{N \in Y}N = \bigoplus_{N \in Y}N}\]
+				
+			\noindent Sei $K$ eine Kette in $X$. Wir behaupten, dass dann $Z:= \bigcap K \in X$ gilt und $Z$ eine obere Schranke von $K$ in $X$ ist. \newline
+			Zu zeigen: $\sum_{N \in Z} N = \bigoplus_{N \in Z} N$
+			
+			\noindent Seien nun $n \in \N$ und $N_1, \dots, N_n \in Z$ paarweise verschieden und $x_1 \in N_1, \dots, x_n \in N_n$ mit $x_1 + \cdots + x_n = 0$ [$\rightarrow$\ref{1.2.3}(b)]. Da $X$ eine Kette ist, gibt es $Y \in K$ mit $\set{N_1, \dots, N_n} \subseteq Y$. Wegen $\sum_{N \in Y}N = \bigoplus_{N \in Y}N$ folgt mit \ref{1.2.3}(b), dass $x_1 = \cdots = x_n = 0$.
+			
+			\noindent Da die Kette $K \subseteq X$ beliebig war, gibt es nach dem Lemma von Zorn ein in $X$ maximales Element $Z$. Setze $P = \sum_{N \in Z} N = \bigoplus_{N \in Z}N$. Wir zeigen $M = P$.
+			
+			\noindent Angenommen $M \setminus P \neq \emptyset$. W\"ahle gem\"a\ss (c) $Q$ mit $M = P \bigoplus Q$. Dann $Q \neq 0$. W\"ahle einen endlich erzeugten Untermodul $Q'\neq 0$ von $Q$. Nach Lemma \ref{1.3.8} gibt es einen Untermodul $Q''$ von $Q'$ mit $Q'/Q''$ einfach.
+			
+			\noindent W\"ahle gem\"a\ss Hilfsbehauptung $R$ mit $Q' = Q'' \bigoplus R$. Dann ist $R \subseteq Q' \subseteq Q$ und daher $P \cap R = 0$. Weiter ist $R\cong Q'/Q''$ einfach. Es folgt $\sum_{N \in Z \cup \set{R}}N = \bigoplus_{N \in Z \cup \set{R}}N$. Daher ist $Z\cup \set{R} \in X$. Wegen der Maximalit\"at von $Z$ in $X$ gilt $R \in Z$ und daher $R \subseteq P \lightning$.
+ 		\end{proof} 
+	\end{satz}
+
+	\begin{korollar}\label{1.3.11}
+		Direkte Summen, Untermoduln und Quotienten von halbeinfachen Moduln sind halbeinfach.
+		
+		\begin{proof}
+			direkte Summen: klar nach \ref{1.3.7}\newline
+			Untermoduln: Sei $N$ ein Untermodul des halbeinfachen Moduls $M$. Wir verwenden \ref{1.3.10}(c) um zu zeigen, dass $N$ auch halbeinfach ist. Sei also $L$ ein Untermodul von $N$. Da $M$ halbeinfach ist, gibt es einen Untermodul $P$ von $M$ mit $M = L \oplus P$. Dann gilt $N = L \oplus (P \cap N)$, wie man sofort sieht.\newline
+			Quotienten: Sei $N$ ein Untermodul des halbeinfachen Moduls $M$. Zu zeigen: $M/N$ ist halbeinfach.\newline
+			W\"ahle einen Untermodul $P$ von $M$ mit $M = N \oplus P$. Dann ist $M/N \cong P$ halbeinfach nach dem gerade Gezeigten (betrachte den Homomorphismus $M = N \oplus P \to P, x+y \mapsto y$ und wende den Homomorphiesatz an).
+		\end{proof}
+	\end{korollar}
+	\newpage
+	
+	\section{Noethersche und artinsche Moduln}
+	\begin{definition}\label{1.4.1}
+		Ein Modul $M$ hei\ss t \emph{noethersch}\index{Modul@\textbf{Modul}!Noethersche Moduln} bzw. \emph{artinsch}\index{Modul@\textbf{Modul}!Artinsche Moduln}, wenn jede aufsteigende bzw. absteigende Kette von Untermoduln $M_1 \subseteq M_2 \subseteq \cdots$ bzw. $M_1 \supseteq M_2 \supseteq \cdots$ von $M$ station\"ar wird (d.h. $\exists k \in \N: \forall n \geq k: M_n = M_k$).
+		
+		\noindent Ein Ring $R$ hei\ss t noethersch bzw. artinsch, wenn er als $R$-Modul noethersch bzw. artinsch ist.
+	\end{definition}
+
+	\begin{bemerkung}\label{1.4.2}
+		Sei $R$ ein kommutativer Ring
+		
+		\begin{enumerate}[(a)]
+			\item $R$ ist genau dann noethersch, wenn jede aufsteigende Kette von Idealen in $R$ station\"ar wird [$\to$\ref{1.1.5}]
+			
+			\item Ist $S = R[a_1, \dots, a_n]$ ein kommutativer Ring mit $n \in \N_0, a_1, \dots, a_n \in S$, so besagt der \emph{Hilbersche Basissatz}\index{Modul@\textbf{Modul}!Hilbertscher Basissatz}:
+				$R$ noethersch $\Rightarrow$ $S$ noethersch.
+		\end{enumerate}
+	\end{bemerkung}
 \backmatter
 \printindex
 \end{document}
