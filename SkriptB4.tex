@@ -565,9 +565,9 @@ toc=idx
 			
 			\noindent Da die Kette $K \subseteq X$ beliebig war, gibt es nach dem Lemma von Zorn ein in $X$ maximales Element $Z$. Setze $P = \sum_{N \in Z} N = \bigoplus_{N \in Z}N$. Wir zeigen $M = P$.
 			
-			\noindent Angenommen $M \setminus P \neq \emptyset$. W\"ahle gem\"a\ss (c) $Q$ mit $M = P \bigoplus Q$. Dann $Q \neq 0$. W\"ahle einen endlich erzeugten Untermodul $Q'\neq 0$ von $Q$. Nach Lemma \ref{1.3.8} gibt es einen Untermodul $Q''$ von $Q'$ mit $Q'/Q''$ einfach.
+			\noindent Angenommen $M \setminus P \neq \emptyset$. W\"ahle gem\"a\ss\ (c) $Q$ mit $M = P \bigoplus Q$. Dann $Q \neq 0$. W\"ahle einen endlich erzeugten Untermodul $Q'\neq 0$ von $Q$. Nach Lemma \ref{1.3.8} gibt es einen Untermodul $Q''$ von $Q'$ mit $Q'/Q''$ einfach.
 			
-			\noindent W\"ahle gem\"a\ss Hilfsbehauptung $R$ mit $Q' = Q'' \bigoplus R$. Dann ist $R \subseteq Q' \subseteq Q$ und daher $P \cap R = 0$. Weiter ist $R\cong Q'/Q''$ einfach. Es folgt $\sum_{N \in Z \cup \set{R}}N = \bigoplus_{N \in Z \cup \set{R}}N$. Daher ist $Z\cup \set{R} \in X$. Wegen der Maximalit\"at von $Z$ in $X$ gilt $R \in Z$ und daher $R \subseteq P \lightning$.
+			\noindent W\"ahle gem\"a\ss\ Hilfsbehauptung $R$ mit $Q' = Q'' \bigoplus R$. Dann ist $R \subseteq Q' \subseteq Q$ und daher $P \cap R = 0$. Weiter ist $R\cong Q'/Q''$ einfach. Es folgt $\sum_{N \in Z \cup \set{R}}N = \bigoplus_{N \in Z \cup \set{R}}N$. Daher ist $Z\cup \set{R} \in X$. Wegen der Maximalit\"at von $Z$ in $X$ gilt $R \in Z$ und daher $R \subseteq P \lightning$.
  		\end{proof} 
 	\end{satz}
 
@@ -600,6 +600,130 @@ toc=idx
 				$R$ noethersch $\Rightarrow$ $S$ noethersch.
 		\end{enumerate}
 	\end{bemerkung}
+
+	\begin{satz}\label{1.4.3}
+		Ein Modul ist noethersch genau dann, wenn alle seine Untermoduln endlich erzeugt sind [$\rightarrow$\ref{1.1.4}(d)].
+	\end{satz}
+
+	\begin{lemma}\label{1.4.4}
+		Seien $L, L'$ und $N$ Untermoduln des Moduls $M$ mit $L \subseteq L'$, $L \cap N = L' \cap N$ und $L+N=L'+N$. Dann gilt $L=L'$
+		
+		\begin{proof}
+			Sei $x \in L'$. Zu zeigen ist $x \in L$. Schreibe $x = l + n$ mit $l \in L$ und $n \in N$. Dann ist $x-l = n \in L' \cap N = L \cap N$ und daher $x = (x-l)+l \in L$. 
+		\end{proof}
+	\end{lemma}
+
+	\begin{satz}\label{1.4.5}
+		Sei $N$ ein Untermodul des Moduls $M$. Dann ist $M$ noethersch bzw. artinsch genau dann, wenn sowohl $N$ als auch $M/N$ noethersch bzw. artinsch ist.
+		
+		\begin{proof}
+			klar mit \ref{1.3.3}(a) und \ref{1.4.4}
+		\end{proof}
+	\end{satz}
+
+	\begin{korollar}\label{1.4.6}
+		Endlich Summen noetherscher bzw. artinscher Moduln sind auch noethersch bzw. artinsch.
+		
+		\begin{proof}
+			Sind $N_1, \dots, N_n$ noethersche bzw. artinsche Untermoduln des Moduls $M$ mit $M = \sum_{i=1}^n N_i$, so gibt es nach \ref{1.2.2} einen Epimorphismus 
+				\[\bigoplus_{i=1}^n N_i \to \sum_{i=1}^n N_i\]
+			weshalb $M = \sum_{i=1}^nN_i \cong \brac{\bigoplus_{i=1}^n N_i} / L$ f\"ur einen Untermodul $L$ von $\bigoplus_{i=1}^nN_i$ gilt.\newline
+			Mit \ref{1.4.5} reicht es daher, die Behauptung f\"ur direkte Summen zu zeigen.\newline
+			Durch Induktion nach $n \in \N_0$ zeigen wir daher, dass f\"ur alle noetherschen bzw. artinschen $R$-Moduln $N_1, \dots, N_n$ auch $\bigoplus_{i=1}^n N_i$ noethersch bzw. artinsch ist.
+			
+			\noindent Induktionsanfang f\"ur $n = 0$: klar
+			
+			\noindent Induktionsschritt $n-1 \to n, (n \in \N)$: Seien $N_1, \dots, N_n$ noethersche bzw. artinsche $R$-Moduln. Dann ist $\bigoplus_{i=1}^{n-1} N_i$ noethersch bzw. artinsch nach Induktionsvoraussetzung. Wegen 
+				\[\brac{\bigoplus_{i=1}^n N_i} / \brac{\bigoplus_{i=1}^{n-1} N_i} \cong N_n\]
+			folgt mit \ref{1.4.5}, dass $\bigoplus_{i=1}^n N_i$ auch noethersch bzw. artinsch ist.
+		\end{proof}
+	\end{korollar}
+
+	\begin{korollar}\label{1.4.7}
+		Jeder endlich erzeugte Modul \"uber einem noetherschen bzw. artinschen Ring ist noethersch bzw. artinsch.
+		
+		\begin{proof}
+			Sei $R$ ein noetherscher bzw. artinscher Ring und $M$ ein endlich erzeugter $R$-Modul. Nach \ref{1.4.6} ist ohne Einschr\"ankung $M$ zyklisch. Dann ist $M \cong R/N$ f\"ur einen $R$-Untermodul $N$ von $R$. Mit $R$ ist nach \ref{1.4.5} auch $R/N$ noethersch bzw. artinsch.
+		\end{proof}
+	\end{korollar}
+
+	\begin{definition}\label{1.4.8}
+		Sei $M$ ein Modul. Dann heißt 
+			\[\ell(M) := \sup \set{n \in \N_0| \mathrm{es\ gibt\ Untermoduln\ } M_0, \dots, M_n \mathrm{\ von\ } M \mathrm{\ mit\ } M_0 \supsetneq \cdots \supsetneq M_n} \in \N_0 \cup \set{\infty}\]
+		
+		die \emph{L\"ange}\index{Modul@\textbf{Modul}!L\"ange} von $M$.
+	
+		\noindent Es heißt $M$ von endlicher L\"ange, wenn $\ell(M) < \infty$.
+	\end{definition}
+
+	\begin{beispiele}\label{1.4.9}
+		Sei $M$ ein Modul. Dann 
+		\begin{itemize}
+			\item $\ell(M) = 0 \Leftrightarrow M = 0$
+			\item $\ell(M) = 1 \Leftarrow M$ ist einfach
+		\end{itemize}
+	\end{beispiele}
+
+	\begin{satz}\label{1.4.10}
+		Sei $N$ ein Untermodul des Moduls $M$. Dann gilt
+			\[\ell(M) < \infty \Leftrightarrow \brac{\ell(M/N) < \infty \land \ell(N)< \infty}\]
+		und falls $\ell(M) < \infty$
+			\[\ell(M) = \ell(M/N) + \ell(N)\]
+		
+		\begin{proof}
+			Man sieht sofort $\ell(M) = \sup \hat M, \ell(M/N) \overset{\ref{1.3.3}(a)}{=} \sup \hat{K}$ und $\ell(N) = \sup \hat N$ mit 
+				\[\hat M := \set{m \in \N_0| \exists \mathrm{Untermoduln\ } M_0, \dots, M_m \mathrm{\ von\ } M: M = M_0 \supsetneq \cdots \supsetneq M_m = 0}\]
+				\[\hat K := \set{k \in \N_0| \exists \mathrm{Untermoduln\ } L_0, \dots, L_k \mathrm{\ von\ } M: M = L_0 \supsetneq \cdots \supsetneq L_k = N}\]
+				\[\hat N := \set{n \in \N_0| \exists \mathrm{Untermoduln\ } N_0, \dots, N_n \mathrm{\ von\ } M: N = N_0 \supsetneq \cdots \supsetneq N_n = 0}\]
+			
+			Offensichtlich gilt $\forall k \in \hat K: \forall n \in \hat N: k + n \in \hat M$, was "$\Rightarrow$" und "$\geq$" beweist.
+			
+			\noindent Um "$\Leftarrow$" und "$\leq$" zu beweisen, reicht es 
+				\[\forall m \in \hat M: \exists k \in \hat K: \exists n \in \hat N: m \leq k + n\]
+			zu zeigen. Sei hierzu $m \in \hat M$. W\"ahle Untermoduln $M_0, \dots, M_m$ von $M$ mit $M=M_0 \supsetneq \cdots M_m = 0$.
+			Setze $L_i := M_i + N$ und $N_i := M_i \cap N$ f\"ur $i \in \set{0, \dots, m}$. Nach Lemma \ref{1.4.4} ist dann jeweils mindestens eine der beiden Inklusionen $L_i \supseteq L_{i+1}$ und $N_i \supseteq N_{i+1}$ echt. (f\"ur $i \in \set{0, \dots, m-1}$). Setzt man
+				\[k := |\set{i \in \set{0, \dots, m - 1}| L_i \supsetneq L_{i+1}}| \in \hat K\] und
+				\[n := |\set{i \in \set{0, \dots, m - 1}| N_i \supsetneq N_{i+1}}| \in \hat N\]
+			so folgt $m \leq k + n$ 
+		\end{proof}
+	\end{satz}
+
+	\begin{definition}\label{1.4.11}
+		Sei $M$ ein Modul. Es heißt $(M_0, \dots, M_n)$ eine \emph{Kompositionsreihe}\index{Modul@\textbf{Modul}!Kompositionsreihe} von (der \emph{L\"ange} $n$) von $M$, wenn $M_0, \dots, M_n$ Untermoduln von $M$ sind mit 
+			\[M=M_0 \supsetneq \cdots \supsetneq M_n = 0\]
+		derart, dass die sogenannten Faktoren $M_i/M_{i+1}$ ($i \in \set{0, \dots, n-1}$) alle einfach sind.
+	\end{definition}
+
+	\begin{bemerkung}\label{1.4.12}
+		Jeder endliche Modul besitzt nat\"urlich eine Kompositionsreihe. Folgender Satz verallgemeinert dies.
+	\end{bemerkung}
+
+	\begin{satz}\label{1.4.13}
+		Sei $M$ ein Modul. Es sind folgende Aussagen \"aquivalent
+		
+		\begin{enumerate}[(a)]
+			\item $\ell(M) < \infty$
+			\item $M$ ist noethersch und artinsch
+			\item $M$ besitzt eine Kompositionsreihe.
+		\end{enumerate}
+		
+		In diesem Fall ist die L\"ange einer jedem Kompositionsreihe von $M$ gleich der L\"ange von $M$.
+		
+		\begin{proof}\hfill
+			\begin{enumerate}
+				\item[$(a)\Rightarrow(b)$] trivial
+				\item[$(b)\Rightarrow(c)$]
+				Sei $M$ noethersch und artinsch. Da $M$ noethersch ist, gibt es zu jedem Untermodul $N \neq 0$ von $M$ einen Untermodul $N'$ von $N$ mit $N/N'$ einfach (sonst k\"onnte man eine aufsteigende Kette $0 \subsetneq N_1 \cdots \subsetneq  \cdots$ von echten Untermoduln von $M$ konstruieren).
+				
+				\noindent Setze nun $M_0 = N$ und w\"ahle f\"ur $i = 0, 1, \dots$ solange $M_i \neq 0$ einen Untermodul $M_{i+1}$ von $M_i$ mit $M_i/M_{i+1}$ einfach.
+				
+				\noindent Dieses Verfahren bricht ab, da $M$ artinsch ist.
+				
+				\item[$(c)\Rightarrow(a)$] und Zusatz: 
+				Sei $(M_0, \dots, M_n)$ eine Kompositionsreihe von $M$. Dann $\ell(M) \overset{\ref{1.4.10}}{=} \ell(M_0/M_1) + \cdots + \ell(M_{n-1}/M_n) \overset{\ref{1.4.9}}{=} n$
+			\end{enumerate}
+		\end{proof}
+	\end{satz}
 \backmatter
 \printindex
 \end{document}
