@@ -464,7 +464,7 @@ toc=idx
 		\begin{enumerate}[(a)]
 			\item Sei $R$ ein kommutativer Ring und $I$ ein $R$-Untermodul von $R$, d.h. ein Ideal von $R$ [$\to$\ref{1.1.5}]. Dann ist $R/I$ ein einfacher $R$-Modul $\Leftrightarrow$ $I$ ist ein maximales Ideal von $R$ $\Leftrightarrow$ $R/I$ ist ein K\"orper.
 			
-			\item Sei $b$ ein Hauptidealring und $p \in R\setminus \set{0}$. Dann ist $R/pR$ ein einfacher Modul genau dann, wenn $p$ irreduzibel in $R$ ist.
+			\item Sei $R$ ein Hauptidealring und $p \in R\setminus \set{0}$. Dann ist $R/pR$ ein einfacher Modul genau dann, wenn $p$ irreduzibel in $R$ ist.
 			
 			\begin{proof}
 				\begin{itemize}
@@ -707,7 +707,7 @@ toc=idx
 			\item $M$ besitzt eine Kompositionsreihe.
 		\end{enumerate}
 		
-		In diesem Fall ist die L\"ange einer jedem Kompositionsreihe von $M$ gleich der L\"ange von $M$.
+		In diesem Fall ist die L\"ange einer jeden Kompositionsreihe von $M$ gleich der L\"ange von $M$.
 		
 		\begin{proof}\hfill
 			\begin{enumerate}
@@ -724,6 +724,91 @@ toc=idx
 			\end{enumerate}
 		\end{proof}
 	\end{satz}
+
+	\begin{satz}\label{1.4.14}
+		Satz von Jordan-H\"older\newline
+		Sei $M$ ein Modul endlicher L\"ange $n$ und seien $M = M_0 \supsetneq \cdots \supsetneq M_n = 0$ und $M = N_0 \supsetneq \cdots \supsetneq N_n = 0$ zwei Kompositionsreihen von $M$. Dann gibt es 
+		$\sigma \in S_n$ mit $M_{i-1}/M_i \cong N_{\sigma(i)-1}/N_{\sigma(i)}$ f\"ur $i \in \set{1, \dots, n}$
+		
+		\begin{proof}
+			Induktion nach $n \in \N_0$\newline
+			$n = 0$: trivial\newline
+			$n-1 \rightarrow n$ ($n \in \N$): Setze $L:=N_1$ und betrachte 
+				\begin{align}
+					M &= L + M_0 \supseteq \cdots \supseteq L + M_n = L \label{1.4.14.1}\\
+					L &= L \cap M_0 \supseteq \cdots \supseteq L \cap M_n = 0 \label{1.4.14.2}
+				\end{align}
+			
+			\noindent Hilfsbehauptung: F\"ur alle $i \in \set{1, \dots, n}$ gilt 
+			
+			\textbf{entweder} $(L+M_{i+1})/(L+M_i) = 0$ und $(L\cap M_{i+1})/(L\cap M_i) \cong M_{i-1}/M_i$
+			
+			\textbf{oder} $(L+M_{i+1})/(L+M_i) \cong M_{i-1}/M_i$ und $(L\cap M_{i+1})/(L\cap M_i) = 0$
+			
+			\noindent Begr\"undung: Sei $i \in \set{1, \dots, n}$. Ist $(L\cap M_{i-1})/(L\cap M_i) \neq 0$, so ist $(L\cap M_{i-1})/(L\cap M_i) \hookrightarrow M_{i-1}/M_i$
+			ein Isomorphismus, da $M_{i-1}/M_i$ einfach.
+			
+			\noindent Ist $(L+M_{i-1})/(L+M_i) \neq 0$, so ist $M_{i-1}/M_i \twoheadrightarrow (L+M_{i-1})/(L+M_i)$ ein Isomorphismus, da $M_{i-1}/M_i$ einfach. Daher reicht es zu zeigen, dass genau einer der Moduln $(L\cap M_{i-1})/(L\cap M_i)$ und $(L+M_{i-1})/(L+M_i)$ ein Nullmodul ist.
+			
+			\noindent Wegen Lemma \ref{1.4.4} k\"onnen nicht beide $0$ sein. Es reicht daher zu zeigen, dass genau $n$ der $2n$ Inklusionen (\ref{1.4.14.1}) und (\ref{1.4.14.2}) echt sind. Dies folgt aus (\ref{1.4.13}), indem man aus \ref{1.4.14.1} und \ref{1.4.14.2} eine Kompositionsreihe gewinnt.
+			
+			\noindent Da $M/L$ einfach ist, ist genau eine der $n$ Inklusionen in (\ref{1.4.14.1}) echt, etwa $L+M_{k-1} \supsetneq L + M_k$. Nach der Hilfsbehauptung erh\"alt man aus (\ref{1.4.14.2}) eine Kompositionsreihe von $L$ der L\"ange $n-1$ (beachte $L\cap M_{k-1} = L\cap M_k$). Da $L=N_1\supsetneq \cdots \supsetneq N_n = 0$ ebenfalls eine solche ist, gibt es nach Induktionsvoraussetzung eine Bijektion $\tau: \set{2, \dots, n} \to \set{1, \dots, n} \setminus \set{k}$ mit $N_{i-1}/N_i \cong (L\cap M_{\tau(i)-1})/(L\cap M_{\tau(i)}) \cong M_{\tau(i)-1} / M_{\tau(i)}$ f\"ur $i \in \set{1,\dots, n}\setminus \set{k}$. Zusammen mit $N_0/N_1 \cong M/L = (L+M_{k-1})/(L+M_k) \cong M_{k-1}/M_k$ liefert dies die gew\"unschte Bijektion.
+		\end{proof}
+	\end{satz}
+
+	\begin{definition}\label{1.4.15}
+		[$\rightarrow$\ref{1.2.4}]\newline
+		Sei $R$ ein Ring, $M$ ein $R$-Modul und $E\subseteq M$. Dann nennt man den $R$-Modul $\ann(E) := \set{a \in R|\forall x \in E: ax = 0}$ von $R$ den Annihilator von $E$.
+	\end{definition}
+
+	\begin{bemerkung}\label{1.4.16}
+		Sei $R$ ein kommutativer Ring, $M$ ein $R$-Modul und $E\subseteq M$. Dann ist $\ann(E)=\ann\brac{\sum_{x\in E} Rx}$. Insbesondere gilt f\"ur $M=R/aR$ mit $a \in R$, dass
+			\[\ann(R/aR) = \ann(\set{\overline{1}}) = \ann(\overline{1}) = aR\]
+	\end{bemerkung}
+
+	\begin{beispiele}\label{1.4.17}
+		\begin{enumerate}[(a)]
+			\item Ist $V$ ein K-Vektorraum, so $\ell(V) = \dim(V)$
+			\item Sei $R$ ein Hauptidealring, $n\in\N_0, p_1, \dots, p_n \in R$ irreduzibel und $m:= p_1 \cdot \cdots \cdot p_n$.
+			
+			Dann gilt $\ell(R/mR) = n$ und 
+				\[R/mR \supsetneq p_1R/mR \supsetneq \cdots \supsetneq p_1\cdot\cdots\cdot p_nR/mR\]
+			mit Faktoren $(p_1\cdot \cdot \cdot p_{i-1}R/mR)/(p_1\cdot \cdot \cdot p_iR/mR) \cong (p_1\cdot \cdot \cdot p_{i-1}R)/(p_1\cdot \cdot \cdot p_iR) \cong R/p_iR$
+			f\"ur $i \in \set{1,\dots,n}$.
+			
+			\noindent Nach dem Satz von Jordan-H\"older gibt es f\"ur alle Kompositionsreihen $R/mR = M_0 \supsetneq \cdots \supsetneq M_n = 0$ ein $\sigma \in S_n$ mit $M_{i-1}/M_i \cong p_{\sigma(i)}R$ und daher $\ann(M_{i-1}/M_i) = \ann(R/p_{\sigma(i)}R) \overset{\ref{1.4.16}}{=}p_{\sigma(i)}R$
+			
+			Die Faktoren einer jeden Kompositionsreihe von $R/mR$ liefern also bis auf Reihenfolge und Assoziiertheit genau die Faktoren von $m = p_1 \cdot \cdots \cdot p_n$.
+  		\end{enumerate}
+	\end{beispiele}
+
+	\newpage
+	\section{Unzerlegbare Moduln}
+	\begin{definition}\label{1.5.1}
+		Ein Modul $M$ hei\ss t \emph{unzerlegbar}\index{Modul@\textbf{Modul}!Unzerlegbare Moduln}, falls $M \neq 0$ und f\"ur alle Untermoduln $L$ und $N$ von $M$ gilt 
+			\[M = L\oplus N \Rightarrow (L = 0 \lor N = 0)\]
+	\end{definition}
+
+	\begin{bemerkung}\label{1.5.2}
+		Jeder einfache Modul [$\rightarrow$\ref{1.3.2}] ist unzerlegbar, aber die Umkehrung stimmt nicht, wie \ref{1.3.4}(b) in Verbindung mit Satz \ref{1.5.4} unten zeigt.
+	\end{bemerkung}
+
+	\begin{lemma}\label{1.5.3}
+		Sei $M$ ein zyklischer Modul
+		\begin{enumerate}[(a)]
+			\item Jeder direkte Summand von $M$ [$\rightarrow$\ref{1.3.9}] ist wieder zyklisch
+			\item $M\cong R/N$ f\"ur einen $R$-Untermodul $N$ von $R$.
+		\end{enumerate}
+	
+		\begin{proof}
+			\begin{enumerate}[(a)]
+				\item Seien $L$ und $N$ Untermoduln von $M$ mit $M = L \oplus N$. Schreibe $M=Rx$ mit $x \in M$ und $x = y+z$ mit $y\in L, z \in N$.
+				Wir zeigen $L = Ry$. Sei hierzu $w \in L$. Zu zeigen ist, dass $w \in Ry$. Schreibe $az = ax -ay = w - ay \in L \cap N = 0$. Also $w = ax = ay \in Ry$. 
+				
+				\item Schreibe $M=Rx$ mit $x \in M$. W\"ahle f\"ur $N$ den Kern des $R$-Modulhomomorphismus $R\twoheadrightarrow M, a \mapsto ax$.
+			\end{enumerate}
+		\end{proof}
+	\end{lemma}
 \backmatter
 \printindex
 \end{document}
