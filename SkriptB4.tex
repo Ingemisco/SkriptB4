@@ -80,6 +80,7 @@ toc=idx
 \DeclareMathOperator{\ann}{ann}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\End}{End}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -93,7 +94,7 @@ toc=idx
 \newtheorem{korollar}[definition]{Korollar}
 \newtheorem{prop-def}[definition]{Proposition und Definition}
 \newtheorem{def-prop-satz-not}[definition]{Definitionen, Propositionen, S\"atze und Notationen}
-
+\newtheorem{defueb}[definition]{Definition und \"Ubung}
 
 \begin{document}
 	\pagenumbering{Alph}
@@ -513,7 +514,7 @@ toc=idx
 			Sei $M$ ein $R$-Modul und seinen $x_1, \dots, x_n \in M$ mit $0 \neq M = Rx_1 + \cdots + Rx_n$. Zu zeigen: Es gibt einen Untermodul $N$ von $M$ mit $M/N$ einfach.
 			
 			\noindent Betrachte die durch Inklusion halbgeordnete Menge 
-				\[X:=\set{P|P\ \mathrm{Untermodul von} \ M, P \subsetneq M} = \set{P|P\ \mathrm{Untermodul von} \ M, \set{x_1, \dots, x_n} \nsubseteq P}\]
+				\[X:=\set{P|P\ \textrm{Untermodul von} \ M, P \subsetneq M} = \set{P|P\ \textrm{Untermodul von} \ M, \set{x_1, \dots, x_n} \nsubseteq P}\]
 			
 			\noindent Jede Kette $K \subseteq X$ besitzt eine obere Schranke in $X$ ($0$ f\"ur $K = \emptyset$, da $M \neq 0$ und $\bigcup K$ f\"ur $K \neq \emptyset$, da $\set{x_1, \dots, x_n}$ endlich)
 			
@@ -649,7 +650,7 @@ toc=idx
 
 	\begin{definition}\label{1.4.8}
 		Sei $M$ ein Modul. Dann heißt 
-			\[\ell(M) := \sup \set{n \in \N_0| \mathrm{es\ gibt\ Untermoduln\ } M_0, \dots, M_n \mathrm{\ von\ } M \mathrm{\ mit\ } M_0 \supsetneq \cdots \supsetneq M_n} \in \N_0 \cup \set{\infty}\]
+			\[\ell(M) := \sup \set{n \in \N_0| \textrm{es gibt Untermoduln } M_0, \dots, M_n \textrm{ von } M \textrm{ mit } M_0 \supsetneq \cdots \supsetneq M_n} \in \N_0 \cup \set{\infty}\]
 		
 		die \emph{L\"ange}\index{Modul@\textbf{Modul}!L\"ange} von $M$.
 	
@@ -672,9 +673,9 @@ toc=idx
 		
 		\begin{proof}
 			Man sieht sofort $\ell(M) = \sup \hat M, \ell(M/N) \overset{\ref{1.3.3}(a)}{=} \sup \hat{K}$ und $\ell(N) = \sup \hat N$ mit 
-				\[\hat M := \set{m \in \N_0| \exists \mathrm{Untermoduln\ } M_0, \dots, M_m \mathrm{\ von\ } M: M = M_0 \supsetneq \cdots \supsetneq M_m = 0}\]
-				\[\hat K := \set{k \in \N_0| \exists \mathrm{Untermoduln\ } L_0, \dots, L_k \mathrm{\ von\ } M: M = L_0 \supsetneq \cdots \supsetneq L_k = N}\]
-				\[\hat N := \set{n \in \N_0| \exists \mathrm{Untermoduln\ } N_0, \dots, N_n \mathrm{\ von\ } M: N = N_0 \supsetneq \cdots \supsetneq N_n = 0}\]
+				\[\hat M := \set{m \in \N_0| \exists \textrm{Untermoduln } M_0, \dots, M_m \textrm{ von } M: M = M_0 \supsetneq \cdots \supsetneq M_m = 0}\]
+				\[\hat K := \set{k \in \N_0| \exists \textrm{Untermoduln } L_0, \dots, L_k \textrm{ von } M: M = L_0 \supsetneq \cdots \supsetneq L_k = N}\]
+				\[\hat N := \set{n \in \N_0| \exists \textrm{Untermoduln } N_0, \dots, N_n \textrm{ von } M: N = N_0 \supsetneq \cdots \supsetneq N_n = 0}\]
 			
 			Offensichtlich gilt $\forall k \in \hat K: \forall n \in \hat N: k + n \in \hat M$, was "$\Rightarrow$" und "$\geq$" beweist.
 			
@@ -809,6 +810,102 @@ toc=idx
 			\end{enumerate}
 		\end{proof}
 	\end{lemma}
+
+	\begin{satz}\label{1.5.4}
+		Sei $R$ ein Hauptidealring und $a \in R$. Dann ist $R/aR$ unzerlegbar genau dann, wenn es ein Primelement $p\in R$ und ein $n\in\N$ gibt mit $(a)=(p^n)$
+		
+		\begin{proof}
+			Ohne Einschr\"ankung $a \notin R^*$. Gebe es zun\"achst keine solchen $p$ und $n$. Dann gibt es $b, c \in R \setminus R^*$ mit $a = bc$ und $(b,c) = (1)$. Nach dem Chinesischen Restsatz ist dann der kanonische $R$-Modulhomomorphismus $R/aR \to (R/bR)\times (R/cR)$ bijektiv. Daher $R/aR \cong (\underbrace{R/bR}_{\neq 0}) \oplus (\underbrace{R/cR}_{\neq 0})$
+			
+			\noindent Seien nun $p\in R$ prim und $n\in \N$ mit $(a) = (p^n)$.
+			Gelte $R/p^nR = L \oplus M$. Zu zeigen $L=0$ oder $M = 0$. Jede Kompositionsreihe von $R/p^nR$ hat L\"ange $n$ mit allen Faktoren isomorph zu $R/pR$ nach \ref{1.4.17}(b). Alle Faktoren von Kompositionsreihen von $L$ und $M$ sind daher isomorph zu $R/pR$, denn aus je zwei Kompositionsreihen von $(L \oplus M)/M \cong L$ und $M$ kann man eine solche von $R/p^nR$ gewinnen. Nach \ref{1.5.3} gibt es aber Ideale $I$ und $J$ von $R$ mit $L \cong R/I$ und $M \cong R/J$. Da $I$ und $J$ Hauptideale sind, folgt mit \ref{1.4.17}(b) also $I=(p^l)$ und $J = (p^m)$ f\"ur gewisse $l,m \in \N_0$.
+			
+			Nun gilt einerseits 
+			\begin{flalign*}
+				n &= \ell(R/p^nR) = \ell(L \oplus M)\\ 
+				&= \ell((L \oplus M)/M) + \ell(M) && \ref{1.4.10}\\
+				&= \ell(L) + \ell(M) = \ell(R/p^lR) + \ell(R/p^mR) = l + m
+			\end{flalign*}
+			und andererseits
+			\begin{flalign*}
+				(p^n) &= \ann(R/p^nR) && \ref{1.4.16}\\
+				&= \ann(L) \cap \ann(M) && R/p^nR = L + M\\
+				&= \ann(R/p^lR) \cap \ann(R/p^mR) = (p^l) \cap (p^m)
+			\end{flalign*}
+			Hieraus folgt $l = 0$ oder $m = 0$. Also $L = 0$ oder $M = 0$.
+		\end{proof}
+	\end{satz}
+
+	\begin{satz}\label{1.5.5}
+		Jeder noethersche oder artinsche Modul ist die direkte Summe endlich vieler unzerlegbarer Untermoduln.
+		
+		\begin{proof}
+			Sei $M$ ein noetherscher (artinscher) Modul. zu jedem direkten Summanden $N \neq 0$ von $M$ gibt es einen maximalen (minimalen) direkten Summanden $N'' \neq N$ ($N' \neq 0$) von $N$ und daher Untermoduln $N'$ und $N''$ von $N$ mit $N = N' \oplus N''$ und $N'$ unzerlegbar.
+			
+			Setze nun $M_0 := M$ und w\"ahle f\"ur $i=0,1,\dots$ solange $M_i\neq 0$ Untermoduln $N_{i+1}$ und $M_{i+1}$ von $M_i$ mit $M_i = N_{i+1} \oplus M_{i+1}$ und $N_{i+1}$ unzerlegbar. Dieses Verfahren bricht ab, da $N_1 \subsetneq N_1 \oplus N_2 \subsetneq \cdots$ ($M_0 \supsetneq M_1 \supsetneq \cdots$) und $M$ noethersch (artinsch) ist. Ist $M_n = 0$, so $\displaystyle M = \bigoplus_{i=1}^n N_i$
+		\end{proof}
+	\end{satz}
+
+	\begin{defueb}\label{1.5.6}
+		Sei $M$ ein Modul. Dann bildet 
+			\[\End(M):= \set{f|f \textrm{ Endomorphismus von } M}\] 
+			mit punktweiser Addition und der Hintereinanderschaltung als Multiplikation einen Ring, den sogenannten \emph{Endomorphismenring}\index{Modul@\textbf{Modul}!Endomorphismenring} von $M$.
+	\end{defueb}
+
+	\begin{lemma}\label{1.5.7}
+		"Fitting-Zerlegun"\newline
+		Sei $M$ ein Modul und $f \in \End(M)$ mit $\ker(f) = \ker(f^2)$ und $\im(f) = \im(f^2)$. Dann $M = \ker f \oplus \im f$
+		
+		\begin{proof}
+			Zu zeigen
+			\begin{enumerate}[(a)]
+				\item $\ker f \cap \im f = 0$
+				\item $M = \ker f + \im f$
+			\end{enumerate}
+			Zu (a): Sei $x \in \ker f \cap \im f$. W\"ahle $y \in M$ mit $x = f(y)$. Dann $f^2(y) = f(x) = 0$ und daher $y \in \ker(f^2) = \ker(f)$, d.h. $x = f(y) = 0$
+			
+			Zu (b): Sei $x \in M$. Wegen $f(x) \in \im f = \im(f^2)$ gibt es $y \in M$ mit $f(x) = f^2(y)$. Dann $x = \underbrace{(x - f(y))}_{\in \ker f} + \underbrace{f(y)}_{\in \im f}$
+		\end{proof}
+	\end{lemma}
+
+	\begin{definition}\label{1.5.8}
+		Sei $R$ ein Ring (z.B. $R = \End(M)$ f\"ur einen Modul $M$)
+		
+		\begin{enumerate}[(a)]
+			\item Ein Element $a \in R$ hei\ss t \emph{idempotent}\index{Modul@\textbf{Modul}!idempotent} (\emph{nilpotent}\index{Modul@\textbf{Modul}!nilpotent}), wenn $a^2 = a$ ($a^n = 0$ f\"ur ein $n \in \N$)
+			
+			\item $R$ hei\ss t \emph{lokal}\index{Modul@\textbf{Modul}!lokal}, wenn $0\neq 1$ in $R$ und $\forall a,b \in R\setminus R^*: a + b \in R\setminus R^*$
+		\end{enumerate}
+	\end{definition}
+
+	\begin{proposition}\label{1.5.9}
+		Sei $M$ ein Modul. Dann ist $M$ unzerlegbar genau dann, wenn $\End(M)$ genau zwei idempotente Elemente hat (n\"amlich $0$ und $1 = \id_M \neq 0$).
+		
+		\begin{proof}
+			\begin{enumerate}
+				\item[$\Rightarrow$] Sei $M$ unzerlegbar. Wegen $M \neq 0$ gilt $0 \neq 1$ in $\End(M)$.
+				
+				Sei $f \in \End(M)$ idempotent. Dann $M = \ker f \oplus \im f$ nach \ref{1.5.7}. Es folgt $\ker f = 0$ oder $\im f = 0$. Im zweiten Fall ist $f = 0$. Im ersten Fall ist $f$ injektiv, also $f=1$ (da $f^2 = f$).
+				
+				\item[$\Leftarrow$] Seien $0\neq 1$ die einzigen idempotenten Elemente von $\End(M)$. Gelte $M = L \oplus N$. Zu zeigen $L = 0$ oder $N = 0$. 
+					\[\pi_L:M=L\oplus N \to L, x + y \mapsto x\]
+				($x\in L, y \in N$) ist idempotent, also $\pi_L = 0$ oder $\pi_L = 1$. Dann ist $L = 0$ oder $N = 0$.
+			\end{enumerate}
+		\end{proof}
+	\end{proposition}
+
+	\begin{lemma}\label{1.5.10}
+		Fitting Lemma\newline
+		Sei $M$ ein Modul endlicher L\"ange und $f \in \End(M)$. Dann gibt es $N \in \N$ mit $M = \ker(f^n) \oplus \im(f^n)$ f\"ur alle $n\geq N$.
+		
+		\begin{proof}
+			Die Ketten $\ker f \subseteq \ker f^2 \subseteq \cdots$ und $\im f \supseteq \im f^2 \supseteq \cdots$ werden station\"ar. W\"ahle $N \in \N$ mit $\ker f^n = \ker f^N$ und $\im f^n = \im f^N$ f\"ur alle $n \geq N$ und nehme die Fitting-Zerlegung nach \ref{1.5.7} f\"ur $f^n$.
+		\end{proof}
+	\end{lemma}
+
+	\begin{korollar}\label{1.5.11}
+		Jeder Endomorphismus eines Unzerlegbaren Moduls endlicher L\"ange ist entweder nilpotent oder ein Automorphismus.
+	\end{korollar}
 \backmatter
 \printindex
 \end{document}
