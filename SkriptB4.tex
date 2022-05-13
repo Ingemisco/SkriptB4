@@ -43,7 +43,7 @@ toc=idx
 \usepackage{enumerate}
 \usepackage[pass]{geometry}
 \usepackage{csquotes}
-
+\usepackage{mathtools}
 
 \usepackage{hyperref}
 \MakeOuterQuote{"}
@@ -53,7 +53,7 @@ toc=idx
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\F}{\mathbb{F}}
-
+\renewcommand{\P}{\mathbb{P}}
 \newcommand{\comment}[1]{}
 
 \newcommand{\brac}[1]{\left( #1 \right)}
@@ -81,6 +81,7 @@ toc=idx
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\rk}{rk}
 \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -92,6 +93,7 @@ toc=idx
 \newtheorem{proposition}[definition]{Proposition}
 \newtheorem{notation}[definition]{Notation}
 \newtheorem{korollar}[definition]{Korollar}
+\newtheorem{erinnerung}[definition]{Erinnerung}
 \newtheorem{prop-def}[definition]{Proposition und Definition}
 \newtheorem{def-prop-satz-not}[definition]{Definitionen, Propositionen, S\"atze und Notationen}
 \newtheorem{defueb}[definition]{Definition und \"Ubung}
@@ -906,6 +908,117 @@ toc=idx
 	\begin{korollar}\label{1.5.11}
 		Jeder Endomorphismus eines Unzerlegbaren Moduls endlicher L\"ange ist entweder nilpotent oder ein Automorphismus.
 	\end{korollar}
+
+	\begin{satz}\label{1.5.12}
+		Der Endomorphismenring eines unzerlegbaren Moduls endlicher L\"ange ist lokal.
+		
+		\begin{proof}
+			Sei $M$ ein unzerlegbarer Modul mit $\ell(M) < \infty$. Wegen $M \neq 0$ gilt $0 \neq 1$ in $\End(M)$.
+			
+			Seien $f, g \in \End(M)^*$. Statt 
+				\[(f\notin \End(M)^* \land g\notin \End(M)^*) \Rightarrow (f+g \notin \End(M)^*)\]
+			k\"onnen wir genauso gut (beachte $\End(M)^* = \Aut(M)$)
+				\[(f\notin \Aut(M) \land f+g \in \Aut(M)) \Rightarrow g \in \Aut(M)\]
+			zeigen.
+			
+		Gelte also $f \notin \Aut(M)$ und $f+g \in \Aut(M)$. Zu zeigen ist $g \in \Aut(M)$.
+		Mit $h:= (f+g)^{-1}$ gilt $hf + hg = h(f+g) = 1$. Wegen $(hf) \notin \Aut(M)$ ($f$ nilpotent nach \ref{1.5.11}, also $\ker f \neq 0$) gilt nach \ref{1.5.11}
+		$(hf)^n = 0$ f\"ur ein $n \in \N$. Dann gilt $(hg = 1 - hf \in \Aut(M))$ und daher $g \in \Aut(M)$ (sonst $g$ nilpotent nach \ref{1.5.11}, also $\ker g \neq 0$),
+		denn $(1+hf+(hf)^2 + \cdots + (hf)^{n-1})(1-hf) = 1$ und $(1-hf)(1+hf+(hf)^2 + \cdots + (hf)^{n-1}) = 1$.
+		\end{proof}
+	\end{satz}
+
+	\begin{satz}\label{1.5.13}
+		Satz von Krull-Remak-Schmidt\newline
+		Seien $m, n\in \N_0$ $M_1, \dots, M_m, N_1, \dots, N_n$ unzerlegbare Moduln endlicher L\"ange mit $M_1 \oplus \cdots \oplus M_m \cong N_1 \oplus \cdots \oplus N_n$. Dann gilt $m=n$ und es gibt 
+		$\sigma \in S_n$ mit $M_i \cong N_{\sigma(i)}$ f\"ur $i \in \set{1, \dots, n}$
+		
+		\begin{proof}
+			Induktion nach $m \in \N_0$. $m = 0$: klar\newline
+			$m-1 \to m$ ($m \in \N$)
+			
+			W\"ahle einen Isomorphismus $f: \underbrace{\bigoplus_{i=1}^m}_{M:=} M_i\to \underbrace{\bigoplus_{j=1}^n N_j}_{N:=}$.
+				\[M_i \overset{\xhookrightarrow[]{\iota_i}}{\underset{\pi_i}{\twoheadleftarrow}} M \xrightarrow[f]{\cong} N \overset{\xhookleftarrow[]{\kappa_i}}{\underset{\rho_j}{\twoheadrightarrow}} N_j\]
+				
+			\begin{align*}
+				1 &= \id_{M_1}  = \pi_1\iota_1\\
+				&= \pi_1f^{-1}\id_Nf\iota_1\\
+				&= \pi_1f^{-1}\brac{\sum_{j=1}^m \kappa_j\rho_j}f\iota_1\\
+				&= \sum_{j=1}^m\underbrace{\pi_1f^{-1}\kappa_j}_{g_j:N_j \to M_1}\underbrace{\rho_jf\iota_1}_{h_j:M_1 \to N_j}
+			\end{align*}
+		
+			Da $\End(M_1)$ nach \ref{1.5.12} lokal ist, gibt e $j \in \set{1, \dots, n}$ mit $g_jh_j \in \Aut(M_1)$. Insbesondere $n \geq 1$.
+			
+			
+			\noindent Behauptung 1: $M_1 \overset{\xrightarrow{h_j}}{\xleftarrow[g_j]{}} N_j$ sind Isomorphismen.
+			
+			Begr\"undung: Wegen $g_jh_j \in \Aut(M)$ ist $h_j$ injektiv und $g_j$ surjektiv. Es gen\"ugt zu zeigen, dass $h_jg_j \in \Aut(N_j)$. Dies ist klar, denn sonst gilt nach \ref{1.5.12} $(h_jg_j)^s = 0$ f\"ur ein $s \in \N$ und damit 
+			\[0 = g_j(h_jg_j)^s = (g_jh_j)^sg_j\]
+			was $g_j = 0$ impliziert.
+			
+			
+			\noindent Behauptung 2: $M = f^{-1}(N_j) \oplus M_2 \oplus \cdots \oplus M_m$.
+			
+			Begr\"undung: Zu zeigen ist 
+			\begin{enumerate}[(a)]
+				\item $f^{-1}(N_j) \cap \sum_{i=2}^mM_i = 0$
+				
+				\item $M_1 \subseteq f^{-1}(N_j) + \sum_{i=2}^mM_i$
+			\end{enumerate}
+		
+			Zu (a) Sei $x \in f^{-1}(N_j) \cap \sum_{i=2}^mM_i$. Zu zeigen ist $x = 0$. Dann gibt es ein $y \in N_j$ mit $x = (f^{-1}\kappa_j)(y)$ und es gilt $\pi_1(x) = 0$ und daher $y = 0$ und daher $g_j(y) = (\pi_1f^{-1}\kappa_j)(y) = \pi_1(x) = 0$ (denn $g_j$ ist ein Isomorphismus), also $x = 0$.
+			
+			Zu (b) Sei $x \in M$. W\"ahle ein $y\in N_j$ mit $x = g_j(y)$. Dann $x = f^{-1}(y) + (x - f^{-1}(y))$ und es reicht zu zeigen, dass $\pi_1(x-f^{-1}(y)) = 0$. Es gilt aber 
+			\begin{align*}
+				\pi_1(x-f^{-1}(y))&=\pi_1(x) - (\pi_1(f^{-1}\kappa_j)(y))\\
+				&= \pi_1(g_j(y)) - g_j(y) \\
+				&= g_j(y) - g_j(y) = 0
+			\end{align*}
+		
+			Der Kern von $M \xrightarrow[\cong]{f} N \twoheadrightarrow N/N_j$ ist $f^{-1(N_j)}$ und es folgt mit dem Isomorphiesatz $M/f^{-1}(N_j) \cong N/N_j$, also
+				\[\bigoplus_{i=2}^mM_i \overset{\textrm{Beh 2}}{\cong} M/f^{-1}(N_j) \cong N/N_j \cong \bigoplus_{k=1, k \neq j}^n N_k\]
+			Wende die Induktionsvoraussetzung an.
+		\end{proof}
+	\end{satz}
+
+	\newpage
+	\section{Endlich erzeugte Moduln \"uber Hauptidealringen}
+	
+	\begin{definition}\label{1.6.1}
+		Sei $R$ ein Integrit\"atsring. Dann hei\ss t eine Funktion $\delta:R \to \N_0$ eine \emph{euklidische Funktion}\index{Modul@\textbf{Modul}!Euklidische Funktion} auf $R$, wenn es f\"ur alle $a \in R$ und $b \in R\setminus \set{0}$ Elemente $q \in R$ ("Quotienten") und $r \in R$ ("Rest") gibt mit $a = bq + r$ und $\delta(r) < \delta(b)$ ("Division mit Rest").
+		
+		Es hei\ss t $R$ \emph{euklidisch}, wenn $R$ eine euklidische Funktion besitzt.
+	\end{definition}
+
+	\begin{beispiele}\label{1.6.2}
+		\begin{enumerate}[(a)]
+			\item $\Z$ ist euklidisch mit Funktion 
+				\[\delta: \Z \to \N_0, a \mapsto |a|\]
+			\item Ist $K$ ein K\"orper, so ist $K[X]$ euklidisch mit euklidischer Funktion 
+				\[\delta:K[X]\to\N_0, p \mapsto \begin{cases}
+					\deg p + 1 & \textrm{falls } p \neq 0\\
+					0 & \textrm{falls } p = 0
+				\end{cases}\]
+			\item Der Ring der Gaußschen Zahlen $\Z[i] = \set{a+bi|a,b \in \Z}$ ist euklidisch mit euklidischer Funktion 
+				\[\delta: \Z[i] \to \N_0, z \mapsto |z|^2\]
+			denn zu $q \in \Z[i]$ mit $\left| \frac{a}{b} - q\right| \leq \brac{\frac{1}{2}}^2 + \brac{\frac{1}{2}}^2 = \frac{1}{2}$ und f\"ur $r:= a - bq$ gilt 
+				\[\delta(r) = |r|^2 = \left| \frac{a}{b} - q\right||b|^2 \leq \frac{1}{2}|b|^2 \leq \frac{1}{2}\delta(b) < \delta(b)\]
+		\end{enumerate}
+	\end{beispiele}
+
+	\begin{proposition}\label{1.6.3}
+		Jeder euklidische Ring ist ein Hauptidealring.
+		
+		\begin{proof}
+			Sei $R$ ein Integrit\"atsring und $\delta:R\to\N_0$ eine euklidische Funktion. Sei $I$ ein Ideal in $R$, Ohne Einschr\"ankung $I \neq (0)$. W\"ahle $a \in I\setminus\set{0}$
+			mit kleinstm\"oglichem $\delta(a)$. Wir zeigen $I= (a)$. Sei hierzu $x\in (a)$. Schreibe $x = aq+r$ mit $q,r \in R$, $\delta(r)< \delta(a)$. Dann ist $r = x-aq \in I$ und folglich $r=0$ gem\"a\ss Wahl von $a$. Also $x = aq \in (a)$.
+		\end{proof}
+	\end{proposition}
+
+	\begin{erinnerung}\label{1.6.4}
+		Sei $R$ ein Hauptidealring. Wir fixieren eine Menge $\P_R$ von irreduziblen Elementen von $R$ derart, dass jedes irreduzible Element zu genau einem Element von $\P_R$ assoziiert ist, zum Beispiel $\P_\Z := \P := \set{2,3,5,\dots}$ und $\P_{K[X]} := \set{p \in K[X]|p \textrm{ normiert und irreduzibel}}$ ($K$ ein K\"orper).
+		
+ 	\end{erinnerung}
 \backmatter
 \printindex
 \end{document}
