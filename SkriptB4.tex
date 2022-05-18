@@ -82,6 +82,7 @@ toc=idx
 \DeclareMathOperator{\rk}{rk}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\GL}{GL}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -1018,7 +1019,141 @@ toc=idx
 	\begin{erinnerung}\label{1.6.4}
 		Sei $R$ ein Hauptidealring. Wir fixieren eine Menge $\P_R$ von irreduziblen Elementen von $R$ derart, dass jedes irreduzible Element zu genau einem Element von $\P_R$ assoziiert ist, zum Beispiel $\P_\Z := \P := \set{2,3,5,\dots}$ und $\P_{K[X]} := \set{p \in K[X]|p \textrm{ normiert und irreduzibel}}$ ($K$ ein K\"orper).
 		
+		Betrachte $N_R:= \set{0} \cup \set{\prod_{i=1}^np_i| n \in \N_0, p_1, \dots, p_n \in \P_R}$. Zum Beispiel $N_\Z = \N_0$ und $N_{K[X]} = \set{p\in K[X]|p= 0 \textrm{ oder } p \textrm{ normiert}}$ ($K$ K\"orper).
+		
+		Seien $m,n \in \N_0$ und setze $l := \min \set{m, n}$. Eine Matrix $S=(s_{ij})_{1\leq i \leq m, 1 \leq j \leq n} \in N_R^{m\times n}$ hei\ss t in \emph{Smithscher Normalform}\index{Modul@\textbf{Modul}!Smithsche Normalform}, wenn $s_{ij} = 0$ f\"ur $i\neq j$ und $s_{ii} | s_{(i+1)(i+1)}$ f\"ur alle $i \in \set{1, \dots, l-1}$. 
+		
+		Betrachte die Gruppen $\GL_m(R) = (R^{m\times m})^* = \set{P \in R^{m \times m}| \det P \in R^*}$ und $\GL_n(R)$ und betrachte die \"Aquivalenzrelation $\sim$ auf $R^{m\times n}$ definiert durch
+		$A \sim B \Leftrightarrow \exists P \in \GL_m(R): \exists Q \in \GL_n(R): A=PBQ$ ($A, B \in R^{m \times n}$)
+		
+		
+		Dann gibt es zu jedem $A \in R^{m \times n}$ genau ein $S \in R^{m\times m}$ in Smithscher Normalform mit $A \sim S$.
+		F\"ur jedes $i \in \set{1, \dots, l}$ nennt man dann $c_i(A) := s_{ii}$ den $i$-ten \emph{Elementarteiler}\index{Modul@\textbf{Modul}!Elementarteiler} von $A$ und $d_i(A) := \gcd\set{i-\textrm{Minoren von } A} \in N_R$ den $i$-ten Determinantenteiler von $A$.
+		
+		Es gilt $d_i(A) = \prod_{j=1}^i c_j(A)$ f\"ur $i \in \set{1, \dots, l}$. 
+		
+		Mit $c(A) := (c_1(A), \dots, c_l(A))$ und $d(A) := (d_1(A), \dots, d_l(A))$ gilt f\"ur $A, B \in R^{m\times n}$
+			\begin{align*}
+				A \sim B &\Leftrightarrow c(A) = c(B)\\
+				&\Leftrightarrow d(A) = d(B)\\
+				&\Leftrightarrow A \textrm{ und } B \textrm{ haben dieselbe Smithsche Normalform}\\
+				&\Leftrightarrow A \textrm{ und } B \textrm{ gehen aus Zeilen- und Spaltenoperationen vom Typ } (1), (2) \textrm{ oder } (3) \textrm{ hervor}\\
+			\end{align*} 
+		Dabei ist 
+			\begin{enumerate}[(1)]
+				\item $Z_i \gets Z_i + aZ_j$ oder $S_i \gets S_i + aS_j$ \hfill $(i\neq j,a \in R)$
+				
+				\item $Z_i \gets aZ_i$ oder $S_i \gets aS_i$ \hfill $(a \in R^*)$
+				
+				\item $\begin{pmatrix}
+					Z_i\\Z_j
+				\end{pmatrix}\gets \begin{pmatrix}
+				aZ_i + bZ_j\\cZ_i + dZ_j
+			\end{pmatrix}$ oder 
+			$\begin{pmatrix}
+				S_i\\S_j
+			\end{pmatrix}\gets \begin{pmatrix}
+				aS_i + bS_j\\cS_i + dS_j
+			\end{pmatrix}$ \hfill ($i\neq j, a, b, c, d \in R, ad -bc = 1$)
+			\end{enumerate}
+		All diese Operationen sind umkehrbar. Die Operationen (1) und (3) ver\"andern die Determinante nicht, die Operation (2) ver\"andert sie nur bis auf eine Einheit. 
+		
+		Man \"uberlegt ich leicht, dass man mit den Operationen (1) und (2) die Operation (4)\newline
+		$\begin{pmatrix}
+			Z_i\\Z_j
+		\end{pmatrix}\gets \begin{pmatrix}
+			Z_j\\Z_i
+		\end{pmatrix}$ oder $\begin{pmatrix}
+			S_i\\S_j
+		\end{pmatrix}\gets \begin{pmatrix}
+		S_j\\S_i
+	\end{pmatrix}$ \hfill ($i\neq j$)\newline
+
+	simulieren kann. Ist $R$ \emph{euklidisch}, so \"uberlegt man sich, dass man damit auch (3) simulieren kann, weshalb in diesem Fall (3) \"uberfl\"ussig ist.
+	
+	Ist $A \in R^{m\times n}$ gegeben und interessiert man sich nicht nur f\"ur ein zu $A$ \"aquivalentes $B \in R^{m\times n}$ (z.B. die Smithsche Normalform), sondern auch f\"ur ein $P \in \GL_m(R)$ und $Q \in \GL_n(R)$ mit $B = PAQ$, so kann man im Schema \begin{tabular}{|c|c}\hline
+		$A$ & $I_m$\vline \\\hline $I_n$ &\\\cline{1-1}
+	\end{tabular} Zeilenoperationen auf \begin{tabular}{|c|c|}\hline
+		$A$ & $I_m$\\\hline
+	\end{tabular} und Spaltenoperationen auf \begin{tabular}{|c|}\hline
+	$A$ \\\hline $I_n$\\\hline
+	\end{tabular} anwenden, um \begin{tabular}{|c|c}\hline
+	$B$ & $P$\vline \\\hline $Q$ &\\\cline{1-1}
+	\end{tabular} mit $P \in \GL_m(R), Q \in \GL_n(R)$ und $B=PAQ$ zu erhalten.
+	
+	Interessiert man sich nicht nur f\"ur $P$ oder nur f\"ur $Q$, so arbeitet man mit dem Schema \begin{tabular}{|c|c|}\hline
+		$A$ & $I_m$\\\hline
+	\end{tabular} oder \begin{tabular}{|c|}\hline
+	$A$ \\\hline $I_n$\\\hline
+	\end{tabular}
+
  	\end{erinnerung}
+ 
+	\begin{notation}\label{1.6.5}
+		Sei $R$ ein kommutativer Ring. Dann definiert jede Matrix $A \in R^{m \times n}$ einen $R$-Modulhomomorphismus
+			\[f_A:R^n \to R^m, x \mapsto Ax\]
+		Man nennt $\im A := \im f_A$ das \emph{Bild}\index{Modul@\textbf{Modul}!Bild (Matrix)} von $A$
+	\end{notation}
+
+	\begin{bemerkung}\label{1.6.6}
+		\begin{enumerate}[(a)]
+			\item Sei $R$ ein kommutativer Ring und seien $A, B \in R^{m\times n}, P \in \GL_m(R)$ und $Q \in \GL_n(R)$ mit $B=PAQ$. Dann gilt $f_P(\im A) = \im B$, weshalb es (genau) einen $R$-Modulisomorphismus
+			\begin{align*}
+				R^m/\im A &\to R^m/\im B\\
+				\overline{x} &\mapsto \overline{Px}
+			\end{align*}
+			($x \in R^m$) gibt.
+			
+			\item Sei $R$ ein Hauptidealring und sei $A \in R^{m\times n}$. Dann kann man mittels der Operationen (1), (2), (3) (falls $R$ euklidisch ist, reichen (1) und (2)) $A$ auf Smithsche Normalform bringen, wobei man die Zeilenoperationen auf \begin{tabular}{|c|c|}\hline
+				$A$ & $I_m$\\\hline
+			\end{tabular} anwendet, um \begin{tabular}{|c|c|}\hline
+			$S$ & $P$\\\hline
+			\end{tabular} zu erhalten mit $S \in R^{m \times n}$ in Smithscher Normalform und $P \in \GL_m(R)$, derart, dass $Q \in \GL_n(R)$ existiert mit $S=PAQ$.
+		
+			Da $S$ in Smithscher Normalform ist, kann man sofort $a_1, \dots, a_k \in N_R \setminus \set{1}$ mit $a_1|\dots|a_k$ ablesen mit
+				\[\im S = R^{m-k} \times a_1R \times \cdots \times a_kR\]
+				
+			Gilt $P = \begin{pmatrix}
+				&*&\\\hline b_{11} &\cdots& b_{1m}\\\vdots&\ddots&\vdots\\
+				b_{k1} &\cdots & b_{km} 
+			\end{pmatrix}$, so ist 
+			
+			\begin{align*}
+				R^m/\im A &\to \prod_{i=1}^k R/a_iR\\
+				\overline{x} &\mapsto (\overline{b_{11}x_1+\cdots+b_{1m}x_m}, \dots, \overline{b_{k1}x_1+\cdots+b_{km}x_m})
+			\end{align*}
+		
+			ein $R$-Modulisomorphismus
+		\end{enumerate}
+	
+		\begin{beispiele}\label{1.6.7}
+			\begin{align*}
+				\Z^3 / \brac{\Z\begin{pmatrix}
+						413\\-385\\427
+					\end{pmatrix} + \Z\begin{pmatrix}
+						140\\-126\\147
+				\end{pmatrix}} &\overset{\cong}{\to} \Z/7\Z \times \Z/133\Z \times \Z\\
+				\overline{(x_1, x_2, x_3)} &\mapsto (\overline{-x_1+x_3}, \overline{-9x_1-10x_2},\overline{3x_1+x_2-2x_3})
+			\end{align*}
+			
+			denn \begin{tabular}{|cc|ccc|}\hline
+			413& 140 & 1 & 0 & 0\\
+			-385& -126 & 0 & 1 & 0\\
+			427& 147 & 0 & 0 & 1\\\hline
+		\end{tabular} kann man mit (1) und (2) in \begin{tabular}{|cc|ccc|}\hline
+			7& 0 & -1 & 0 & 1\\
+			0& 133 & -9 &-10 & 0\\
+			0& 0 & 3 & 1 & -2\\\hline
+		\end{tabular}
+		
+		\end{beispiele}
+	\end{bemerkung}
+
+	\begin{prop-def}\label{1.6.8}
+		Sei $R$ ein Integrit\"atsring und $M$ ein $R$-Modul. Dann bildet die Menge der Torsionselemente vo $M$ [$\to$\ref{1.2.4}] einen Untermodul
+			\[T(M):= \set{x \in M| \exists a \in R \setminus \set{0}: ax = 0}\]
+		von $M$, den wir den \emph{Torsionsteil}\index{Modul@\textbf{Modul}!Torsionsteil} von $M$ nennen.
+	\end{prop-def}
 \backmatter
 \printindex
 \end{document}
