@@ -1154,6 +1154,68 @@ toc=idx
 			\[T(M):= \set{x \in M| \exists a \in R \setminus \set{0}: ax = 0}\]
 		von $M$, den wir den \emph{Torsionsteil}\index{Modul@\textbf{Modul}!Torsionsteil} von $M$ nennen.
 	\end{prop-def}
+
+	\begin{satz}\label{1.6.9}
+		Struktursatz f\"ur endlich erzeugte Moduln \"uber Hauptidealringen
+		
+		Sei $R$ ein Hauptidealring und $M$ ein endlich erzeugter $R$-Modul. Dann gibt es eindeutig bestimmte
+		
+		\begin{enumerate}[(a)]
+			\item 
+			$k\in \N_0$ und $a_1, \dots, a_k \in N_R\setminus \set{1}$ mit $a_1|a_2|\dots|a_k$ und $M\cong \prod_{i=1}^kR/a_iR$
+ 			
+			\item $l, n\in \N_0$ und bis auf Reihenfolge eindeutige $(p_1, k_1), \dots, (p_l, k_l) \in \P_R \times \N$ mit $M \cong \brac{\prod_{i=1}^l R/p_i^kR} \times R^n$
+		\end{enumerate}
+	
+		\begin{proof}
+			\emph{Existenz}
+			\begin{enumerate}[(a)]
+				\item 
+				Schreibe $M = Rx_1 + \cdots + Rx_m$ f\"ur ein $m \in \N_0$ und $x_1, \dots, x_m \in M$. Als Hauptidealring ist $R$ nat\"urlich noethersch (vgl. \ref{1.4.3} und \ref{1.1.5}). Daher ist auch $R^m$ noethersch (nach \ref{1.4.6} oder \ref{1.4.7}) und w\"ahle mit \ref{1.2.5} einen Homomorphismus $f: R^m \to M$ mit $f(e_i) = x_i$ f\"ur alle $i \in \set{1, \dots, m}$. Als Untermodul von $R^m$ ist der Kern von $f$ endlich erzeugt und kann daher als Bild einer Matrix $A\in R^{m\times n}$ (mit $m gro\ss genug$) geschrieben werden. $\ker f = \im A$. Nun gilt nach dem Isomorphiesatz $M \cong R^m/\ker f = R^m / \im A$ und wir k\"onnen das Verfahren aus Bemerkung \ref{1.6.6}(b) anwenden.
+				
+				\item $n:= |\set{i \in \set{1, \dots, k}| a_i = 0}|$ (*)
+				
+				Zerlege die $a_i$ mit $a_i \neq 0$ in Produkte von Potenzen von paarweise verschiedenen Primfaktoren. Wende den Chinesischen Restsatz an (vgl. Beweis von \ref{1.5.4})
+			\end{enumerate}
+			
+			\emph{Eindeutigkeit}
+			
+			Sowohl in (a) als auch in (b) kann man $n$ aus $M$ zur\"uckgewinnen, wobei im Fall (a) $n$ durch (*) definiert sei. In der Tat gilt
+				\begin{flalign*}
+					T(M) &\cong \prod_{i=1}^l R/p_i^{k_i}R && (**)
+				\end{flalign*}
+			bzw. $T(M) \cong \prod_{i=1}^l R/p_i^{k_i}/R$, woraus $M/T(M) \cong R^n$ und daher $n \overset{\ref{1.2.13}}{=} \rk(M/T(M))$ folgt. Deswegen und wegen (**) kann man nun sowohl in (a) als auch in (b) $n=0$ voraussetzen. 
+			
+			Da $M$ in (b) dann endllich L\"ange hat [$\to$\ref{1.4.17}(b)] folgt dort Eindeutigkeit sofort aus dem Satz von Krull-Remak-Schmidt \ref{1.5.13} in Verbindung mit \ref{1.5.4} und \ref{1.4.16}. Schlie\ss lich zu (a).
+			
+			Seien $k \in \N_0$ und $a_1, \dots, a_k, b_1, \dots, b_k \in N_R \setminus \set{0}$ mit $a_1|\dots|a_k, b_1|\dots|b_k$ und 
+				\[\prod_{i=1}^k R/a_iR \cong \prod_{i=1}^kR/b_iR\]
+				
+			Es reicht zu zeigen, dass $(a_1, \dot, a_k) = (b_1, \dots, b_k)$. Wir zeigen dazu $(a_j, \dot, a_k) = (b_j, \dots, b_k)$ f\"ur alle $j\in \set{1,\dots,k+1}$ durch Induktion nach $j$.
+			
+			$j=k:$ klar
+			
+			$j+1\to j$: ($j \in \set{1,\dots,k}$). Zu zeigen ist $a_j = b_j$. 
+			
+			\begin{align*}
+				\underbrace{\prod_{i=1}^j a_jR/a_iR}_{N} \times \prod_{i=j+1}^k a_j(R/b_iR) &\cong a_j \prod_{i=1}^k R/b_iR\\
+				&\cong a_j \prod_{i=1}^k R/a_iR\\
+				&=\prod_{i=1}^k a_j(R/a_iR)\\
+				&\cong \prod_{i=j+1}^k a_j(R/a_iR)\\
+				&= \prod_{i=j+1}^k a_j(R/b_iR)
+			\end{align*} 
+		
+			Da alle beteiligten Moduln endliche L\"ange haben (wegen $a_i, b_i \neq 0$), erhalten wir $\ell(N) = 0$, also $N=0$ und insbesondere $a_j(R/b_jR) = 0$, d.h. $a_j \in b_jR$. Analog $b_j \in a_jR$. Daher $(a_j) = (b_j)$ und wegen $a_j, b_j \in N_R$ gilt dann $a_j = b_j$
+		\end{proof}
+	\end{satz}
+
+	\begin{korollar}\label{1.6.10}
+		Jede endlich erzeugte abelsche Gruppe ist isomorph zu einem direkten Produkt endlich vieler zyklischer Gruppen.
+	\end{korollar}
+
+	\begin{korollar}\label{1.6.11}
+		Jede endliche abelsche Gruppe ist isomorph zu einem direkten Produkt von zyklischen Gruppen von Primzahlpotenzordnung.
+	\end{korollar}
 \backmatter
 \printindex
 \end{document}
