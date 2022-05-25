@@ -82,7 +82,9 @@ toc=idx
 \DeclareMathOperator{\rk}{rk}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\com}{com}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -96,7 +98,12 @@ toc=idx
 \newtheorem{korollar}[definition]{Korollar}
 \newtheorem{erinnerung}[definition]{Erinnerung}
 \newtheorem{prop-def}[definition]{Proposition und Definition}
+\newtheorem{def-prop}[definition]{Definition und Proposition}
+\newtheorem{def-ueb}[definition]{Definition und \"Ubung}
+\newtheorem{uebung}[definition]{\"Ubung}
+\newtheorem{bem-not}[definition]{Bemerkung und Notation}
 \newtheorem{def-prop-satz-not}[definition]{Definitionen, Propositionen, S\"atze und Notationen}
+\newtheorem{sprechweise}[definition]{Sprechweise}
 \newtheorem{defueb}[definition]{Definition und \"Ubung}
 
 \begin{document}
@@ -1216,6 +1223,143 @@ toc=idx
 	\begin{korollar}\label{1.6.11}
 		Jede endliche abelsche Gruppe ist isomorph zu einem direkten Produkt von zyklischen Gruppen von Primzahlpotenzordnung.
 	\end{korollar}
+
+	\begin{beispiele}\label{1.6.12}
+		(Fortsetzung von Beispiel \ref{1.6.7})\newline
+		$133 = 7 \cdot 19$, also nach dem Chinesischen Restsatz
+		\begin{align*}
+			\Z^3/\brac{\Z\begin{pmatrix}413\\-385\\427\end{pmatrix} + \Z\begin{pmatrix}140\\-126\\147\end{pmatrix}} &\overset{\cong}{\rightarrow} (\Z/7\Z) \times (\Z/7\Z) \times (\Z/19\Z) \times \Z\\
+				x &\mapsto (\overline{-x_1+x_3}, \overline{-9x_1-10x_2}, \overline{-9x_1-10x_2}, \overline{3x_1+x_2-2x_3})
+		\end{align*}
+	\end{beispiele}
+
+	\newpage
+	\section{Der Satz von Cayley-Hamilton}
+	\begin{def-prop}\label{1.7.1}
+		Sei $R$ ein Ring und $M$ ein $R$-Modul. F\"ur $A \in R^{m\times n}$ und $X\in M^{n\times r}$ definieren wir $AX$ durch
+			\[(AX)_{ik} := \sum_{j=1}^n A_{ij}X_{jk}\]
+		F\"r $1\leq i \leq m, 1 \leq k \leq r$
+		
+		Da $R$ ein $R$-Modul ist, verallgemeinern wir damit auch die Matrizenmultiplikation von kommutativen Ringen auf beliebige Ringe. Man rechnet sofort nach, dass f\"ur alle $A \in R^{m\times n}, B \in R^{n \times r}, X \in M^{r \times s}$ gilt $(AB)X = A(BX)$. Insbesondere wird $R^{n \times n}$ ein Ring mit $1 = I_n = \begin{pmatrix}
+			1 & 0 & \cdots & 0\\
+			0 & 1 & \cdots & 0\\
+			\vdots & \vdots & \ddots & \vdots\\
+			0 & 0 & \cdots & 1
+		\end{pmatrix}$ und $M^{n \times r}$ ein $R^{n \times n}$-Modul [$\to$ 1.1.1].
+	
+		Im Folgenden benutzen wir, dass $M^n = M^{n\times 1}$ ein $R^{n\times n}$-Modul ist.
+	\end{def-prop}
+	
+	\begin{def-ueb}\label{1.7.2}
+		[vgl. \ref{1.5.6}]\newline
+		Sei $R$ ein \emph{kommutativer} Ring und $M$ und $N$ $R$-Moduln. Dann bildet 
+			\[\Hom(M,N) := \set{f|f:M \to N \textrm{ Homomorphismus}}\]
+		mit punktweiser Addition und Skalarmultiplikation einen $R$-Modul.
+	\end{def-ueb}
+
+	\begin{bem-not}\label{1.7.3}
+		Sei $R$ ein \emph{kommutativer} Ring mit $0\neq 1$, $M$ ein $R$-Modul und $f \in \End(M)$. Dann ist 
+		\[R[f] := \set{\sum_k a_k f^k|a_k \in R}\]
+		ein \emph{kommutativer} Unterring von $\End(M)$.
+		
+		Es gibt genau einen Ringhomomorphismus $\phi:R[X] \to R[f]$ mit $\phi\brac{\sum_k a_k X^k} = \sum_k a_k f^k$ f\"ur alle $a_k \in R$- Schreibe $p(f) = \varphi(p)$ f\"ur $p \in R[X]$.
+	\end{bem-not}
+
+	\begin{uebung}\label{1.7.4}
+		Sei $R$ ein \emph{kommutativer} Ring mit $0\neq 1$ und $M$ ein $R$-Modul. Dann vermitteln die Zuordnungen
+		
+		\begin{align*}
+			f &\mapsto \begin{pmatrix}
+				R[X]\times M \to M\\ (p,x) \mapsto (p(f))(x)
+			\end{pmatrix}\\
+			\begin{pmatrix}
+				M \to M\\
+				x \mapsto X \cdot x
+			\end{pmatrix} \mapsfrom \cdot
+		\end{align*}
+		Eine Bijektion zwischen $\End(M)$ und der Menge der Skalarmultiplikationen, die $M$ zu einem $R[X]$-Modul machen und die Skalarmultiplikation des $R$-Moduls $M$ fortsetzen.
+	\end{uebung}
+
+	\begin{satz}\label{1.7.5}
+		Satz von Cayley-Hamilton\newline
+		Sei $R$ ein kommutativer Ring, $I \subseteq R$ ein Ideal (z.B. $I = R$), $n\in \N_0$, $M$ ein $R$-Modul, der von $n$ Elementen erzeugt ist und $f \in \End(M)$ mit 
+		$\im f \subseteq IM := \set{\sum_i a_ix_i|a_i \in I, x_i \in M}$. 
+		Dann gibt es $a_1 \in I, a_2 \in I^2, \dots a_n \in I^n$ mit $f^n + a_1f^{n-1} + \cdots + a_n \id_M = 0$.
+		
+		\begin{proof}
+			Ist $0 = 1$ in $R$, so $M = 0$ nach \ref{1.2.8}. Also sei ohne Einschr\"ankung $0\neq 1$ in $R$. Schreibe 
+			$M = Rx_1 + \cdots + Rx_n$ mit $x_1, \dots, x_n \in M$. W\"ahle $A \in I^{n\times n}$ mit $f(x_j) = \sum_{i=1}^n A_{ij}x_i$ f\"ur alle $j \in \set{1, \dots, n}$.
+			Mache nun $M$ zu einem $R[X]$-Modul verm\"oge $X \cdot x = f(x)$ f\"ur alle $x \in R^n$ [$\to$ \ref{1.7.4}].
+			
+			Dann ist $M^n$ ein $R[X]^{n\times n}$-Modul [$\to$ \ref{1.7.1}], in dem gilt 
+			\[\underbrace{\begin{pmatrix}
+					X & 0 & \cdots & 0\\
+					0 & X & \cdots & 0\\
+					\vdots & \vdots & \ddots & \vdots\\
+					0 & 0 & \cdots & X
+			\end{pmatrix}}_{\in R[X]^{n\times n}} \begin{pmatrix}
+		x_1\\x_2\\\vdots\\x_n
+		\end{pmatrix} = \begin{pmatrix}
+		X \cdot x_1\\X \cdot x_2\\\vdots\\X \cdot x_n
+		\end{pmatrix} = \begin{pmatrix}
+		f(x_1)\\f(x_2)\\\vdots\\f(x_n)
+		\end{pmatrix} = \underbrace{A^T}_{\in R^{n\times n} \subseteq R[X]^{n\times n}}\underbrace{\begin{pmatrix}
+			x_1\\x_2\\\vdots\\x_n
+		\end{pmatrix}}_{\in M^n}\] 
+		also  $(A^T-XI_n\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}) = 0$. Multipliziere nun von links mit der transponierten \emph{Komatrix} $\brac{\com(A^T - XI_n)}^T = \com(A-XI_n)$.
+		\begin{flalign*}
+			0&= (\brac{\com(A - XI_n)})\brac{(A^T-XI_n)\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}}\\
+			&=  (\brac{\com(A - XI_n)}(A^T-XI_n))\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}   &&\ref{1.7.1}\\
+			&= \det(A-XI_n)I_n\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}\\
+			&= \underbrace{\det(A-XI_n)}_{=:p\in R[X]}\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}
+		\end{flalign*}
+	
+		Schreibe $p = (-1)^n(X^n +a_1x^{n-1}+\cdots + a_n)$. Aus $(p(f))(x_i) = p\cdot x_i = 0$ f\"ur alle $i \in \set{1,\dots, n}$ und $M=Rx_1+\cdots + Rx_n$ folgt $p(f) = 0$.
+		\end{proof} 
+	\end{satz}
+	\newpage
+	\chapter[tocentry={Ganze Ringerweiterungen und Dedekindringe}]{Ganze Ringerweiterungen und Dedekindringe}
+	
+	\section{Ganzheit}
+	
+	\begin{sprechweise}\label{2.1.1}
+		Sei $A$ ein Unterring des \emph{kommutativen} Ringes $B$, so sagen wir "$A \subseteq B$ ist eine \emph{Ringerweiterung}\index{Ringerweiterung@\textbf{Ringwerweiterung}}". Die Sprechweisen
+		"Die Ringerweiterung $A \subseteq B$ hat eine Eigenschaft" und "$B$ hat eine Eigenschaft \"uber $A$" sind synonym.
+	\end{sprechweise}
+
+	\begin{definition}\label{2.1.2}
+		Sei $A \subseteq B$ eine Ringerweiterung. Dann hei\ss t $x \in B$ \emph{ganz}\index{Ringerweiterung@\textbf{Ringwerweiterung}!Ganze Ringerweiterung} \"uber $A$, wenn $0=1$ in $B$ oder wenn es ein \emph{normiertes} $f \in A[X]$ mit $f(x) = 0$ gibt ("Ganzheitsgleichung").
+		Es hei\ss t $A \subseteq B$ \emph{ganz} (oder $B$ ganz \"uber $A$ vgl. \ref{2.1.1}), wenn jedes $x\in B$ ganz \"uber $A$ ist.
+	\end{definition}
+
+	\begin{beispiele}\label{2.1.3}
+		\begin{enumerate}[(a)]
+			\item $\sqrt{2}$ ist ganz \"uber $\Z$, da $(\sqrt{2})^2 -2 = 0$
+			\item $\frac{1}{2}$ nicht ganz \"uber $\Z$, denn w\"aren $a_1,\dots, a_n \in \Z$ mit $\brac{\frac{1}{2}}^n + a_1\brac{\frac{1}{2}}^{n-1} + \cdots + a_n = 0$, so $1 + 2a_1 + \cdots + 2^na_n = 0$.
+			\item $i$ und $i+1$ sind ganz \"uber $\Z$, denn $i^2+1 = 0$ und $(i+1)^2 - 2(i+1)+2 = 0$
+			\item Eine K\"orpererweiterung $L/K$ ist algebraisch genau dann, wenn sie als Ringerweiterung $K \subseteq L$ ganz ist.
+		\end{enumerate}	
+	\end{beispiele}
+
+	\begin{bemerkung}\label{2.1.4}
+		Ist $A$ ein Unterring von $B$, so ist $B$ in offensichtlicher Weise ein $A$-Modul
+	\end{bemerkung}
+
+	\begin{satz}\label{2.1.5}
+		Sei $A \subseteq B$ eine Ringerweiterung und $x \in B$. Es sind \"aquivalent
+		\begin{enumerate}[(a)]
+			\item $x$ ist ganz \"uber $A$
+			\item $A[x]$ ist endlich erzeugt als $A$-Modul
+			\item $A[x]$ ist in einem Unterring von $B$ enthalten, der ein endlich erzeugter $A$-Modul ist.
+		\end{enumerate}
+	
+		\begin{proof}
+			$(a)\Rightarrow (b)\Rightarrow(c)$ trivial.\newline
+			$(c) \Rightarrow (a)$. Sei $C$ ein Unterring von $B$, der $A[X]$ enth\"alt und als $A$-Modul endlich erzeugt ist.
+			F\"ur den $A$-Modulendomorphismus $f:C\to C, a\mapsto ax$ gibt es nach Cayley-Hamilton \ref{1.7.5} $n\in\N_0$ und $a_1,\dot, a_n\in A$ mit 
+			$f^n +a_1f^{n-1}+\cdots+a_n\id_C= 0$. Auswerten in $1$ liefert $x^n+a_1x^{n-1}+\cdots+a_n = 0$ 
+ 		\end{proof}
+	\end{satz}
 \backmatter
 \printindex
 \end{document}
