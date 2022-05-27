@@ -16,7 +16,8 @@ toc=idx
 \usepackage[T1]{fontenc}
 
 \usepackage{datetime}
-
+%\usepackage{ulem}
+\usepackage{cancel}
 
 \usepackage[headsepline]{scrlayer-scrpage}
 \setkomafont{pageheadfoot}{\normalfont}
@@ -55,6 +56,8 @@ toc=idx
 \newcommand{\F}{\mathbb{F}}
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\comment}[1]{}
+\newcommand{\nsquare}{\cancel{\square}}
+
 
 \newcommand{\brac}[1]{\left( #1 \right)}
 \newcommand{\bracB}[1]{\left[ #1 \right]}
@@ -85,6 +88,8 @@ toc=idx
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\com}{com}
+\DeclareMathOperator{\qf}{qf}
+\DeclareMathOperator{\irr}{irr}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -99,6 +104,7 @@ toc=idx
 \newtheorem{erinnerung}[definition]{Erinnerung}
 \newtheorem{prop-def}[definition]{Proposition und Definition}
 \newtheorem{def-prop}[definition]{Definition und Proposition}
+\newtheorem{def-satz}[definition]{Definition und Satz}
 \newtheorem{def-ueb}[definition]{Definition und \"Ubung}
 \newtheorem{uebung}[definition]{\"Ubung}
 \newtheorem{bem-not}[definition]{Bemerkung und Notation}
@@ -863,7 +869,7 @@ toc=idx
 	\end{defueb}
 
 	\begin{lemma}\label{1.5.7}
-		"Fitting-Zerlegun"\newline
+		"Fitting-Zerlegung"\newline
 		Sei $M$ ein Modul und $f \in \End(M)$ mit $\ker(f) = \ker(f^2)$ und $\im(f) = \im(f^2)$. Dann $M = \ker f \oplus \im f$
 		
 		\begin{proof}
@@ -1323,12 +1329,12 @@ toc=idx
 	\section{Ganzheit}
 	
 	\begin{sprechweise}\label{2.1.1}
-		Sei $A$ ein Unterring des \emph{kommutativen} Ringes $B$, so sagen wir "$A \subseteq B$ ist eine \emph{Ringerweiterung}\index{Ringerweiterung@\textbf{Ringwerweiterung}}". Die Sprechweisen
+		Sei $A$ ein Unterring des \emph{kommutativen} Ringes $B$, so sagen wir "$A \subseteq B$ ist eine \emph{Ringerweiterung}\index{Ringerweiterung@\textbf{Ringerweiterung}}". Die Sprechweisen
 		"Die Ringerweiterung $A \subseteq B$ hat eine Eigenschaft" und "$B$ hat eine Eigenschaft \"uber $A$" sind synonym.
 	\end{sprechweise}
 
 	\begin{definition}\label{2.1.2}
-		Sei $A \subseteq B$ eine Ringerweiterung. Dann hei\ss t $x \in B$ \emph{ganz}\index{Ringerweiterung@\textbf{Ringwerweiterung}!Ganze Ringerweiterung} \"uber $A$, wenn $0=1$ in $B$ oder wenn es ein \emph{normiertes} $f \in A[X]$ mit $f(x) = 0$ gibt ("Ganzheitsgleichung").
+		Sei $A \subseteq B$ eine Ringerweiterung. Dann hei\ss t $x \in B$ \emph{ganz}\index{Ringerweiterung@\textbf{Ringerweiterung}!Ganze Ringerweiterung} \"uber $A$, wenn $0=1$ in $B$ oder wenn es ein \emph{normiertes} $f \in A[X]$ mit $f(x) = 0$ gibt ("Ganzheitsgleichung").
 		Es hei\ss t $A \subseteq B$ \emph{ganz} (oder $B$ ganz \"uber $A$ vgl. \ref{2.1.1}), wenn jedes $x\in B$ ganz \"uber $A$ ist.
 	\end{definition}
 
@@ -1360,6 +1366,156 @@ toc=idx
 			$f^n +a_1f^{n-1}+\cdots+a_n\id_C= 0$. Auswerten in $1$ liefert $x^n+a_1x^{n-1}+\cdots+a_n = 0$ 
  		\end{proof}
 	\end{satz}
+
+	\begin{lemma}\label{2.1.6}
+		Sei $A$ ein Unterring des Ringes $B$ Sei $B$ als $A$-Modul endlich erzeugt und sei $M$ ein endlich erzeugter $B$-Modul. Dann ist $M$ auch als $A$-Modul endlich erzeugt.
+		
+		\begin{proof}
+			Schreibe $B=Ab_1 + \cdots + Ab_m$ mit $b_1, \dots, b_m \in B$ und $M = Bx_1 + \cdots + Bx_n, x_1, \dots, x_n \in M$. Dann 
+			\[M = \sum_{i=1}^{m} \sum_{j=1}^{n} A(b_ix_j)\]
+		\end{proof}
+	\end{lemma}
+	
+	\begin{korollar}\label{2.1.7}
+		Sei $A \subseteq B$ eine Ringerweiterung und seien $x_1, \dots, x_n$ ganz \"uber $A$. Dann ist $A[x_1, \dots, x_n]$ ein endlich erzeugter $A$-Modul.
+		
+		\begin{proof}
+			Benutze \ref{2.1.5} $(a) \rightarrow (b)$, \ref{2.1.6} und Induktion nach $n$
+		\end{proof}
+	\end{korollar}
+
+	\begin{korollar}\label{2.1.8}
+		("Transitivit\"at der Ganzheit")\newline
+		Seien $A \subseteq B \subseteq C$ zwei Ringerweiterungen und sei $A \subseteq B$ ganz. Ist $a \in C$ ganz \"uber $B$, so auch \"uber $A$.
+		
+		\begin{proof}
+			Seien $b_1, \dots, b_n \in B$ Koeffizienten einer Ganzheitsgleichung von $a$ \"uber $B$ Dann ist $A[b_1, \dots, b_n]$ ein endlich erzeugter $A$-Modul nach \ref{2.1.7} und $A[b_1, \dots, b_n][a]$ ein endlich erzeugter $A$-Modul nach \ref{2.1.5}. Nach \ref{2.1.6} ist $A[b_1, \dots, b_n, a]$ dann ein endlich erzeugter $A$-Modul. Mit \ref{2.1.5} ist dann $a$ ganz \"uber $A$.
+		\end{proof}
+	\end{korollar}
+	
+	\begin{korollar}\label{2.1.9}
+		Seien $A \subseteq B \subseteq C$ Ringerweiterungen. Dann ist $A \subseteq C$ ganz genau dann, wenn $A \subseteq B$ und $B \subseteq C$ ganz sind.
+	
+	\end{korollar}
+	
+	
+	\begin{def-satz}\label{2.1.10}
+		Sei $A \subseteq B$ eine Ringerweiterung. Dann bilden die Elemente von $B$, die ganz \"uber $A$ sind, einen Unterring von $B$, der $A$ enth\"alt, den sogenannten \emph{ganzen Abschluss}\index{Ringerweiterung@\textbf{Ringerweiterung}!Ganzer Abschluss} von $A$ in $B$.
+		
+		
+		\begin{proof}
+			Jedes Element von $A$ ist nat\"urlich ganz \"uber $A$. Sind $x,y \in B$ ganz \"uber $A$, so auch $x+y, -x, x\cdot y$, denn $x+y,-x,x\cdot y\in A[x,y]$ und $A[x,y]$ ist nach \ref{2.1.7} ein endlich erzeugter $A$-Modul (benutze \ref{2.1.5}$(c)\Rightarrow(a)$) 
+		\end{proof} 
+ 	\end{def-satz}
+ 
+ 	\begin{definition}\label{2.1.11}
+ 		Sei $A \subseteq B$ eine Ringerweiterung. Dann hei\ss t $A$ \emph{ganz abgeschlossen}\index{Ringerweiterung@\textbf{Ringerweiterung}!Ganz abgeschlossen} in $B$, wenn kein Element von $B\setminus A$ ganz \"uber $A$ ist (d.h. der ganze Abschluss von $A$ in $B$ gleich $A$ ist).
+ 	\end{definition}
+ 
+ 	\begin{definition}\label{2.1.12}
+ 		Sei $A$ ein kommutativer Ring
+ 		\begin{enumerate}[(a)]
+ 			\item Der \emph{ganze Abschluss}\index{Ringerweiterung@\textbf{Ringerweiterung}!Ganzer Abschluss} von $A$ ist der ganze Abschluss von $A$ in seinem totalen Quotientenring $Q(A)$
+ 			
+ 			\item $A$ hei\ss t \emph{ganz abgeschlossen}\index{Ringerweiterung@\textbf{Ringerweiterung}!Ganz abgeschlossen} , wenn $A$ ganz abgeschlossen in $Q(A)$ ist.
+ 		\end{enumerate}
+ 		Erinnerung: $A \subseteq Q(A) = \set{\frac{a}{s}| a,s \in A, \nexists b \in A\setminus\set{0}: sb = 0}$.
+ 		
+ 		Ist $A$ ein Integrit\"atsring, so $A \subseteq Q(A) = \qf(A) = \set{\frac{a}{s}|a,s \in A, s \neq 0}$ 
+ 	\end{definition}
+ 
+ 	\begin{proposition}\label{2.1.13}
+ 		Jeder faktorielle Ring ist ganz abgeschlossen.
+ 		
+ 		\begin{proof}
+ 			Sei $A$ ein faktorieller Ring und $x \in \qf(A)$ ganz \"uber $A$. Schreibe $x = \frac{a}{s}, a, s \in A, s \neq 0$ und $\gcd \set{a,s} = 1$. W\"ahle $a_1,\dots, a_n \in A$ mit $x^n + a_1x^{n-1}+\cdots + a_n = 0$. Multiplizieren mit $s^n$ liefert $a^n + a_1sa^{n-1}+\cdots + a_ns^n = 0$, woraus $s|a^n$ folgt. Wegen $\gcd\set{a,s} = 1$, folgt $ \in A^*$, also $\frac{a}{s} \in A$.
+ 		\end{proof}
+ 	\end{proposition}
+ 
+ 	\begin{satz}\label{2.1.14}
+ 		Sei $A$ ein ganz abgeschlossener Integrit\"atsring, $K:= \qf(A)$ und $L/K$ eine K\"orpererweiterung. Dann ist ein Element $x\in L$ genau dann ganz \"uber $A$, wenn es algebraisch \"uber $K$ mit Minimalpolynom $\irr_K(x) \in A[X]$.
+ 		
+ 		\begin{proof}
+ 			Sei $x\in L$ ganz \"uber $A$, etwa $f\in A[X]$ normiert mit $f(x) = 0$. Zu zeigen $\irr_K(x) \in A[X]$.
+ 			Schreibe $\irr_K(x) = \prod_{i=1}^n (X-a_i) \in \overline{L}[X]$ mit $a_1,\dots,a_n \in \overline{L}$. Wegen $\irr_K(x)|f$ in $K[X]$ gilt $f(a_i) = 0$ f\"ur alle $i\in\set{1,\dots,n}$. Daher ist jedes $a_i$ ganz \"uber $A$ und damit auch alle Koeffizienten von $\irr_K(x)$, welche damit nicht nur in $K$, sondern sogar in $A$ liegen.
+ 		\end{proof}
+ 	\end{satz}
+ 
+ 	\begin{definition}\label{2.1.15}
+ 		Ein \emph{Zahlk\"orper}\index{Ringerweiterung@\textbf{Ringerweiterung}!Zahlk\"orper} ist ein Oberk\"orper $K$ von $\Q$ mit $K/\Q$ endlich. Ist $K$ ein Zahlk\"orper, so hei\ss t $[K:\Q]$ der \emph{Grad}\index{Ringerweiterung@\textbf{Ringerweiterung}!Grad} von $K$ und der ganze Abschluss von $\Z$ in $K$ hei\ss t der \emph{Zahlring}\index{Ringerweiterung@\textbf{Ringerweiterung}!Zahlring} $\mathcal{O}_K$ (oder Ganzheitsring) von $K$. Zahlk\"orper von Grad $2$ und ihre Zahlringe hei\ss en \emph{quadratisch} 
+ 	\end{definition}
+ 
+ 	\begin{notation}\label{2.1.16}
+ 		
+ 		\begin{itemize}
+ 			\item $\nsquare := \set{d\in\Z \setminus\set{0,1}| \nexists p \in \P: p^2|d}$
+ 			\item $\nsquare_+ := \set{d\in\Z \setminus\set{0,1}| \nexists p \in \P: p^2|d, d > ß}$
+ 			\item $\nsquare_- := \set{d\in\Z \setminus\set{0,1}| \nexists p \in \P: p^2|d, d < 0}$
+ 			\item $\nsquare_{2,3} := \set{d\in\Z \setminus\set{0,1}| \nexists p \in \P: p^2|d, d \equiv_{(4)} 2 \textrm{ oder } d \equiv_{(4)} 3 } $
+ 			\item $\nsquare_{1} := \set{d\in\Z \setminus\set{0,1}| \nexists p \in \P: p^2|d, d \equiv_{(4)} 1 } $
+ 		\end{itemize}
+ 	\end{notation}
+ 
+ 	\begin{proposition}\label{2.1.17}
+ 		F\"ur jedes $d\in \nsquare$ ist $\Q(\sqrt{d}) = \Q \oplus \Q\sqrt{d}$ ein quadratischer Zahlk\"orper  mit Zahlring \[\mathcal{O}_d := \mathcal{O}_{\Q(\sqrt{d})} = \begin{cases}
+ 			\Z[\sqrt{d}] = \Z \oplus \Z\sqrt{d} & \textrm{falls } d\in \nsquare_{2,3}\\
+ 			 \Z[\frac{1+\sqrt{d}}{2}] = \Z \oplus \Z\frac{1+\sqrt{d}}{2} & \textrm{falls } d\in \nsquare_{1}
+ 		\end{cases}\]
+ 	
+ 	Zu jedem quadratischen Zahlk\"orper gibt es genau ein $d\in \nsquare$ mit $K \cong \Q(\sqrt{d})$
+ 	
+ 	\begin{proof}
+ 		$\sqrt{d} \notin \Q$ wegen $d\in \nsquare$. Mit $\sqrt{d}^2 = d$ und $\brac{\frac{1+\sqrt{d}}{2}}^2 = \frac{1+d}{4}+\frac{\sqrt{d}}{2} = \frac{d-1}{4} + \brac{\frac{1+\sqrt{d}}{2}}$ folgen die drei Zerlegungen in direkte Summen. 
+ 		
+ 		Seien $a,b\in \Q$. Wir behaupten 
+ 			$(*) a+b\sqrt{d} \in \mathcal{O}_d \Leftrightarrow a+ b\sqrt{d} \in \begin{cases}
+ 				\Z[\sqrt{d}] & \textrm{falls } d\in \nsquare_{2,3}\\
+ 				\Z[\frac{1+\sqrt{d}}{2}] & \textrm{falls } d\in \nsquare_1
+ 			\end{cases}$.
+ 		
+ 		Ohne Einschr\"ankung $b\neq 0$. Dann
+ 		\begin{align*}
+ 			(X-(a+b\sqrt{d}))(X-(a-b\sqrt{d})) &= ((X-a)+b\sqrt{d})((X-a)-b\sqrt{d})\\
+ 			&= (X-a)^2 -b^2d\\
+ 			&= X^2 - 2aX + (a^2-b^2d)\\
+ 			&= \irr_\Q(a+b\sqrt{d})
+ 		\end{align*}
+ 		
+ 		daher 
+ 		\begin{flalign*}
+ 			a+b\sqrt{d} \in \mathcal{O}_d &\Leftrightarrow \set{2a, a^2-b^2d} \subseteq \Z && \ref{2.1.14}\\
+ 			&\Leftrightarrow \set{2a, a^2-b^2d,4b^2d} \subseteq \Z\\
+ 			&\Leftrightarrow \set{2a, a^2-b^2d, 2b} \subseteq \Z && d \in \nsquare\\
+ 		\end{flalign*}
+ 	
+ 		Setzt man $x:= 2a, y:= 2b$, so folgt aus beiden Seiten $\set{x,y} \subseteq \Z$, weshalb wir dies ab jetzt annehmen. Also (**) $a+b\sqrt{d}\in \mathcal{O}_d \Leftrightarrow \overline{x}^2 = \overline{y}^2\overline{d}$ in $\Z/(4)$. 
+ 		Wegen $\overline{x}^2, \overline{y}^2 \in \set{\overline{0},\overline{1}}\subseteq \Z/(4)$ gilt
+ 		
+ 		\begin{itemize}
+ 			\item Im Fall $d\in \nsquare_{2,3}$
+ 			\begin{align*}
+ 				(**) &\Leftrightarrow \overline{y}^2 = 0 \land \overline{x}^2 = 0\\
+ 				&\Leftrightarrow \set{\overline{x},\overline{y}} \subseteq \set{\overline{0}, \overline{2}} \subseteq \Z/(4)\\
+ 				&\Leftrightarrow \set{x,y} \subseteq 2\Z\\
+ 				&\Leftrightarrow \set{a,b}\subseteq \Z\\
+ 				&\Leftrightarrow a+b\sqrt{d} \in \Z[\sqrt{d}]
+ 			\end{align*}
+ 			
+ 			\item Im Fall $d\in \nsquare_{1}$
+ 			\begin{align*}
+ 				(**) &\Leftrightarrow \overline{x}^2 = \overline{y}^2\\
+ 				&\Leftrightarrow x \equiv_{(2)} y\\
+ 				&\Leftrightarrow\frac{x-y}{2} \in \Z\\
+ 				&\Leftrightarrow a-b \in \Z\\
+ 				&\Leftrightarrow (a-b) + 2b\brac{\frac{1+\sqrt{d}}{2}} \in \Z[\frac{1+\sqrt{d}}{2}]
+ 			\end{align*}
+ 		\end{itemize}
+ 	
+ 		Dass jeder quadratische Zahlk\"orper $K$ zu einem $\Q(\sqrt{d})$ mit $d\in \nsquare$ isomorph ist, ist klar.
+ 		Sind schlie\ss lich $d,e\in \nsquare$ mit $\Q(\sqrt{d}) \cong \Q(\sqrt{e})$, so gibt es $a,b\in \Q$ mit $(a+b\sqrt{d})^2 = e$. Es folgt $2ab = 0$. Es gilt $b\neq 0$, da $e \in \nsquare$. Also
+ 		$a = 0$ und $b^2d = e$. Da $e\in \nsquare$, folgt $b^2=1$, also $d=e$
+ 	\end{proof}
+ 	\end{proposition}
 \backmatter
 \printindex
 \end{document}
