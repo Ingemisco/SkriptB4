@@ -107,6 +107,7 @@ toc=idx
 \newtheorem{def-satz}[definition]{Definition und Satz}
 \newtheorem{def-ueb}[definition]{Definition und \"Ubung}
 \newtheorem{uebung}[definition]{\"Ubung}
+\newtheorem{motivation}[definition]{Motivation}
 \newtheorem{bem-not}[definition]{Bemerkung und Notation}
 \newtheorem{def-prop-satz-not}[definition]{Definitionen, Propositionen, S\"atze und Notationen}
 \newtheorem{sprechweise}[definition]{Sprechweise}
@@ -360,7 +361,7 @@ toc=idx
 					\end{itemize}
 				\item[$(c) \Rightarrow (a)$] Gelte (c). Zu zeigen ist, dass $B$ linear unabh\"angig ist und $M$ erzeugt.
 				\begin{enumerate}[1.]
-					\item $B$ linear unabh\"angig: Seien $x_1, \dots, x_n \in B$ paarweise verschieden und $a_1, \dots, a_n \in R$ mit $a_1x_1 + \cdots + a_nx_n = 0$. Sei $i \in \set{1, \dots, n}$. Zu zeigen ist $a_i = 0$. Gem\"a\ss (c) gibt es einen Homomorphismus $f: M \to R$ mit $f(x_i) = 1$ und $f(x_j) = 0$ f\"ur $j \in \set{1, \dots, n} \setminus \set{i}$.
+					\item $B$ linear unabh\"angig: Seien $x_1, \dots, x_n \in B$ paarweise verschieden und $a_1, \dots, a_n \in R$ mit $a_1x_1 + \cdots + a_nx_n = 0$. Sei $i \in \set{1, \dots, n}$. Zu zeigen ist $a_i = 0$. Gem\"a\ss\ (c) gibt es einen Homomorphismus $f: M \to R$ mit $f(x_i) = 1$ und $f(x_j) = 0$ f\"ur $j \in \set{1, \dots, n} \setminus \set{i}$.
 					Dann \[0 = f(0) = f\brac{\sum_{j=1}^n a_jx_j} = \sum_{j=1}a_jf(x_j) = a_if(x_i) = a_i\]
 					
 					\item $B$ erzeugt $M$: Nach (c) gibt es einen Homomorphismus $M \to M$, der auf $B$ die Identit\"at ist. Einerseits ist $\id_M$ ein solcher, andererseits auch $\rho \circ f$, wobei $f: M \to N:= \sum_{x \in B} Rx$ der nach (c) existierende Homomorphismus mit $f\big|_{B} = \id_B$ ist und $\iota: N \hookrightarrow M, x \mapsto x$ die Inklusion. Also $\id_M = \iota \circ f$, insbesondere $M = \im(\id_M) = \im(f) = N$
@@ -1025,7 +1026,7 @@ toc=idx
 		
 		\begin{proof}
 			Sei $R$ ein Integrit\"atsring und $\delta:R\to\N_0$ eine euklidische Funktion. Sei $I$ ein Ideal in $R$, Ohne Einschr\"ankung $I \neq (0)$. W\"ahle $a \in I\setminus\set{0}$
-			mit kleinstm\"oglichem $\delta(a)$. Wir zeigen $I= (a)$. Sei hierzu $x\in (a)$. Schreibe $x = aq+r$ mit $q,r \in R$, $\delta(r)< \delta(a)$. Dann ist $r = x-aq \in I$ und folglich $r=0$ gem\"a\ss Wahl von $a$. Also $x = aq \in (a)$.
+			mit kleinstm\"oglichem $\delta(a)$. Wir zeigen $I= (a)$. Sei hierzu $x\in (a)$. Schreibe $x = aq+r$ mit $q,r \in R$, $\delta(r)< \delta(a)$. Dann ist $r = x-aq \in I$ und folglich $r=0$ gem\"a\ss\ Wahl von $a$. Also $x = aq \in (a)$.
 		\end{proof}
 	\end{proposition}
 
@@ -1204,7 +1205,7 @@ toc=idx
 			Seien $k \in \N_0$ und $a_1, \dots, a_k, b_1, \dots, b_k \in N_R \setminus \set{0}$ mit $a_1|\dots|a_k, b_1|\dots|b_k$ und 
 				\[\prod_{i=1}^k R/a_iR \cong \prod_{i=1}^kR/b_iR\]
 				
-			Es reicht zu zeigen, dass $(a_1, \dot, a_k) = (b_1, \dots, b_k)$. Wir zeigen dazu $(a_j, \dot, a_k) = (b_j, \dots, b_k)$ f\"ur alle $j\in \set{1,\dots,k+1}$ durch Induktion nach $j$.
+			Es reicht zu zeigen, dass $(a_1, \dots, a_k) = (b_1, \dots, b_k)$. Wir zeigen dazu $(a_j, \dots, a_k) = (b_j, \dots, b_k)$ f\"ur alle $j\in \set{1,\dots,k+1}$ durch Induktion nach $j$.
 			
 			$j=k:$ klar
 			
@@ -1362,7 +1363,7 @@ toc=idx
 		\begin{proof}
 			$(a)\Rightarrow (b)\Rightarrow(c)$ trivial.\newline
 			$(c) \Rightarrow (a)$. Sei $C$ ein Unterring von $B$, der $A[X]$ enth\"alt und als $A$-Modul endlich erzeugt ist.
-			F\"ur den $A$-Modulendomorphismus $f:C\to C, a\mapsto ax$ gibt es nach Cayley-Hamilton \ref{1.7.5} $n\in\N_0$ und $a_1,\dot, a_n\in A$ mit 
+			F\"ur den $A$-Modulendomorphismus $f:C\to C, a\mapsto ax$ gibt es nach Cayley-Hamilton \ref{1.7.5} $n\in\N_0$ und $a_1,\dots, a_n\in A$ mit 
 			$f^n +a_1f^{n-1}+\cdots+a_n\id_C= 0$. Auswerten in $1$ liefert $x^n+a_1x^{n-1}+\cdots+a_n = 0$ 
  		\end{proof}
 	\end{satz}
@@ -1516,6 +1517,111 @@ toc=idx
  		$a = 0$ und $b^2d = e$. Da $e\in \nsquare$, folgt $b^2=1$, also $d=e$
  	\end{proof}
  	\end{proposition}
+ 	\newpage
+ 	
+ 	\section{Dedekindringe}
+ 	\begin{erinnerung}\label{2.2.1}
+ 		Sei $R$ ein kommutativer Ring
+ 		\begin{enumerate}[(a)]
+ 			\item Ein Ideal $\mathfrak{p}$ in $R$ hei\ss t prim (oder Primideal), wenn $1\notin \mathfrak{p}$ und
+ 				\[\forall a,b \in R: (ab \in \mathfrak{p} \Rightarrow (a \in \mathfrak{p} \lor b \in \mathfrak{p}))\]
+ 			
+ 			\item Ein Element $p \in R$ hei\ss t prim (oder Primelement), wenn $(p)$ ein Primideal ist, d.h. $p\in R^*$ und
+ 				\[\forall a,b \in R: (p|ab \Rightarrow (p|a \lor p|b))\]
+ 			
+ 			\item Sind $I_1, \dots, I_n$ Ideale von $R$, so nennt man
+ 			\begin{align*}
+ 				\prod_{k=1}^n I_k &:= I_1 \cdot \cdots \cdot I_n := \brac{\set{a_1\cdot\cdots\cdot a_n|a_1 \in I_1, \dots, a_n \in I_n}}\\
+ 				&= \begin{cases}
+ 					R & \textrm{falls } n = 0\\
+ 					\set{\sum_i a_{i_1}\dots a_{i_n}| a_{i_1} \in I_1, \dots a_{i_n} \in I_n} & \textrm{falls } n\geq 1
+ 				\end{cases}
+ 			\end{align*} 
+ 			deren \emph{Produkt}\index{Dedekindringe@\textbf{Dedekindringe}!Produkt} 
+ 			
+ 			\item In Integrit\"atsringen sind Primfaktorzerlegungen (im Wesentlichen) eindeutig, d.h. it $R$ ein Integrit\"atsring, $m,n \in\N_0$ und $p_1, \dots, p_m, q_1, \dots, q_n \in R\setminus \set{0}$ prim mit $p_1\cdot\cdots\cdot p_m = q_1\cdot\cdots\cdot q_m$, so gilt $m=n$ und es gibt ein $\sigma \in S_n$ mit $(p_i) = (q_{\sigma(i)})$ f\"ur $i \in \set{1,\dots, n}$ (vergleiche auch \ref{1.4.17}(b)).
+ 			
+ 			\item $R$ hei\ss t faktoriell, wenn $R$ ein Integrit\"atsring ist und jedes $a \in R$ eine Primfaktorzerlegung besitzt, d.h. es gibt $c \in R^*, n \in \N_0$ und Primelemente $p_1, \dots, p_n \in R$ mit $a = cp_1 \cdot \cdots \cdot p_n$.
+ 			
+ 			\item $R$ euklidisch $\overset{\ref{1.6.3}}{\Rightarrow}$ $R$ Hauptidealring $\Rightarrow$ $R$ faktoriell $\Rightarrow$ $R$ Integrit\"atsring  
+ 		\end{enumerate}
+ 	\end{erinnerung}
+ 
+ 	\begin{beispiele}\label{2.2.2}
+ 		Wegen $-5 \equiv_{(4)} -1 \equiv_{(4)} 3$ sind $\Z[\sqrt{-1}] = \Z[i]$ und $\Z[\sqrt{-5}] = \Z[\sqrt{5}i]$ quadratische Zahlringe [$\to$\ref{2.1.17}].
+ 		
+ 		Der Beweis von \ref{1.6.2}(c) daf\"ur, dass $\Z[\sqrt{-1}]$ euklidisch ist, funktioniert f\"ur $\Z[\sqrt{-5}]$ nicht mehr, da man nur noch 
+ 			\[\left| \frac{a}{b} - q\right| \leq \brac{\frac{1}{2}}^2 + \brac{\frac{\sqrt{5}}{2}}^2 = \frac{1}{4} + \frac{5}{4} = \frac{6}{4}\]
+ 		erh\"alt, aber $\frac{6}{4} \geq 1$. 
+ 		
+ 		Tats\"achlich ist $\Z[\sqrt{-5}]$ nicht einmal faktoriell, denn $2$ besitzt darin keine Primfaktorzerlegung, weil sonst $2$ prim in $\Z[\sqrt{-5}]$ sein m\"usste, was aber nicht der Fall
+ 		ist, denn $2|6 = (1+\sqrt{-5})(1-\sqrt{-5})$, aber $2\nmid (1+\sqrt{-5})$ und $2 \nmid (1+\sqrt{-5})$ in $\Z[\sqrt{-5}]$. Andererseits besitzt $(2)$ eine \emph{Primidealzerlegung}\index{Dedekindringe@\textbf{Dedekindringe}!Primidealzerlegung}, d.h. es ist Produkt von Primidealen, denn $(2,1+\sqrt{-5}) \in \Z[\sqrt{-5}]$ ist ein Primideal mit 
+ 		\begin{align*}
+ 			(2,1+\sqrt{-5})^2 &= (2,1+\sqrt{-5})(2,1+\sqrt{-5})\\
+ 			&= (4, 2 + 2\sqrt{-5}, -4 + 2\sqrt{-5})\\
+ 			&= (4, 2+2\sqrt{-5},2\sqrt{-5})\\
+ 			&= (4,2,2\sqrt{-5}) = (2)
+ 		\end{align*}
+ 	
+ 		Dass $(2,1+\sqrt{-5})$ prim (und sogar maximal) ist, folgt, daraus, dass es der Kern des Ringhomomorphismus
+ 			\[\varphi:\Z[\sqrt{-5}]\to \F_2, a+b\sqrt{-5} \mapsto \overline{a+b}\]
+ 		ist, wie man unter Beachtung von $\varphi(\sqrt{-5})^2 = 1 = -5$ in $\F_2$ sofort nachrechnet.
+ 	\end{beispiele}
+ 
+ 	\begin{motivation}\label{2.2.3}
+ 		Zahlringe spielen eine wichtige Rolle bei der Untersuchung arithmetischer Eigenschaften von $\Z$. Leider sind sie nicht immer faktoriell. Der Ausweg wird sein, statt Elemente Ideale und statt Primelemente Primideale zu betrachten
+ 	\end{motivation}
+ 
+ 	\begin{definition}\label{2.2.4}
+ 		[vgl. \ref{2.2.1}(e)]
+ 		Ein Integrit\"atsring hei\ss t \emph{Dedekindring}\index{Dedekindringe@\textbf{Dedekindringe}}, wenn darin jedes Ideal ein Produkt von Primidealen ist.
+ 	\end{definition}
+ 
+ 	\begin{beispiele}\label{2.2.5}
+ 		Jeder Hauptidealring ist ein Dedekindring
+ 	\end{beispiele}
+ 
+ 	\begin{definition}\label{2.2.6}
+ 		ei $A$ ein Integrit\"atsring. Ein \emph{gebrochenes Ideal}\index{Dedekindringe@\textbf{Dedekindringe}!Gebrochenes Ideal} von $A$ ist ein $A$-Untermodul von $\qf(A)$ mit $sI \subseteq A$ f\"ur ein $s \in A\setminus\set{0}$.
+ 		
+ 		Zyklische [$\to$\ref{1.1.4}(d)] gebrochene Ideale nennt man \emph{gebrochene Hauptideale}\index{Dedekindringe@\textbf{Dedekindringe}!Gebrochene Hauptideale}.
+ 	\end{definition}
+ 
+ 	\begin{bemerkung}\label{2.2.7}
+ 		Sei $A$ ein Integrit\"atsring.
+ 		\begin{enumerate}[(a)]
+ 			\item Jedes gebrochene Ideal von $A$ ist als $A$-Modul isomorph zu einem Ideal von $A$ (ist n\"amlich $s \in A \setminus \set{0}$ mit $sI \subseteq A$, so $I \xrightarrow{\cong} sI, a\mapsto sa$).
+ 			\item  Die gebrochenen Ideale von $A$ sind genau die $s^{-1}I$ ($s \in A \setminus \set{0}, I$ ein Ideal von $A$).
+ 			\item $A$ ist ein Hauptidealring genau dann, wenn jedes gebrochene Ideal von $A$ ein gebrochenes Hauptideal von $A$ ist.
+ 			\item Jeder endlich erzeugte $A$-Untermodul von $\qf(A)$ ist ein gebrochenes Ideal
+ 			\item Ist $A$ noethersch, so sind die gebrochenen Ideale von $A$ genau die endlich erzeugten $A$-Untermoduln von $\qf(A)$
+ 		\end{enumerate}
+ 	\end{bemerkung}
+ 
+ 	\begin{prop-def}\label{2.2.8}
+ 		Seien $A$ ein Integrit\"atsring und $I, J$ gebrochene Ideale von $A$. Dann sind auch $I+J, I \cap J, I \cdot J = \set{\sum_{i}a_ib_i|a_i \in I, b_i \in J}$ und f\"ur $J \neq 0$ auch 
+ 		$I:J := \set{a \in \qf(A)| aJ \subseteq I}$ gebrochene Ideale von $A$.
+ 		
+ 		\begin{proof}
+ 			Mit $I$ und $J$ sind auch $I + J, I \cap J$ (trivial), $IJ$ und $I:J$ $A$-Untermoduln von $\qf(A)$. Sind $s,t \in A \setminus \set{0}$ mit $sI \subseteq A$ und $tJ \subseteq A$, so ist auch $st(I+J) \subseteq A, s(I \cap J)\subseteq A$ und $(st)(IJ) \subseteq A$. Ist ferner $J \neq 0$, so gibt es $b \in J \cap (A \setminus \set{0})$ und es gilt f\"ur $a \in I:J$, dass $(sb)a = s(ab) \in s(aJ)\subseteq sI \subseteq A$, also $sb(I:J) \subseteq A$.
+ 		\end{proof}
+ 	\end{prop-def}
+ 
+ 	\begin{def-prop}\label{2.2.9}
+ 		Sei $A$ ein Integrit\"atsring und $I$ ein gebrochenes Ideal von $A$. Dann hei\ss t $I$ \emph{invertierbar}\index{Dedekindringe@\textbf{Dedekindringe}!Invertierbares gebrochenes Ideal}, wenn es ein gebrochenes Ideal $J$ von $A$ gibt mit $IJ = A$. In diesem Fall gilt $J=I^{-1}:=A:I$ und $I$ und $J$ sind endlich erzeugt.
+ 		
+ 		\begin{proof}
+ 			Gelte $IJ = A$. Dann $J \subseteq A:I = (A:I)IJ \subseteq AJ = J$, also $J = A:I$. 
+ 			
+ 			Schreibe $1 = \sum_i a_ib_i$ mit $a_i \in I, b_i \in J$. Dann gilt 
+ 			\[I = (\sum_i a_ib_i)I = \sum_i\underbrace{(b_iI)}_{\subseteq A}a_i \subseteq \sum_i Aa_i \subseteq I\]
+ 			Womit $I = \sum_i Aa_i$ endlich erzeugt ist. Analog f\"ur $J$.
+ 		\end{proof}
+ 	\end{def-prop}
+ 
+ 	\begin{beispiele}\label{2.2.10}
+ 		Jedes gebrochene Hauptideal $\neq 0$ eines Integrit\"atsring ist invertierbar.
+ 	\end{beispiele}
 \backmatter
 \printindex
 \end{document}
