@@ -1622,6 +1622,93 @@ toc=idx
  	\begin{beispiele}\label{2.2.10}
  		Jedes gebrochene Hauptideal $\neq 0$ eines Integrit\"atsring ist invertierbar.
  	\end{beispiele}
+ 
+ 	\begin{satz}\label{2.2.11}
+ 		(Eindeutigkeit der Primidealzerlegung invertierbarer Ideale, unter Beachtung von \ref{2.2.10} und \ref{2.2.1}(b) Verallgemeinerung von \ref{2.2.1}(d))
+ 		
+ 		Sei $A$ ein Integrit\"atsring und $I$ ein Ideal von $A$, was als gebrochenes Ideal invertierbar ist. Seien $m, n \in \N_0$ und $\mathfrak{p}_1,\dots, \mathfrak{p}_m,\mathfrak{q}_1,\dots,\mathfrak{q}_n$ Primideale in $A$ mit $\mathfrak{p}_1\cdot \cdots \cdot \mathfrak{p}_m = \mathfrak{q}_1 \cdot \cdots \cdot \mathfrak{q}_n = I$. Dann gilt $m = n$ und es gibt $\sigma \in S_n$ mit $\mathfrak{p}_i = \mathfrak{q}_{\sigma(i)}$ f\"ur alle $i \in \set{1,\dots, n}$.
+ 		
+ 		\begin{proof}
+ 			Induktion nach $m$. $m = 0$: trivial.
+ 			
+ 			$m-1 \to m (m \in \N)$. Mit $I$ sind alle $\mathfrak{p}_i$ und $\mathfrak{q}_j$ invertierbar. Aus $\mathfrak{q}_1\cdot \cdots \cdot \mathfrak{q}_n \subseteq \mathfrak{p}_1$ folgt, dass es ein $j$ mit $\mathfrak{q}_j \subseteq \mathfrak{p}_1$ gibt (insbesondere $n\geq 1$). denn andernfalls g\"abe es $b_1 \in \mathfrak{q}_1\setminus \mathfrak{p}_1, \dots b_n \in \mathfrak{q}_n\setminus \mathfrak{p}_1$ und $b1\cdot \cdots \cdot b_n \in \mathfrak{q}_1\cdot \cdots \cdot \mathfrak{q}_n \setminus \mathfrak{p}_1$.
+ 			
+ 			Ohne Einschr\"ankung $j=1$. Nun ist $\mathfrak{p}^{-1}\mathfrak{q}_1$ ein Ideal, weil $\mathfrak{p}_1^{-1}\mathfrak{q}_1 \subseteq \mathfrak{p}_1^{-1}\mathfrak{p}_1 = A$, weshalb $\mathfrak{p}_1(\mathfrak{p}_1^{-1}\mathfrak{q}_1) = \mathfrak{q}_1$ impliziert, dass $\mathfrak{p}_1 \subseteq \mathfrak{q}_1$ oder $\mathfrak{p}_1^{-1}\mathfrak{q}_1 \subseteq \mathfrak{q}_1$, aber letzteres ist unm\"oglich, da sonst $A = \mathfrak{p}_1\mathfrak{p}_1^{-1}\mathfrak{q}_1\mathfrak{q}_1^{-1}\subseteq \mathfrak{p}_1\mathfrak{q}_1\mathfrak{q}_1^{-1} = \mathfrak{p}_1$. Also $\mathfrak{q}_1 \subseteq \mathfrak{p}_1 \subseteq \mathfrak{q}_1$ und daher $\mathfrak{p}_1 = \mathfrak{q}_1$. Somit $\mathfrak{p}_2 \cdot \cdots \cdot \mathfrak{p}_n = I\mathfrak{p}_1^{-1} = \mathfrak{q}_2 \cdot \cdots \cdot \mathfrak{q}_m$. Wende nun die Induktionsvoraussetzung an.
+ 		\end{proof}
+ 	\end{satz}
+ 
+ 	\begin{satz}\label{2.2.12}
+ 		Sei $A$ ein Dedekindring. Dann gilt 
+ 		\begin{enumerate}[(a)]
+ 			\item Jedes Ideal $\neq (0)$ von $A$ ist invertierbar [$\to$\ref{2.2.9}].
+ 			\item $A$ ist ganz abgeschlossen
+ 			\item $A$ ist noethersch
+ 			\item In $A$ ist jedes Primideal $\neq (0)$ maximal.
+ 		\end{enumerate}
+ 	
+ 		\begin{proof}
+ 			\emph{Behauptung 1: Jedes invertierbare Primideal von $A$ ist ein maximales Ideal} [In (d) wird dies sogar f\"ur alle Primideale $\neq (0)$ behauptet].
+ 			
+ 			\emph{Begr\"undung}: Sei $\mathfrak{p}$ ein invertierbares Primideal von $A$. Wir zeigen, dass $A/\mathfrak{p}$ ein K\"orper ist. Sei hierzu $a \in A$ mit $\overline{a} \neq 0$ in $A/\mathfrak{p}$, das hei\ss t $a \notin \mathfrak{p}$. Zu zeigen ist $\overline{a} \in (A/\mathfrak{p})^*$. Es reicht zu zeigen, dass $I:= aA + \mathfrak{p} = A$. Da $\mathfrak{p}$ invertierbar ist, reich es $a\mathfrak{p} + \mathfrak{p}^2 = \mathfrak{p}$ zu zeigen. Wir zeigen zun\"achst $I^2 = J:= a^2A + \mathfrak{p}$, was wegen $I^2 = a^2A + a\mathfrak{p} + \mathfrak{p}^2$ eine Abschw\"achung der Behauptung ist. Wir wissen $(I/\mathfrak{p})^2 = J/\mathfrak{p}$.
+ 			
+ 			Da $A$ ein Dedekindring ist, gibt es $m,n \in \N_0$ und Primideale $\mathfrak{p}_1,\cdots, \mathfrak{p}_m$ und $\mathfrak{q}_1,\dots, \mathfrak{q}_n$ mit $I = \mathfrak{p}_1 \cdots \mathfrak{p}_m$ und $J = \mathfrak{q}_1 \cdots \mathfrak{q}_n$. Es gilt $\mathfrak{p} \subseteq I \subseteq \mathfrak{p}_i$ f\"ur alle $i \in \set{1,\dots, m}$ und $\mathfrak{p} \subseteq J \subseteq \mathfrak{q}_j$ f\"ur alle $j \in\set{1,\dots,n}$. 
+ 			
+ 			Da die Primideale in $A/\mathfrak{p}$ den Primidealen von $A$ entsprechen, die $\mathfrak{p}$ enthalten, erhalten wir im Integrit\"atsring $A/\mathfrak{p}$ die Primidealzerlegungen
+ 				\[I/\mathfrak{p} = (\mathfrak{p}_1/\mathfrak{p}) \cdots (\mathfrak{p}_m/\mathfrak{p})\]
+ 			und 
+ 				\[J/\mathfrak{p} = (\mathfrak{q}_1/\mathfrak{p}) \cdots (\mathfrak{q}_n/\mathfrak{p})\]
+ 			
+ 			Es folgt $(\mathfrak{p}_1/\mathfrak{p})^2 \cdots (\mathfrak{p}_m/\mathfrak{p})^n = (I/\mathfrak{p})^2 = J/\mathfrak{p} = (\mathfrak{q}_1/\mathfrak{p})\cdots (\mathfrak{q}_n/\mathfrak{p})$
+ 			
+ 			Da $J/\mathfrak{p} = (\overline{a}^2) \neq 0$ als Hauptideal nach \ref{2.2.10} invertierbar ist, folgt mit \ref{2.2.11} ohne Einschr\"ankung $(\mathfrak{p}_1/\mathfrak{p}, \mathfrak{p}_1/\mathfrak{p}, \dots, \mathfrak{p}_m/\mathfrak{p}, \mathfrak{p}_m/\mathfrak{p}) = (\mathfrak{q}_1/\mathfrak{p},\dots, \mathfrak{q}_n/\mathfrak{p})$  und daher 
+ 			$(\mathfrak{p}_1,\mathfrak{p}_1,\dots,\mathfrak{p}_m,\mathfrak{p}_m) = (\mathfrak{q}_1,\dots,\mathfrak{q}_n)$, also $I^2 = J$.
+ 			
+ 			Um schlie\ss lich $a\mathfrak{p} + \mathfrak{p}^2 = \mathfrak{p}$, sei $b \in \mathfrak{p}$. Zu zeigen ist $b \in a\mathfrak{p} + \mathfrak{p}^2$. Wegen $b \in J$ gilt $b \in I^2 = a^2A + a\mathfrak{p}+ \mathfrak{p}^2$. Schreibe $b = a^2c + b'$ mit $c \in A, b' \in a\mathfrak{p}+\mathfrak{p}^2$. Dann $a^2c = b - b' in \mathfrak{p}$ und daher $c \in \mathfrak{p}$. Somit auch $b \in a \mathfrak{p} + \mathfrak{p}^2$
+ 			
+ 			
+ 			\emph{Behauptung 2: Jedes Primideal $\neq (0)$ von $A$ ist invertierbar} [In (a) wird dies sogar f\"ur alle Ideale $\neq 0$ behauptet]
+ 			
+ 			\emph{Begr\"undung}: Sei $\mathfrak{p} \neq (0)$ ein Primideal von $A$. W\"ahle ein $a \mathfrak{p}\setminus \set{0}$. Schreibe $aA = \mathfrak{p}_1 \cdots \mathfrak{p}_n$ mit Primidealen $\mathfrak{p}_1,\dots, \mathfrak{p}_n$ von $A$. Da $aA$ invertierbar ist [$\to$\ref{2.2.10}] ist es auch jedes $\mathfrak{p}_i$. Wegen $\mathfrak{p}_1\cdots \mathfrak{p}_n \subseteq \mathfrak{p}$ ist aber auch $\mathfrak{p}$ eines dieser $\mathfrak{p}_i$, denn es gibt ein $i$ mit $\mathfrak{p}_i \subseteq \mathfrak{p}$ und $\mathfrak{p}_i$ ist maximal nach Behauptung 1.
+ 			
+ 			\vspace*{2mm}
+ 			
+ 			Wegen der Existenz der Primfaktorzerlegung in $A$, folgt aus Behauptung 2 sofort (a)- Damit ist Behauptung 1 gleichbedeutend mit (d). 
+ 			
+ 			Aus (a) folgt (c) mit \ref{2.2.9}. Um schlie\ss lich (b) zu zeigen, sei $a \in \qf(A)$ ganz \"uber $A$. Dann ist $A[a]$ ein endlich erzeugter $A$-Modul [$\to$\ref{2.1.5}] und damit ein gebrochenes Ideal von $A$ [$\to$ \ref{2.2.7}(d)], das nach (a) invertierbar ist. 
+ 			
+ 			Aus $A[a]^2 \subseteq A[a]$ folgt daher $A[a] \subseteq A$ und daher $a \in A$ wie gew\"unscht.
+   		\end{proof}
+   		\newpage
+   		
+   		\section{Charakterisierung von Dedekindringen}
+   		\begin{lemma}\label{2.3.1}
+   			In einem noetherschen Integrit\"atsring enth\"alt jedes Ideal $\neq (0)$ ein Produkt von Primidealen $\neq (0)$.
+   			
+   			\begin{proof}
+   				Sei $A$ ein Integrit\"atsring und $I \neq (0)$ ein Ideal von $A$, welches kein Produkt von Primdiealen $\neq (0)$ enth\"alt. Es reicht ein Ideal $J \supsetneq I$ von $A$ zu finden, welches auch kein Produkt von Primidealen $\neq 0$ enth\"alt. Da $I$ weder ein Primideal von ganz $A$ ist, gibt es $a,b \in A\setminus I$ mit $ab \in I$. Dann sind $J := I + (a)$ und $K:= I+(b)$ Ideale von $A$ mit $J \supsetneq I$ und $K \supsetneq I$ und $JK \subseteq I$. Es k\"onnen nicht sowohl $J$ als auch $K$ ein Produkt von Primidealen $\neq 0$ enthalten.
+   			\end{proof} 
+   		\end{lemma}
+   	
+   		\begin{satz}\label{2.3.2}
+   			Sei $A$ ein Ring. Dann ist $A$ ein Dedekindring genau dann, wenn $A$ ein noetherscher, ganz abgeschlossener Integrit\"atsring ist, indem alle Primideale $\neq (0)$ maximal sind.
+   			
+   			\begin{proof}
+   				Ist $A$ ein Dedekindring, so besitzt $A$ die gew\"unschten Eigenschaften nach \ref{2.2.12}. Sei umgekehrt $A$ ein noetherscher, ganz abgeschlossener Integrit\"atsring, in dem alle Primideale $\neq (0)$ maximal sind.
+   				
+   				\emph{Behauptung 1: Seien $I$ und $J$ gebrochene Ideale von $A$ mit $J \neq (0)$ und $IJ \subseteq J$. Dann $I \subseteq A$.}
+   				
+   				\emph{Begr\"undung}: Sei $x \in I$. Zu zeigen ist $x \in A$. Nach \ref{2.1.5} reicht es zu zeigen, dass $A[x]$ ein endlich erzeugter $A$-Modul ist. 
+   				
+   				Durch Induktion zeigt man $\forall n \in \N_0: x^nJ \subseteq J$  (In der Tat $x^{n-1}J \subseteq J$ f\"ur ein $n\in \N$, so $x^nJ = x(x^{n-1}J) \subseteq xJ \subseteq IJ \subseteq J$)
+   				
+   				Es folgt $A[x]J \subseteq J$. W\"ahlt man $y \in J \setminus \set{0}$, so folgt also $A[x]y \subseteq J$. Da $A$ noethersch ist, ist $J$ ein endlich erzeugter $A$-Modul [$\to$\ref{2.2.7}(e)] und daher selber noethersch [$\to$\ref{1.4.7}], womit $A[x]y \cong A[x]$ ein endlich erzeugter $A$-Modul ist.
+   				
+   				\vspace*{2mm}
+   				\emph{Behauptung 2: Sei $\mathfrak{p} \neq (0)$ ein Primideal von $A$. Dann ist $\mathfrak{p}$ invertierbar.}
+   			\end{proof}
+   		\end{satz}
+   		
+ 	\end{satz}
 \backmatter
 \printindex
 \end{document}
