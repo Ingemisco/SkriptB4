@@ -90,6 +90,7 @@ toc=idx
 \DeclareMathOperator{\com}{com}
 \DeclareMathOperator{\qf}{qf}
 \DeclareMathOperator{\irr}{irr}
+\DeclareMathOperator{\tr}{tr}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -1678,37 +1679,131 @@ toc=idx
  			
  			Aus $A[a]^2 \subseteq A[a]$ folgt daher $A[a] \subseteq A$ und daher $a \in A$ wie gew\"unscht.
    		\end{proof}
-   		\newpage
+   	 \end{satz}
+   	\newpage
    		
-   		\section{Charakterisierung von Dedekindringen}
-   		\begin{lemma}\label{2.3.1}
-   			In einem noetherschen Integrit\"atsring enth\"alt jedes Ideal $\neq (0)$ ein Produkt von Primidealen $\neq (0)$.
-   			
-   			\begin{proof}
-   				Sei $A$ ein Integrit\"atsring und $I \neq (0)$ ein Ideal von $A$, welches kein Produkt von Primdiealen $\neq (0)$ enth\"alt. Es reicht ein Ideal $J \supsetneq I$ von $A$ zu finden, welches auch kein Produkt von Primidealen $\neq 0$ enth\"alt. Da $I$ weder ein Primideal von ganz $A$ ist, gibt es $a,b \in A\setminus I$ mit $ab \in I$. Dann sind $J := I + (a)$ und $K:= I+(b)$ Ideale von $A$ mit $J \supsetneq I$ und $K \supsetneq I$ und $JK \subseteq I$. Es k\"onnen nicht sowohl $J$ als auch $K$ ein Produkt von Primidealen $\neq 0$ enthalten.
-   			\end{proof} 
-   		\end{lemma}
+ 	\section{Charakterisierung von Dedekindringen}
+ 	\begin{lemma}\label{2.3.1}
+ 		In einem noetherschen Integrit\"atsring enth\"alt jedes Ideal $\neq (0)$ ein Produkt von Primidealen $\neq (0)$.
+ 			
+ 		\begin{proof}
+ 			Sei $A$ ein Integrit\"atsring und $I \neq (0)$ ein Ideal von $A$, welches kein Produkt von Primdiealen $\neq (0)$ enth\"alt. Es reicht ein Ideal $J \supsetneq I$ von $A$ zu finden, welches auch kein Produkt von Primidealen $\neq 0$ enth\"alt. Da $I$ weder ein Primideal von ganz $A$ ist, gibt es $a,b \in A\setminus I$ mit $ab \in I$. Dann sind $J := I + (a)$ und $K:= I+(b)$ Ideale von $A$ mit $J \supsetneq I$ und $K \supsetneq I$ und $JK \subseteq I$. Es k\"onnen nicht sowohl $J$ als auch $K$ ein Produkt von Primidealen $\neq 0$ enthalten.
+ 		\end{proof} 
+ 	\end{lemma}
    	
-   		\begin{satz}\label{2.3.2}
-   			Sei $A$ ein Ring. Dann ist $A$ ein Dedekindring genau dann, wenn $A$ ein noetherscher, ganz abgeschlossener Integrit\"atsring ist, indem alle Primideale $\neq (0)$ maximal sind.
+   	\begin{satz}\label{2.3.2}
+   		Sei $A$ ein Ring. Dann ist $A$ ein Dedekindring genau dann, wenn $A$ ein noetherscher, ganz abgeschlossener Integrit\"atsring ist, indem alle Primideale $\neq (0)$ maximal sind.
    			
-   			\begin{proof}
-   				Ist $A$ ein Dedekindring, so besitzt $A$ die gew\"unschten Eigenschaften nach \ref{2.2.12}. Sei umgekehrt $A$ ein noetherscher, ganz abgeschlossener Integrit\"atsring, in dem alle Primideale $\neq (0)$ maximal sind.
+   		\begin{proof}
+   			Ist $A$ ein Dedekindring, so besitzt $A$ die gew\"unschten Eigenschaften nach \ref{2.2.12}. Sei umgekehrt $A$ ein noetherscher, ganz abgeschlossener Integrit\"atsring, in dem alle Primideale $\neq (0)$ maximal sind.
    				
-   				\emph{Behauptung 1: Seien $I$ und $J$ gebrochene Ideale von $A$ mit $J \neq (0)$ und $IJ \subseteq J$. Dann $I \subseteq A$.}
+   			\emph{Behauptung 1: Seien $I$ und $J$ gebrochene Ideale von $A$ mit $J \neq (0)$ und $IJ \subseteq J$. Dann $I \subseteq A$.}
    				
-   				\emph{Begr\"undung}: Sei $x \in I$. Zu zeigen ist $x \in A$. Nach \ref{2.1.5} reicht es zu zeigen, dass $A[x]$ ein endlich erzeugter $A$-Modul ist. 
+   			\emph{Begr\"undung}: Sei $x \in I$. Zu zeigen ist $x \in A$. Nach \ref{2.1.5} reicht es zu zeigen, dass $A[x]$ ein endlich erzeugter $A$-Modul ist. 
    				
-   				Durch Induktion zeigt man $\forall n \in \N_0: x^nJ \subseteq J$  (In der Tat $x^{n-1}J \subseteq J$ f\"ur ein $n\in \N$, so $x^nJ = x(x^{n-1}J) \subseteq xJ \subseteq IJ \subseteq J$)
+   			Durch Induktion zeigt man $\forall n \in \N_0: x^nJ \subseteq J$  (In der Tat $x^{n-1}J \subseteq J$ f\"ur ein $n\in \N$, so $x^nJ = x(x^{n-1}J) \subseteq xJ \subseteq IJ \subseteq J$)
    				
-   				Es folgt $A[x]J \subseteq J$. W\"ahlt man $y \in J \setminus \set{0}$, so folgt also $A[x]y \subseteq J$. Da $A$ noethersch ist, ist $J$ ein endlich erzeugter $A$-Modul [$\to$\ref{2.2.7}(e)] und daher selber noethersch [$\to$\ref{1.4.7}], womit $A[x]y \cong A[x]$ ein endlich erzeugter $A$-Modul ist.
+   			Es folgt $A[x]J \subseteq J$. W\"ahlt man $y \in J \setminus \set{0}$, so folgt also $A[x]y \subseteq J$. Da $A$ noethersch ist, ist $J$ ein endlich erzeugter $A$-Modul [$\to$\ref{2.2.7}(e)] und daher selber noethersch [$\to$\ref{1.4.7}], womit $A[x]y \cong A[x]$ ein endlich erzeugter $A$-Modul ist.
    				
-   				\vspace*{2mm}
-   				\emph{Behauptung 2: Sei $\mathfrak{p} \neq (0)$ ein Primideal von $A$. Dann ist $\mathfrak{p}$ invertierbar.}
-   			\end{proof}
-   		\end{satz}
+   			\vspace*{2mm}
+   			\emph{Behauptung 2: Sei $\mathfrak{p} \neq (0)$ ein Primideal von $A$. Dann ist $\mathfrak{p}$ invertierbar.}
+   		\end{proof}
+   	\end{satz}
+   	\newpage
+   	
+   	\section{Norm, Spur und Diskriminante}
+   	\begin{definition}\label{2.4.1}
+   		Sei $L|K$ eine endlich K\"orpererweiterung und $a \in L$. Dann ist $\varphi_a:L \to L, x \mapsto ax$ ein Endomorphismus des $K$-Vektorraumes $L$.
    		
- 	\end{satz}
+   		Ist $\underline{v} = (v_1, \dots, v_n)$ eine beliebige Basis des $K$-Vektorraumes $L$ (insbesondere $n = [L:K]$) und $A = (a_{ij})_{1\leq i,j \leq n} = M(\varphi_a, \underline{v})$ die Darstellungsmatrix von $\varphi_a$ bez\"uglich $\underline{v}$ (also $av_j = \sum_{i=1}^{n} a_{ij}v_i$ f\"ur alle $j \in \set{1,\dots, n}$), so hei\ss t $\chi_{L|K}(a) := \chi_{\varphi(a)} = \det (A-XI_n) \in K[X]$ das \emph{charakteristische Polynom}\index{Dedekindringe@\textbf{Dedekindringe}!Charakteristisches Polynom},
+   		$N_{L|K}(a) := \det(A) = \chi_{L|K}(0)$ die \emph{Norm}\index{Dedekindringe@\textbf{Dedekindringe}!Norm} und $\tr_{L|K}(a) := \tr A = \sum_{i=1}^n a_{ii} = (-1)^{n-1}\glqq\textrm{Koeffizient von } X^{n-1} \textrm{ in } \chi_{L|K}(a)\grqq$ die \emph{Spur}\index{Dedekindringe@\textbf{Dedekindringe}!Spur} von $A$ bez\"uglich $L|K$ [diese Begriffe h\"angen nicht von der Wahl der Basis $\underline{v}$ ab].
+   	\end{definition}
+   	
+   	\begin{beispiele}\label{2.4.2}
+   		Sei $d \in \nsquare$ [$\to$ \ref{2.1.16}]. Seien $a,b \in \Q$ und $x = a + b\sqrt{d} \in \Q(d)$.
+   		
+   		Betrachte Basis $\underline{v}= (1,\sqrt{d})$ von $\Q(\sqrt{d})$ [$\to$\ref{2.1.17}]. Dann $x\cdot 1 = a + b\sqrt{d}$ und $x \sqrt{d} = bd + a\sqrt{d}$.
+   		
+   		Setzt man also $A = \begin{pmatrix}
+   			a&bd\\b&a
+   		\end{pmatrix} \in \Q^{2\times 2}$, so $\chi_{\Q(\sqrt{d})|\Q}(x) = \det \begin{pmatrix}
+   		a - X&bd\\b&a - X
+   	\end{pmatrix} = (a-X)^2 - b^2d = X^2 - 2aX + (a^2-b^2d)$ und daher $N_{Q(\sqrt{d})|\Q}(x) = a^2-b^2d$ und $\tr_{Q(\sqrt{d})|\Q}(x) = 2a$
+   	\end{beispiele}
+
+	\begin{proposition}\label{2.4.3}
+		Sei $L|K$ eine endliche K\"orpererweiterung. Dann ist $\tr_{L|K}:L \to K$ $K$-linear und es gilt $N_{L|K}(ab) = N_{L|K}(a)N_{L|K}(b)$ f\"ur alle $a,b \in L$.
+		
+		Es ist $N_{K|L}\big|_{L^*} \to K^*$ ein Gruppenhomomorphismus.
+		
+		\begin{proof}
+			W\"ahle eine Basis $\underline{v} = (v_1, \dots, v_n)$ des $K$-Vektorraumes $L$. Sind $a,b \in L$ und $c \in K$, so gilt 
+			\begin{align*}
+				\tr_{L|K}(a+b) &= \tr M(\varphi_{a+b}, \underline{v})\\
+				&= \tr M(\varphi_a + \varphi_b, \underline{v})\\
+				&= \tr (M(\varphi_a, \underline{v}) + M(\varphi_b, \underline{v}))\\
+				&= \tr M(\varphi_a, \underline{v}) + \tr M(\varphi_b, \underline{v})\\
+				&= \tr_{L|K}(a) + \tr_{L|K}(b)
+			\end{align*}
+			und 
+			\begin{align*}
+				\tr_{L|K}(ca) &= \tr M(\varphi_{ca}, \underline{v})\\
+				&= \tr M(c\varphi_{a}, \underline{v})\\
+				&= \tr (cM(\varphi_{a}, \underline{v}))\\
+				&= c \tr M(\varphi_{a}, \underline{v})\\
+				&= c \tr_{L|K}(a)
+			\end{align*}
+			
+			\begin{align*}
+				N_{L|K}(ab) &= \det M(\varphi_{ab}, \underline{v})\\
+				&=\det M(\varphi_{a} \circ \varphi_b, \underline{v})\\
+				&=\det (M(\varphi_{a}, \underline{v}) M(\varphi_b, \underline{v}))\\
+				&=\det M(\varphi_{a}, \underline{v}) \det M(\varphi_b, \underline{v})\\
+				&= N_{L|K}(a)N_{L|K}(b)
+			\end{align*}
+		
+			\begin{align*}
+				N_{L|K}(a) = 0 &\Leftrightarrow \det M(\varphi_{a}, \underline{v}) = 0\\
+				&\Leftrightarrow \varphi_{a} \textrm{ nicht bijektiv}\\
+				&\Leftrightarrow a = 0
+			\end{align*}
+			(denn $a\neq 0 \Rightarrow \varphi_{a} \circ \varphi_{a^{-1}} = \id_L = \varphi_{a^{-1}} \circ \varphi_{a}$).
+		\end{proof} 
+	\end{proposition}
+
+	\begin{proposition}\label{2.4.4}
+		Sei $F$ ein Zwischenk\"orper der endlichen K\"orpererweiterung $L|K$. Dann gilt f\"ur alle $a \in F$
+			\[\chi_{L|K}(a) = (\chi_{F|K}(a))^{[L:F]}\]
+			\[N_{L|K}(a) = (N_{F|K}(a))^{[L:F]}\]
+			\[\tr_{L|K}(a) = [L:F]\tr_{F|K}(a)\]
+			
+		\begin{proof}
+			W\"ahle eine Basis $\underline{u} = (u_1, \dots, u_m)$ des $K$-Vektorraumes $F$ und eine Basis $\underline{v} = (v_1, \dots, v_n)$ des $F$-Vektorraumes $L$.
+			
+			Dann ist $\underline{w} := (u_1v_1, \dots, u_mv_1, \dots, u_mv_n)$ eine Basis des $K$-Vektorraumes $L$.
+			
+			F\"ur alle $a \in F$ gilt nun
+				\[M(\varphi_{a}, \underline{w}) = \begin{pmatrix}
+					M(\psi_a, \underline{u}) & & & \\
+					& M(\psi_a, \underline{u}) & & \\
+					& & \ddots & \\
+					& & & M(\psi_a, \underline{u})
+				\end{pmatrix}\]
+			
+			wobei $\varphi_a: L \to L, x \mapsto ax$ und $\psi: F \to F, x \mapsto ax$
+		\end{proof}
+	\end{proposition}
+	
+	\begin{proposition}\label{2.4.5}
+		Sei $L|K$ eine endliche K\"orpererweiterung und $a \in L$. Dann $\chi_{L|K}(a) = (-a)^{[L:K]}(\irr_K(a))^{[L:K(a)]}$
+		
+		\begin{proof}
+			Nach \ref{2.4.4} gen\"ugt es $\chi_{K(a)|K}(a) = (-1)^{K(a)|K} \irr_K(a)$ zu zeigen.
+			
+			Wegen $\deg \chi_{K(a)|K}(a) = [K(a):K] = \deg \irr_K(a)$ reicht es $\irr_K(a)|\chi_{K(a)|K}(a)$ zu zeigen, was aber aus Cayley-Hamilton folgt.
+		\end{proof}
+	\end{proposition}
+	
 \backmatter
 \printindex
 \end{document}
