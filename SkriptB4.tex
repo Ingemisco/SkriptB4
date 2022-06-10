@@ -91,6 +91,7 @@ toc=idx
 \DeclareMathOperator{\qf}{qf}
 \DeclareMathOperator{\irr}{irr}
 \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Char}{char}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -1804,6 +1805,132 @@ toc=idx
 		\end{proof}
 	\end{proposition}
 	
+	\begin{satz}\label{2.4.6}
+		Sei $L|K$ eine endliche separable K\"orpererweiterung und seien $\varphi_1, \dots, \varphi_n$ die verschiedenen $K$-Einbettungen ($K$-Homomorphismen) von $L$ in einen festen algebraischen Abschluss $\overline{K}$ von $K$ (insbesondere $[L:K] = [L:K]_s = n$).
+		
+		Dann gilt f\"ur alle $a \in L$
+			\[\chi_{L|K}(a) = \prod_{i=1}^n (\varphi_i(a) -X)\]
+		und daher $N_{L|K}(a) = \prod_{i=1}^n \varphi_i(a)$ sowie $\tr_{L|K}(a) = \sum_{i=1}^{n}\varphi_i(a)$.
+		
+		\begin{proof}
+			Sei $a \in L$. Jeder K\"orperhomomorphismus $K(a) \to \overline{K}$ l\"asst sich zu genau $[L:K(a)]_s = [L:K(a)]$ K\"orperhomomorphismen $L \to \overline{K}$ fortsetzen.
+			Daher kann man die $\varphi_i$ so neu indizieren, dass $\varphi_{ij}\ (1 \leq i \leq l, 1 \leq j \leq m)$ die verschiedenen $K$-Homomorphismen $L \to \overline{K}$ sind mit $\varphi_{ij}\big|_{K(a)} = \varphi_{st}\big|_{K(a)} \Leftrightarrow i = s\ (1 \leq i,s\leq l, 1 \leq j, t \leq m)$.
+			
+			Hierbei gilt $l = [K(a):K]_s = [K(a):K]$ und 
+			$m = [L:K(a)]_s = [L:K(a)]$.
+			
+			Zu zeigen ist 
+				\[\chi_{L|K}(a) = \prod_{i=1}^{l}\prod_{j=1}^m(\varphi_{ij}(a)-X)\]
+			Das hei\ss t
+				\[\chi_{L|K}(a) = \brac{\prod_{i=1}^{l}(\varphi_{i1}(a)-X)}^m\]
+				
+			Nach \ref{2.4.5} reich es $\irr_K(a) = \prod_{i=1}^l (X-\varphi_{i1}(a))$ zu zeigen.
+			
+			Dies folgt daraus, dass mit den $\varphi_{i1}\big|_{K(a)}$ auch die $\varphi_{i1}\ (1\leq i \leq l)$ verschieden sind und die letzteren alle Nullstellen des Polynoms $\irr_K(a)$ sind, welches Grad $l$ hat.
+		\end{proof}
+	\end{satz}
+	
+	\begin{erinnerung}\label{2.4.7}
+		\begin{enumerate}[(a)]
+			\item Sei $K$ ein K\"orper der Charakteristik $p \in \set{0} \cup \P$ und $f \in K[X]$ irreduzibel. Dann gibt es genau ein Paar $(n,g)$ mit $n \in \N_0, g \in K[X]$ irreduzibel und separabel und $f = g(X^{p^n})$
+			
+			\item Sei $F$ ein Zwischenk\"orper der algebraischen K\"orpererweiterung $L|K$. Dann gilt $[L:K]=[L:F][F:K]$ und 
+			$[L:K]_s = [L:F]_s[F:K]_s$, wobei man $n\cdot \infty := \infty \cdot n := \infty \cdot \infty := \infty$ setzt f\"ur $n \in \N$
+			
+			\item Ist $K$ ein K\"orper der Charakteristik $0$, so ist $K$ vollkommen, das hei\ss t, jede algebraische K\"orpererweiterung $L|K$ ist separabel.
+			
+			\item Sei $L|K$ eine algebraische K\"orpererweiterung. Dann ist der separable Abschluss von $K$ in $L$ $\overline{k^{s_L}} = \set{a \in L| a \textrm{ separabel \"uber } K}$ ein
+			Zwischenk\"orper von $L|K$ mit $[L:K]_s = [\overline{K^{s_L}}:K]$
+			
+			\item Ist $R$ ein kommutativer Ring mit $p:= \Char R \in \P$, so ist 
+				\[\Phi_R: R  \to R, a \mapsto a^p\]
+			ein Endomorphismus ("Frobeniushomomorphismus")
+		\end{enumerate}
+	\end{erinnerung}
+
+	\begin{definition}\label{2.4.8}
+		Eine algebraische K\"orpererweiterung $L|K$ hei\ss t \emph{rein inseparabel}\index{Dedekindringe@\textbf{Dedekindringe}!Rein Inseparabel}, wenn kein $a \in L \setminus K$ separabel \"uber $K$ ist.
+	\end{definition}
+
+	\begin{proposition}\label{2.4.9}
+		Sei $L|K$ eine algebraische K\"orpererweiterung mit $p:= \Char K > 0$. Dann sind \"aquivalent
+		\begin{enumerate}[(a)]
+			\item $L|K$ ist rein inseparabel
+			\item $\forall x \in L: \exists n \in \N_0: x^{p^n} \in K$
+			\item $\forall x \in L: \exists n \in \N_0: \exists a \in K: \irr_K(x) = X^{p^n} - a$
+		\end{enumerate}
+	
+		\begin{proof}
+			\"Ubung
+		\end{proof}
+	\end{proposition}
+
+	\begin{beispiele}\label{2.4.10}
+		\begin{enumerate}[(a)]
+			\item 
+			Ist $L|K$ eine algebraische K\"orpererweiterung, so ist wegen der Transitivit\"at der Separabilit\"at $L|\overline{K^{s_L}}$ rein inseparabel.
+			
+			\item 
+			Jede Teilerweiterung einer rein inseparablen K\"orpererweiterung ist wegen \ref{2.4.9}(b) wieder rein inseparabel
+			
+			\item 
+			Ist $K$ ein K\"orper mit $p:= \Char K > 0$ und ist $n \in \N_0$, so ist $K(X)|K(X^{p^n})$ rein inseparabel, wie man mit \ref{2.4.9}(b) und \ref{2.4.7}(e) leicht sieht.
+		\end{enumerate}
+	\end{beispiele}
+
+	\begin{definition}\label{2.4.11}
+		Sei $L|K$ eine endliche K\"orpererweiterung. Dann hei\ss t
+			$[L:K]_i := \frac{[L:K]}{[L:K]_s} \overset{\ref{2.4.7}(d)}{=} \frac{[L:K]}{[\overline{K^{s_L}}:K]} = \overset{\ref{2.4.7}(b)}{=} [L:\overline{K^{s_L}}]$
+			der \emph{Inseparabilit\"atsgrad}\index{Dedekindringe@\textbf{Dedekindringe}!Inseparabilit\"atsgrad} von $L|K$.
+	\end{definition}
+
+	\begin{proposition}\label{2.4.12}
+		Sei $F$ ein Zwischenk\"orper der endlichen K\"orpererweiterung $L|K$. Dann $[L:K]_i = [L:F]_i[F:K]_i$.
+		
+		\begin{proof}
+			\begin{flalign*}
+				[L:K]_i &= \frac{[L:K]}{[L:K]_s}\\
+				&= \frac{[L:F][F:K]}{[L:F]_s[F:K]_s} && \ref{2.4.7}(d)\\
+				&= [L:F]_i[F:K]_i			
+			\end{flalign*}
+		\end{proof}
+	\end{proposition}
+
+	\begin{korollar}\label{2.4.13}
+		Sei $L|K$ eine endliche K\"orpererweiterung und $p:= \Char K$. Dann gibt es $n \in \N_0$ mit $[L:K]_i = p^n$.
+		
+		\begin{proof}
+			Benutze \ref{2.4.12} und \ref{2.4.9}(c)
+		\end{proof}
+	\end{korollar}
+
+	\begin{satz}\label{2.4.14}
+		(vergleiche \ref{2.4.6})\newline
+		Sei $L|K$ eine endliche K\"orpererweiterung und seien $\varphi_1, \dots, \varphi_n$ die verschiedenen $K$-Einbettungen von $L$ in einen festen algebraischen Abschluss $\overline{K}$ von $K$.
+		
+		Dann 
+			\[N_{L|K}(a) = \brac{\prod_{i=1}^n \varphi_i(a)}^{[L:K]_i} \]
+		und
+			\[\tr_{L|K}(a) = [L:K]_i \sum_{i=1}^n\varphi_i(a)\]
+		f\"ur alle $a \in L$.
+		
+		\begin{proof}
+			Wegen $[L: \overline{K^{s_L}}] \overset{\ref{2.4.7}(b)}{=} \frac{[L:K]_s}{[\overline{K^{s_L}}:K]_s} \overset{\ref{2.4.7}(a)}{=} \frac{[L:K]_s}{[L:K]_s} = 1$ sind 
+			$\varphi_1\big|_{\overline{K^{s_L}}}, \dots, \varphi_n\big|_{\overline{K^{s_L}}}$ verschiedene $K$-Einbettungen von $\overline{K^{s_L}}$ in $\overline{K}$.
+			
+			Weil $[L:K]_i = [L:\overline{K^{s_L}}]$gilt und $\overline{K^{s_L}}:K$ separabel ist, folgen die behaupteten Gleichungen f\"ur alle $a \in \overline{K^{s_L}}$ mit \ref{2.4.4} und \ref{2.4.6}.
+			
+			Sei also nun $a \in L \setminus \overline{K^{s_L}}$. Dann gibt es nach \ref{2.4.7}(a) ein $m \in \N$ und $g \in K[X]$ irreduzibel und separabel mit $\irr_K(a) = g(X^{p^m})$, wobei $p:= \Char K \overset{\ref{2.4.7}(c)}{\in} \P$. Mit \ref{2.4.5}folgt 
+				\[\chi_{L|K}(a) = (-1)^{[L:K]}\brac{g(X^{p^m})}^{[L:K(a)]} \]
+			woraus sicher $\tr_{L|K}(a) = 0$ folgt (beachte $m \geq 1$), was wegen $[L:K]_i \overset{\ref{2.4.13}}{\cong}_{(p)} 0$ die Gleichung mit der Spur zeigt.
+			
+			Wegen \ref{2.4.7}(e) reicht es f\"ur die Gleichung mit der Norm zu zeigen, dass
+				\[\Phi_p^m(N_{L|K}(a)) = \Phi_p^m\brac{\brac{\prod_{i=1}^m \varphi_i(a)}^{[L:K]_i} } \],
+			das hei\ss t 
+				\[N_{L|K}(a^{p^m}) = \Phi_p^m\brac{\brac{\prod_{i=1}^m \varphi_i(a)}^{[L:K]_i} }\]
+			, was aber aus $a^{p^m} \in \overline{K^{s_L}}$ folgt (siehe oben).
+		\end{proof}
+	\end{satz}
 \backmatter
 \printindex
 \end{document}
