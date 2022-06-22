@@ -1931,6 +1931,66 @@ toc=idx
 			, was aber aus $a^{p^m} \in \overline{K^{s_L}}$ folgt (siehe oben).
 		\end{proof}
 	\end{satz}
+
+	\begin{satz}\label{2.4.15}
+		("Schachtelungsformel f\"ur Norm und Spur")\newline
+		Sei $F$ ein Zwischenk\"orper der endlichen K\"orpererweiterung $L|K$. Dann
+			\begin{align*}
+				N_{L|K} &= N_{F|K} \circ N_{L|F}\\
+				\tr_{L|K} &= \tr_{F|K} \circ \tr_{L|F}
+			\end{align*}
+		\begin{proof}
+			\"Ubung.
+		\end{proof}
+	\end{satz}
+
+	\begin{erinnerung}\label{2.4.16}
+		Sei $V$ ein $K$-Vektorraum mit Basis $\underline{v} := (v_1, \dots, v_n)$
+		\begin{enumerate}[(a)]
+			\item 
+			$\underline{v}^* := (v_1^*, \dots, v_n^*)$ definiert durch $v_i^*(v_j) := \delta_{ij} = \begin{cases}
+				0 & \textrm{falls } i \neq j\\
+				1 & \textrm{falls } i = j
+			\end{cases}$
+			($i, j \in \set{1, \dot, n}$) ist eine Basis des Dualraums $V^* = \Hom(V, K)$ [$\to$ \ref{1.6.8}] genannt die zu $\underline{v}$ duale Basis.
+			
+			\item $b:V \times V \to K$ hei\ss t eine Bilinearform auf $V$, wenn f\"ur alle $v \in V$ sowohl $b(\cdot, v) : V \to K, w \mapsto b(w,v)$ als auch 
+			$b(v, \cdot): V \to K, w \mapsto b(v,w)$ linear sind. Es hei\ss t $b$ symmetrisch, wenn $b(v, w) = b(w,v)$ f\"ur alle $v,w \in V$.
+			
+			\item Sei $b$ eine Bilinearform auf $V$. Dann sind 
+			$\overset{\leftarrow}{b}: V \to V^*, v \mapsto b(\cdot, v)$ und 
+			$\overset{\rightarrow}{b}: V \to V^*, v \mapsto b(v, \cdot)$ linear und es gilt 
+			\[M(b,\underline{v}) := (b(v_i, v_j))_{1 \leq i,j \leq n} = M(\overset{\leftarrow}{b}, \underline{v}, \underline{v}^*) = M(\overset{\rightarrow}{b}, \underline{v}, \underline{v}^*)^T\]
+			denn $\overset{\leftarrow}{b}(v_j) = \sum_{i=1}^n b(v_i, v_j)v_i^*$ und $\overset{\rightarrow}{b}(v_j) = \sum_{i=1}^n b(v_j, v_i)v_i^*$ f\"ur $j \in \set{1, \dots, n}$,
+			was man durch Auswerten in $v_k$ ($k \in \set{1, \dots, n}$) sofort sieht. Es gilt daher:
+			\begin{align*}
+				b \textrm{ nicht ausgeartet} &:\Leftrightarrow \overset{\leftarrow}{b} \textrm{ injektiv}\\
+				&\Leftrightarrow \overset{\leftarrow}{b} \textrm{ surjektiv}\\
+				&\Leftrightarrow \overset{\leftarrow}{b} \textrm{ Isomorphismus}\\
+				&\Leftrightarrow \overset{\rightarrow}{b} \textrm{ injektiv}\\
+				&\Leftrightarrow \overset{\rightarrow}{b} \textrm{ surjektiv}\\
+				&\Leftrightarrow \overset{\rightarrow}{b} \textrm{ Isomorphismus}\\
+				&\Leftrightarrow \det(M(b, \underline{v})) \neq 0
+			\end{align*}
+		
+			\item Sei $b$ eine Bilinearform auf $V$ und $\underline{w} := (w_1, \dots, w_n)$ eine weitere Basis von $V$. Dann gilt 
+				\[M(\underline{w}^*, \underline{v}^*) = M(\underline{v}, \underline{w})^T\]
+			denn ist $M(\underline{v}, \underline{w}) = (a_{ij})_{1 \leq i,j \leq n}$, so $v_j = \sum_{i=1}^{n} a_{ij}w_i$ und daher
+			$w_j^* = \sum_{i=1}^{n} a_{ji}v_i^*$ f\"ur $j \in \set{1, \dots, n}$, was man durch Auswerten in $v_k$ ($k \in \set{1, \dots, n}$) sieht. 
+			
+			Daher gilt
+			\begin{flalign*}
+				M(b, \underline{v}) &= M(\overset{\leftarrow}{b}, \underline{v}, \underline{v}^*) && (c)\\
+				&= M(\underline{w}^*, \underline{v}^*)M(\overset{\leftarrow}{b}, \underline{w}, \underline{w}^*)M(\underline{v}, \underline{w})\\
+				&= M(\underline{v}, \underline{w})^TM(\overset{\leftarrow}{b}, \underline{w}, \underline{w}^*)M(\underline{v}, \underline{w}) && (c)
+			\end{flalign*}
+			und $\det(M(b, \underline{v})) = (\det(M(\underline{v}, \underline{w})))^2 \det(M(b, \underline{w})) $
+		\end{enumerate}
+	\end{erinnerung}
+
+	\begin{prop-def}\label{2.4.17}
+		Sei $V$ ein $K$-Vektorraum mit Basis $\underline{v} := (v_1, \dots, v_n)$ und $b: V \times V \to K$ eine nicht ausgeartete Bilinearform. 
+	\end{prop-def}
 \backmatter
 \printindex
 \end{document}
