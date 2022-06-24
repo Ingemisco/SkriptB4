@@ -1716,8 +1716,8 @@ toc=idx
    	\begin{definition}\label{2.4.1}
    		Sei $L|K$ eine endlich K\"orpererweiterung und $a \in L$. Dann ist $\varphi_a:L \to L, x \mapsto ax$ ein Endomorphismus des $K$-Vektorraumes $L$.
    		
-   		Ist $\underline{v} = (v_1, \dots, v_n)$ eine beliebige Basis des $K$-Vektorraumes $L$ (insbesondere $n = [L:K]$) und $A = (a_{ij})_{1\leq i,j \leq n} = M(\varphi_a, \underline{v})$ die Darstellungsmatrix von $\varphi_a$ bez\"uglich $\underline{v}$ (also $av_j = \sum_{i=1}^{n} a_{ij}v_i$ f\"ur alle $j \in \set{1,\dots, n}$), so hei\ss t $\chi_{L|K}(a) := \chi_{\varphi(a)} = \det (A-XI_n) \in K[X]$ das \emph{charakteristische Polynom}\index{Dedekindringe@\textbf{Dedekindringe}!Charakteristisches Polynom},
-   		$N_{L|K}(a) := \det(A) = \chi_{L|K}(0)$ die \emph{Norm}\index{Dedekindringe@\textbf{Dedekindringe}!Norm} und $\tr_{L|K}(a) := \tr A = \sum_{i=1}^n a_{ii} = (-1)^{n-1}\glqq\textrm{Koeffizient von } X^{n-1} \textrm{ in } \chi_{L|K}(a)\grqq$ die \emph{Spur}\index{Dedekindringe@\textbf{Dedekindringe}!Spur} von $A$ bez\"uglich $L|K$ [diese Begriffe h\"angen nicht von der Wahl der Basis $\underline{v}$ ab].
+   		Ist $\underline{v} = (v_1, \dots, v_n)$ eine beliebige Basis des $K$-Vektorraumes $L$ (insbesondere $n = [L:K]$) und $A = (a_{ij})_{1\leq i,j \leq n} = M(\varphi_a, \underline{v})$ die Darstellungsmatrix von $\varphi_a$ bez\"uglich $\underline{v}$ (also $av_j = \sum_{i=1}^{n} a_{ij}v_i$ f\"ur alle $j \in \set{1,\dots, n}$), so hei\ss t $\chi_{L|K}(a) := \chi_{\varphi(a)} = \det (A-XI_n) \in K[X]$ das \emph{charakteristische Polynom}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Charakteristisches Polynom},
+   		$N_{L|K}(a) := \det(A) = \chi_{L|K}(0)$ die \emph{Norm}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Norm} und $\tr_{L|K}(a) := \tr A = \sum_{i=1}^n a_{ii} = (-1)^{n-1}\glqq\textrm{Koeffizient von } X^{n-1} \textrm{ in } \chi_{L|K}(a)\grqq$ die \emph{Spur}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Spur} von $A$ bez\"uglich $L|K$ [diese Begriffe h\"angen nicht von der Wahl der Basis $\underline{v}$ ab].
    	\end{definition}
    	
    	\begin{beispiele}\label{2.4.2}
@@ -1849,7 +1849,7 @@ toc=idx
 	\end{erinnerung}
 
 	\begin{definition}\label{2.4.8}
-		Eine algebraische K\"orpererweiterung $L|K$ hei\ss t \emph{rein inseparabel}\index{Dedekindringe@\textbf{Dedekindringe}!Rein Inseparabel}, wenn kein $a \in L \setminus K$ separabel \"uber $K$ ist.
+		Eine algebraische K\"orpererweiterung $L|K$ hei\ss t \emph{rein inseparabel}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Rein Inseparabel}, wenn kein $a \in L \setminus K$ separabel \"uber $K$ ist.
 	\end{definition}
 
 	\begin{proposition}\label{2.4.9}
@@ -1881,7 +1881,7 @@ toc=idx
 	\begin{definition}\label{2.4.11}
 		Sei $L|K$ eine endliche K\"orpererweiterung. Dann hei\ss t
 			$[L:K]_i := \frac{[L:K]}{[L:K]_s} \overset{\ref{2.4.7}(d)}{=} \frac{[L:K]}{[\overline{K^{s_L}}:K]} = \overset{\ref{2.4.7}(b)}{=} [L:\overline{K^{s_L}}]$
-			der \emph{Inseparabilit\"atsgrad}\index{Dedekindringe@\textbf{Dedekindringe}!Inseparabilit\"atsgrad} von $L|K$.
+			der \emph{Inseparabilit\"atsgrad}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Inseparabilit\"atsgrad} von $L|K$.
 	\end{definition}
 
 	\begin{proposition}\label{2.4.12}
@@ -1990,7 +1990,277 @@ toc=idx
 
 	\begin{prop-def}\label{2.4.17}
 		Sei $V$ ein $K$-Vektorraum mit Basis $\underline{v} := (v_1, \dots, v_n)$ und $b: V \times V \to K$ eine nicht ausgeartete Bilinearform. 
+		
+		Dann gibt es genau ein Tupel $\underline{w} = (w_1, \dots, w_n) \in V^n$ mit $b(v_i, w_j) = \delta_{ij}$ f\"ur alle $i,j \in \set{1,\dots, n}$.
+		
+		Es ist $\underline{w}$ eine Basis von $V$, genannt die zu $\underline{v}$ bez\"uglich $b$ duale Basis.
+		
+		\begin{proof}
+			F\"ur alle $w_1, \dots, w_n \in V$ gilt 
+			\begin{align*}
+				\forall i,j: b(v_i, w_j) = \delta_{ij} &\Leftrightarrow \forall i,j: b(v_i, w_j) = v_j^*(v_i)\\
+				&\Leftrightarrow \forall j: \overset{\leftarrow}{b}(w_j) = v_j^*\\
+				&\Leftrightarrow \forall j: w_j = \brac{\overset{\leftarrow}{b}}^{-1}(v_j^*)
+			\end{align*}
+		und $\overset{\leftarrow}{b}$ ist ein Isomorphismus.
+		\end{proof}  
 	\end{prop-def}
+
+	\begin{sprechweise}\label{2.4.18}
+		Sei $L|K$ eine endliche K\"orpererweiterung. Dann ist $L \times L \to K, (x,y)\mapsto \tr_{L|K}(xy)$ eine symmetrische Bilinearform auf dem $K$-Vektorraum $L$, genannt die \emph{Spurform}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Spurform} von $L|K$
+	\end{sprechweise}
+
+	\begin{definition}\label{2.4.19}
+		Sei $L|K$ eine K\"orpererweiterung mit $n:= [L:K] < \infty$. F\"ur alle $x_1, \dots, x_n \in L$ hei\ss t 
+			\[d_{L|K}(x_1,\dots, x_n) := \det((\tr_{L|K}(x_ix_j))_{1\leq i,j \leq n} )\]
+		die \emph{Diskriminante}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Diskriminante} von $(x_1, \dots, x_n)$ bez\"uglich $L|K$.
+	\end{definition}
+
+	\begin{bemerkung}\label{2.4.20}
+		Sei $L|K$ eine K\"orpererweiterung mit $n:=[L:K] < \infty$.
+		
+		Dann $d_{L|K}(x_1, \dots, x_n) = d_{L|K}(x_{\sigma(1)}, \dots, x_{\sigma(n)})$ f\"ur alle $x_1, \dots, x_n \in L$ und $\sigma \in S_n$, da jede Permutation ein Produkt von Transpositionen ist und eine simultane Zeilen- und Spaltenvertauschung die Determinante nicht \"ander.
+	\end{bemerkung}
+
+	\begin{proposition}\label{2.4.21}
+		Sei $L|K$ endlich und separabel. Seien $\varphi_1, \dots, \varphi_n$ die verschiedenen $K$-Einbettungen von $L$ in $\overline{K}$. 
+		
+		Dann gilt f\"ur alle $x_1, \dots, x_n \in L$
+			\[d_{x_1, \dots, x_n} = \brac{\det\begin{pmatrix}
+					\varphi_1(x_1) & \cdots & \varphi_1(x_n)\\
+					\vdots & \ddots & \vdots\\
+					\varphi_n(x_1) & \cdots & \varphi_n(x_n)
+			\end{pmatrix}}^2\]
+		
+		\begin{proof}
+			F\"ur $x_1, \dots, x_n \in L$ gilt 
+			\begin{flalign*}
+				d_{L|K}(x_1, \dots, x_n) &= \det((\tr_{L|K}(x_ix_j)_{1 \leq i,j\leq n} )\\
+				&= \det\brac{\brac{\sum_{k=1}^{n} \varphi_k(x_ix_j) }_{1\leq i,j \leq n}} && \ref{2.4.6}\\
+				&= \det \brac{(\varphi_k(x_i))_{1\leq i,k\leq n} \cdot (\varphi_k(x_j))_{1\leq k,j\leq n} }\\
+				&= \det ((\varphi_k(x_i))_{1 \leq k,i \leq n})^2
+			\end{flalign*}
+		\end{proof}
+	\end{proposition}
+
+	\begin{satz}\label{2.4.22}
+		Sei $L|K$ endlich und separabel und $a \in L$ mit $L=K(a)$. Seien $\varphi_1, \dots, \varphi_n$ die verschiedenen $K$-Einbettungen von $L$ in $\overline{K}$. Bezeichne $f$ das Minimalpolynom von $a$ \"uber $K$ und $f'$ seine formale Ableitung.
+		
+		Dann gilt 
+			\[N_{L|K}(f'(a)) = \prod_{i,j=1; i \neq j}^n (\varphi_i(a)- \varphi_j(a)) = (-1)^{\frac{n(n-1)}{2}}d_{L|K}(1,a,\dots, a^{n-1}) \]
+			
+		\begin{proof}
+			\"Ubung
+		\end{proof} 
+	\end{satz}
+
+	\begin{korollar}\label{2.4.23}
+		Sei $L|K$ eine endliche K\"orpererweiterung und $\underline{v} =(v_1, \dots, v_n)$ eine Basis des $K$-Vektorraumes $L$.
+		
+		Dann sind \"aquivalent:
+		
+		\begin{enumerate}[(a)]
+			\item $L|K$ ist separabel
+			\item Sie Spurform [$\to$ \ref{2.4.18}] von $L|K$ ist nicht ausgeartet
+			\item $d_{L|K}(v_1, \dots, v_n) \neq 0$
+			\item $\tr_{L|K} \neq 0$
+		\end{enumerate}
+	
+		\begin{proof}
+			$(a)\Rightarrow (b)$: Gelta (a). W\"ahle mit dem Satz vom primitiven Element ein $a \in L$ mit $L= K(a)$. Sind $\varphi_1, \dots, \varphi_n$ die verschiedenen $K$-Homomorphismen $K \to \overline{K}$ so 
+			\begin{flalign*}
+				d_{L|K}(1, \dots, a^{n-1}) &= (-1)^{\frac{n(n-1)}{2}} \prod_{i,j=1; i \neq j}^{n} (\varphi_i(a) - \varphi_j(a)) \neq 0&& \ref{2.4.22}
+			\end{flalign*}
+		
+			Es ist $\underline{w} := (1, a, \dots, a^{n-1})$ eine Basis des $K$-Vektorraumes $L$ und daher $d_{L|K}(1, a, \dots, a^{n-1})$ die Determinante der Darstellungsmatrix der Spurform bez\"uglich $\underline{w}$. Nach \ref{2.4.16} folgt (b)
+			
+			
+			$(b)\Rightarrow (c)$: wieder mit \ref{2.4.16}
+			
+			$(c)\Rightarrow (d)$: trivial
+			
+			$(d) \Rightarrow (a)$: mit \ref{2.4.14}
+		\end{proof}
+ 	\end{korollar}
+ 
+ 	\begin{proposition}\label{2.4.24}
+ 		Sei $L|K$ separabel mit $n:=[L:K] < \infty$ und seien $x_1, \dots, x_n \in L$. Dann gilt
+ 		\begin{enumerate}[(a)]
+ 			\item \[d_[{L|K}(x_1, \dots, x_n) = 0 \Leftrightarrow x_1, \dots, x_n \textrm{ linear abh\"angig \"uber } K]\]
+ 			\item F\"ur jede $K$-lineare Abbildung $f::L \to L$ gilt 
+ 				\[d_{L|K}(f(x_1), \dots, f(x_n) ) = (\det f)^2 d_{L|K}(x_1, \dots, x_n)\]
+ 		\end{enumerate}
+ 	
+ 		\begin{proof}
+ 			\begin{enumerate}[(a)]
+ 				\item "$\Rightarrow$" aus \ref{2.4.23} und "$\Leftrightarrow$" aus Definition \ref{2.4.19}
+  				\item Setze $\underline{v}:=(x_1, \dots, x_n)$ und $\underline{w}:=(f(x_1), \dots, f(x_n))$.
+  				
+  				Ist $\underline{v}$ keine Basis von $L$, so auch $\underline{w}$ nicht und beide Diskriminanten sind null.
+  				
+  				Ist $\underline{v}$ eine Basis von $L$, aber $\underline{w}$ nicht, so $d_{L|K}(\underline{w}) = \det f = 0$.
+  				
+  				Sind $\underline{v}$ und $\underline{w}$ $K$-Basen von $L$ und bezeichnet $b$ die Spurform von $L|K$, so 
+  				\begin{flalign*}
+  					d_{L|K}(\underline{w}) &= \det M(b,\underline{w})\\
+  					&= \det(M(\underline{w}, \underline{v}))^TM(b,\underline{v})M(\underline{w}, \underline{v}) && \ref{2.4.16}(d)\\
+  					&= (\underbrace{\det M(\underline{w}, \underline{v})}_{M(f(\underline{v}))})^2 d_{L|K}(\underline{v})
+  				\end{flalign*}			
+  			\end{enumerate} 
+ 		\end{proof}
+ 	\end{proposition}
+ 
+ 	\begin{proposition}\label{2.4.25}
+ 		Sei $A$ ein ganz abgeschlossener Integrit\"atsring, $K:=\qf(A)$, $L|K$ eine endliche K\"orpererweiterung und $B$ der ganze Abschluss von $A$ in $L$.
+ 		(z.B. $A \Z, K = \Q, L$ ein Zahlk\"orper und $B$ ein Zahlring [$\to$ \ref{2.1.15}]).
+ 		
+ 		Dann gilt $N_{L|K}(B) \subseteq A, \tr_{L|K}(B) \subseteq A$ und $B^* = \set{b \in B| N_{L|K}(b) \in A^*}$.
+ 		
+ 		\begin{proof}
+ 			Sei $b \in B$. Nach \ref{2.4.15} gilt $\chi_{L|K}(b) = (-1)^{[L:K]}(\irr_K(b))^{[L:K]}$ und nach \ref{2.1.14} gilt $\irr_K(b) \in A[X]$, also $\chi_{L|K}(b) \in A[X]$ und damit
+ 			$N_{L|K}(b) \in A$ und $\tr_{L|K}(b) \in A$ [$\to$ \ref{2.4.1}].
+ 			
+ 			Wegen $N_{L|K}(B) \subseteq A$ und der Multiplikativit\"at von $N_{L|K}$ folgt $B^* \subseteq \set{b \in B| N_{L|K}(b) \in A^*}$
+ 			
+ 			Sei umgekehrt $b \in B$ mit $N_{L|K}(b) \in A^*$. Dann gibt es $a_1, \dots, a_n \in A$ mit $b^n + a_1b^{n-1} + \cdots a_n = 0$ und
+ 			$a_n \in A^*$ (wegen $(\chi_{L|K}(b))(b) = 0$ und $(\chi_{L|K}(b)(0) \in A^*)$).
+ 			
+ 			Teilt man durch $a_nb^n \neq 0$, so ist 
+ 				\[\brac{\frac{1}{b}}^n + \frac{a_{n-1}}{a_n}\brac{\frac{1}{b}} + \cdots + \frac{a_1}{a_n}\brac{\frac{1}{b}} + \frac{1}{a_n} = 0\]
+ 			eine Ganzheitsgleichung von $\frac{1}{b}$ \"uber $A$, also ist $\frac{1}{b} \in B$ und somit $b \in B^*$. 
+ 		\end{proof}
+ 	\end{proposition}
+ 
+ 	\newpage
+ 	\section{Dedekindringe und K\"orpererweiterungen}
+ 	\begin{lemma}\label{2.5.1}
+ 		Sei $A$ ein Integrit\"atsring, $K:= \qf(A), L|K$ eine endliche K\"orpererweiterung und $B$ der ganze Abschluss von $A$ in $L$.
+ 		
+ 		Dann ist $L = \brac{A\setminus \set{0}}^{-1} B$ und es gibt Elemente von $B$, die eine Basis de $K$-Vektorraumes $L$ bilden.
+ 		
+ 		\begin{proof}
+ 			Sei $x \in L$. Dann gibt $n \in \N$ und $a_0, \dots, a_n \in A$ mit $a_nx^n + \cdots + a_0 = 0$ und $a_n \neq 0$. Multiplizieren mit $a_n^{n-1}$ liefert
+ 				\[(a_nx)^n + a_{n-1}(a_nx)^{n-1} + \cdots + a_0a_n^{n-1} = 0\]
+ 			woraus $a_nx \in B$ folgt und damit $x = a_n^{-1}(a_nx) \in \brac{A \setminus \set{0}}^{-1}B$ folgt.
+ 		\end{proof} 
+ 	\end{lemma}
+ 	
+ 	\begin{satz}\label{2.5.2}
+ 		Sei $A$ ein ganz abgeschlossener noetherscher Integrit\"atsring, $K:= \qf(A), L|K$ eine endliche separable K\"orpererweiterung und $B$ der ganze Abschluss von $A$ in $L$.
+ 		
+ 		Dann ist $B$ als $A$-Modul und daher als Ring noethersch.
+ 		
+ 		\begin{proof}
+ 			Nach Lemma \ref{2.5.1} gibt es $n \in \N_0$ und $v_1, \dot, v_n \in B$ derart, dass $\underline{v} := (v_1, \dots, v_n)$ eine Basis des $K$-Vektorraumes $L$ ist.
+ 			
+ 			Bezeichne $\underline{w} := (w_1, \dots, w_n)$ die dazu bez\"uglich der nach \ref{2.4.23} nicht ausgearteten Spurform von $L|K$ duale Basis [$\to$ \ref{2.4.17}]
+ 			
+ 			\emph{Behauptung: $\forall x \in Lx = \sum_{i=1}^{n} \tr_{L|K}(v_ix)w_i$}.
+ 			
+ 			\emph{Begr\"undung: } W\"ahle $a_1, \dots, a_n \in K$ mit $x = \sum_{i=1}^{n} a_iw_i$. Dann 
+ 			\begin{align*}
+ 				\tr_{L|K}(v_jx) &= \tr_{L|K}\brac{v_j\sum_{i=1}^{n}a_iw_i}\\
+ 				&= \sum_{i=1}^{n} a_i\tr_{L|K}(v_jw_i)\\
+ 				&= a_j
+ 			\end{align*}
+ 			f\"ur alle $j \in \set{1,\dots, n}$.
+ 			
+ 			Wegen $v_1, \dots, v_n \in B$ und $\tr_{L|K}(B) \overset{\ref{2.4.25}}{\subseteq} A$, folgt, dass $B \subseteq \sum_{i=1}^{n} Aw_i =: M$. Da $A$ noethersch ist,
+ 			ist $M$ als endlich erzeugter $A$-Modul nach \ref{1.4.7} auch noethersch. Damit ist auch $B$ ein noetherscher $A$-Modul.
+ 			
+ 			Nat\"urlich ist $B$ auch als $B$-Modul noethersch (d.h. als Ring), denn jeder $B$-Untermodul (d.h. jedes Ideal) von $B$ ist auch ein $A$-Untermodul von $B$ und daher als $A$-Modul 
+ 			und dann erst recht als $B$-Modul endlich erzeugt.
+ 		\end{proof}
+ 	\end{satz}
+ 
+ 	\begin{lemma}\label{2.5.3}
+ 		Sei $A \subseteq B$ ein ganze Erweiterung von Integrit\"atsringe. Sei $\mathfrak{p}$ ein Primideal und $I$ ein Ideal von $B$ mit $\mathfrak{p} \subseteq I$. Dann 
+ 		\[(A \cap \mathfrak{p} = A \cap I) \Rightarrow \mathfrak{p} = I\]
+ 		
+ 		\begin{proof}
+ 			Gelta $A \cap \mathfrak{p} = A \cap I$ und sei $x \in I$. Zu zeigen ist $x \in \mathfrak{p}$.
+ 			
+ 			W\"ahle $n \in \N_0$ und $a_0, \dots, a_n \in A$ mit $a_0x^n + \cdots + a_n = 0$ und $a_0 = 1$. W\"ahle $m \in \set{0, \dots, n}$ mit $a_m \notin \mathfrak{p}$ und $a_{m+1}, \dots, a_n \in \mathfrak{p}$. Nun 
+ 			\[x^{n-m}(a_0x^m + a_1x^{m-1} + \cdots + a_m) = -a_{m+1}x^{n-m-1} \cdots - a_n \in \mathfrak{p}\]
+ 			also $x \in \mathfrak{p}$ oder $a_0x^m + \cdots a_m \in \mathfrak{p} \subseteq I$. G\"alte letzteres, so $a_m \in I$ wegen $x \in I$ und daher $a_m \in A \cap I = A \cap \mathfrak{p} \subseteq \mathfrak{p}$.
+ 		\end{proof}
+ 	\end{lemma}
+ 
+ 	\begin{satz}\label{2.5.4}
+ 		Sei $A$ ein Dedekindring, $K:= \qf(A), L|K$ eine endliche separable K\"orpererweiterung und $B$ der ganze Abschluss von $A$ in $L$. Dann ist $B$ ein Dedekindring.
+ 		
+ 		\begin{proof}
+ 			Wir benutzen die Charakterisierung \ref{2.3.2} von Dedekindringen.
+ 			
+ 			Wegen \ref{2.5.2} ist $B$ noethersch. Wegen Lemma \ref{2.5.1} ist $L = \qf(B)$ und daher $B$ ganz abgeschlossen.
+ 			
+ 			Sei schlie\ss lich $\mathfrak{p} \neq (0)$ ein Primideal von $B$. ZU zeigen: $\mathfrak{p}$ ist maximal. Sei $I$ ein Ideal von $B$ mit $1 \notin I$ und $\mathfrak{p} \subseteq I$. Zu zeigen $\mathfrak{p} = I$.
+ 			
+ 			Nach Lemma \ref{2.5.3} reicht es $A \cap \mathfrak{p} = A \cap I$ zu zeigen. Dies folgt daraus, dass $A$ ein Dedekindring ist, denn $A \cap \mathfrak{p}$ ist ein Primideal und $A \cap I$ ist ein Ideal von $A$ mit $A \cap \mathfrak{p} \subseteq A \cap I, 1 \notin A \cap I$ und $A \cap \mathfrak{p} \neq (0)$ (w\"are $A \cap \mathfrak{p} = (0)$, so wende man Lemma \ref{2.5.3} nochmal an mit $(0)$ als Primideal und $\mathfrak{p}$ als Ideal).
+ 		\end{proof}
+ 	\end{satz}
+ 
+ 	\begin{satz}\label{2.5.5}
+ 		Sei $A$ ein Hauptidealring, $K:=\qf(A), L|K$ eine endliche separable K\"orpererweiterung und $B$ der ganze Abschluss von $A$ in $L$. 
+ 		
+ 		Dann ist $B$ ein freier $A$-Modul vom Rang $[L:K]$. Jede Basis des $A$-Moduls $B$ ist auch eine Basis des $K$-Vektorraumes $L$.
+ 		
+ 		\begin{proof}
+ 			Nach \ref{2.5.2} ist $B$ ein endlich erzeugter (sogar noetherscher) $A$-Modul. Da $B$ ein Integrit\"atsring ist, besitzt dieser Modul offensichtlich keine Torsionselemente $\neq 0$. Aber nach \ref{1.6.9} ist offensichtlich jeder endlich erzeugte Modul \"uber einem Hauptidealring, der keine Torsionselemente $\neq 0$ besitzt, frei. Insbesondere ist $B$ ein freier $A$-Modul.
+ 			
+ 			Insbesondere ist $B$ ein freier $A$-Modul. Wegen $K := \qf(A)$, ist jede seiner Basen auch $K$-linear unabh\"angig und wegen Lemma \ref{2.5.1} auch ein Erzeugenden System des $K$-Vektorraumes $L$.
+ 		\end{proof}
+ 	\end{satz}
+ 
+ 	\begin{korollar}\label{2.5.6}
+ 		Jeder Zahlring vom Grad $n$ [$\to$ \ref{2.1.15}] ist ein Dedekindring, dessen additive GRuppe ein freier $\Z$-Modul vom Rang $n$ ist.
+ 	\end{korollar}
+ 
+ 	\newpage
+ 	
+ 	\section{Die Idealklassengruppe}
+ 	
+ 	\begin{proposition}\label{2.6.1}
+ 		Sei $A$ ein kommutativer Ring. Es sind \"aquivalent:
+ 		\begin{enumerate}[(a)]
+ 			\item $A$ ist lokal [$\to$ \ref{1.5.8}(b)]
+ 			\item $A \setminus A^*$ ist ein Ideal von $A$
+ 			\item $A$ besitzt genau ein maximales Ideal
+ 			\item $0\neq 1$ und $\forall x \in A: (x \in A^* \lor 1-x \in A^*)$
+ 		\end{enumerate}
+ 	
+ 		\begin{proof}
+ 			$(a) \Rightarrow (b)$: Gelta (a) und setzte $I:= A \setminus A^*$. Dann $ 0 \in I$ (denn $0 \neq 1$ in $A$), $I + I \subseteq I$ und 
+ 			$AI \subseteq I$ (denn sind $a \in A$ und $x \in I$, so $ax \in I$, denn w\"are $ax \in A^*$, so auch $x \in A^*$, dann A kommutativ ist)
+ 			
+ 			$(b) \Rightarrow (c)$: Ist $I := A \setminus A^*$ ein Ideal von $A$, so ist jedes Ideal $J$ von $A$ mit $1 \notin J$ in $I$ enthalten. Es ist also $I$ das gr\"o\ss te Ideal $\neq A$ von $A$.
+ 			Insbesondere ist $I$ ein maximales Ideal und jedes maximale Ideal von $A$ gleich $I$.
+ 			
+ 			$(c) \Rightarrow (d)$: Beweis durch Kontraposition. Gelte $0 = 1$ oder $\exists x \in A: (x \notin A^* \land 1-x \notin A^*)$. 
+ 			
+ 			Falls $0 = 1$ in $A$, so besitzt $A$ kein maximales Ideal. 
+ 			
+ 			Sei nun $x \in A$ mit $x \notin A^*$ und $1-x \notin A^*$. Wegen $1 \notin (x)$ und $1 \notin (1-x)$ gibt es maximale Ideale $(x) \subseteq \mathfrak{m}, (1-x) \subseteq \mathfrak{n}$. Es gilt $\mathfrak{m} \neq \mathfrak{n}$, denn sonst $1 = x + (1-x) \in \mathfrak{m} = \mathfrak{n}$.
+ 			
+ 			$(d) \Rightarrow (a)$: Gelte (d) und seien $a, b \in A$ mit $a+b \in A^*$. Zu zeigen $a \in A^*$ oder $b \in A^*$.
+ 			
+ 			W\"ahle $c \in A$ mit $ac+ bc = (a+b)c = 1$. Wegen (d) gilt $ac \in A^*$ oder $bc \in A^*$, also $a \in A^*$ oder $b \in A^*$.
+ 		\end{proof}
+ 	\end{proposition}
+ 
+ 	\begin{erinnerung}\label{2.6.2}
+ 		\begin{enumerate}[(a)]
+ 			\item Sei $K$ ein K\"orper. Dann hei\ss t $v:K \to \Z \cup \set{\infty}$ ein \emph{diskrete Bewertung} auf $K$, wenn $v(0) = \infty$, $v\big|_{K^*}$ ein Gruppenhomomorphismus von $(K^*, \cdot)$ nach $(\Z, +)$ ist und $v(a + b)\geq \min \set{v(a), v(b)}$ f\"ur alle $a, b \in K$.
+ 			
+ 			\item Sei $K$ ein K\"orper und $v$ eine diskrete Bewertung auf $K$. Dann ist $\mathcal{O}_v := \set{a \in K| v(a) \geq 0}$ ein Unterring von $K$, er sogenannte Bewertungsring von $v$. Es gilt 
+ 			$\mathcal{O}_v^* = \set{a \in K| v(a) = 0}$ und $\mathcal{O}_v$ ist ein lokaler Ring mit maximalem Ideal $\mathfrak{m}_v = \set{a \in K| v(a) > 0}$ und Restklassenk\"orper $\mathcal{O}_v / \mathfrak{m}_v$.
+ 			
+ 			\item Sei $A$ ein faktorieller Ring, $K:= \qf(A)$. F\"ur jedes $x \in K^*$ gibt es genau ein $(c \alpha_x) \in A^*\times \Z^{(\P_A)}$ mit $x = c \prod_{p \in \supp(\alpha_x)} p^{\alpha_x(p)}$. Dann ist f\"ur jedes $p \in \P_A$ die $p$-Bewertung $v_p: K \to \Z, x \mapsto \begin{cases}
+ 				\infty & \textrm{falls } x = 0\\
+ 				\alpha_x(p) & \textrm{sonst}
+ 			\end{cases}$ eine diskrete Bewertung auf $K$.
+ 		\end{enumerate}
+ 	\end{erinnerung}
 \backmatter
 \printindex
 \end{document}
