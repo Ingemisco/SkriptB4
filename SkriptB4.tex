@@ -108,6 +108,7 @@ toc=idx
 \newtheorem{def-prop}[definition]{Definition und Proposition}
 \newtheorem{def-satz}[definition]{Definition und Satz}
 \newtheorem{def-ueb}[definition]{Definition und \"Ubung}
+\newtheorem{satz-not}[definition]{Satz und Notation}
 \newtheorem{uebung}[definition]{\"Ubung}
 \newtheorem{motivation}[definition]{Motivation}
 \newtheorem{bem-not}[definition]{Bemerkung und Notation}
@@ -2261,6 +2262,77 @@ toc=idx
  			\end{cases}$ eine diskrete Bewertung auf $K$.
  		\end{enumerate}
  	\end{erinnerung}
+ 
+ 	\begin{notation}\label{2.6.3}
+ 		Sei $A$ ein Dedekindring.  $M_A := \set{\mathfrak{p}| \mathfrak{p} \textrm{ Primideal von } A, \mathfrak{p} \neq (0)} \overset{\ref{2.2.12}(d)}{=} \set{\mathfrak{m}| \mathfrak{m} \textrm{ maximales von } A, \mathfrak{m} \neq (0)}$
+ 		
+ 		$I_A := \set{I| I \textrm{ gebrochenes Ideal von } A, I \neq (0)} \overset{\ref{2.2.7}(e), \ref{2.2.12}(c)}{=} \set{I | I \textrm{ e.e. A-Untermodul von } \qf(A), I \neq 0}$
+ 		
+ 		$P_A := \set{I| I \textrm{ gebrochenes Hauptideal von } A, I \neq (0)} = \overset{\ref{2.2.6}}{=} \set{I | I \textrm{ zyklischer A-Untermodul von} \qf(A), I \neq 0}$
+ 	\end{notation}
+ 
+ 	\begin{satz-not}\label{2.6.4}
+ 		Sei $A$ ein Dedekindring, $K:= \qf(A)$. F\"ur jedes $I \in I_A$ gibt es genau ein $\alpha_I \in \Z^{(M_A)}$ mit $I=\prod_{\mathfrak{p} \in \supp(\alpha_I)} \mathfrak{p}^{\alpha_I(\mathfrak{p})}$
+ 		
+ 		Definiere f\"ur $\mathfrak{p} \in M_A$ $\tilde{v}_\mathfrak{p}: I_A \cup \set{0} \to \Z \cup \set{\infty}$, $I \mapsto \begin{cases}
+ 			\infty & \textrm{ falls } I = 0\\
+ 			\alpha_I(\mathfrak{p}) & \textrm{sonst}
+ 		\end{cases}$
+ 	
+ 		und die \emph{$\mathfrak{p}$-Bewertung} $v_\mathfrak{p}: K \to \Z \cup \set{\infty}, x \mapsto \tilde{v}_\mathfrak{p}(xA)$.
+ 		
+ 		Dann gilt 
+ 		\begin{enumerate}[(a)]
+ 			\item 
+ 			$I_A \to \Z^{(M_A)}, I \mapsto \alpha_I = (\tilde{v}_\mathfrak{p}(I))_{\mathfrak{p} \in M_A}$ ist ein Isomorphismus zwischen der Menge der durch Inklusion halbgeordneten Menge $I_A$ und der durch
+ 			$\alpha \preceq \beta : \Leftrightarrow \forall \mathfrak{p} \in M_A: \alpha(\mathfrak{p}) \geq \beta(\mathfrak{p})$ ($\alpha, \beta \in \Z^{(M_A)}$) halbgeordneten Menge $\Z^{M_A}$
+ 			
+ 			\item
+ 			F\"ur alle $\mathfrak{p} \in M_A$ und $I, J \in I_A$ gilt $\tilde{v}_\mathfrak{p}(IJ) = \tilde{v}_\mathfrak{p}(I) + \tilde{v}_\mathfrak{p}(J)$ und $\tilde{v}_\mathfrak{p}(I+J) = \min \set{\tilde{v}_\mathfrak{p}, \tilde{v}_\mathfrak{p}(J)}$
+ 			
+ 			\item F\"ur alle $\mathfrak{p} \in M_A$ ist $v_\mathfrak{p}$ ein diskrete Bewertung auf $K$. 
+ 		\end{enumerate}
+ 	
+ 		\begin{proof}
+ 			Die Existenz von $\alpha_I \in \N_0^{(M_A)}$ mit $I = \prod_{\mathfrak{p} \in \supp(\alpha_I)} \mathfrak{p}^{\alpha_I(\mathfrak{p})}$ folgt f\"ur Ideale $I \in I_A$ aus der Definition eines Dedekindringes \ref{2.2.4}. 
+ 			
+ 			Da jedes $I \in I_A$ von der Form $JK^{-1}$ f\"ur Ideale $J,K \in I_A$ ist (sogar mit $K$ Hauptideal, siehe \ref{2.2.7}(b))m folgt die Existenz von $\alpha_I \in \Z^{(M_A)}$ mit $I = \prod_{\mathfrak{p} \in \supp(\alpha_I)} \mathfrak{p}^{\alpha_I(\mathfrak{p})}$.
+ 			
+ 			Die Eindeutigkeit dieses $\alpha_I$ folgert man leicht aus \ref{2.2.11} mit \ref{2.2.12}(a).
+ 			
+ 			(a) Betrachte $\Phi: I_A \to \Z^{(M_A)}, I \mapsto \alpha_I$ und $\Psi: \Z^{(M_A)} \to I_A, \alpha \mapsto \prod_{\mathfrak{p} \in \supp(\alpha)} \mathfrak{p}^{\alpha(\mathfrak{p})}$.
+ 			
+ 			Es reicht zu zeigen 
+ 			\begin{enumerate}[(1)]
+ 				\item $\Phi \circ \Psi = \id_{\Z^{(M_A)}}$
+ 				\item $\Psi \circ \Phi = \id_{I_A}$
+ 				\item $\forall I, J \in I_A: (I \subseteq J \Rightarrow \Phi(I) \preceq \Phi(J))$
+ 				\item $\forall \alpha, \beta \in \Z^{(M_A)}: ( \alpha \preceq \beta \Rightarrow \Psi(\alpha) \subseteq \Psi(\beta))$
+ 			\end{enumerate}
+ 		
+ 			(1) und (2) sind klar. Zu (3). Seien $I, J \in I_A$ mit $I \subseteq J$. Dann ist $J^{-1}I \subseteq J^{-1}J = A$ ein Produkt von Primidealen, also $\Phi(J^{-1}I) \preceq 0$. Somit 
+ 			$\Phi(I) = \Phi((JJ^{-1})I) = \Phi(J(J^{-1}I)) = \Phi(J) + \Phi(J^{-1}I) \preceq \Phi(J)$.
+ 			
+ 			Zu (4). Seien $\alpha, \beta \in \Z^{(M_A)}$ mit $\alpha \preceq \beta$. Dann $\alpha - \beta \preceq 0$ und daher $\Psi(\alpha - \beta ) \subseteq A$.
+ 			
+ 			Somit $\Psi(\alpha) = \Psi(\alpha-\beta + \beta) = \Psi(\alpha-\beta)\Psi(\beta) \subseteq A\Psi(\beta) \subseteq \Psi(\beta)$
+ 			
+ 			(b) Die erste Gleichung ist trivial. Die beiden anderen Gleichungen folgen aus (a) durch die folgenden Beobachtungen:
+ 			
+ 			In der halbgeordneten Menge $I_A$ ist $\inf \set{I, J} = I \cap J$ und $\sup \set{I, J} = I + J$ f\"ur alle $I, J \in I_A$ und in der durch (*) halbgeordneten Menge
+ 			$\Z^{(M_A)}$ ist $\inf \set{\alpha, \beta} = \begin{pmatrix}
+ 					M_A &\to \Z\hfill\\
+ 					\mathfrak{p} &\mapsto \max \set{\alpha(\mathfrak{p}), \beta(\mathfrak{p})}
+ 			\end{pmatrix}$
+ 		
+ 			und $\sup \set{\alpha, \beta} = \begin{pmatrix}
+ 					M_A &\to \Z\hfill\\
+ 					\mathfrak{p} &\mapsto \min \set{\alpha(\mathfrak{p}), \beta(\mathfrak{p})}
+ 			\end{pmatrix}$ f\"ur alle $\alpha, \beta \in \Z^{(M_A)}$
+ 		
+ 			(c) Sei $\mathfrak{p} \in M_A$. Dann gilt $v_\mathfrak{p}(0) = \tilde{v}_\mathfrak{p}(0) = \infty$, $v_\mathfrak{p}(xy) = \tilde{v}_\mathfrak{p}((xy)A) = \tilde{v}_\mathfrak{p}((xA)(yA)) \overset{(b)}{=} \tilde{v}_\mathfrak{p}(xA) + \tilde{v}_\mathfrak{p}(yA)$ f\"ur alle $x, y\in K^*$ und $v_\mathfrak{p}(x+y) = \tilde{v}_\mathfrak{p}((x+y)A) \geq \tilde{v}_\mathfrak{p}(xA) + \tilde{v}_\mathfrak{p}(yA) \overset{(b)}{=} \min \set{\tilde{v}_\mathfrak{p}(xA), \tilde{v}_\mathfrak{p}(yA)} = \min \set{v_\mathfrak{p}(x), v_\mathfrak{p}(y)}$ f\"ur alle $x,y \in K^*$ mit $x+y\neq 0$
+ 		\end{proof}
+ 	\end{satz-not}
 \backmatter
 \printindex
 \end{document}
