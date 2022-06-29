@@ -2333,6 +2333,105 @@ toc=idx
  			(c) Sei $\mathfrak{p} \in M_A$. Dann gilt $v_\mathfrak{p}(0) = \tilde{v}_\mathfrak{p}(0) = \infty$, $v_\mathfrak{p}(xy) = \tilde{v}_\mathfrak{p}((xy)A) = \tilde{v}_\mathfrak{p}((xA)(yA)) \overset{(b)}{=} \tilde{v}_\mathfrak{p}(xA) + \tilde{v}_\mathfrak{p}(yA)$ f\"ur alle $x, y\in K^*$ und $v_\mathfrak{p}(x+y) = \tilde{v}_\mathfrak{p}((x+y)A) \geq \tilde{v}_\mathfrak{p}(xA) + \tilde{v}_\mathfrak{p}(yA) \overset{(b)}{=} \min \set{\tilde{v}_\mathfrak{p}(xA), \tilde{v}_\mathfrak{p}(yA)} = \min \set{v_\mathfrak{p}(x), v_\mathfrak{p}(y)}$ f\"ur alle $x,y \in K^*$ mit $x+y\neq 0$
  		\end{proof}
  	\end{satz-not}
+ 
+ 	\begin{korollar}\label{2.6.5}
+ 		Sei $A$ ein Dedekindring. $I_A$ ist eine multiplikativ geschriebene abelsche Gruppe und als solche ein freier $\Z$-Modul mit Basis $M_A$.
+ 		
+ 		\begin{proof}
+ 			Dass $I_A$ eine abelsche Gruppe ist , ist klar. Aus \ref{2.6.4} folgt, dass $I_A \to \Z^{(M_A)}, I \mapsto  (\tilde{v}_\mathfrak{p}(I))_{\mathfrak{p} \in M_A}$ auch ein Isomorphismus zwischen der multiplikativ geschriebenen Gruppe $I_A$ und der additiv geschriebenen Gruppe $\Z^{(M_A)}$ ist. Unter diesem Isomorphismus wird $M_A$ auf die kanonische Basis des $\Z$-Moduls $\Z^{(M_A)}$ abgebildet wird. 
+ 		\end{proof}
+ 	\end{korollar}
+ 
+ 	\begin{bem-not}\label{2.6.6}
+ 		Sei $A$ ein Dedekindring. Dann ist $P_A$ eine Untergruppe von $I_A$. Man nennt $C_A := I_A /P_A$ die \emph{(Ideal-)Klassengruppe} von $A$ und deren Ordnung $\#C_A \in \N \cup \set{\infty}$ die \emph{Klassenzahl} von $A$. 
+ 	\end{bem-not}
+ 
+ 	\begin{proposition}\label{2.6.7}
+ 		Sei $A$ ein Dedekindring. Es sind \"aquivalent
+ 		
+ 		\begin{enumerate}[(a)]
+ 			\item $A$ ist ein Hauptidealring
+ 			
+ 			\item $\#C_A = 1$
+ 			
+ 			\item $A$ ist faktoriell
+ 		\end{enumerate}
+ 	
+ 		\begin{proof}
+ 			(a) $\Leftrightarrow I_A = P_A \Leftrightarrow I_A / P_A = \set{1} \Leftrightarrow C_A = \set{1} \Leftrightarrow \#C_A = 1 \Leftrightarrow (b)$.
+ 			
+ 			(a) $\Rightarrow$ (c) klar
+ 			
+ 			(c) $\Rightarrow$ (a). Gelte (c). Da die Gruppe $I_A$ von $M_A$ erzeugt wird, reicht es $M_A \subseteq P_A$ zu zeigen. Sei hierzu $\mathfrak{p} \in M_A$. W\"ahle $x \in \mathfrak{p} $ mit $x \neq 0$. W\"ahle $n \in \N$ und Primelemente $p_1, \dots, p_n \in A$ mit $x = p_1 \cdot \cdots \cdot p_n$. Wegen $p_1 \cdot \cdots \cdot p_n \in \mathfrak{p}$ gibt es $i \in \set{1,\dots, n}$ mit $p_i \in \mathfrak{p}$. Weil $(p_i) \in M_A$ gilt muss $(p_i) = \mathfrak{p}$ sein.		
+ 		\end{proof}
+ 	\end{proposition}
+ 
+ 	\begin{korollar}\label{2.6.8}
+ 		Ein Ring genau dann ein Hauptidealring, wenn er ein faktorieller Dedekindring ist.
+ 	\end{korollar}
+ 
+ 	\begin{bemerkung}\label{2.6.9}
+ 		Sei $A$ ein Hauptidealring. Dann gilt f\"ur alle $p \in \P_A, v_p = v_\mathfrak{p}$, wobei $\mathfrak{p} = (p) \in M_A$.
+ 	\end{bemerkung}
+
+	\newpage
+ 	\section{Zerlegungsgesetze}
+ 	
+ 	\begin{satz}\label{2.7.1}
+ 		(Nakayama-Lemma)\newline
+ 		Sei $R$ ein kommutativer Ring, $I$ ein Ideal von $R$ und $M$ ein endlich erzeugter $R$-Modul mit $IM := \set{\sum_i a_ix_i|a_i \in R, x_i \in M} = M$.
+ 		
+ 		Dann gibt es $a \in R$ mit $1-a \in I$ und $aM = 0$.
+ 		
+ 		\begin{proof}
+ 			Wendet man Cayley-Hamilton \ref{1.7.5} auf $f := \id_M$ an, so erh\"alt man $n \in \N_0$ und $a_1, \dots, a_n \in I$ mit $f^n + af^{n-1} + \cdots + a_n\id_M = 0$. Dann $1-a = -(a_1 + \cdots + a_n) \in I$ und $a \id_M = 0$.
+ 		\end{proof}
+ 	\end{satz}
+ 
+ 	\begin{bemerkung}\label{2.7.2}
+ 		In der Situation \ref{2.7.1} ist $1-a \in I$ ein "Zeuge" f\"ur $IM = M$, denn $M = 1 \cdot M = (1-a+a)M \subseteq (1-a)M + aM = (1-a)M$, also $(\underbrace{1-a}_{\in I})M = M$.
+ 	\end{bemerkung}
+ 
+ 	\begin{lemma}\label{2.7.3}
+ 		Sei $A$ ein Dedekindring, $I \in I_A$ und $\mathfrak{p} \in M_A$. Dann $A/\mathfrak{p} \cong I / I\mathfrak{p}$ als $A$-Modul [schon in \ref{1.4.17}(b) gezeigt, falls $A$ Hauptidealring]
+ 		
+ 		\begin{proof}
+ 			Es gibt $x \in I \setminus I_\mathfrak{p}$ (sonst $I = I\mathfrak{p}$ und daher $A = \mathfrak{p}$). Der Kern des $A$-Modulhomomorphismus $A\to I/I\mathfrak{p}, a \mapsto \overline{ax}$ umfasst $\mathfrak{p}$, aber enth\"alt nicht $1$, und somit $\mathfrak{p}$. Z.z. ist dieser Homomorphismus ist surjektiv, da $I = Ax + I\mathfrak{p}$. Dies folgt mit $I\mathfrak{p} \subsetneq Ax + I \mathfrak{p} \subseteq I$ aus \ref{2.6.4}(a)
+ 		\end{proof}
+ 	\end{lemma}
+ 
+ 	\begin{bem-not}\label{2.7.4}
+ 		Ist $A\subseteq B$ eine Ringerweiterung und $I$ ein Ideal von $A$, so bezeichne $BI$ das von $I$ in $B$ erzeugte Ideal. Es gilt $BI = \set{\sum_i b_ia_i|b_i \in B, a_i \in I}$
+ 	\end{bem-not}
+ 	
+ 	\begin{def-satz}
+ 		Sei $A$ ein Dedekindring, $K:= \qf(A)$, $L|K$ eine endliche separable K\"orpererweiterung und $B$ der ganze Abschluss von $A$ in $L$ (damit $B$ ein Dedekindring nach \ref{2.5.4})
+ 		
+ 		\begin{enumerate}[(a)]
+ 			\item 
+ 			Sei $\mathfrak{q} \in M_B$. Dann gibt es genau ein $\mathfrak{p} \in M_A$ mit $\mathfrak{p} \subseteq \mathfrak{q}$, n\"amlich $\mathfrak{p} := A \cap \mathfrak{q}$.
+ 			
+ 			Man nennt $e_A(\mathfrak{q}) = \tilde{v}_\mathfrak{q}(B\mathfrak{p})$ den \emph{Verzweigungsindex} und $f_A(\mathfrak{q}) = [(B/\mathfrak{q}):(A/\mathfrak{p})]$ den \emph{Tr\"agheitsindex} von $\mathfrak{q}$ \"uber $A$, wobei man $A/\mathfrak{p}$ verm\"oge $A/\mathfrak{p} \hookrightarrow B/ \mathfrak{q}, \overline{a^\mathfrak{p}} \mapsto \overline{a^\mathfrak{q}} (a \in A)$ als Unterk\"orper von $B/\mathfrak{q}$ auffasst. Es gilt $e_A(\mathfrak{q}) \in \N$ und $f_A(\mathfrak{q}) \in \N$.
+ 			
+ 			\item 
+ 			Sei $\mathfrak{p} \in M_A$. Dann ist $Q:= \set{\mathfrak{q} \in M_B| \mathfrak{p} \subseteq \mathfrak{q}}$ endlich. Es gilt $B\mathfrak{p} = \prod_{\mathfrak{q} \in Q} \mathfrak{q}^{e_A(\mathfrak{q})}$ und 
+ 			$\sum_{\mathfrak{q} \in Q} e_A(\mathfrak{q})f_A(\mathfrak{q}) = \dim_{A/\mathfrak{p}}(B/B\mathfrak{p}) = [L:K]$, wobei man $B/B\mathfrak{p}$ verm\"oge $\overline{a^\mathfrak{p}}\overline{b^{B\mathfrak{p}}} (a \in A, b \in B)$ als $A/\mathfrak{p}$ Vektorraum auffasst. Insbesondere $Q \neq \emptyset$
+ 		\end{enumerate}
+ 	
+ 		\begin{proof}
+ 			\begin{enumerate}[(a)]
+ 				\item 
+ 				Nach Lemma \ref{2.5.3} gilt $A \cap \mathfrak{q} \neq (0)$ also $A \cap \mathfrak{q} \in M_A$. Ist $\mathfrak{p} \in M_A$ mit $\mathfrak{p} \subseteq \mathfrak{q}$, so ist $\mathfrak{p} \subseteq A \cap \mathfrak{q}$ und daher $\mathfrak{p} = A \cap \mathfrak{q}$.
+ 				
+ 				Wegen $(0) \neq B\mathfrak{p} \subseteq B$ ist $e_A(\mathfrak{q}) = \tilde{v}_\mathfrak{q}(B\mathfrak{p}) \in \N$ klar.
+ 				
+ 				Nach Satz \ref{2.5.2} (und \ref{2.2.12}) ist $B$ als $A$-Modul endlich erzeugt und daher $B/\mathfrak{q}$ ein endlich erzeugter  $A/\mathfrak{p}$ Vektorraum, also $f_A(\mathfrak{q}) = [(B/\mathfrak{q}):(A/\mathfrak{p})] = \dim_{A/\mathfrak{p}}(B/\mathfrak{q} ) \in \N$.
+ 				
+ 				
+ 				\item 
+ 			\end{enumerate}
+ 		\end{proof}
+ 	\end{def-satz}
 \backmatter
 \printindex
 \end{document}
