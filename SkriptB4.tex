@@ -2470,6 +2470,163 @@ toc=idx
  			Da $\mathfrak{q}$ ein Primideal ist, folgt $\prod_{\varphi \in G} \varphi^{-1}(x) \notin \mathfrak{q} $, also $N_{L|K}(x) \overset{\ref{2.4.6}}{=} \prod_{p \in G} \varphi(x) = \prod_{\varphi \in G} \varphi^{-1}(x) \notin \mathfrak{q}$. Andererseits $N_{L|K}(x) = x \prod_{\varphi \in G \setminus \set{1}} \varphi(x) \in \mathfrak{m} \cap A = \mathfrak{p} \subseteq \mathfrak{q}$, da $x \in \mathfrak{m}$ und $N_{L|K}(x) \in A$ (\ref{2.4.5}).
  		\end{proof}
  	\end{satz-def}
+ 
+ 	\newpage
+ 	\chapter[tocentry={Zahlringe}]{Zahlringe}
+ 	\section{Gitter in Zahlk\"orpern}
+ 	\begin{prop-def}\label{3.1.1}
+ 		Sei $K$ ein Zahlk\"orper vom Grad $n$. 
+ 		
+ 		Jede endlich erzeugte Untergruppe $M$ von $K$ ist als $\Z$-Modul frei vom Rang $\leq n$ und es sind \"aquivalent:
+ 		\begin{enumerate}[(a)]
+ 			\item $\rk M = n$
+ 			\item $M$ hat eine $\Z$-Basis, welche eine $\Q$-Basis von $K$ ist
+ 			\item Jede $\Z$-Basis von $M$ ist eine $\Q$-Basis von $K$  
+ 			\item $\forall a \in K: \exists s \in \N: sa \in M$
+ 		\end{enumerate}
+ 		
+ 		Sind (a)-(d) erf\"ullt, so hei\ss t $M$ ein \emph{Gitter} in $K$.
+ 		\begin{proof}
+ 			\"Ubung
+ 		\end{proof}
+ 	\end{prop-def}
+ 
+ 	\begin{definition}\label{3.1.2}
+ 		Ein Gitter $M$ hei\ss t \emph{multiplikativ}, wenn es eine multiplikative Menge ist, das hei\ss t $1 \in M$ und $\forall x,y \in M: xy \in M$.
+ 	\end{definition}
+ 
+ 	\begin{beispiele}\label{3.1.3}
+ 		Nach \ref{2.5.6} ist jeder Zahlring ein multiplikatives Gitter im zugeh\"origen Zahlk\"orper.
+ 	\end{beispiele}
+ 
+ 	\begin{lemma}\label{3.1.4}
+ 		Seien $M$ und $N$ Gitter im Zahlk\"orper $K$. 
+ 		
+ 		Dann gibt es ein $s \in \N$ mit $sM \subseteq N$ und $sN \subseteq M$. Gilt zus\"atzlich $N \subseteq M$, so ist $M/N$ endlich.
+ 		
+ 		\begin{proof}
+ 			Nach \ref{3.1.1}(d) gilt $\forall a \in K: \exists s \in \N: sa \in N$, insbesondere $\forall a \in M: \exists s \in \N: sa \in N$. Da $M$ endlich erzeugt ist, haben wir sogar 
+ 			$\exists s \in \N: \forall a \in M: sa \in N$. Also gibt es $s_1 \in \N$ mit $s_1M \subseteq N$ und analog $s_2 \in \N$ mit $s_2N \subseteq M$. Dann $sM \subseteq N$ und $sN \subseteq M$ f\"ur $s:= s_1s_2 \in \N$.
+ 			
+ 			Gelte nun $N \subseteq M$. Dann $s(M/N) = 0$ und da $M/N$ ein endlich erzeugter $\Z$-Modul ist, folgt $\#(M/N) < \infty$.
+ 		\end{proof}
+ 	\end{lemma}
+ 
+	\begin{satz}\label{3.1.5}
+		Sei $K$ ein Zahlk\"orper und $M \subseteq K$. 
+		
+		Dann ist $M$ ein multiplikatives Gitter in $K$ genau dann, wenn $M$ ein Unterring von $\mathcal{O}_K$ mit $K = \qf(M)$ ist.
+		
+		\begin{proof}
+			\"Ubung
+		\end{proof}
+	\end{satz}
+
+	\begin{def-prop}\label{3.1.6}
+		Sei $M$ ein Gitter im Zahlk\"orper $K$ und $x_1, \dots, x_n$ ein $\Z$-Basis von $M$.
+		
+		Dann hei\ss t $d(M) := d_{K|\Q}(x_1, \dots, x_n) \overset{\ref{2.4.24}(a)}{\in} \Q^*$ die \emph{Diskriminante} des Gitters $M$. Sie h\"angt nicht 
+		von der Wahl der Basis ab. Gilt $M \subseteq \mathcal{O}_K$, so $d(M) \in \Z$.
+		
+		\begin{proof}
+			Seien $\underline{x} = (x_1, \dots, x_n)$ und $\underline{y} = (y_1, \dots, y_n)$ $\Z$-Basen von $M$. 
+			
+			Dann sind nach \ref{3.1.1}(c) $\underline{x}$ und $\underline{y}$ auch $\Q$-Basen von $K$. Bezeichne $f:K\to K$ die $\Q$-lineare Abbildung von $K$ mit 
+			$f(x_i) = y_i$ f\"ur $i \in \set{1,\dots, n}$. Wegen $y_i \in \Z x_1 + \cdots + \Z x_n$ f\"ur $i \in \set{1,\dots, n}$ gilt $M(f, \underline{x}) \in \Z^{n\times n}$.
+			Also $\det f = \det M(f, \underline{x}) \in \Z$.
+			Analog $\det f^{-1} \in \Z$. Wegen $(\det f) (\det f^{-1}) = \det \id_K = 1$, also $\det f \in \Z^* = \set{-1, 1}$, also $(\det f)^2 = 1$. Nach \ref{2.4.24}(b) gilt 
+			$d_{K|\Q}(f(x_1), \dots, f(x_n)) = d_{K|\Q}(x_1, \dots, x_n)$.
+			
+			Ist schlie\ss lich $M \subseteq \mathcal{O}_K$, so $d(M) \in \Z$ wegen \ref{2.4.19} und \ref{2.4.25}. 
+		\end{proof}
+	\end{def-prop}
+
+	\begin{satz}\label{3.1.7}
+		Seien $M$ und $N$ Gitter des Zahlk\"orpers $K$ mit $N \subseteq M$. Dann $d(N) = [M:N]^2 d(M)$.
+		
+		\begin{proof}
+			W\"ahle $\Z$-Basen $\underline{x} = (x_1, \dots, x_n)$ von $M$ und $\underline{y} = (y_1, \dots, y_n)$ von $N$.
+			
+			Bezeichne wieder $f:K\to K$ die $\Q$-lineare Abbildung mit $f(x_i) = y_i$ f\"ur $i \in \set{1, \dots, n}$.
+			
+			Nach \ref{2.4.24}(b) ist $\det f = [M:N]$ zu zeigen. Betrachte den $\Z$-Modulisomorphismus $\iota : \Z^n \to M, \begin{pmatrix}
+				a_1\\ \vdots \\ a_n
+			\end{pmatrix} \mapsto \sum_{i=1}^{n} a_ix_i$ [$\to$ \ref{1.2.7}].
+		
+			Setzt man $N' := \iota^{-1} (N)$, so gilt nat\"urlich $[M:N] = [\Z^n:N'] = \#(\Z^n/N')$. Weiter ist $\iota^{-1}(y_i)$
+			die $i$-te Spalte von $M(f, \underline{x})$, also $N' = \Z\iota^{-1}(y_1) + \cdots + \Z\iota^{-1}(y_n) = \im M(f, \underline{x})$.
+			
+			Wendet man nun das Verfahren aus \ref{1.6.6}(b) auf $M(f, \underline{x}) \in \Z^{n \times n}$ an, so erh\"alt man $S \in \N^{n\times n}$ in Diagonalform (sogar 
+			Smithscher Normalform) und $P, Q \in \GL_n(\Z)$ mit $S = PM(f, \underline{x})Q$.
+			
+			Ist $S = \begin{pmatrix}
+				a_1, 0 \cdots & 0\\
+				0 & a_2 & \cdots 0\\
+				\vdots & \vdots & \ddots & \vdots\\
+				0 & 0 & \cdots & a_n
+			\end{pmatrix}$, so gilt nach \ref{1.6.6}(a) $\Z^n/N' \cong \Z^n / (a_1\Z \times \cdots \times a_n \Z) \cong (\Z/a_1\Z) \times \cdots \times (\Z/a_n\Z)$ 
+			und somit $[M:N] = [\Z^n:N'] = a_1 \cdots a_n = \det S = \underbrace{(\det P)}_{\in \Z^*} (\det M(f, \underline{x})) \underbrace{(\det Q)}_{\in \Z^*}$.
+			
+			Also wegen $\Z^* = \set{-1, 1}$ 
+				\[|\det f| = |\det M(f, \underline{x})| = [M:N]\]
+ 		\end{proof}
+	\end{satz}
+
+	\begin{korollar}\label{3.1.8}
+		Sei $K$ ein Zahlk\"orper und $M$ ein multiplikatives Gitter in $K$ mit $\forall p \in \P: p^2 \nmid d(M)$.
+		
+		Dann gilt $M = \mathcal{O}_K$
+		
+		\begin{proof}
+			Nach \ref{3.1.5} gilt $M \subseteq \mathcal{O}_K$ und daher nach \ref{3.1.7} $d(M) = [\mathcal{O}_K:M]^2d(\mathcal{O}_K)$, 
+			also $[\mathcal{O}_K:M] = 1$
+		\end{proof}
+	\end{korollar}
+
+	\begin{beispiele}\label{3.1.9}
+		Sei $d \in \nsquare$ [$\to$ \ref{2.1.16}]. Dann sind die Identit\"at und $x+y\sqrt{d} \mapsto (x+y\sqrt{d})^* := x- y \sqrt{d}$ ($x,y \in \Q$) die beiden verschiedenen
+		Einbettungen des quadratischen Zahlk\"orpers $\Q(\sqrt{d})$ in seinen algebraischen Abschluss.
+		
+		Dann ist $\Z[\sqrt{d}] = \Z \oplus \Z\sqrt{d}$ ein multiplikatives Gitter in $\Q(\sqrt{d})$ mit Diskriminante [$\to$ \ref{2.4.21}]
+		\[\brac{\det \begin{pmatrix}
+				1 & \sqrt{d}\\1^* & \sqrt{d}^*
+		\end{pmatrix}}^2 = (-2\sqrt{d})^2 = 4d\]
+	
+		Ist $d \in \nsquare_1$ (d.h. $d \equiv_{(4)} 1$), so ist 	
+			\[\brac{\frac{1+\sqrt{d}}{2}}^2 = \frac{1+2\sqrt{d} + d}{4} = \frac{1+\sqrt{d}}{2} + \frac{d-1}{4}\]
+		eine Ganzheitsgleichung f\"ur $\frac{1+\sqrt{d}}{2}$ und daher $\Z[\frac{1+\sqrt{d}}{2}] = \Z \oplus \Z\frac{1+\sqrt{d}}{2}$
+		ein multiplikatives Gitter in $\Q(\sqrt{d})$, dessen Diskriminante 
+		\[\brac{\det \begin{pmatrix}
+				1 & \frac{1+\sqrt{d}}{2} \\ 1^* & \brac{\frac{1+\sqrt{d}}{2}}^2
+		\end{pmatrix}}^2 = \brac{\frac{1-\sqrt{d}}{2} - \frac{1+\sqrt{d}  }{2}  }^2 = d\]
+		ist.
+		
+		F\"ur $d \in \nsquare$ ergibt sich also mit \ref{3.1.8} ein neuer Beweis f\"ur die in \ref{2.1.17} schon bewiesene Tatsache
+		$\mathcal{O}_d = \Z[\frac{1+\sqrt{d}}{2}]$.
+		
+		F\"ur $d \in \nsquare_{2,3}$ liefert \ref{3.1.7} die (auch sonst leicht zu sehende) Tatsache 
+		\[[(\Z+\Z\frac{1+\sqrt{d}}{2}): \Z[\sqrt{d}]] = \sqrt{\frac{d(\Z[\sqrt{d}])}{d(\Z + \Z\frac{1+\sqrt{d}}{2})}} = \sqrt{\frac{4d}{d}} = 2\]
+	\end{beispiele}
+	\newpage
+	
+	\section{Zerlegung von Primzahlen in Zahlringen}
+	
+	\begin{bemerkung}\label{3.2.1}
+		Ein wesentlicher Grund f\"ur die Betrachtung von Gittern und vor allem von multiplikativen Gittern ist, dass sie oftmals " einfacher" sind als der Zahlring (zum Beispiel ist f\"ur $d \in \nsquare_{1}$ das multiplikative Gitter $\Z[\sqrt{d}]$ " einfacher" als $\Z[\frac{1+\sqrt{d}}{2}] = \mathcal{O}_d$) und f\"ur gewisse Zwecke doch den Zahlring ersetzen k\"onnen.
+		Siehe Zeile (b) und (c) dieser Bemerkung und Satz \ref{3.2.2} unten.
+		
+		Seien $K$ ein Zahlk\"orper und $x_1, \dots, x_n$ eine $\Z$-Basis von $\mathcal{O}_K$.
+		\begin{enumerate}[(a)]
+			\item Sei $I \neq (0)$ ein Ideal von $\mathcal{O}_K$. Nach Lemma \ref{2.5.3} gilt $I \cap \Z \neq (0)$, das hei\ss t es gibt ein eindeutig bestimmtes $m \in \N$ mit $I \cap \Z = (m)$.
+			
+			Insbesondere gilt $m \mathcal{O}_K \subseteq I$ und man kann $I$ sehen als $m$ zusammen mit dem Bild von $I$ unter $\mathcal{O}_K \to \mathcal{O}_K/m\mathcal{O}_K$.
+			
+			ein Ideal $\neq (0)$ des Zahlringes $\mathcal{O}_K$ ist also gegeben durch eine nat\"urliche Zahl $m$ und ein Ideal des endlichen Ringes $\mathcal{O}_K/m\mathcal{O}_K = (\Z x_1 \oplus \cdots \oplus \Z x_n) / (m\Z x_1 + \cdots + m\Z x_n)$,
+			dessen additive Gruppe in nat\"urlicher Weise ein freier $\Z/m\Z$-Modul mit Basis $\overline{x_1}, \dots, \overline{x_n}$ ist.
+			
+			Insbesondere ist $\mathcal{O}_K /I$ endlich mit $\#(\mathcal{O}_K / I) | m^n$
+		\end{enumerate}
+	\end{bemerkung}
 \backmatter
 \printindex
 \end{document}
