@@ -96,7 +96,6 @@ toc=idx
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{bemerkung}[definition]{Bemerkung}
-\newtheorem{beispiele}[definition]{Beispiele}
 \newtheorem{beispiel}[definition]{Beispiel}
 \newtheorem{warnung}[definition]{Warnung}
 \newtheorem{satz}[definition]{Satz}
@@ -173,7 +172,7 @@ toc=idx
 		
 	\end{bemerkung}
 	
-	\begin{beispiele}\label{1.1.3}\hfill
+	\begin{beispiel}\label{1.1.3}\hfill
 			\begin{enumerate}[(a)]
 			\item Nullmoduln $\set{0}$
 			
@@ -185,7 +184,7 @@ toc=idx
 			\[\cdot: R^{n\times n} \times R^n \to R^n, (A, x) \mapsto Ax\]
 			Dies folgt aus den Rechenregeln f\"ur Matrixmultiplikation.
 		\end{enumerate}
-	\end{beispiele}
+	\end{beispiel}
 	
 	\begin{def-prop-satz-not}\label{1.1.4}\hfill\newline
 		Sei $R$ ein Ring. Die folgenden f\"ur die Theorie der $R$-Moduln grundlegenden Begriffe und Resultate sind eine direkte Verallgemeinerung der entsprechenden Tatsachen f\"ur Vektorr\"aume (also f\"ur den Fall, dass $R$ ein K\"orper) und f\"ur abelsche Gruppen (also $R = \Z$) aus der Linearen Algebra:
@@ -291,7 +290,7 @@ toc=idx
 	
 	\begin{bemerkung}\label{1.1.5}\hfill\newline
 		Sei $R$ ein kommutativer Ring. Dann sind die Untermoduln des $R$-Modul $R$ [$\to$\ref{1.1.3}(b)] (oder kurz gesagt die $R$-Untermoduln von $R$) genau die Ideale des Ringes $R$.
-		Insbesondere sind zum Beispiel das von einem $a \in R$ erzeugte Ideal und der davon erzeugte Untermodul als Menge dasselbe $(a)_R = Ra \overset{R\ komm.}{=} \set{ab \mid b \in R} = aR$.
+		Insbesondere sind zum Beispiel das von einem $a \in R$ erzeugte Ideal und der davon erzeugte Untermodul als Menge dasselbe $(a)_R = Ra \overset{R\ \textrm{komm.}}{=} \set{ab \mid b \in R} = aR$.
 		Trotzdem macht es vom Sinn her einen Unterschied. ob man $(a)$ oder $Ra$ schreibt. Zum Beispiel meint man mit $R/(a)$ den Ring und mit $R/aR$ den $R$-Modul (deren zugrundeliegenden abelschen Gruppen dieselben sind)
 	\end{bemerkung}
 
@@ -305,7 +304,7 @@ toc=idx
 		\end{enumerate}
 	\end{warnung}	
 
-	\begin{beispiele}\label{1.1.7}\hfill
+	\begin{beispiel}\label{1.1.7}\hfill
 		\begin{enumerate}[(a)]
 			\item F\"ur jeden Ring $R$ ist $R^n$ ein $R$-Modul mit der \emph{Standardbasis}\index{Modul@\textbf{Modul}!Standardbasis} $\underline{e} = (e_1, \dots, e_n)$, wobei $e_i~:=~\begin{pmatrix}
 				0\\
@@ -319,7 +318,7 @@ toc=idx
 		
 			\item $\R^2$ ist ein zyklischer $\R^{2 \times 2}$-Modul [$\to$\ref{1.1.3}(c)], welcher von jedem $x \in \R^2 \setminus \set{0}$ erzeugt ist. Da aber jedes $x \in \R^2$ linear abh\"angig ist, hat dieser Modul keine Basis.  
 		\end{enumerate}
-	\end{beispiele}
+	\end{beispiel}
 	
 	
 	\newpage
@@ -474,18 +473,20 @@ toc=idx
 	\begin{definition}\label{1.2.13}\hfill\newline
 		Sei $R$ ein kommutativer Ring mit $1 \neq 0$ und $M$ ein freier $R$-Modul mit Basis $B$. Dann hei\ss t $\rk M := |B| \in \N_0 \cup \set{\infty}$ der \emph{Rang}\index{Modul@\textbf{Modul}!Rang} von $M$ [h\"angt nach \ref{1.2.11} nicht von der Wahl der Basis $B$ ab ]
 	\end{definition}
+	
+	
 	\newpage
 	
 	\section{Halbeinfache Moduln}
-	\begin{notation}\label{1.3.1}
+	\begin{notation}\label{1.3.1}\hfill\newline
 		$0 := \set{0}$ Nullmodul
 	\end{notation}
 	
-	\begin{definition}\label{1.3.2}
+	\begin{definition}\label{1.3.2}\hfill\newline
 		Ein Modul $M$ hei\ss t \emph{einfach}\index{Modul@\textbf{Modul}!Einfache Moduln} (oder irreduzibel), falls $M \neq 0$ und $0$ und $M$ die einzigen Untermoduln von $M$ sind.
 	\end{definition}
 	
-	\begin{bemerkung}\label{1.3.3}
+	\begin{bemerkung}\label{1.3.3}\hfill\newline
 		Sei $N$ ein Untermoduln von $M$.
 		\begin{enumerate}[(a)]
 			\item Bezeichne $\varphi: M \to M/N$ den kanonischen Epimorphismus. Dann vermitteln die Zuordnungen
@@ -499,23 +500,21 @@ toc=idx
 		\end{enumerate}
 	\end{bemerkung}
 
-	\begin{beispiele}\label{1.3.4}
+	\begin{beispiel}\label{1.3.4}\hfill
 		\begin{enumerate}[(a)]
 			\item Sei $R$ ein kommutativer Ring und $I$ ein $R$-Untermodul von $R$, d.h. ein Ideal von $R$ [$\to$\ref{1.1.5}]. Dann ist $R/I$ ein einfacher $R$-Modul $\Leftrightarrow$ $I$ ist ein maximales Ideal von $R$ $\Leftrightarrow$ $R/I$ ist ein K\"orper.
 			
 			\item Sei $R$ ein Hauptidealring und $p \in R\setminus \set{0}$. Dann ist $R/pR$ ein einfacher Modul genau dann, wenn $p$ irreduzibel in $R$ ist.
 			
-			\begin{proof}
-				\begin{itemize}
-					\item[$\Rightarrow$] Ist $(p)$ ein maximales Ideal von $R$, so auch ein Primideal, d.h. $p$ ist prim in $R$ und daher auch irreduzibel in $R$ (wegen $p \neq 0$) 
-					
-					\item[$\Leftarrow$] Ist $p$ irreduzibel in $R$, so ist $R/(p)$ ein K\"orper und daher ist $(p)$ ein maximales Ideal in $R$.
-				\end{itemize}
+			\begin{proof}\hfill\newline
+				"$\Longrightarrow$": Ist $(p)$ ein maximales Ideal von $R$, so auch ein Primideal, d.h. $p$ ist prim in $R$ und daher auch irreduzibel in $R$ (wegen $p \neq 0$) 
+				
+				"$\Longleftarrow$": Ist $p$ irreduzibel in $R$, so ist $R/(p)$ ein K\"orper und daher ist $(p)$ ein maximales Ideal in $R$.
 			\end{proof}
 		\end{enumerate}
-	\end{beispiele}
+	\end{beispiel}
 
-	\begin{lemma}\label{1.3.5}
+	\begin{lemma}\label{1.3.5}\hfill\newline
 		Sei $R$ ein Ring und $M$ ein $R$-Modul. Es sind \"aquivalent:
 		\begin{enumerate}[(i)]
 			\item $M$ ist einfach
@@ -523,12 +522,16 @@ toc=idx
 			\item Es gibt einen maximalen echten $R$-Untermodul $N$ von $R$ mit $R/N \cong M$
 		\end{enumerate}
 	
-		\begin{proof}\hfill
-			\begin{enumerate}
-				\item[$(a) \Rightarrow (c)$] Gelte (a) W\"ahle $x \in M \setminus \set{0}$. Dann ist der Homomorphismus $\varphi:R \to M, a \mapsto ax$ surjektiv und daher $R/N \cong M$ mit $N:=\ker \varphi$. Mit $M$ ist auch $R/N$ einfach, weswegen nach \ref{1.3.3}(b) $N$ ein maximaler echter Untermodul von $R$ ist.
-				\item[$(c) \Rightarrow (b)$] trivial
-				\item[$(b) \Rightarrow (a)$] trivial
-			\end{enumerate}
+		\begin{proof}\hfill\newline
+			\textbf{(a)$\Longrightarrow$(c)}: Gelte (a) W\"ahle $x \in M \setminus \set{0}$. 
+			
+			Dann ist der Homomorphismus $\varphi~:~R~\to~M,~a~\mapsto~ax$ surjektiv und daher $R/N \cong M$ mit $N:=\ker \varphi$. Mit $M$ ist auch $R/N$ einfach, weswegen nach \ref{1.3.3}(b) $N$ ein maximaler echter Untermodul von $R$ ist.
+			
+			\medskip\noindent
+			\textbf{(c)$\Longrightarrow$(b)}: trivial
+			
+			\medskip\noindent
+			\textbf{(b)$\Longrightarrow$(a)}: trivial
 		\end{proof}
 	\end{lemma}
 
@@ -541,11 +544,11 @@ toc=idx
 		\end{proof}
 	\end{lemma}
 
-	\begin{definition}\label{1.3.7}
+	\begin{definition}\label{1.3.7}\hfill\newline
 		Ein Modul hei\ss t \emph{halbeinfach}\index{Modul@\textbf{Modul}!Halbeinfache Moduln} (oder vollst\"andig reduzibel), wenn er direkte Summe von einfachen Moduln ist.
 	\end{definition}
 
-	\begin{lemma}\label{1.3.8}
+	\begin{lemma}\label{1.3.8}\hfill\newline
 		Jeder endlich erzeugte Modul $\neq 0$ besitzt einen einfachen Quotienten.
 		
 		\begin{proof}
@@ -560,23 +563,25 @@ toc=idx
 		\end{proof}
 	\end{lemma}
 
-	\begin{definition}\label{1.3.9}
-		Sei $M$ ein Modul und $N$ ein Untermodul von $M$. Dann hei\ss t $N$ ein \emph{direkter Summand}\index{Modul@\textbf{Modul}!Direkter Summand} von $m$, wenn es einen Untermodul $P$ von $M$ gibt mit $M = N \oplus P$.
+	\begin{definition}\label{1.3.9}\hfill\newline
+		Sei $M$ ein Modul und $N$ ein Untermodul von $M$. Dann hei\ss t $N$ ein \emph{direkter Summand}\index{Modul@\textbf{Modul}!Direkter Summand} von $M$, wenn es einen Untermodul $P$ von $M$ gibt mit $M = N \oplus P$.
 	\end{definition}
 
-	\begin{satz}\label{1.3.10}
+	\begin{satz}\label{1.3.10}\hfill\newline
 		Sei $M$ ein Modul. Dann sind folgende Aussage \"aquivalent
 		\begin{enumerate}[(a)]
 			\item $M$ ist halbeinfach
 			
-			\item $M$ ist die Summe seiner einfacher Untermoduln
+			\item $M$ ist die Summe seiner einfachen Untermoduln
 			
 			\item Jeder Untermodul von $M$ ist ein direkter Summand von $M$.
 		\end{enumerate}	
 		
 		\begin{proof}\hfill\newline
-			(a)$\Rightarrow$(b) ist klar\newline
-			(b)$\Rightarrow$(c). Gelte (b) und sei $N$ ein Untermodul von $M$.
+			\textbf{(a)$\Longrightarrow$(b)}: klar
+			
+			\medskip\noindent
+			\textbf{(b)$\Longrightarrow$(c)}: Gelte (b) und sei $N$ ein Untermodul von $M$.
 				\[X:= \set{P \mid P \ \mathrm{Untermodul von }\ M, N \cap P = 0}\]
 			
 			\noindent Jede Kette $K \subseteq X$ besitzt eine obere Schranke in $X$ ($0$ f\"ur $K = \emptyset$, $\bigcup K$ f\"ur $K \neq \emptyset$)
@@ -586,31 +591,32 @@ toc=idx
 			\noindent Der erste Fall tritt aber nicht ein:\newline
 			Ist $L \cap (N+P) = 0$, so $(L+P)\cap N = 0$ (ist $x \in L$ und $y \in P$ mit $x+y \in N$, so $x \in L\cap (N+P) = 0$ und daher $y \in N\cap P = 0$), woraus wegen der Maximalit\"at von $P$ folgt $P = L + P$, also $L \subseteq P \lightning$
 			
+			\medskip\noindent 
+			\textbf{(c)$\Longrightarrow$(a)}: Gelte (c).\newline
+			\textbf{Hilfsbehauptung}: \emph{Jeder Untermodul eines Untermoduls $N$ von $M$ ist ein direkter Summand von $N$.}
 			
-			\noindent (c)$\Rightarrow$(a). Gelte (c).\newline
-			Hilfsbehauptung: Jeder Untermodul eines Untermoduls $N$ von $M$ ist ein direkter Summand von $N$.
-			
-			\noindent Begr\"undung: Sei $N$ ein Untermodul von $M$ und $P$ ein Untermodul von $N$.
-			W\"ahle $Q$ mit $M = P \oplus Q$. Setze $R = Q \cap N$. Wir zeigen $N = P \oplus R$. Es ist klar, dass $P \cap R = 0$ (denn $P \cap Q = 0$) und $P + R \subseteq N$. Zu zeigen it also noch $N \subseteq P + R$. \newline
+			\noindent \textbf{Begr\"undung}: Sei $N$ ein Untermodul von $M$ und $P$ ein Untermodul von $N$.
+			W\"ahle $Q$ mit $M = P \oplus Q$. Setze $R = Q \cap N$. Wir zeigen $N = P \oplus R$. Es ist klar, dass $P \cap R = 0$ (denn $P \cap Q = 0$) und $P + R \subseteq N$. Zu zeigen ist also noch $N \subseteq P + R$. \newline
 			Sei hierzu $x \in N$. Schreibe $x = p + q$ mit $p \in P$ und $q \in Q$, dann $q = x - p \in N \cap Q = R$.  
 			
+			\bigskip
 			\noindent Betrachte nun die durch Inklusion halbgeordnete Menge 
 				\[X:= \set{Y \mid Y\ \mathrm{Menge\ von\ einfachen\ Untermoduln\ von}\ M\ \mathrm{mit}\ \sum_{N \in Y}N = \bigoplus_{N \in Y}N}\]
 				
-			\noindent Sei $K$ eine Kette in $X$. Wir behaupten, dass dann $Z:= \bigcap K \in X$ gilt und $Z$ eine obere Schranke von $K$ in $X$ ist. \newline
-			Zu zeigen: $\sum_{N \in Z} N = \bigoplus_{N \in Z} N$
+			\noindent Sei $K$ eine Kette in $X$. Wir behaupten, dass dann $Z:= \bigcup K \in X$ gilt und $Z$ eine obere Schranke von $K$ in $X$ ist. \newline
+			Zu zeigen: $\displaystyle \sum_{N \in Z} N = \bigoplus_{N \in Z} N$
 			
-			\noindent Seien nun $n \in \N$ und $N_1, \dots, N_n \in Z$ paarweise verschieden und $x_1 \in N_1, \dots, x_n \in N_n$ mit $x_1 + \cdots + x_n = 0$ [$\rightarrow$\ref{1.2.3}(b)]. Da $X$ eine Kette ist, gibt es $Y \in K$ mit $\set{N_1, \dots, N_n} \subseteq Y$. Wegen $\sum_{N \in Y}N = \bigoplus_{N \in Y}N$ folgt mit \ref{1.2.3}(b), dass $x_1 = \cdots = x_n = 0$.
+			\noindent Seien nun $n \in \N$ und $N_1, \dots, N_n \in Z$ paarweise verschieden und $x_1 \in N_1, \dots, x_n~\in~N_n$ mit $x_1 + \cdots + x_n = 0$ [$\rightarrow$\ref{1.2.3}(b)]. Da $K$ eine Kette ist, gibt es $Y \in K$ mit $\set{N_1, \dots, N_n}~\subseteq~Y$. Wegen $\displaystyle \sum_{N \in Y}N = \bigoplus_{N \in Y}N$ folgt mit \ref{1.2.3}(b), dass $x_1 = \cdots = x_n = 0$.
 			
-			\noindent Da die Kette $K \subseteq X$ beliebig war, gibt es nach dem Lemma von Zorn ein in $X$ maximales Element $Z$. Setze $P = \sum_{N \in Z} N = \bigoplus_{N \in Z}N$. Wir zeigen $M = P$.
+			\noindent Da die Kette $K \subseteq X$ beliebig war, gibt es nach dem Lemma von Zorn ein in $X$ maximales Element $Z$. Setze $\displaystyle P = \sum_{N \in Z} N = \bigoplus_{N \in Z}N$. Wir zeigen $M = P$.
 			
 			\noindent Angenommen $M \setminus P \neq \emptyset$. W\"ahle gem\"a\ss\ (c) $Q$ mit $M = P \bigoplus Q$. Dann $Q \neq 0$. W\"ahle einen endlich erzeugten Untermodul $Q'\neq 0$ von $Q$. Nach Lemma \ref{1.3.8} gibt es einen Untermodul $Q''$ von $Q'$ mit $Q'/Q''$ einfach.
 			
-			\noindent W\"ahle gem\"a\ss\ Hilfsbehauptung $R$ mit $Q' = Q'' \bigoplus R$. Dann ist $R \subseteq Q' \subseteq Q$ und daher $P \cap R = 0$. Weiter ist $R\cong Q'/Q''$ einfach. Es folgt $\sum_{N \in Z \cup \set{R}}N = \bigoplus_{N \in Z \cup \set{R}}N$. Daher ist $Z\cup \set{R} \in X$. Wegen der Maximalit\"at von $Z$ in $X$ gilt $R \in Z$ und daher $R \subseteq P \lightning$.
+			\noindent W\"ahle gem\"a\ss\ Hilfsbehauptung $R$ mit $Q' = Q'' \bigoplus R$. Dann ist $R \subseteq Q' \subseteq Q$ und daher $P \cap R = 0$. Weiter ist $R\cong Q'/Q''$ einfach. Es folgt $\displaystyle \sum_{N \in Z \cup \set{R}}N = \bigoplus_{N \in Z \cup \set{R}}N$. Daher ist $Z\cup \set{R} \in X$. Wegen der Maximalit\"at von $Z$ in $X$ gilt $R \in Z$ und daher $R \subseteq P \lightning$.
  		\end{proof} 
 	\end{satz}
 
-	\begin{korollar}\label{1.3.11}
+	\begin{korollar}\label{1.3.11}\hfill\newline
 		Direkte Summen, Untermoduln und Quotienten von halbeinfachen Moduln sind halbeinfach.
 		
 		\begin{proof}
@@ -695,13 +701,13 @@ toc=idx
 		\noindent Es heißt $M$ von endlicher L\"ange, wenn $\ell(M) < \infty$.
 	\end{definition}
 
-	\begin{beispiele}\label{1.4.9}
+	\begin{beispiel}\label{1.4.9}
 		Sei $M$ ein Modul. Dann 
 		\begin{itemize}
 			\item $\ell(M) = 0 \Leftrightarrow M = 0$
 			\item $\ell(M) = 1 \Leftarrow M$ ist einfach
 		\end{itemize}
-	\end{beispiele}
+	\end{beispiel}
 
 	\begin{satz}\label{1.4.10}
 		Sei $N$ ein Untermodul des Moduls $M$. Dann gilt
@@ -805,7 +811,7 @@ toc=idx
 			\[\ann(R/aR) = \ann(\set{\overline{1}}) = \ann(\overline{1}) = aR\]
 	\end{bemerkung}
 
-	\begin{beispiele}\label{1.4.17}
+	\begin{beispiel}\label{1.4.17}
 		\begin{enumerate}[(a)]
 			\item Ist $V$ ein K-Vektorraum, so $\ell(V) = \dim(V)$
 			\item Sei $R$ ein Hauptidealring, $n\in\N_0, p_1, \dots, p_n \in R$ irreduzibel und $m:= p_1 \cdot \cdots \cdot p_n$.
@@ -819,7 +825,7 @@ toc=idx
 			
 			Die Faktoren einer jeden Kompositionsreihe von $R/mR$ liefern also bis auf Reihenfolge und Assoziiertheit genau die Faktoren von $m = p_1 \cdot \cdots \cdot p_n$.
   		\end{enumerate}
-	\end{beispiele}
+	\end{beispiel}
 
 	\newpage
 	\section{Unzerlegbare Moduln}
@@ -1026,7 +1032,7 @@ toc=idx
 		Es hei\ss t $R$ \emph{euklidisch}, wenn $R$ eine euklidische Funktion besitzt.
 	\end{definition}
 
-	\begin{beispiele}\label{1.6.2}
+	\begin{beispiel}\label{1.6.2}
 		\begin{enumerate}[(a)]
 			\item $\Z$ ist euklidisch mit Funktion 
 				\[\delta: \Z \to \N_0, a \mapsto |a|\]
@@ -1040,7 +1046,7 @@ toc=idx
 			denn zu $q \in \Z[i]$ mit $\left| \frac{a}{b} - q\right| \leq \brac{\frac{1}{2}}^2 + \brac{\frac{1}{2}}^2 = \frac{1}{2}$ und f\"ur $r:= a - bq$ gilt 
 				\[\delta(r) = |r|^2 = \left| \frac{a}{b} - q\right||b|^2 \leq \frac{1}{2}|b|^2 \leq \frac{1}{2}\delta(b) < \delta(b)\]
 		\end{enumerate}
-	\end{beispiele}
+	\end{beispiel}
 
 	\begin{proposition}\label{1.6.3}
 		Jeder euklidische Ring ist ein Hauptidealring.
@@ -1161,7 +1167,7 @@ toc=idx
 			ein $R$-Modulisomorphismus
 		\end{enumerate}
 	
-		\begin{beispiele}\label{1.6.7}
+		\begin{beispiel}\label{1.6.7}
 			\begin{align*}
 				\Z^3 / \brac{\Z\begin{pmatrix}
 						413\\-385\\427
@@ -1181,7 +1187,7 @@ toc=idx
 			0& 0 & 3 & 1 & -2\\\hline
 		\end{tabular}
 		
-		\end{beispiele}
+		\end{beispiel}
 	\end{bemerkung}
 
 	\begin{prop-def}\label{1.6.8}
@@ -1252,14 +1258,14 @@ toc=idx
 		Jede endliche abelsche Gruppe ist isomorph zu einem direkten Produkt von zyklischen Gruppen von Primzahlpotenzordnung.
 	\end{korollar}
 
-	\begin{beispiele}\label{1.6.12}
+	\begin{beispiel}\label{1.6.12}
 		(Fortsetzung von Beispiel \ref{1.6.7})\newline
 		$133 = 7 \cdot 19$, also nach dem Chinesischen Restsatz
 		\begin{align*}
 			\Z^3/\brac{\Z\begin{pmatrix}413\\-385\\427\end{pmatrix} + \Z\begin{pmatrix}140\\-126\\147\end{pmatrix}} &\overset{\cong}{\rightarrow} (\Z/7\Z) \times (\Z/7\Z) \times (\Z/19\Z) \times \Z\\
 				x &\mapsto (\overline{-x_1+x_3}, \overline{-9x_1-10x_2}, \overline{-9x_1-10x_2}, \overline{3x_1+x_2-2x_3})
 		\end{align*}
-	\end{beispiele}
+	\end{beispiel}
 
 	\newpage
 	\section{Der Satz von Cayley-Hamilton}
@@ -1360,14 +1366,14 @@ toc=idx
 		Es hei\ss t $A \subseteq B$ \emph{ganz} (oder $B$ ganz \"uber $A$ vgl. \ref{2.1.1}), wenn jedes $x\in B$ ganz \"uber $A$ ist.
 	\end{definition}
 
-	\begin{beispiele}\label{2.1.3}
+	\begin{beispiel}\label{2.1.3}
 		\begin{enumerate}[(a)]
 			\item $\sqrt{2}$ ist ganz \"uber $\Z$, da $(\sqrt{2})^2 -2 = 0$
 			\item $\frac{1}{2}$ nicht ganz \"uber $\Z$, denn w\"aren $a_1,\dots, a_n \in \Z$ mit $\brac{\frac{1}{2}}^n + a_1\brac{\frac{1}{2}}^{n-1} + \cdots + a_n = 0$, so $1 + 2a_1 + \cdots + 2^na_n = 0$.
 			\item $i$ und $i+1$ sind ganz \"uber $\Z$, denn $i^2+1 = 0$ und $(i+1)^2 - 2(i+1)+2 = 0$
 			\item Eine K\"orpererweiterung $L/K$ ist algebraisch genau dann, wenn sie als Ringerweiterung $K \subseteq L$ ganz ist.
 		\end{enumerate}	
-	\end{beispiele}
+	\end{beispiel}
 
 	\begin{bemerkung}\label{2.1.4}
 		Ist $A$ ein Unterring von $B$, so ist $B$ in offensichtlicher Weise ein $A$-Modul
@@ -1568,7 +1574,7 @@ toc=idx
  		\end{enumerate}
  	\end{erinnerung}
  
- 	\begin{beispiele}\label{2.2.2}
+ 	\begin{beispiel}\label{2.2.2}
  		Wegen $-5 \equiv_{(4)} -1 \equiv_{(4)} 3$ sind $\Z[\sqrt{-1}] = \Z[i]$ und $\Z[\sqrt{-5}] = \Z[\sqrt{5}i]$ quadratische Zahlringe [$\to$\ref{2.1.17}].
  		
  		Der Beweis von \ref{1.6.2}(c) daf\"ur, dass $\Z[\sqrt{-1}]$ euklidisch ist, funktioniert f\"ur $\Z[\sqrt{-5}]$ nicht mehr, da man nur noch 
@@ -1587,7 +1593,7 @@ toc=idx
  		Dass $(2,1+\sqrt{-5})$ prim (und sogar maximal) ist, folgt, daraus, dass es der Kern des Ringhomomorphismus
  			\[\varphi:\Z[\sqrt{-5}]\to \F_2, a+b\sqrt{-5} \mapsto \overline{a+b}\]
  		ist, wie man unter Beachtung von $\varphi(\sqrt{-5})^2 = 1 = -5$ in $\F_2$ sofort nachrechnet.
- 	\end{beispiele}
+ 	\end{beispiel}
  
  	\begin{motivation}\label{2.2.3}
  		Zahlringe spielen eine wichtige Rolle bei der Untersuchung arithmetischer Eigenschaften von $\Z$. Leider sind sie nicht immer faktoriell. Der Ausweg wird sein, statt Elemente Ideale und statt Primelemente Primideale zu betrachten
@@ -1598,9 +1604,9 @@ toc=idx
  		Ein Integrit\"atsring hei\ss t \emph{Dedekindring}\index{Dedekindringe@\textbf{Dedekindringe}}, wenn darin jedes Ideal ein Produkt von Primidealen ist.
  	\end{definition}
  
- 	\begin{beispiele}\label{2.2.5}
+ 	\begin{beispiel}\label{2.2.5}
  		Jeder Hauptidealring ist ein Dedekindring
- 	\end{beispiele}
+ 	\end{beispiel}
  
  	\begin{definition}\label{2.2.6}
  		ei $A$ ein Integrit\"atsring. Ein \emph{gebrochenes Ideal}\index{Dedekindringe@\textbf{Dedekindringe}!Gebrochenes Ideal} von $A$ ist ein $A$-Untermodul von $\qf(A)$ mit $sI \subseteq A$ f\"ur ein $s \in A\setminus\set{0}$.
@@ -1640,9 +1646,9 @@ toc=idx
  		\end{proof}
  	\end{def-prop}
  
- 	\begin{beispiele}\label{2.2.10}
+ 	\begin{beispiel}\label{2.2.10}
  		Jedes gebrochene Hauptideal $\neq 0$ eines Integrit\"atsring ist invertierbar.
- 	\end{beispiele}
+ 	\end{beispiel}
  
  	\begin{satz}\label{2.2.11}
  		(Eindeutigkeit der Primidealzerlegung invertierbarer Ideale, unter Beachtung von \ref{2.2.10} und \ref{2.2.1}(b) Verallgemeinerung von \ref{2.2.1}(d))
@@ -1739,7 +1745,7 @@ toc=idx
    		$N_{L|K}(a) := \det(A) = \chi_{L|K}(0)$ die \emph{Norm}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Norm} und $\tr_{L|K}(a) := \tr A = \sum_{i=1}^n a_{ii} = (-1)^{n-1}\glqq\textrm{Koeffizient von } X^{n-1} \textrm{ in } \chi_{L|K}(a)\grqq$ die \emph{Spur}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Spur} von $A$ bez\"uglich $L|K$ [diese Begriffe h\"angen nicht von der Wahl der Basis $\underline{v}$ ab].
    	\end{definition}
    	
-   	\begin{beispiele}\label{2.4.2}
+   	\begin{beispiel}\label{2.4.2}
    		Sei $d \in \nsquare$ [$\to$ \ref{2.1.16}]. Seien $a,b \in \Q$ und $x = a + b\sqrt{d} \in \Q(d)$.
    		
    		Betrachte Basis $\underline{v}= (1,\sqrt{d})$ von $\Q(\sqrt{d})$ [$\to$\ref{2.1.17}]. Dann $x\cdot 1 = a + b\sqrt{d}$ und $x \sqrt{d} = bd + a\sqrt{d}$.
@@ -1749,7 +1755,7 @@ toc=idx
    		\end{pmatrix} \in \Q^{2\times 2}$, so $\chi_{\Q(\sqrt{d})|\Q}(x) = \det \begin{pmatrix}
    		a - X&bd\\b&a - X
    	\end{pmatrix} = (a-X)^2 - b^2d = X^2 - 2aX + (a^2-b^2d)$ und daher $N_{Q(\sqrt{d})|\Q}(x) = a^2-b^2d$ und $\tr_{Q(\sqrt{d})|\Q}(x) = 2a$
-   	\end{beispiele}
+   	\end{beispiel}
 
 	\begin{proposition}\label{2.4.3}
 		Sei $L|K$ eine endliche K\"orpererweiterung. Dann ist $\tr_{L|K}:L \to K$ $K$-linear und es gilt $N_{L|K}(ab) = N_{L|K}(a)N_{L|K}(b)$ f\"ur alle $a,b \in L$.
@@ -1884,7 +1890,7 @@ toc=idx
 		\end{proof}
 	\end{proposition}
 
-	\begin{beispiele}\label{2.4.10}
+	\begin{beispiel}\label{2.4.10}
 		\begin{enumerate}[(a)]
 			\item 
 			Ist $L|K$ eine algebraische K\"orpererweiterung, so ist wegen der Transitivit\"at der Separabilit\"at $L|\overline{K^{s_L}}$ rein inseparabel.
@@ -1895,7 +1901,7 @@ toc=idx
 			\item 
 			Ist $K$ ein K\"orper mit $p:= \Char K > 0$ und ist $n \in \N_0$, so ist $K(X)|K(X^{p^n})$ rein inseparabel, wie man mit \ref{2.4.9}(b) und \ref{2.4.7}(e) leicht sieht.
 		\end{enumerate}
-	\end{beispiele}
+	\end{beispiel}
 
 	\begin{definition}\label{2.4.11}
 		Sei $L|K$ eine endliche K\"orpererweiterung. Dann hei\ss t
@@ -2512,9 +2518,9 @@ toc=idx
  		Ein Gitter $M$ hei\ss t \emph{multiplikativ}, wenn es eine multiplikative Menge ist, das hei\ss t $1 \in M$ und $\forall x,y \in M: xy \in M$.
  	\end{definition}
  
- 	\begin{beispiele}\label{3.1.3}
+ 	\begin{beispiel}\label{3.1.3}
  		Nach \ref{2.5.6} ist jeder Zahlring ein multiplikatives Gitter im zugeh\"origen Zahlk\"orper.
- 	\end{beispiele}
+ 	\end{beispiel}
  
  	\begin{lemma}\label{3.1.4}
  		Seien $M$ und $N$ Gitter im Zahlk\"orper $K$. 
@@ -2600,7 +2606,7 @@ toc=idx
 		\end{proof}
 	\end{korollar}
 
-	\begin{beispiele}\label{3.1.9}
+	\begin{beispiel}\label{3.1.9}
 		Sei $d \in \nsquare$ [$\to$ \ref{2.1.16}]. Dann sind die Identit\"at und $x+y\sqrt{d} \mapsto (x+y\sqrt{d})^* := x- y \sqrt{d}$ ($x,y \in \Q$) die beiden verschiedenen
 		Einbettungen des quadratischen Zahlk\"orpers $\Q(\sqrt{d})$ in seinen algebraischen Abschluss.
 		
@@ -2623,7 +2629,7 @@ toc=idx
 		
 		F\"ur $d \in \nsquare_{2,3}$ liefert \ref{3.1.7} die (auch sonst leicht zu sehende) Tatsache 
 		\[[(\Z+\Z\frac{1+\sqrt{d}}{2}): \Z[\sqrt{d}]] = \sqrt{\frac{d(\Z[\sqrt{d}])}{d(\Z + \Z\frac{1+\sqrt{d}}{2})}} = \sqrt{\frac{4d}{d}} = 2\]
-	\end{beispiele}
+	\end{beispiel}
 	\newpage
 	
 	\section{Zerlegung von Primzahlen in Zahlringen}
