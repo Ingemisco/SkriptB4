@@ -97,6 +97,7 @@ toc=idx
 \newtheorem{definition}{Definition}[section]
 \newtheorem{bemerkung}[definition]{Bemerkung}
 \newtheorem{beispiele}[definition]{Beispiele}
+\newtheorem{beispiel}[definition]{Beispiel}
 \newtheorem{warnung}[definition]{Warnung}
 \newtheorem{satz}[definition]{Satz}
 \newtheorem{lemma}[definition]{Lemma}
@@ -128,9 +129,7 @@ toc=idx
 	\section{Definitionen und grundlegende Tatsachen}
 	\setcounter{chapter}{1}
 	\setcounter{section}{1}
-	\begin{definition}
-		\label{1.1.1}
-		
+	\begin{definition}\label{1.1.1}\hfill\newline
 		Ein \emph{Modul}\index{Modul@\textbf{Modul}} ist ein Tupel $(R, +_R, \cdot_R, M, +, \cdot)$, wobei $(R, +_R, \cdot_R)$ ein Ring (mit $1$, nicht notwendigerweise kommutativ), $(M, +)$ eine abelsche Gruppe und \\\noindent$\cdot:R\times M \to M$ eine (meist gar nicht oder infix geschriebene) Abbildung mit folgenden Eigenschaften
 		
 		\begin{itemize}
@@ -145,8 +144,7 @@ toc=idx
 	\end{definition}
 	
 	
-	\begin{bemerkung}\label{1.1.2}
-			
+	\begin{bemerkung}\label{1.1.2}\hfill
 			\begin{enumerate}[(a)]
 			\item Schlampiger Sprachgebrauch: 
 			\begin{itemize}
@@ -175,7 +173,7 @@ toc=idx
 		
 	\end{bemerkung}
 	
-	\begin{beispiele}\label{1.1.3}
+	\begin{beispiele}\label{1.1.3}\hfill
 			\begin{enumerate}[(a)]
 			\item Nullmoduln $\set{0}$
 			
@@ -189,7 +187,7 @@ toc=idx
 		\end{enumerate}
 	\end{beispiele}
 	
-	\begin{def-prop-satz-not}\label{1.1.4}
+	\begin{def-prop-satz-not}\label{1.1.4}\hfill\newline
 		Sei $R$ ein Ring. Die folgenden f\"ur die Theorie der $R$-Moduln grundlegenden Begriffe und Resultate sind eine direkte Verallgemeinerung der entsprechenden Tatsachen f\"ur Vektorr\"aume (also f\"ur den Fall, dass $R$ ein K\"orper) und f\"ur abelsche Gruppen (also $R = \Z$) aus der Linearen Algebra:
 		
 		\begin{enumerate}[(a)]
@@ -200,19 +198,24 @@ toc=idx
 			
 			Ein Untermodul eines Moduls ist offenbar durch seine Tr\"agermenge (d.h. seine zugrunde liegende Menge) eindeutig bestimmt.
 			
-			Ist $M$ ein $R$-Modul und $N \subseteq M$, so ist $N$ offenbar genau dann (Tr\"agermenge) ein(e) Untermodul(s) von $M$, wenn $0\in N, \forall x, y\in N: x + y \in N, \forall a \in R: \forall x \in N: ax \in N$
+			Ist $M$ ein $R$-Modul und $N \subseteq M$, so ist $N$ offenbar genau dann (Tr\"agermenge) ein(es) Untermodul(s) von $M$, wenn 
+			\begin{itemize}
+				\item $0\in N$
+				\item $\forall x, y \in N: x + y \in N$
+				\item $\forall a \in R: \forall x \in N: ax \in N$
+			\end{itemize}
 			
 			\item Sei $M$ ein Modul und $(N_i)_{i \in I}$ eine Familie von Untermoduln von $M$. Dann ist 
-			$\bigcap_{i \in I} N_i := \bigcap \set{N_i | i \in I}$ (mit $\bigcap_{i \in I} N_i = M$, falls $I = \emptyset$)
+			$\displaystyle \bigcap_{i \in I} N_i := \bigcap \set{N_i \mid i \in I}$ (mit $\displaystyle \bigcap_{i \in I} N_i = M$, falls $I = \emptyset$)
 			wieder ein Untermodul von $M$ und zwar der gr\"o\ss te Untermodul von $M$, der in allen $N_i$ enthalten ist.
 			
-			Weiter ist auch $\sum_{i \in I} N_i := \set{\sum_{i \in I} x_i | (x_i)_{i \in I} \in \prod_{i\in I} N_i, \set{i \in I| x_i \neq 0} \textrm{endlich}}$ Untermodul von $M$ und zwar der kleinste Untermodul von $M$, der alle $N_i$ enth\"alt.
+			Weiter ist auch $\displaystyle \sum_{i \in I} N_i := \set{\sum_{i \in I} x_i \mid (x_i)_{i \in I} \in \prod_{i\in I} N_i, \set{i \in I \mid x_i \neq 0} \textrm{endlich}}$ Untermodul von $M$ und zwar der kleinste Untermodul von $M$, der alle $N_i$ enth\"alt.
 			
-			\item Sei $M$ ein $R$-Modul. Ist $x \in M$, so ist $Rx := \set{ax| a \in R}$ ein Untermodul von $M$ und zwar der kleinste Untermodul, der $x$ enth\"alt.
+			\item Sei $M$ ein $R$-Modul. Ist $x \in M$, so ist $Rx := \set{ax \mid a \in R}$ ein Untermodul von $M$ und zwar der kleinste Untermodul, der $x$ enth\"alt.
 			
 			Ist $(x_i)_{i \in I}$ eine Familie von Elementen von $M$, so ist $\sum_{i \in I} Rx_i$ der kleinste Untermodul von $M$, der alle $x_i$ enth\"alt.
 			
-			Man nennt ihn den von den $x_i$ ($i \in I$) (oder $\set{x_i|i \in I}$) erzeugten Untermodul von $M$ (oder lineare H\"ulle der Span von $\set{x_i| i \in I}$). 
+			Man nennt ihn den von den $x_i$ ($i \in I$) (oder $\set{x_i \mid i \in I}$) erzeugten Untermodul von $M$ (oder lineare H\"ulle der Span von $\set{x_i \mid i \in I}$). 
 			
 			Man nennt $M$ \emph{zyklisch}\index{Modul@\textbf{Modul}!Zyklische Moduln}, wenn $M$ von einem Element erzeugt wird, d.h. es ein $x \in M$ gibt mit $M = Rx$. Man nennt $M$ endlich erzeugt (e.e.), wenn $M$ von endlich vielen Elementen
 			erzeugt wird, d.h. es ein $n \in \N_0$ und $x_1, \dots, x_n \in M$ gibt mit 
@@ -221,12 +224,12 @@ toc=idx
 			\item Sei $M$ ein $R$-Modul. Eine Familie $(x_i)_{i\in I}$ in $M$ hei\ss t \emph{linear unabh\"angig}\index{Modul@\textbf{Modul}!Linear unabh\"angig (l.u.)} (l.u.), wenn f\"ur alle $n\in \N_0$, alle paarweise verschiedenen $i_1, \dots, i_n \in I$ und alle $a_1, \dots, a_n \in I$ gilt 
 			\[\sum_{j=1}^{n} a_jx_{i_j} = 0 \Rightarrow a_1 = \cdots = a_n = 0\]
 			
-			Weiter nennt man $x_1, \dots, x_n$ linear unabh\"angig, wenn $(x_1, \dots, x_n) = (x_i)_{i \in \set{1, \dots, n}}$ linear unabh\"angig ist, d.h. f\"ur alle $a_1, \dots, a_n \in R$ gilt 
+			Weiter nennt man $x_1, \dots, x_n \in M$ linear unabh\"angig, wenn $(x_1, \dots, x_n) = (x_i)_{i \in \set{1, \dots, n}}$ linear unabh\"angig ist, d.h. f\"ur alle $a_1, \dots, a_n \in R$ gilt 
 			\begin{align}
-				a_1x_1 + \cdots a_nx_n = 0 \Rightarrow a_1 = \cdots = a_n = 0 \label{lin_ind}
+				a_1x_1 + \cdots a_nx_n = 0 \Rightarrow a_1 = \cdots = a_n = 0 \label{lin_ind}\tag{$*$}
 			\end{align}
 			
-			Schlie\ss lich hei\ss t eine Menge $F\subseteq M$ linear unabh\"angig, wenn $(x)_{x \in F}$ linear unabh\"angig ist, d.h. f\"ur alle $n\in \N_0$, alle paarweise verschiedenen $x_1, \dots, x_n \in F$ und alle $a_1, \dots, a_n \in R$ wieder \ref{lin_ind} gilt.
+			Schlie\ss lich hei\ss t eine Menge $F\subseteq M$ linear unabh\"angig, wenn $(x)_{x \in F}$ linear unabh\"angig ist, d.h. f\"ur alle $n\in \N_0$, alle paarweise verschiedenen $x_1, \dots, x_n \in F$ und alle $a_1, \dots, a_n \in R$ wieder (\ref{lin_ind}) gilt.
 			
 			\item Sei $M$ ein Modul. Eine Familie $(x_i)_{i \in I}$ in $M$ hei\ss t eine \emph{Basis}\index{Modul@\textbf{Modul}!Basis} von $M$, wenn sie $M$ erzeugt und linear unabh\"angig ist. Weiter
 			sagt man $x_1, \dots, x_n \in M$ bilden eine Basis von $M$, wenn $(x_1, \dots, x_n) = (x_i)_{i \in \set{1, \dots, n}}$ eine Basis von $M$ ist. Schlie\ss lich hei\ss t $B \subseteq M$ eine Basis, wenn $B$ den Modul $M$ erzeugt und linear unabh\"angig ist.
@@ -246,9 +249,18 @@ toc=idx
 			\[\forall x, x' \in M: \forall a \in R: x \equiv x' \Rightarrow ax \equiv ax'\]
 			
 			Diese Definition wurde gerade so gemacht, dass 
-			\[+:( M/\equiv) \times (M/\equiv) \to (M/\equiv), (\overline{x}, \overline{y}) \mapsto \overline{x + y}\]
-			und
-			\[\cdot: R \times (M/\equiv) \to (M/\equiv), (a, \overline{x}) \mapsto \overline{ax}\]
+			\begin{align*}
+				+:( M/\equiv) \times (M/\equiv) &\to (M/\equiv)\\
+				 (\overline{x}, \overline{y}) &\mapsto \overline{x + y}
+			\end{align*}
+
+			und	
+
+			\begin{align*}
+				\cdot: R \times (M/\equiv) &\to (M/\equiv)\\
+				(a, \overline{x}) &\mapsto \overline{ax}
+			\end{align*}
+		
 			wohldefiniert sind.
 			
 			Ist $M$ ein $R$-Modul und $\equiv$ eine Kongruenzrelation auf $M$, so wird die Quotientenmenge $M/\equiv$ verm\"oge der Addition $+$ und der Skalarmultiplikation $\cdot$ ein $R$-Modul, wie man
@@ -263,7 +275,7 @@ toc=idx
 			
 			Ist $N$ ein Untermodul von $M$, so nennt man $M/N := M/\equiv_N$ auch den \emph{Quotientenmodul}\index{Modul@\textbf{Modul}!Quotientenmodul} von $M$ nach $N$.
 			
-			\item Sind $M$ und $N$ $R$-Moduln und $f:M \to N$ ein Modulhomomorphismus, so ist der \emph{Kern}\index{Modul@\textbf{Modul}!Homomorphismus!Kern} $\ker f := \set{x \in M| f(x) = 0}$ von $f$ ein Untermodul von $M$ und das \emph{Bild}\index{Modul@\textbf{Modul}!Homomorphismus!Bild} $\im f := \set{f(x) | x \in M}$ von $f$ ist ein Untermodul von $N$.
+			\item Sind $M$ und $N$ $R$-Moduln und $f:M \to N$ ein Modulhomomorphismus, so ist der \emph{Kern}\index{Modul@\textbf{Modul}!Homomorphismus!Kern} $\ker f := \set{x \in M \mid f(x) = 0}$ von $f$ ein Untermodul von $M$ und das \emph{Bild}\index{Modul@\textbf{Modul}!Homomorphismus!Bild} $\im f := \set{f(x) \mid x \in M}$ von $f$ ist ein Untermodul von $N$.
 			
 			\item Homomorphiesatz: Seien $M$ und $N$ $R$-Moduln und $L$ ein Untermodul von $M$ und $f:M \to N$ ein Modulhomomorphismus mit $L \subseteq \ker f$. Dann gibt es (genau) einen Modulhomomorphismus $\overline{f}: (M/L) \to N$ mit $\overline{f}(\overline{x}) = f(x)$ f\"ur alle $x \in M$.
 			
@@ -277,13 +289,13 @@ toc=idx
 		\end{enumerate}
 	\end{def-prop-satz-not}
 	
-	\begin{bemerkung}\label{1.1.5}
+	\begin{bemerkung}\label{1.1.5}\hfill\newline
 		Sei $R$ ein kommutativer Ring. Dann sind die Untermoduln des $R$-Modul $R$ [$\to$\ref{1.1.3}(b)] (oder kurz gesagt die $R$-Untermoduln von $R$) genau die Ideale des Ringes $R$.
-		Insbesondere sind zum Beispiel das von einem $a \in R$ erzeugte Ideal und der davon erzeugte Untermodul als Menge dasselbe $(a)_R = Ra \overset{R\ komm.}{=} \set{ab | b \in R} = aR$.
+		Insbesondere sind zum Beispiel das von einem $a \in R$ erzeugte Ideal und der davon erzeugte Untermodul als Menge dasselbe $(a)_R = Ra \overset{R\ komm.}{=} \set{ab \mid b \in R} = aR$.
 		Trotzdem macht es vom Sinn her einen Unterschied. ob man $(a)$ oder $Ra$ schreibt. Zum Beispiel meint man mit $R/(a)$ den Ring und mit $R/aR$ den $R$-Modul (deren zugrundeliegenden abelschen Gruppen dieselben sind)
 	\end{bemerkung}
 
-	\begin{warnung}\label{1.1.6}
+	\begin{warnung}\label{1.1.6}\hfill\newline
 		F\"ur den mit Vektorr\"aumen, aber nicht mit Moduln vertrauten H\"orern ist Vorsicht geboten:
 		\begin{enumerate}[(a)]
 			\item In einem $R$-Modul $M$ kann $ax = 0$ f\"ur ein $a \in R$ und ein $x \in M$ gelten, ohne dass $a = 0$ oder $x = 0$ gilt (zum Beispiel $2 \cdot \overline{1} = \overline{2} = 0$ im $\Z$-Modul $\Z/2\Z$)
@@ -293,9 +305,9 @@ toc=idx
 		\end{enumerate}
 	\end{warnung}	
 
-	\begin{beispiele}\label{1.1.7}
+	\begin{beispiele}\label{1.1.7}\hfill
 		\begin{enumerate}[(a)]
-			\item F\"ur jeden Ring $R$ ist $R^n$ ein $R$-Modul mit der \emph{Standardbasis}\index{Modul@\textbf{Modul}!Standardbasis} $\underline{e} = (e_1, \dots, e_n)$, wobei $e_i := \begin{pmatrix}
+			\item F\"ur jeden Ring $R$ ist $R^n$ ein $R$-Modul mit der \emph{Standardbasis}\index{Modul@\textbf{Modul}!Standardbasis} $\underline{e} = (e_1, \dots, e_n)$, wobei $e_i~:=~\begin{pmatrix}
 				0\\
 				\vdots\\
 				0\\
@@ -305,7 +317,7 @@ toc=idx
 				0
 			\end{pmatrix}$ mit einer $1$ an der $i$-ten Stelle.
 		
-			\item $\R^2$ ist ein zyklischer $\R^{2 \times 2}$ Modul [$\to$\ref{1.1.3}(c)], welcher von jedem $x \in \R^{2\times 2} \setminus \set{0}$ erzeugt ist. Da aber jedes $x \in \R^{2 \times 2}$ linear abh\"angig ist, hat dieser Modul keine Basis.  
+			\item $\R^2$ ist ein zyklischer $\R^{2 \times 2}$-Modul [$\to$\ref{1.1.3}(c)], welcher von jedem $x \in \R^2 \setminus \set{0}$ erzeugt ist. Da aber jedes $x \in \R^2$ linear abh\"angig ist, hat dieser Modul keine Basis.  
 		\end{enumerate}
 	\end{beispiele}
 	\newpage
@@ -313,7 +325,7 @@ toc=idx
 	\section{Direkte Summen von Moduln und freie Moduln}
 	\begin{definition}\label{1.2.1}
 		Sei $R$ ein Ring und $(M_i)_{i \in I}$ eine Familie von $R$-Moduln. Dann nennt man den $R$-Untermodul 
-			\[\bigoplus_{i \in I} M_i := \set{x \in \prod_{i\in I}M_i| \supp(x)\ \mathrm{endlich} } \]
+			\[\bigoplus_{i \in I} M_i := \set{x \in \prod_{i\in I}M_i \mid \supp(x)\ \mathrm{endlich} } \]
 		von $\displaystyle\prod_{i\in I} M_i$ die \emph{(\"au\ss ere) direkte Summe}\index{Modul@\textbf{Modul}!\"Au\ss ere Direkte Summe} der $M_i$ ($i \in I$). Man fasst $M_j$ ($j \in I$ h\"aufig) als Untermodul von $\displaystyle\bigoplus_{i \in I} M_i$ auf verm\"oge der Einbettung 
 		 \[\rho_j:M_j \to \prod_{i\in I} M_i, x \mapsto \brac{i \mapsto \begin{cases}
 		 		x & \textrm{falls } i = j\\
@@ -343,7 +355,7 @@ toc=idx
 	\end{prop-def}
 
 	\begin{definition}\label{1.2.4}
-		Sei $R$ ein Ring, $M$ ein $R$-Modul und $x \in M$. Der Kern des $R$-Modulhomomorphismus $R \to M, a \mapsto ax$ nennt man \emph{Annihilator}\index{Modul@\textbf{Modul}!Annihilator} von $x$, in Zeichen $\ann(x) = \set{a \in R| ax = 0}$.\newline
+		Sei $R$ ein Ring, $M$ ein $R$-Modul und $x \in M$. Der Kern des $R$-Modulhomomorphismus $R \to M, a \mapsto ax$ nennt man \emph{Annihilator}\index{Modul@\textbf{Modul}!Annihilator} von $x$, in Zeichen $\ann(x) = \set{a \in R \mid ax = 0}$.\newline
 		Es hei\ss t $x$ ein \emph{Torsionselement}\index{Modul@\textbf{Modul}!Torsionselement} von $M$ wenn $\ann(x) \neq \set{0}$.
 	\end{definition}
 
@@ -443,9 +455,9 @@ toc=idx
 		
 		\begin{proof}
 			W\"ahle ein maximales Ideal $\mathfrak{m}$ von $R$. W\"ahle einen $R$-Modulisomorphismus $f:R^m \to R^n$. Betrachte die $R$-Untermoduln
-			\[\mathfrak{m}R^m := \set{\sum_{i=1}^n a_ix_i|n \in \N_0, a_i \in \mathfrak{m}, x_i \in R^m} = \mathfrak{m}^m\]
+			\[\mathfrak{m}R^m := \set{\sum_{i=1}^n a_ix_i \mid n \in \N_0, a_i \in \mathfrak{m}, x_i \in R^m} = \mathfrak{m}^m\]
 			von $R^m$ und 
-			\[f(\mathfrak{m}R^n) = \set{\sum_{i=1}^n a_iy_i|n \in \N_0, a_i \in \mathfrak{m}, y_i \in R^n} = \mathfrak{m}^n\]
+			\[f(\mathfrak{m}R^n) = \set{\sum_{i=1}^n a_iy_i \mid n \in \N_0, a_i \in \mathfrak{m}, y_i \in R^n} = \mathfrak{m}^n\]
 			von $R^n$
 			
 			\noindent Mit dem Isomorphiesatz erhalten wir einen Modulisomorphismus $R^m/\mathfrak{m}^m \to R^n/\mathfrak{m}^n$ und offensichtlich gilt $R^m/\mathfrak{m}^m  \cong (R/\mathfrak{m})^m$ (betrachte z.B. $R^m \to (R/\mathfrak{m})^m$).\newline
@@ -535,7 +547,7 @@ toc=idx
 			Sei $M$ ein $R$-Modul und seinen $x_1, \dots, x_n \in M$ mit $0 \neq M = Rx_1 + \cdots + Rx_n$. Zu zeigen: Es gibt einen Untermodul $N$ von $M$ mit $M/N$ einfach.
 			
 			\noindent Betrachte die durch Inklusion halbgeordnete Menge 
-				\[X:=\set{P|P\ \textrm{Untermodul von} \ M, P \subsetneq M} = \set{P|P\ \textrm{Untermodul von} \ M, \set{x_1, \dots, x_n} \nsubseteq P}\]
+				\[X:=\set{P \mid P\ \textrm{Untermodul von} \ M, P \subsetneq M} = \set{P \mid P\ \textrm{Untermodul von} \ M, \set{x_1, \dots, x_n} \nsubseteq P}\]
 			
 			\noindent Jede Kette $K \subseteq X$ besitzt eine obere Schranke in $X$ ($0$ f\"ur $K = \emptyset$, da $M \neq 0$ und $\bigcup K$ f\"ur $K \neq \emptyset$, da $\set{x_1, \dots, x_n}$ endlich)
 			
@@ -560,7 +572,7 @@ toc=idx
 		\begin{proof}\hfill\newline
 			(a)$\Rightarrow$(b) ist klar\newline
 			(b)$\Rightarrow$(c). Gelte (b) und sei $N$ ein Untermodul von $M$.
-				\[X:= \set{P| P \ \mathrm{Untermodul von }\ M, N \cap P = 0}\]
+				\[X:= \set{P \mid P \ \mathrm{Untermodul von }\ M, N \cap P = 0}\]
 			
 			\noindent Jede Kette $K \subseteq X$ besitzt eine obere Schranke in $X$ ($0$ f\"ur $K = \emptyset$, $\bigcup K$ f\"ur $K \neq \emptyset$)
 			
@@ -578,7 +590,7 @@ toc=idx
 			Sei hierzu $x \in N$. Schreibe $x = p + q$ mit $p \in P$ und $q \in Q$, dann $q = x - p \in N \cap Q = R$.  
 			
 			\noindent Betrachte nun die durch Inklusion halbgeordnete Menge 
-				\[X:= \set{Y\big|Y\ \mathrm{Menge\ von\ einfachen\ Untermoduln\ von}\ M\ \mathrm{mit}\ \sum_{N \in Y}N = \bigoplus_{N \in Y}N}\]
+				\[X:= \set{Y \mid Y\ \mathrm{Menge\ von\ einfachen\ Untermoduln\ von}\ M\ \mathrm{mit}\ \sum_{N \in Y}N = \bigoplus_{N \in Y}N}\]
 				
 			\noindent Sei $K$ eine Kette in $X$. Wir behaupten, dass dann $Z:= \bigcap K \in X$ gilt und $Z$ eine obere Schranke von $K$ in $X$ ist. \newline
 			Zu zeigen: $\sum_{N \in Z} N = \bigoplus_{N \in Z} N$
