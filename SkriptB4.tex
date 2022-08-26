@@ -23,6 +23,8 @@ toc=idx
 \setkomafont{pageheadfoot}{\normalfont}
 \setkomafont{pagefoot}{\slshape}
 
+\usepackage{tikz-cd}
+
 \defpagestyle{main}
 {
 	{\thesection\ \leftmark \hfill}{\hfill \thesection\ \leftmark}{}
@@ -837,33 +839,33 @@ toc=idx
 
 	\newpage
 	\section{Unzerlegbare Moduln}\thispagestyle{sectionstart}
-	\begin{definition}\label{1.5.1}
+	\begin{definition}\label{1.5.1}\hfill\newline
 		Ein Modul $M$ hei\ss t \emph{unzerlegbar}\index{Modul@\textbf{Modul}!Unzerlegbare Moduln}, falls $M \neq 0$ und f\"ur alle Untermoduln $L$ und $N$ von $M$ gilt 
 			\[M = L\oplus N \Rightarrow (L = 0 \lor N = 0)\]
 	\end{definition}
 
-	\begin{bemerkung}\label{1.5.2}
+	\begin{bemerkung}\label{1.5.2}\hfill\newline
 		Jeder einfache Modul [$\rightarrow$\ref{1.3.2}] ist unzerlegbar, aber die Umkehrung stimmt nicht, wie \ref{1.3.4}(b) in Verbindung mit Satz \ref{1.5.4} unten zeigt.
 	\end{bemerkung}
 
-	\begin{lemma}\label{1.5.3}
+	\begin{lemma}\label{1.5.3}\hfill\newline
 		Sei $M$ ein zyklischer Modul
 		\begin{enumerate}[(a)]
 			\item Jeder direkte Summand von $M$ [$\rightarrow$\ref{1.3.9}] ist wieder zyklisch
 			\item $M\cong R/N$ f\"ur einen $R$-Untermodul $N$ von $R$.
 		\end{enumerate}
 	
-		\begin{proof}
+		\begin{proof}\hfill
 			\begin{enumerate}[(a)]
 				\item Seien $L$ und $N$ Untermoduln von $M$ mit $M = L \oplus N$. Schreibe $M=Rx$ mit $x \in M$ und $x = y+z$ mit $y\in L, z \in N$.
-				Wir zeigen $L = Ry$. Sei hierzu $w \in L$. Zu zeigen ist, dass $w \in Ry$. Schreibe $az = ax -ay = w - ay \in L \cap N = 0$. Also $w = ax = ay \in Ry$. 
+				Wir zeigen $L = Ry$. Sei hierzu $w \in L$. Zu zeigen ist, dass $w \in Ry$. Schreibe $w = ax$ mit $a \in R$. Dann $ax = ay + az$ und $az = ax - ay = w - ay \in L \cap N = 0$. Also $w = ax = ay \in Ry$. 
 				
 				\item Schreibe $M=Rx$ mit $x \in M$. W\"ahle f\"ur $N$ den Kern des $R$-Modulhomomorphismus $R\twoheadrightarrow M, a \mapsto ax$.
 			\end{enumerate}
 		\end{proof}
 	\end{lemma}
 
-	\begin{satz}\label{1.5.4}
+	\begin{satz}\label{1.5.4}\hfill\newline
 		Sei $R$ ein Hauptidealring und $a \in R$. Dann ist $R/aR$ unzerlegbar genau dann, wenn es ein Primelement $p\in R$ und ein $n\in\N$ gibt mit $(a)=(p^n)$
 		
 		\begin{proof}
@@ -888,24 +890,23 @@ toc=idx
 		\end{proof}
 	\end{satz}
 
-	\begin{satz}\label{1.5.5}
+	\begin{satz}\label{1.5.5}\hfill\newline
 		Jeder noethersche oder artinsche Modul ist die direkte Summe endlich vieler unzerlegbarer Untermoduln.
 		
 		\begin{proof}
-			Sei $M$ ein noetherscher (artinscher) Modul. zu jedem direkten Summanden $N \neq 0$ von $M$ gibt es einen maximalen (minimalen) direkten Summanden $N'' \neq N$ ($N' \neq 0$) von $N$ und daher Untermoduln $N'$ und $N''$ von $N$ mit $N = N' \oplus N''$ und $N'$ unzerlegbar.
+			Sei $M$ ein \textcase{noetherscher}{artinscher} Modul. Zu jedem Untermodul $N \neq 0$ von $M$ gibt es einen \textcase{maximalen}{minimalen} direkten Summanden $\case{N'' \neq N}{N' \neq 0}$ von $N$ und daher Untermoduln $N'$ und $N''$ von $N$ mit $N = N' \oplus N''$ und $N'$ unzerlegbar.
 			
-			Setze nun $M_0 := M$ und w\"ahle f\"ur $i=0,1,\dots$ solange $M_i\neq 0$ Untermoduln $N_{i+1}$ und $M_{i+1}$ von $M_i$ mit $M_i = N_{i+1} \oplus M_{i+1}$ und $N_{i+1}$ unzerlegbar. Dieses Verfahren bricht ab, da $N_1 \subsetneq N_1 \oplus N_2 \subsetneq \cdots$ ($M_0 \supsetneq M_1 \supsetneq \cdots$) und $M$ noethersch (artinsch) ist. Ist $M_n = 0$, so $\displaystyle M = \bigoplus_{i=1}^n N_i$
+			Setze nun $M_0 := M$ und w\"ahle f\"ur $i=0,1,\dots$ solange $M_i\neq 0$ Untermoduln $N_{i+1}$ und $M_{i+1}$ von $M_i$ mit $M_i = N_{i+1} \oplus M_{i+1}$ und $N_{i+1}$ unzerlegbar. Dieses Verfahren bricht ab, da $\case{N_1 \subsetneq N_1 \oplus N_2 \subsetneq \cdots}{M_0 \supsetneq M_1 \supsetneq \cdots}$ und $M$ \textcase{noethersch}{artinsch} ist. Ist $M_n = 0$, so $\displaystyle M = \bigoplus_{i=1}^n N_i$
 		\end{proof}
 	\end{satz}
 
-	\begin{defueb}\label{1.5.6}
+	\begin{defueb}\label{1.5.6}\hfill\newline
 		Sei $M$ ein Modul. Dann bildet 
-			\[\End(M):= \set{f|f \textrm{ Endomorphismus von } M}\] 
+			\[\End(M):= \set{f \mid f \textrm{ Endomorphismus von } M}\] 
 			mit punktweiser Addition und der Hintereinanderschaltung als Multiplikation einen Ring, den sogenannten \emph{Endomorphismenring}\index{Modul@\textbf{Modul}!Endomorphismenring} von $M$.
 	\end{defueb}
 
-	\begin{lemma}\label{1.5.7}
-		"Fitting-Zerlegung"\newline
+	\begin{lemma}\label{1.5.7} "Fitting-Zerlegung"\newline
 		Sei $M$ ein Modul und $f \in \End(M)$ mit $\ker(f) = \ker(f^2)$ und $\im(f) = \im(f^2)$. Dann $M = \ker f \oplus \im f$
 		
 		\begin{proof}
@@ -916,71 +917,70 @@ toc=idx
 			\end{enumerate}
 			Zu (a): Sei $x \in \ker f \cap \im f$. W\"ahle $y \in M$ mit $x = f(y)$. Dann $f^2(y) = f(x) = 0$ und daher $y \in \ker(f^2) = \ker(f)$, d.h. $x = f(y) = 0$
 			
-			Zu (b): Sei $x \in M$. Wegen $f(x) \in \im f = \im(f^2)$ gibt es $y \in M$ mit $f(x) = f^2(y)$. Dann $x = \underbrace{(x - f(y))}_{\in \ker f} + \underbrace{f(y)}_{\in \im f}$
+			\medskip\noindent Zu (b): Sei $x \in M$. Wegen $f(x) \in \im f = \im(f^2)$ gibt es $y \in M$ mit $f(x) = f^2(y)$. Dann $x = \underbrace{(x - f(y))}_{\in \ker f} + \underbrace{f(y)}_{\in \im f}$
 		\end{proof}
 	\end{lemma}
 
-	\begin{definition}\label{1.5.8}
+	\begin{definition}\label{1.5.8}\hfill\newline
 		Sei $R$ ein Ring (z.B. $R = \End(M)$ f\"ur einen Modul $M$)
 		
 		\begin{enumerate}[(a)]
-			\item Ein Element $a \in R$ hei\ss t \emph{idempotent}\index{Modul@\textbf{Modul}!idempotent} (\emph{nilpotent}\index{Modul@\textbf{Modul}!nilpotent}), wenn $a^2 = a$ ($a^n = 0$ f\"ur ein $n \in \N$)
+			\item Ein Element $a \in R$ hei\ss t \textcase{\emph{idempotent}\index{Modul@\textbf{Modul}!idempotent}}{\emph{nilpotent}\index{Modul@\textbf{Modul}!nilpotent}}, wenn $\case{a^2 = a}{a^n = 0  \ (\textrm{f\"ur ein } n \in \N)}$ 
 			
 			\item $R$ hei\ss t \emph{lokal}\index{Modul@\textbf{Modul}!lokal}, wenn $0\neq 1$ in $R$ und $\forall a,b \in R\setminus R^*: a + b \in R\setminus R^*$
 		\end{enumerate}
 	\end{definition}
 
-	\begin{proposition}\label{1.5.9}
+	\begin{proposition}\label{1.5.9}\hfill\newline
 		Sei $M$ ein Modul. Dann ist $M$ unzerlegbar genau dann, wenn $\End(M)$ genau zwei idempotente Elemente hat (n\"amlich $0$ und $1 = \id_M \neq 0$).
 		
-		\begin{proof}
-			\begin{enumerate}
-				\item[$\Rightarrow$] Sei $M$ unzerlegbar. Wegen $M \neq 0$ gilt $0 \neq 1$ in $\End(M)$.
-				
-				Sei $f \in \End(M)$ idempotent. Dann $M = \ker f \oplus \im f$ nach \ref{1.5.7}. Es folgt $\ker f = 0$ oder $\im f = 0$. Im zweiten Fall ist $f = 0$. Im ersten Fall ist $f$ injektiv, also $f=1$ (da $f^2 = f$).
-				
-				\item[$\Leftarrow$] Seien $0\neq 1$ die einzigen idempotenten Elemente von $\End(M)$. Gelte $M = L \oplus N$. Zu zeigen $L = 0$ oder $N = 0$. 
-					\[\pi_L:M=L\oplus N \to L, x + y \mapsto x\]
-				($x\in L, y \in N$) ist idempotent, also $\pi_L = 0$ oder $\pi_L = 1$. Dann ist $L = 0$ oder $N = 0$.
-			\end{enumerate}
+		\begin{proof}\hfill\newline
+			"$\Longrightarrow$": Sei $M$ unzerlegbar. Wegen $M \neq 0$ gilt $0 \neq 1$ in $\End(M)$.
+			
+			Sei $f \in \End(M)$ idempotent. Dann $M = \ker f \oplus \im f$ nach \ref{1.5.7}. Es folgt $\ker f = 0$ oder $\im f = 0$. Im zweiten Fall ist $f = 0$. Im ersten Fall ist $f$ injektiv, also $f=1$ (da $f^2 = f$).
+			
+			\medskip\noindent
+			"$\Longleftarrow$": Seien $0\neq 1$ die einzigen idempotenten Elemente von $\End(M)$. Gelte $M = L \oplus N$. Zu zeigen $L = 0$ oder $N = 0$. 
+			\[\pi_L:M=L\oplus N \to L, x + y \mapsto x\]
+			($x\in L, y \in N$) ist idempotent, also $\pi_L = 0$ oder $\pi_L = 1$. Dann ist $L = 0$ oder $N = 0$.
 		\end{proof}
 	\end{proposition}
 
-	\begin{lemma}\label{1.5.10}
-		Fitting Lemma\newline
-		Sei $M$ ein Modul endlicher L\"ange und $f \in \End(M)$. Dann gibt es $N \in \N$ mit $M = \ker(f^n) \oplus \im(f^n)$ f\"ur alle $n\geq N$.
+	\begin{lemma}\label{1.5.10} Fitting Lemma\newline
+		Sei $M$ ein Modul endlicher L\"ange und $f \in \End(M)$. Dann gibt es $N \in \N$ mit \linebreak $M = \ker(f^n) \oplus \im(f^n)$ f\"ur alle $n\geq N$.
 		
 		\begin{proof}
 			Die Ketten $\ker f \subseteq \ker f^2 \subseteq \cdots$ und $\im f \supseteq \im f^2 \supseteq \cdots$ werden station\"ar. W\"ahle $N \in \N$ mit $\ker f^n = \ker f^N$ und $\im f^n = \im f^N$ f\"ur alle $n \geq N$ und nehme die Fitting-Zerlegung nach \ref{1.5.7} f\"ur $f^n$.
 		\end{proof}
 	\end{lemma}
 
-	\begin{korollar}\label{1.5.11}
+	\begin{korollar}\label{1.5.11}\hfill\newline
 		Jeder Endomorphismus eines Unzerlegbaren Moduls endlicher L\"ange ist entweder nilpotent oder ein Automorphismus.
 	\end{korollar}
 
-	\begin{satz}\label{1.5.12}
+	\begin{satz}\label{1.5.12}\hfill\newline
 		Der Endomorphismenring eines unzerlegbaren Moduls endlicher L\"ange ist lokal.
 		
 		\begin{proof}
 			Sei $M$ ein unzerlegbarer Modul mit $\ell(M) < \infty$. Wegen $M \neq 0$ gilt $0 \neq 1$ in $\End(M)$.
 			
-			Seien $f, g \in \End(M)^*$. Statt 
+			Seien $f, g \in \End(M)$. Statt 
 				\[(f\notin \End(M)^* \land g\notin \End(M)^*) \Rightarrow (f+g \notin \End(M)^*)\]
 			k\"onnen wir genauso gut (beachte $\End(M)^* = \Aut(M)$)
 				\[(f\notin \Aut(M) \land f+g \in \Aut(M)) \Rightarrow g \in \Aut(M)\]
 			zeigen.
 			
-		Gelte also $f \notin \Aut(M)$ und $f+g \in \Aut(M)$. Zu zeigen ist $g \in \Aut(M)$.
-		Mit $h:= (f+g)^{-1}$ gilt $hf + hg = h(f+g) = 1$. Wegen $(hf) \notin \Aut(M)$ ($f$ nilpotent nach \ref{1.5.11}, also $\ker f \neq 0$) gilt nach \ref{1.5.11}
-		$(hf)^n = 0$ f\"ur ein $n \in \N$. Dann gilt $(hg = 1 - hf \in \Aut(M))$ und daher $g \in \Aut(M)$ (sonst $g$ nilpotent nach \ref{1.5.11}, also $\ker g \neq 0$),
-		denn $(1+hf+(hf)^2 + \cdots + (hf)^{n-1})(1-hf) = 1$ und $(1-hf)(1+hf+(hf)^2 + \cdots + (hf)^{n-1}) = 1$.
+			Gelte also $f \notin \Aut(M)$ und $f+g \in \Aut(M)$. Zu zeigen ist $g \in \Aut(M)$.
+			
+			\noindent Mit $h:= (f+g)^{-1}$ gilt $hf + hg = h(f+g) = 1$. Wegen $(hf) \notin \Aut(M)$ ($f$ nilpotent nach \ref{1.5.11}, also $\ker f \neq 0$) gilt nach \ref{1.5.11} $(hf)^n = 0$ f\"ur ein $n \in \N$. 
+			
+			\noindent Dann gilt $hg = 1 - hf \in \Aut(M)$ und daher $g \in \Aut(M)$ (sonst $g$ nilpotent nach \ref{1.5.11}, also $\ker g \neq 0$),
+			denn $(1+hf+(hf)^2 + \cdots + (hf)^{n-1})(1-hf) = 1$ und \linebreak $(1-hf)(1+hf+(hf)^2 + \cdots + (hf)^{n-1}) = 1$.
 		\end{proof}
 	\end{satz}
 
-	\begin{satz}\label{1.5.13}
-		Satz von Krull-Remak-Schmidt\newline
-		Seien $m, n\in \N_0$ $M_1, \dots, M_m, N_1, \dots, N_n$ unzerlegbare Moduln endlicher L\"ange mit $M_1 \oplus \cdots \oplus M_m \cong N_1 \oplus \cdots \oplus N_n$. Dann gilt $m=n$ und es gibt 
+	\begin{satz}\label{1.5.13} Satz von Krull-Remak-Schmidt\newline
+		Seien $m, n\in \N_0$ $M_1, \dots, M_m, N_1, \dots, N_n$ unzerlegbare Moduln endlicher L\"ange mit \linebreak $M_1 \oplus \cdots \oplus M_m \cong N_1 \oplus \cdots \oplus N_n$. Dann gilt $m=n$ und es gibt 
 		$\sigma \in S_n$ mit $M_i \cong N_{\sigma(i)}$ f\"ur $i \in \set{1, \dots, n}$
 		
 		\begin{proof}
@@ -988,26 +988,31 @@ toc=idx
 			$m-1 \to m$ ($m \in \N$)
 			
 			W\"ahle einen Isomorphismus $f: \underbrace{\bigoplus_{i=1}^m}_{M:=} M_i\to \underbrace{\bigoplus_{j=1}^n N_j}_{N:=}$.
-				\[M_i \overset{\xhookrightarrow[]{\iota_i}}{\underset{\pi_i}{\twoheadleftarrow}} M \xrightarrow[f]{\cong} N \overset{\xhookleftarrow[]{\kappa_i}}{\underset{\rho_j}{\twoheadrightarrow}} N_j\]
-				
+			\begin{center}
+				\begin{tikzcd}
+				M_i \arrow[hook, yshift=0.7ex]{r}{\iota_i} & M \arrow[two heads, yshift=-0.7ex]{l}{\pi_i}
+				\arrow{r}{f}[swap]{\cong} & N \arrow[two heads, yshift=-0.7ex]{r}[swap]{\rho_j}
+				& N_i \arrow[hook', yshift=0.7ex]{l}[swap]{\kappa_i}
+				\end{tikzcd}
+			\end{center}	
 			\begin{align*}
 				1 &= \id_{M_1}  = \pi_1\iota_1\\
 				&= \pi_1f^{-1}\id_Nf\iota_1\\
 				&= \pi_1f^{-1}\brac{\sum_{j=1}^m \kappa_j\rho_j}f\iota_1\\
 				&= \sum_{j=1}^m\underbrace{\pi_1f^{-1}\kappa_j}_{g_j:N_j \to M_1}\underbrace{\rho_jf\iota_1}_{h_j:M_1 \to N_j}
 			\end{align*}
-		
-			Da $\End(M_1)$ nach \ref{1.5.12} lokal ist, gibt e $j \in \set{1, \dots, n}$ mit $g_jh_j \in \Aut(M_1)$. Insbesondere $n \geq 1$.
+			Da $\End(M_1)$ nach \ref{1.5.12} lokal ist, gibt es $j \in \set{1, \dots, n}$ mit $g_jh_j \in \Aut(M_1)$. Insbesondere $n \geq 1$.
 			
-			
-			\noindent Behauptung 1: $M_1 \overset{\xrightarrow{h_j}}{\xleftarrow[g_j]{}} N_j$ sind Isomorphismen.
+			\noindent {\color{red} \textbf{Behauptung 1}: \begin{tikzcd}
+				M_1 \arrow[yshift=0.7ex]{r}{h_j} & N_j \arrow[yshift=-0.7ex]{l}{g_j}
+			\end{tikzcd} sind Isomorphismen.
 			
 			Begr\"undung: Wegen $g_jh_j \in \Aut(M)$ ist $h_j$ injektiv und $g_j$ surjektiv. Es gen\"ugt zu zeigen, dass $h_jg_j \in \Aut(N_j)$. Dies ist klar, denn sonst gilt nach \ref{1.5.12} $(h_jg_j)^s = 0$ f\"ur ein $s \in \N$ und damit 
 			\[0 = g_j(h_jg_j)^s = (g_jh_j)^sg_j\]
-			was $g_j = 0$ impliziert.
+			was $g_j = 0$ impliziert $\lightning$.
 			
 			
-			\noindent Behauptung 2: $M = f^{-1}(N_j) \oplus M_2 \oplus \cdots \oplus M_m$.
+			\noindent \textbf{Behauptung 2}: $M = f^{-1}(N_j) \oplus M_2 \oplus \cdots \oplus M_m$.
 			
 			Begr\"undung: Zu zeigen ist 
 			\begin{enumerate}[(a)]
@@ -1016,16 +1021,16 @@ toc=idx
 				\item $M_1 \subseteq f^{-1}(N_j) + \sum_{i=2}^mM_i$
 			\end{enumerate}
 		
-			Zu (a) Sei $x \in f^{-1}(N_j) \cap \sum_{i=2}^mM_i$. Zu zeigen ist $x = 0$. Dann gibt es ein $y \in N_j$ mit $x = (f^{-1}\kappa_j)(y)$ und es gilt $\pi_1(x) = 0$ und daher $y = 0$ und daher $g_j(y) = (\pi_1f^{-1}\kappa_j)(y) = \pi_1(x) = 0$ (denn $g_j$ ist ein Isomorphismus), also $x = 0$.
+			\noindent Zu (a) Sei $x \in f^{-1}(N_j) \cap \sum_{i=2}^mM_i$. Zu zeigen ist $x = 0$. Dann gibt es ein $y \in N_j$ mit $x = (f^{-1}\kappa_j)(y)$ und es gilt $\pi_1(x) = 0$. Dann gilt $g_j(y) = (\pi_1f^{-1}\kappa_j)(y) = \pi_1(x) = 0$ und daher $y = 0$ (denn $g_j$ ist ein Isomorphismus), also $x = 0$.
 			
-			Zu (b) Sei $x \in M$. W\"ahle ein $y\in N_j$ mit $x = g_j(y)$. Dann $x = f^{-1}(y) + (x - f^{-1}(y))$ und es reicht zu zeigen, dass $\pi_1(x-f^{-1}(y)) = 0$. Es gilt aber 
+			\medskip\noindent Zu (b) Sei $x \in M_1$. W\"ahle ein $y\in N_j$ mit $x = g_j(y)$. Dann $x = f^{-1}(y) + (x - f^{-1}(y))$ und es reicht zu zeigen, dass $\pi_1(x-f^{-1}(y)) = 0$. Es gilt aber 
 			\begin{align*}
 				\pi_1(x-f^{-1}(y))&=\pi_1(x) - (\pi_1(f^{-1}\kappa_j)(y))\\
 				&= \pi_1(g_j(y)) - g_j(y) \\
 				&= g_j(y) - g_j(y) = 0
-			\end{align*}
+			\end{align*} }
 		
-			Der Kern von $M \xrightarrow[\cong]{f} N \twoheadrightarrow N/N_j$ ist $f^{-1(N_j)}$ und es folgt mit dem Isomorphiesatz $M/f^{-1}(N_j) \cong N/N_j$, also
+			\noindent Der Kern von \begin{tikzcd} M \arrow{r}{f}[swap]{\cong} & N \arrow[two heads]{r} & N/N_j \end{tikzcd} ist $f^{-1}(N_j)$ und es folgt mit dem Isomorphiesatz $M/f^{-1}(N_j) \cong N/N_j$, also
 				\[\bigoplus_{i=2}^mM_i \overset{\textrm{Beh 2}}{\cong} M/f^{-1}(N_j) \cong N/N_j \cong \bigoplus_{k=1, k \neq j}^n N_k\]
 			Wende die Induktionsvoraussetzung an.
 		\end{proof}
