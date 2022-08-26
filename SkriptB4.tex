@@ -14,7 +14,7 @@ toc=idx
 \usepackage[german]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-
+\usepackage{color}
 \usepackage{datetime}
 %\usepackage{ulem}
 \usepackage{cancel}
@@ -23,17 +23,23 @@ toc=idx
 \setkomafont{pageheadfoot}{\normalfont}
 \setkomafont{pagefoot}{\slshape}
 
-\defpagestyle{scrheadings}{%
-	{}{}{}
-}{
+\defpagestyle{main}
+{
+	{\thesection\ \leftmark \hfill}{\hfill \thesection\ \leftmark}{}
+}
+{
 	{\pagemark\hfill}{\hfill \pagemark}{}
 }
 
-\defpagestyle{plain}{%
+\defpagestyle{sectionstart}
+{
 	{}{}{}(0pt,0pt)
-}{
-	{\pagemark \hfill}{\hfill \pagemark}{}
 }
+{
+	{\pagemark\hfill}{\hfill \pagemark}{}
+}
+
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
 
 \usepackage{chngcntr}\counterwithout{equation}{section}
 
@@ -65,15 +71,18 @@ toc=idx
 \newcommand{\abs}[1]{\left| #1 \right|}
 \newcommand{\set}[1]{\left\{ #1 \right\}}
 
-\newcommand*{\ORIGchapterheadstartvskip}{}%
+\newcommand{\textcase}[2]{$\begin{Bmatrix} \textrm{#1} \\ \textrm{#2}\end{Bmatrix}$}
+\newcommand{\case}[2]{\begin{Bmatrix} #1 \\ #2\end{Bmatrix}}
+
+\newcommand*{\ORIGchapterheadstartvskip}{}
 \let\ORIGchapterheadstartvskip=\chapterheadstartvskip
-\renewcommand*{\chapterheadstartvskip}{%
+\renewcommand*{\chapterheadstartvskip}{
 	\ORIGchapterheadstartvskip
 	\noindent\rule[\baselineskip]{\linewidth}{4pt}\par
 }
-\newcommand*{\ORIGchapterheadendvskip}{}%
+\newcommand*{\ORIGchapterheadendvskip}{}
 \let\ORIGchapterheadendvskip=\chapterheadendvskip
-\renewcommand*{\chapterheadendvskip}{%
+\renewcommand*{\chapterheadendvskip}{
 	\ORIGchapterheadendvskip
 	\noindent\rule[\baselineskip]{\linewidth}{4pt}\par
 }
@@ -118,16 +127,13 @@ toc=idx
 \newtheorem{defueb}[definition]{Definition und \"Ubung}
 
 \begin{document}
-	\pagenumbering{Alph}
-	\pagestyle{empty}
-	\tableofcontents
+	\tableofcontents\thispagestyle{empty}
+	\newpage\thispagestyle{empty}
 	\mainmatter
 	\chapter[tocentry={Moduln}]{Moduln}
-	\pagestyle{scrheadings}
+	\pagestyle{main}
 	
 	\section{Definitionen und grundlegende Tatsachen}
-	\setcounter{chapter}{1}
-	\setcounter{section}{1}
 	\begin{definition}\label{1.1.1}\hfill\newline
 		Ein \emph{Modul}\index{Modul@\textbf{Modul}} ist ein Tupel $(R, +_R, \cdot_R, M, +, \cdot)$, wobei $(R, +_R, \cdot_R)$ ein Ring (mit $1$, nicht notwendigerweise kommutativ), $(M, +)$ eine abelsche Gruppe und \\\noindent$\cdot:R\times M \to M$ eine (meist gar nicht oder infix geschriebene) Abbildung mit folgenden Eigenschaften
 		
@@ -169,7 +175,6 @@ toc=idx
 			
 			$(D')$ besagt, dass f\"ur alle $x \in M$ die Abbildung $R \to M, a \mapsto ax$ ein Gruppenhomomorphismus ist. Insbesondere gilt $0 \cdot x = 0$ und $(-a) \cdot x = -ax$ f\"ur alle $a \in R, x \in M$.
 		\end{enumerate}
-		
 	\end{bemerkung}
 	
 	\begin{beispiel}\label{1.1.3}\hfill
@@ -323,7 +328,7 @@ toc=idx
 	
 	\newpage
 
-	\section{Direkte Summen von Moduln und freie Moduln}
+	\section{Direkte Summen von Moduln und freie Moduln}\thispagestyle{sectionstart}
 	\begin{definition}\label{1.2.1}\hfill\newline
 		Sei $R$ ein Ring und $(M_i)_{i \in I}$ eine Familie von $R$-Moduln. Dann nennt man den $R$-Untermodul 
 			\[\bigoplus_{i \in I} M_i := \set{x \in \prod_{i\in I}M_i \mid \supp(x)\ \mathrm{endlich} } \]
@@ -477,7 +482,7 @@ toc=idx
 	
 	\newpage
 	
-	\section{Halbeinfache Moduln}
+	\section{Halbeinfache Moduln}\thispagestyle{sectionstart}
 	\begin{notation}\label{1.3.1}\hfill\newline
 		$0 := \set{0}$ Nullmodul
 	\end{notation}
@@ -593,11 +598,12 @@ toc=idx
 			
 			\medskip\noindent 
 			\textbf{(c)$\Longrightarrow$(a)}: Gelte (c).\newline
-			\textbf{Hilfsbehauptung}: \emph{Jeder Untermodul eines Untermoduls $N$ von $M$ ist ein direkter Summand von $N$.}
+			{\color{red}
+			\textbf{Hilfsbehauptung}: Jeder Untermodul eines Untermoduls $N$ von $M$ ist ein direkter Summand von $N$.
 			
 			\noindent \textbf{Begr\"undung}: Sei $N$ ein Untermodul von $M$ und $P$ ein Untermodul von $N$.
 			W\"ahle $Q$ mit $M = P \oplus Q$. Setze $R = Q \cap N$. Wir zeigen $N = P \oplus R$. Es ist klar, dass $P \cap R = 0$ (denn $P \cap Q = 0$) und $P + R \subseteq N$. Zu zeigen ist also noch $N \subseteq P + R$. \newline
-			Sei hierzu $x \in N$. Schreibe $x = p + q$ mit $p \in P$ und $q \in Q$, dann $q = x - p \in N \cap Q = R$.  
+			Sei hierzu $x \in N$. Schreibe $x = p + q$ mit $p \in P$ und $q \in Q$, dann $q = x - p \in N \cap Q = R$. } 
 			
 			\bigskip
 			\noindent Betrachte nun die durch Inklusion halbgeordnete Menge 
@@ -628,29 +634,29 @@ toc=idx
 	\end{korollar}
 	\newpage
 	
-	\section{Noethersche und artinsche Moduln}
-	\begin{definition}\label{1.4.1}
-		Ein Modul $M$ hei\ss t \emph{noethersch}\index{Modul@\textbf{Modul}!Noethersche Moduln} bzw. \emph{artinsch}\index{Modul@\textbf{Modul}!Artinsche Moduln}, wenn jede aufsteigende bzw. absteigende Kette von Untermoduln $M_1 \subseteq M_2 \subseteq \cdots$ bzw. $M_1 \supseteq M_2 \supseteq \cdots$ von $M$ station\"ar wird (d.h. $\exists k \in \N: \forall n \geq k: M_n = M_k$).
+	\section{Noethersche und artinsche Moduln}\thispagestyle{sectionstart}
+	\begin{definition}\label{1.4.1}\hfill\newline
+		Ein Modul $M$ hei\ss t \textcase{\emph{noethersch}\index{Modul@\textbf{Modul}!Noethersche Moduln}}{\emph{artinsch}\index{Modul@\textbf{Modul}!Artinsche Moduln}}, wenn jede \textcase{aufsteigende}{absteigende} Kette von Untermoduln $\case{M_1 \subseteq M_2 \subseteq \cdots}{M_1 \supseteq M_2 \supseteq \cdots}$ von $M$ station\"ar wird (d.h. $\exists k \in \N: \forall n \geq k: M_n = M_k$).
 		
-		\noindent Ein Ring $R$ hei\ss t noethersch bzw. artinsch, wenn er als $R$-Modul noethersch bzw. artinsch ist.
+		\noindent Ein Ring $R$ hei\ss t \textcase{noethersch}{artinsch}, wenn er als $R$-Modul \textcase{noethersch}{artinsch} ist.
 	\end{definition}
 
-	\begin{bemerkung}\label{1.4.2}
+	\begin{bemerkung}\label{1.4.2}\hfill\newline
 		Sei $R$ ein kommutativer Ring
 		
 		\begin{enumerate}[(a)]
 			\item $R$ ist genau dann noethersch, wenn jede aufsteigende Kette von Idealen in $R$ station\"ar wird [$\to$\ref{1.1.5}]
 			
 			\item Ist $S = R[a_1, \dots, a_n]$ ein kommutativer Ring mit $n \in \N_0, a_1, \dots, a_n \in S$, so besagt der \emph{Hilbersche Basissatz}\index{Modul@\textbf{Modul}!Hilbertscher Basissatz}:
-				$R$ noethersch $\Rightarrow$ $S$ noethersch.
+				$R$ noethersch $\Longrightarrow$ $S$ noethersch.
 		\end{enumerate}
 	\end{bemerkung}
 
-	\begin{satz}\label{1.4.3}
+	\begin{satz}\label{1.4.3}\hfill\newline
 		Ein Modul ist noethersch genau dann, wenn alle seine Untermoduln endlich erzeugt sind [$\rightarrow$\ref{1.1.4}(d)].
 	\end{satz}
 
-	\begin{lemma}\label{1.4.4}
+	\begin{lemma}\label{1.4.4}\hfill\newline
 		Seien $L, L'$ und $N$ Untermoduln des Moduls $M$ mit $L \subseteq L'$, $L \cap N = L' \cap N$ und $L+N=L'+N$. Dann gilt $L=L'$
 		
 		\begin{proof}
@@ -658,58 +664,57 @@ toc=idx
 		\end{proof}
 	\end{lemma}
 
-	\begin{satz}\label{1.4.5}
-		Sei $N$ ein Untermodul des Moduls $M$. Dann ist $M$ noethersch bzw. artinsch genau dann, wenn sowohl $N$ als auch $M/N$ noethersch bzw. artinsch ist.
+	\begin{satz}\label{1.4.5}\hfill\newline
+		Sei $N$ ein Untermodul des Moduls $M$. Dann ist $M$ \textcase{noethersch}{artinsch} genau dann, wenn sowohl $N$ als auch $M/N$ \textcase{noethersch}{artinsch} ist.
 		
 		\begin{proof}
 			klar mit \ref{1.3.3}(a) und \ref{1.4.4}
 		\end{proof}
 	\end{satz}
 
-	\begin{korollar}\label{1.4.6}
-		Endlich Summen noetherscher bzw. artinscher Moduln sind auch noethersch bzw. artinsch.
+	\begin{korollar}\label{1.4.6}\hfill\newline
+		Endliche Summen \textcase{noetherscher}{artinscher} Moduln sind auch \textcase{noethersch}{artinsch}.
 		
 		\begin{proof}
-			Sind $N_1, \dots, N_n$ noethersche bzw. artinsche Untermoduln des Moduls $M$ mit $M = \sum_{i=1}^n N_i$, so gibt es nach \ref{1.2.2} einen Epimorphismus 
+			Sind $N_1, \dots, N_n$ \textcase{noethersche}{artinsche} Untermoduln des Moduls $M$ mit $M = \sum_{i=1}^n N_i$, so gibt es nach \ref{1.2.2} einen Epimorphismus 
 				\[\bigoplus_{i=1}^n N_i \to \sum_{i=1}^n N_i\]
 			weshalb $M = \sum_{i=1}^nN_i \cong \brac{\bigoplus_{i=1}^n N_i} / L$ f\"ur einen Untermodul $L$ von $\bigoplus_{i=1}^nN_i$ gilt.\newline
 			Mit \ref{1.4.5} reicht es daher, die Behauptung f\"ur direkte Summen zu zeigen.\newline
-			Durch Induktion nach $n \in \N_0$ zeigen wir daher, dass f\"ur alle noetherschen bzw. artinschen $R$-Moduln $N_1, \dots, N_n$ auch $\bigoplus_{i=1}^n N_i$ noethersch bzw. artinsch ist.
+			Durch Induktion nach $n \in \N_0$ zeigen wir daher, dass f\"ur alle \textcase{noetherschen}{artinschen} $R$-Moduln $N_1, \dots, N_n$ auch $\bigoplus_{i=1}^n N_i$ \textcase{noethersch}{artinsch} ist.
 			
 			\noindent Induktionsanfang f\"ur $n = 0$: klar
 			
-			\noindent Induktionsschritt $n-1 \to n, (n \in \N)$: Seien $N_1, \dots, N_n$ noethersche bzw. artinsche $R$-Moduln. Dann ist $\bigoplus_{i=1}^{n-1} N_i$ noethersch bzw. artinsch nach Induktionsvoraussetzung. Wegen 
+			\noindent Induktionsschritt $n-1 \to n, (n \in \N)$: Seien $N_1, \dots, N_n$ \textcase{noethersche}{artinsche} $R$-Moduln. Dann ist $\bigoplus_{i=1}^{n-1} N_i$ \textcase{noethersch}{artinsch} nach Induktionsvoraussetzung. Wegen 
 				\[\brac{\bigoplus_{i=1}^n N_i} / \brac{\bigoplus_{i=1}^{n-1} N_i} \cong N_n\]
-			folgt mit \ref{1.4.5}, dass $\bigoplus_{i=1}^n N_i$ auch noethersch bzw. artinsch ist.
+			folgt mit \ref{1.4.5}, dass $\bigoplus_{i=1}^n N_i$ auch \textcase{noethersch}{artinsch} ist.
 		\end{proof}
 	\end{korollar}
 
-	\begin{korollar}\label{1.4.7}
-		Jeder endlich erzeugte Modul \"uber einem noetherschen bzw. artinschen Ring ist noethersch bzw. artinsch.
+	\begin{korollar}\label{1.4.7}\hfill\newline
+		Jeder endlich erzeugte Modul \"uber einem \textcase{noetherschen}{artinschen} Ring ist \textcase{noethersch}{artinsch}.
 		
 		\begin{proof}
-			Sei $R$ ein noetherscher bzw. artinscher Ring und $M$ ein endlich erzeugter $R$-Modul. Nach \ref{1.4.6} ist ohne Einschr\"ankung $M$ zyklisch. Dann ist $M \cong R/N$ f\"ur einen $R$-Untermodul $N$ von $R$. Mit $R$ ist nach \ref{1.4.5} auch $R/N$ noethersch bzw. artinsch.
+			Sei $R$ ein \textcase{noetherscher}{artinscher} Ring und $M$ ein endlich erzeugter $R$-Modul. Nach \ref{1.4.6} ist ohne Einschr\"ankung $M$ zyklisch. Dann ist $M \cong R/N$ f\"ur einen $R$-Untermodul $N$ von $R$. Mit $R$ ist nach \ref{1.4.5} auch $R/N$ \textcase{noethersch}{artinsch}.
 		\end{proof}
 	\end{korollar}
 
-	\begin{definition}\label{1.4.8}
+	\begin{definition}\label{1.4.8}\hfill\newline
 		Sei $M$ ein Modul. Dann heißt 
-			\[\ell(M) := \sup \set{n \in \N_0| \textrm{es gibt Untermoduln } M_0, \dots, M_n \textrm{ von } M \textrm{ mit } M_0 \supsetneq \cdots \supsetneq M_n} \in \N_0 \cup \set{\infty}\]
-		
+			\[\ell(M) := \sup \set{n \in \N_0 \mid \textrm{es gibt Untermoduln } M_0, \dots, M_n \textrm{ von } M \textrm{ mit } M_0 \supsetneq \cdots \supsetneq M_n} \in \N_0 \cup \set{\infty}\]
 		die \emph{L\"ange}\index{Modul@\textbf{Modul}!L\"ange} von $M$.
 	
 		\noindent Es heißt $M$ von endlicher L\"ange, wenn $\ell(M) < \infty$.
 	\end{definition}
 
-	\begin{beispiel}\label{1.4.9}
+	\begin{beispiel}\label{1.4.9}\hfill\newline
 		Sei $M$ ein Modul. Dann 
-		\begin{itemize}
+		\begin{enumerate}[(a)]
 			\item $\ell(M) = 0 \Leftrightarrow M = 0$
-			\item $\ell(M) = 1 \Leftarrow M$ ist einfach
-		\end{itemize}
+			\item $\ell(M) = 1 \Leftrightarrow M$ ist einfach
+		\end{enumerate}
 	\end{beispiel}
 
-	\begin{satz}\label{1.4.10}
+	\begin{satz}\label{1.4.10}\hfill\newline
 		Sei $N$ ein Untermodul des Moduls $M$. Dann gilt
 			\[\ell(M) < \infty \Leftrightarrow \brac{\ell(M/N) < \infty \land \ell(N)< \infty}\]
 		und falls $\ell(M) < \infty$
@@ -717,33 +722,35 @@ toc=idx
 		
 		\begin{proof}
 			Man sieht sofort $\ell(M) = \sup \hat M, \ell(M/N) \overset{\ref{1.3.3}(a)}{=} \sup \hat{K}$ und $\ell(N) = \sup \hat N$ mit 
-				\[\hat M := \set{m \in \N_0| \exists \textrm{Untermoduln } M_0, \dots, M_m \textrm{ von } M: M = M_0 \supsetneq \cdots \supsetneq M_m = 0}\]
-				\[\hat K := \set{k \in \N_0| \exists \textrm{Untermoduln } L_0, \dots, L_k \textrm{ von } M: M = L_0 \supsetneq \cdots \supsetneq L_k = N}\]
-				\[\hat N := \set{n \in \N_0| \exists \textrm{Untermoduln } N_0, \dots, N_n \textrm{ von } M: N = N_0 \supsetneq \cdots \supsetneq N_n = 0}\]
+				\[\hat M := \set{m \in \N_0 \mid \exists \textrm{Untermoduln } M_0, \dots, M_m \textrm{ von } M: M = M_0 \supsetneq \cdots \supsetneq M_m = 0}\]
+				\[\hat K := \set{k \in \N_0 \mid \exists \textrm{Untermoduln } L_0, \dots, L_k \textrm{ von } M: M = L_0 \supsetneq \cdots \supsetneq L_k = N}\]
+				\[\hat N := \set{n \in \N_0 \mid \exists \textrm{Untermoduln } N_0, \dots, N_n \textrm{ von } M: N = N_0 \supsetneq \cdots \supsetneq N_n = 0}\]
 			
-			Offensichtlich gilt $\forall k \in \hat K: \forall n \in \hat N: k + n \in \hat M$, was "$\Rightarrow$" und "$\geq$" beweist.
+			Offensichtlich gilt $\forall k \in \hat K: \forall n \in \hat N: k + n \in \hat M$, was "$\Longrightarrow$" und "$\geq$" beweist.
 			
-			\noindent Um "$\Leftarrow$" und "$\leq$" zu beweisen, reicht es 
+			\noindent Um "$\Longleftarrow$" und "$\leq$" zu beweisen, reicht es 
 				\[\forall m \in \hat M: \exists k \in \hat K: \exists n \in \hat N: m \leq k + n\]
-			zu zeigen. Sei hierzu $m \in \hat M$. W\"ahle Untermoduln $M_0, \dots, M_m$ von $M$ mit $M=M_0 \supsetneq \cdots M_m = 0$.
-			Setze $L_i := M_i + N$ und $N_i := M_i \cap N$ f\"ur $i \in \set{0, \dots, m}$. Nach Lemma \ref{1.4.4} ist dann jeweils mindestens eine der beiden Inklusionen $L_i \supseteq L_{i+1}$ und $N_i \supseteq N_{i+1}$ echt. (f\"ur $i \in \set{0, \dots, m-1}$). Setzt man
+			zu zeigen. Sei hierzu $m \in \hat M$. 
+			
+			W\"ahle Untermoduln $M_0, \dots, M_m$ von $M$ mit $M = M_0 \supsetneq \cdots \supsetneq M_m = 0$.
+			Setze $L_i := M_i + N$ und $N_i := M_i \cap N$ f\"ur $i \in \set{0, \dots, m}$. Nach Lemma \ref{1.4.4} ist dann jeweils mindestens eine der beiden Inklusionen $L_i \supseteq L_{i+1}$ und $N_i \supseteq N_{i+1}$ echt (f\"ur $i \in \set{0, \dots, m-1}$). Setzt man
 				\[k := |\set{i \in \set{0, \dots, m - 1}| L_i \supsetneq L_{i+1}}| \in \hat K\] und
 				\[n := |\set{i \in \set{0, \dots, m - 1}| N_i \supsetneq N_{i+1}}| \in \hat N\]
 			so folgt $m \leq k + n$ 
 		\end{proof}
 	\end{satz}
 
-	\begin{definition}\label{1.4.11}
-		Sei $M$ ein Modul. Es heißt $(M_0, \dots, M_n)$ eine \emph{Kompositionsreihe}\index{Modul@\textbf{Modul}!Kompositionsreihe} von (der \emph{L\"ange} $n$) von $M$, wenn $M_0, \dots, M_n$ Untermoduln von $M$ sind mit 
+	\begin{definition}\label{1.4.11}\hfill\newline
+		Sei $M$ ein Modul. Es heißt $(M_0, \dots, M_n)$ eine \emph{Kompositionsreihe}\index{Modul@\textbf{Modul}!Kompositionsreihe} (der \emph{L\"ange} $n$) von $M$, wenn $M_0, \dots, M_n$ Untermoduln von $M$ sind mit 
 			\[M=M_0 \supsetneq \cdots \supsetneq M_n = 0\]
 		derart, dass die sogenannten Faktoren $M_i/M_{i+1}$ ($i \in \set{0, \dots, n-1}$) alle einfach sind.
 	\end{definition}
 
-	\begin{bemerkung}\label{1.4.12}
+	\begin{bemerkung}\label{1.4.12}\hfill\newline
 		Jeder endliche Modul besitzt nat\"urlich eine Kompositionsreihe. Folgender Satz verallgemeinert dies.
 	\end{bemerkung}
 
-	\begin{satz}\label{1.4.13}
+	\begin{satz}\label{1.4.13}\hfill\newline
 		Sei $M$ ein Modul. Es sind folgende Aussagen \"aquivalent
 		
 		\begin{enumerate}[(a)]
@@ -752,27 +759,28 @@ toc=idx
 			\item $M$ besitzt eine Kompositionsreihe.
 		\end{enumerate}
 		
-		In diesem Fall ist die L\"ange einer jeden Kompositionsreihe von $M$ gleich der L\"ange von $M$.
+		\noindent In diesem Fall ist die L\"ange einer jeden Kompositionsreihe von $M$ gleich der L\"ange von $M$.
 		
-		\begin{proof}\hfill
-			\begin{enumerate}
-				\item[$(a)\Rightarrow(b)$] trivial
-				\item[$(b)\Rightarrow(c)$]
-				Sei $M$ noethersch und artinsch. Da $M$ noethersch ist, gibt es zu jedem Untermodul $N \neq 0$ von $M$ einen Untermodul $N'$ von $N$ mit $N/N'$ einfach (sonst k\"onnte man eine aufsteigende Kette $0 \subsetneq N_1 \cdots \subsetneq  \cdots$ von echten Untermoduln von $M$ konstruieren).
-				
-				\noindent Setze nun $M_0 = N$ und w\"ahle f\"ur $i = 0, 1, \dots$ solange $M_i \neq 0$ einen Untermodul $M_{i+1}$ von $M_i$ mit $M_i/M_{i+1}$ einfach.
-				
-				\noindent Dieses Verfahren bricht ab, da $M$ artinsch ist.
-				
-				\item[$(c)\Rightarrow(a)$] und Zusatz: 
-				Sei $(M_0, \dots, M_n)$ eine Kompositionsreihe von $M$. Dann $\ell(M) \overset{\ref{1.4.10}}{=} \ell(M_0/M_1) + \cdots + \ell(M_{n-1}/M_n) \overset{\ref{1.4.9}}{=} n$
-			\end{enumerate}
+		\begin{proof}\hfill\newline
+			\textbf{(a)$\Longrightarrow$(b)}: trivial
+			
+			\medskip\noindent
+			\textbf{(b)$\Longrightarrow$(c)}: Sei $M$ noethersch und artinsch. Da $M$ noethersch ist, gibt es zu jedem Untermodul $N \neq 0$ von $M$ einen Untermodul $N'$ von $N$ mit $N/N'$ einfach (sonst k\"onnte man eine aufsteigende Kette $0 \subsetneq N_1 \cdots \subsetneq  \cdots$ von echten Untermoduln von $M$ konstruieren).
+			
+			\noindent Setze nun $M_0 = N$ und w\"ahle f\"ur $i = 0, 1, \dots$ solange $M_i \neq 0$ einen Untermodul $M_{i+1}$ von $M_i$ mit $M_i/M_{i+1}$ einfach.
+			
+			\noindent Dieses Verfahren bricht ab, da $M$ artinsch ist.
+			
+			\medskip\noindent
+			\textbf{(c)$\Longrightarrow$(a)} und Zusatz: 
+			Sei $(M_0, \dots, M_n)$ eine Kompositionsreihe von $M$. 
+			
+			\noindent Dann $\ell(M) \overset{\ref{1.4.10}}{=} \ell(M_0/M_1) + \cdots + \ell(M_{n-1}/M_n) \overset{\ref{1.4.9}}{=} n$
 		\end{proof}
 	\end{satz}
 
-	\begin{satz}\label{1.4.14}
-		Satz von Jordan-H\"older\newline
-		Sei $M$ ein Modul endlicher L\"ange $n$ und seien $M = M_0 \supsetneq \cdots \supsetneq M_n = 0$ und $M = N_0 \supsetneq \cdots \supsetneq N_n = 0$ zwei Kompositionsreihen von $M$. Dann gibt es 
+	\begin{satz}\label{1.4.14} Satz von Jordan-H\"older\newline
+		Sei $M$ ein Modul endlicher L\"ange $n$ und seien $M = M_0 \supsetneq \cdots \supsetneq M_n = 0$ und $M~=~N_0~\supsetneq~\cdots~\supsetneq~N_n~=~0$ zwei Kompositionsreihen von $M$. Dann gibt es 
 		$\sigma \in S_n$ mit $M_{i-1}/M_i \cong N_{\sigma(i)-1}/N_{\sigma(i)}$ f\"ur $i \in \set{1, \dots, n}$
 		
 		\begin{proof}
@@ -780,38 +788,38 @@ toc=idx
 			$n = 0$: trivial\newline
 			$n-1 \rightarrow n$ ($n \in \N$): Setze $L:=N_1$ und betrachte 
 				\begin{align}
-					M &= L + M_0 \supseteq \cdots \supseteq L + M_n = L \label{1.4.14.1}\\
-					L &= L \cap M_0 \supseteq \cdots \supseteq L \cap M_n = 0 \label{1.4.14.2}
+					M &= L + M_0 \supseteq \cdots \supseteq L + M_n = L \label{1.4.14.1}\tag{$*$}\\
+					L &= L \cap M_0 \supseteq \cdots \supseteq L \cap M_n = 0 \label{1.4.14.2}\tag{$**$}
 				\end{align}
-			
+			{\color{red}
 			\noindent Hilfsbehauptung: F\"ur alle $i \in \set{1, \dots, n}$ gilt 
 			
 			\textbf{entweder} $(L+M_{i+1})/(L+M_i) = 0$ und $(L\cap M_{i+1})/(L\cap M_i) \cong M_{i-1}/M_i$
 			
 			\textbf{oder} $(L+M_{i+1})/(L+M_i) \cong M_{i-1}/M_i$ und $(L\cap M_{i+1})/(L\cap M_i) = 0$
 			
-			\noindent Begr\"undung: Sei $i \in \set{1, \dots, n}$. Ist $(L\cap M_{i-1})/(L\cap M_i) \neq 0$, so ist $(L\cap M_{i-1})/(L\cap M_i) \hookrightarrow M_{i-1}/M_i$
+			\noindent Begr\"undung: Sei $i \in \set{1, \dots, n}$. Ist $(L\cap M_{i-1})/(L\cap M_i) \neq 0$, so ist \linebreak $(L~\cap~M_{i-1})~/~(L~\cap~M_i)~\hookrightarrow~ M_{i-1}/M_i$
 			ein Isomorphismus, da $M_{i-1}/M_i$ einfach.
 			
 			\noindent Ist $(L+M_{i-1})/(L+M_i) \neq 0$, so ist $M_{i-1}/M_i \twoheadrightarrow (L+M_{i-1})/(L+M_i)$ ein Isomorphismus, da $M_{i-1}/M_i$ einfach. Daher reicht es zu zeigen, dass genau einer der Moduln $(L\cap M_{i-1})/(L\cap M_i)$ und $(L+M_{i-1})/(L+M_i)$ ein Nullmodul ist.
 			
-			\noindent Wegen Lemma \ref{1.4.4} k\"onnen nicht beide $0$ sein. Es reicht daher zu zeigen, dass genau $n$ der $2n$ Inklusionen (\ref{1.4.14.1}) und (\ref{1.4.14.2}) echt sind. Dies folgt aus (\ref{1.4.13}), indem man aus \ref{1.4.14.1} und \ref{1.4.14.2} eine Kompositionsreihe gewinnt.
+			\noindent Wegen Lemma \ref{1.4.4} k\"onnen nicht beide $0$ sein. Es reicht daher zu zeigen, dass genau $n$ der $2n$ Inklusionen (\ref{1.4.14.1}) und (\ref{1.4.14.2}) echt sind. Dies folgt mit Obigem aus (\ref{1.4.13}), indem man aus (\ref{1.4.14.1}) und (\ref{1.4.14.2}) eine Kompositionsreihe gewinnt. }
 			
-			\noindent Da $M/L$ einfach ist, ist genau eine der $n$ Inklusionen in (\ref{1.4.14.1}) echt, etwa $L+M_{k-1} \supsetneq L + M_k$. Nach der Hilfsbehauptung erh\"alt man aus (\ref{1.4.14.2}) eine Kompositionsreihe von $L$ der L\"ange $n-1$ (beachte $L\cap M_{k-1} = L\cap M_k$). Da $L=N_1\supsetneq \cdots \supsetneq N_n = 0$ ebenfalls eine solche ist, gibt es nach Induktionsvoraussetzung eine Bijektion $\tau: \set{2, \dots, n} \to \set{1, \dots, n} \setminus \set{k}$ mit $N_{i-1}/N_i \cong (L\cap M_{\tau(i)-1})/(L\cap M_{\tau(i)}) \cong M_{\tau(i)-1} / M_{\tau(i)}$ f\"ur $i \in \set{1,\dots, n}\setminus \set{k}$. Zusammen mit $N_0/N_1 \cong M/L = (L+M_{k-1})/(L+M_k) \cong M_{k-1}/M_k$ liefert dies die gew\"unschte Bijektion.
+			\noindent Da $M/L$ einfach ist, ist genau eine der $n$ Inklusionen in (\ref{1.4.14.1}) echt, etwa $L+M_{k-1} \supsetneq L + M_k$. Nach der Hilfsbehauptung erh\"alt man aus (\ref{1.4.14.2}) eine Kompositionsreihe von $L$ der L\"ange $n-1$ (beachte $L\cap M_{k-1} = L\cap M_k$). Da $L=N_1\supsetneq \cdots \supsetneq N_n = 0$ ebenfalls eine solche ist, gibt es nach Induktionsvoraussetzung eine Bijektion $\tau: \set{2, \dots, n} \to \set{1, \dots, n} \setminus \set{k}$ mit $N_{i-1}/N_i \cong (L\cap M_{\tau(i)-1})/(L\cap M_{\tau(i)}) \cong M_{\tau(i)-1} / M_{\tau(i)}$ f\"ur $i \in \set{2,\dots, n}$. Zusammen mit $N_0/N_1 \cong M/L = (L+M_{k-1})/(L+M_k) \cong M_{k-1}/M_k$ liefert dies die gew\"unschte Bijektion.
 		\end{proof}
 	\end{satz}
 
 	\begin{definition}\label{1.4.15}
 		[$\rightarrow$\ref{1.2.4}]\newline
-		Sei $R$ ein Ring, $M$ ein $R$-Modul und $E\subseteq M$. Dann nennt man den $R$-Modul $\ann(E) := \set{a \in R|\forall x \in E: ax = 0}$ von $R$ den Annihilator von $E$.
+		Sei $R$ ein Ring, $M$ ein $R$-Modul und $E\subseteq M$. Dann nennt man den $R$-Untermodul \linebreak $\ann(E) := \set{a \in R \mid \forall x \in E: ax = 0}$ von $R$ den Annihilator von $E$.
 	\end{definition}
 
-	\begin{bemerkung}\label{1.4.16}
-		Sei $R$ ein kommutativer Ring, $M$ ein $R$-Modul und $E\subseteq M$. Dann ist $\ann(E)=\ann\brac{\sum_{x\in E} Rx}$. Insbesondere gilt f\"ur $M=R/aR$ mit $a \in R$, dass
+	\begin{bemerkung}\label{1.4.16}\hfill\newline
+		Sei $R$ ein kommutativer Ring, $M$ ein $R$-Modul und $E\subseteq M$. Dann ist \linebreak $\ann(E)=\ann\brac{\sum_{x\in E} Rx}$. Insbesondere gilt f\"ur $M=R/aR$ mit $a \in R$, dass
 			\[\ann(R/aR) = \ann(\set{\overline{1}}) = \ann(\overline{1}) = aR\]
 	\end{bemerkung}
 
-	\begin{beispiel}\label{1.4.17}
+	\begin{beispiel}\label{1.4.17}\hfill
 		\begin{enumerate}[(a)]
 			\item Ist $V$ ein K-Vektorraum, so $\ell(V) = \dim(V)$
 			\item Sei $R$ ein Hauptidealring, $n\in\N_0, p_1, \dots, p_n \in R$ irreduzibel und $m:= p_1 \cdot \cdots \cdot p_n$.
@@ -821,14 +829,14 @@ toc=idx
 			mit Faktoren $(p_1\cdot \cdot \cdot p_{i-1}R/mR)/(p_1\cdot \cdot \cdot p_iR/mR) \cong (p_1\cdot \cdot \cdot p_{i-1}R)/(p_1\cdot \cdot \cdot p_iR) \cong R/p_iR$
 			f\"ur $i \in \set{1,\dots,n}$.
 			
-			\noindent Nach dem Satz von Jordan-H\"older gibt es f\"ur alle Kompositionsreihen $R/mR = M_0 \supsetneq \cdots \supsetneq M_n = 0$ ein $\sigma \in S_n$ mit $M_{i-1}/M_i \cong p_{\sigma(i)}R$ und daher $\ann(M_{i-1}/M_i) = \ann(R/p_{\sigma(i)}R) \overset{\ref{1.4.16}}{=}p_{\sigma(i)}R$
+			\noindent Nach dem Satz von Jordan-H\"older gibt es f\"ur alle Kompositionsreihen \linebreak $R/mR = M_0 \supsetneq \cdots \supsetneq M_n = 0$ ein $\sigma \in S_n$ mit $M_{i-1}/M_i \cong R/p_{\sigma(i)}R$ und daher $\ann(M_{i-1}/M_i) = \ann(R/p_{\sigma(i)}R) \overset{\ref{1.4.16}}{=}p_{\sigma(i)}R$
 			
 			Die Faktoren einer jeden Kompositionsreihe von $R/mR$ liefern also bis auf Reihenfolge und Assoziiertheit genau die Faktoren von $m = p_1 \cdot \cdots \cdot p_n$.
   		\end{enumerate}
 	\end{beispiel}
 
 	\newpage
-	\section{Unzerlegbare Moduln}
+	\section{Unzerlegbare Moduln}\thispagestyle{sectionstart}
 	\begin{definition}\label{1.5.1}
 		Ein Modul $M$ hei\ss t \emph{unzerlegbar}\index{Modul@\textbf{Modul}!Unzerlegbare Moduln}, falls $M \neq 0$ und f\"ur alle Untermoduln $L$ und $N$ von $M$ gilt 
 			\[M = L\oplus N \Rightarrow (L = 0 \lor N = 0)\]
@@ -1024,7 +1032,7 @@ toc=idx
 	\end{satz}
 
 	\newpage
-	\section{Endlich erzeugte Moduln \"uber Hauptidealringen}
+	\section{Endlich erzeugte Moduln \"uber Hauptidealringen}\thispagestyle{sectionstart}
 	
 	\begin{definition}\label{1.6.1}
 		Sei $R$ ein Integrit\"atsring. Dann hei\ss t eine Funktion $\delta:R \to \N_0$ eine \emph{euklidische Funktion}\index{Modul@\textbf{Modul}!Euklidische Funktion} auf $R$, wenn es f\"ur alle $a \in R$ und $b \in R\setminus \set{0}$ Elemente $q \in R$ ("Quotienten") und $r \in R$ ("Rest") gibt mit $a = bq + r$ und $\delta(r) < \delta(b)$ ("Division mit Rest").
@@ -1268,7 +1276,7 @@ toc=idx
 	\end{beispiel}
 
 	\newpage
-	\section{Der Satz von Cayley-Hamilton}
+	\section{Der Satz von Cayley-Hamilton}\thispagestyle{sectionstart}
 	\begin{def-prop}\label{1.7.1}
 		Sei $R$ ein Ring und $M$ ein $R$-Modul. F\"ur $A \in R^{m\times n}$ und $X\in M^{n\times r}$ definieren wir $AX$ durch
 			\[(AX)_{ik} := \sum_{j=1}^n A_{ij}X_{jk}\]
@@ -1546,7 +1554,7 @@ toc=idx
  	\end{proposition}
  	\newpage
  	
- 	\section{Dedekindringe}
+ 	\section{Dedekindringe}\thispagestyle{sectionstart}
  	\begin{erinnerung}\label{2.2.1}
  		Sei $R$ ein kommutativer Ring
  		\begin{enumerate}[(a)]
@@ -1708,7 +1716,7 @@ toc=idx
    	 \end{satz}
    	\newpage
    		
- 	\section{Charakterisierung von Dedekindringen}
+ 	\section{Charakterisierung von Dedekindringen}\thispagestyle{sectionstart}
  	\begin{lemma}\label{2.3.1}
  		In einem noetherschen Integrit\"atsring enth\"alt jedes Ideal $\neq (0)$ ein Produkt von Primidealen $\neq (0)$.
  			
@@ -1737,7 +1745,7 @@ toc=idx
    	\end{satz}
    	\newpage
    	
-   	\section{Norm, Spur und Diskriminante}
+   	\section{Norm, Spur und Diskriminante}\thispagestyle{sectionstart}
    	\begin{definition}\label{2.4.1}
    		Sei $L|K$ eine endlich K\"orpererweiterung und $a \in L$. Dann ist $\varphi_a:L \to L, x \mapsto ax$ ein Endomorphismus des $K$-Vektorraumes $L$.
    		
@@ -2157,7 +2165,7 @@ toc=idx
  	\end{proposition}
  
  	\newpage
- 	\section{Dedekindringe und K\"orpererweiterungen}
+ 	\section{Dedekindringe und K\"orpererweiterungen}\thispagestyle{sectionstart}
  	\begin{lemma}\label{2.5.1}
  		Sei $A$ ein Integrit\"atsring, $K:= \qf(A), L|K$ eine endliche K\"orpererweiterung und $B$ der ganze Abschluss von $A$ in $L$.
  		
@@ -2243,7 +2251,7 @@ toc=idx
  
  	\newpage
  	
- 	\section{Die Idealklassengruppe}
+ 	\section{Die Idealklassengruppe}\thispagestyle{sectionstart}
  	
  	\begin{proposition}\label{2.6.1}
  		Sei $A$ ein kommutativer Ring. Es sind \"aquivalent:
@@ -2399,7 +2407,7 @@ toc=idx
  	\end{bemerkung}
 
 	\newpage
- 	\section{Zerlegungsgesetze}
+ 	\section{Zerlegungsgesetze}\thispagestyle{sectionstart}
  	
  	\begin{satz}\label{2.7.1}
  		(Nakayama-Lemma)\newline
@@ -2632,7 +2640,7 @@ toc=idx
 	\end{beispiel}
 	\newpage
 	
-	\section{Zerlegung von Primzahlen in Zahlringen}
+	\section{Zerlegung von Primzahlen in Zahlringen}\thispagestyle{sectionstart}
 	
 	\begin{bemerkung}\label{3.2.1}
 		Ein wesentlicher Grund f\"ur die Betrachtung von Gittern und vor allem von multiplikativen Gittern ist, dass sie oftmals " einfacher" sind als der Zahlring (zum Beispiel ist f\"ur $d \in \nsquare_{1}$ das multiplikative Gitter $\Z[\sqrt{d}]$ " einfacher" als $\Z[\frac{1+\sqrt{d}}{2}] = \mathcal{O}_d$) und f\"ur gewisse Zwecke doch den Zahlring ersetzen k\"onnen.
