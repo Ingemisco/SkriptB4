@@ -1344,30 +1344,30 @@ toc=idx
 	
 	\section{Ganzheit}
 	
-	\begin{sprechweise}\label{2.1.1}
+	\begin{sprechweise}\label{2.1.1}\hfill\newline
 		Sei $A$ ein Unterring des \emph{kommutativen} Ringes $B$, so sagen wir "$A \subseteq B$ ist eine \emph{Ringerweiterung}\index{Ringerweiterung@\textbf{Ringerweiterung}}". Die Sprechweisen
 		"Die Ringerweiterung $A \subseteq B$ hat eine Eigenschaft" und "$B$ hat eine Eigenschaft \"uber $A$" sind synonym.
 	\end{sprechweise}
 
-	\begin{definition}\label{2.1.2}
+	\begin{definition}\label{2.1.2}\hfill\newline
 		Sei $A \subseteq B$ eine Ringerweiterung. Dann hei\ss t $x \in B$ \emph{ganz}\index{Ringerweiterung@\textbf{Ringerweiterung}!Ganze Ringerweiterung} \"uber $A$, wenn $0=1$ in $B$ oder wenn es ein \emph{normiertes} $f \in A[X]$ mit $f(x) = 0$ gibt ("Ganzheitsgleichung").
 		Es hei\ss t $A \subseteq B$ \emph{ganz} (oder $B$ ganz \"uber $A$ vgl. \ref{2.1.1}), wenn jedes $x\in B$ ganz \"uber $A$ ist.
 	\end{definition}
 
-	\begin{beispiel}\label{2.1.3}
+	\begin{beispiel}\label{2.1.3}\hfill
 		\begin{enumerate}[(a)]
 			\item $\sqrt{2}$ ist ganz \"uber $\Z$, da $(\sqrt{2})^2 -2 = 0$
-			\item $\frac{1}{2}$ nicht ganz \"uber $\Z$, denn w\"aren $a_1,\dots, a_n \in \Z$ mit $\brac{\frac{1}{2}}^n + a_1\brac{\frac{1}{2}}^{n-1} + \cdots + a_n = 0$, so $1 + 2a_1 + \cdots + 2^na_n = 0$.
+			\item $\frac{1}{2}$ ist nicht ganz \"uber $\Z$, denn w\"aren $a_1,\dots, a_n \in \Z$ mit $\brac{\frac{1}{2}}^n + a_1\brac{\frac{1}{2}}^{n-1} + \cdots + a_n = 0$, so $1 + 2a_1 + \cdots + 2^na_n = 0\lightning$.
 			\item $i$ und $i+1$ sind ganz \"uber $\Z$, denn $i^2+1 = 0$ und $(i+1)^2 - 2(i+1)+2 = 0$
 			\item Eine K\"orpererweiterung $L/K$ ist algebraisch genau dann, wenn sie als Ringerweiterung $K \subseteq L$ ganz ist.
 		\end{enumerate}	
 	\end{beispiel}
 
-	\begin{bemerkung}\label{2.1.4}
+	\begin{bemerkung}\label{2.1.4}\hfill\newline
 		Ist $A$ ein Unterring von $B$, so ist $B$ in offensichtlicher Weise ein $A$-Modul
 	\end{bemerkung}
 
-	\begin{satz}\label{2.1.5}
+	\begin{satz}\label{2.1.5}\hfill\newline
 		Sei $A \subseteq B$ eine Ringerweiterung und $x \in B$. Es sind \"aquivalent
 		\begin{enumerate}[(a)]
 			\item $x$ ist ganz \"uber $A$
@@ -1376,79 +1376,80 @@ toc=idx
 		\end{enumerate}
 	
 		\begin{proof}
-			$(a)\Rightarrow (b)\Rightarrow(c)$ trivial.\newline
-			$(c) \Rightarrow (a)$. Sei $C$ ein Unterring von $B$, der $A[X]$ enth\"alt und als $A$-Modul endlich erzeugt ist.
+			\textbf{(a)$\Longrightarrow$(b)$\Longrightarrow$(c)}: trivial
+			
+			\medskip\noindent
+			\textbf{(c)$\Longrightarrow$(a)}: Sei $C$ ein Unterring von $B$, der $A[X]$ enth\"alt und als $A$-Modul endlich erzeugt ist.
 			F\"ur den $A$-Modulendomorphismus $f:C\to C, a\mapsto ax$ gibt es nach Cayley-Hamilton \ref{1.7.5} $n\in\N_0$ und $a_1,\dots, a_n\in A$ mit 
 			$f^n +a_1f^{n-1}+\cdots+a_n\id_C= 0$. Auswerten in $1$ liefert $x^n+a_1x^{n-1}+\cdots+a_n = 0$ 
  		\end{proof}
 	\end{satz}
 
-	\begin{lemma}\label{2.1.6}
-		Sei $A$ ein Unterring des Ringes $B$ Sei $B$ als $A$-Modul endlich erzeugt und sei $M$ ein endlich erzeugter $B$-Modul. Dann ist $M$ auch als $A$-Modul endlich erzeugt.
+	\begin{lemma}\label{2.1.6}\hfill\newline
+		Sei $A$ ein Unterring des Ringes $B$. Sei $B$ als $A$-Modul endlich erzeugt und sei $M$ ein endlich erzeugter $B$-Modul. Dann ist $M$ auch als $A$-Modul endlich erzeugt.
 		
 		\begin{proof}
-			Schreibe $B=Ab_1 + \cdots + Ab_m$ mit $b_1, \dots, b_m \in B$ und $M = Bx_1 + \cdots + Bx_n, x_1, \dots, x_n \in M$. Dann 
+			Schreibe $B=Ab_1 + \cdots + Ab_m$ mit $b_1, \dots, b_m \in B$ und \linebreak $M = Bx_1 + \cdots + Bx_n, x_1, \dots, x_n \in M$. Dann 
 			\[M = \sum_{i=1}^{m} \sum_{j=1}^{n} A(b_ix_j)\]
 		\end{proof}
 	\end{lemma}
 	
-	\begin{korollar}\label{2.1.7}
-		Sei $A \subseteq B$ eine Ringerweiterung und seien $x_1, \dots, x_n$ ganz \"uber $A$. Dann ist $A[x_1, \dots, x_n]$ ein endlich erzeugter $A$-Modul.
+	\begin{korollar}\label{2.1.7}\hfill\newline
+		Sei $A \subseteq B$ eine Ringerweiterung und seien $x_1, \dots, x_n \in B$ ganz \"uber $A$. Dann ist $A[x_1, \dots, x_n]$ ein endlich erzeugter $A$-Modul.
 		
 		\begin{proof}
-			Benutze \ref{2.1.5} $(a) \rightarrow (b)$, \ref{2.1.6} und Induktion nach $n$
+			Benutze \ref{2.1.5} $(a) \Longrightarrow (b)$, \ref{2.1.6} und Induktion nach $n$
 		\end{proof}
 	\end{korollar}
 
-	\begin{korollar}\label{2.1.8}
-		("Transitivit\"at der Ganzheit")\newline
+	\begin{korollar}\label{2.1.8} "Transitivit\"at der Ganzheit"\newline
 		Seien $A \subseteq B \subseteq C$ zwei Ringerweiterungen und sei $A \subseteq B$ ganz. Ist $a \in C$ ganz \"uber $B$, so auch \"uber $A$.
 		
 		\begin{proof}
-			Seien $b_1, \dots, b_n \in B$ Koeffizienten einer Ganzheitsgleichung von $a$ \"uber $B$ Dann ist $A[b_1, \dots, b_n]$ ein endlich erzeugter $A$-Modul nach \ref{2.1.7} und $A[b_1, \dots, b_n][a]$ ein endlich erzeugter $A$-Modul nach \ref{2.1.5}. Nach \ref{2.1.6} ist $A[b_1, \dots, b_n, a]$ dann ein endlich erzeugter $A$-Modul. Mit \ref{2.1.5} ist dann $a$ ganz \"uber $A$.
+			Seien $b_1, \dots, b_n \in B$ Koeffizienten einer Ganzheitsgleichung von $a$ \"uber $B$. Dann ist $A[b_1, \dots, b_n]$ ein endlich erzeugter $A$-Modul nach \ref{2.1.7} und $A[b_1, \dots, b_n][a]$ ein endlich erzeugter $A$-Modul nach \ref{2.1.5}. Nach \ref{2.1.6} ist $A[b_1, \dots, b_n, a]$ dann ein endlich erzeugter $A$-Modul. Mit \ref{2.1.5} ist dann $a$ ganz \"uber $A$.
 		\end{proof}
 	\end{korollar}
 	
-	\begin{korollar}\label{2.1.9}
+	\begin{korollar}\label{2.1.9}\hfill\newline
 		Seien $A \subseteq B \subseteq C$ Ringerweiterungen. Dann ist $A \subseteq C$ ganz genau dann, wenn $A \subseteq B$ und $B \subseteq C$ ganz sind.
 	
 	\end{korollar}
 	
 	
-	\begin{def-satz}\label{2.1.10}
+	\begin{def-satz}\label{2.1.10}\hfill\newline
 		Sei $A \subseteq B$ eine Ringerweiterung. Dann bilden die Elemente von $B$, die ganz \"uber $A$ sind, einen Unterring von $B$, der $A$ enth\"alt, den sogenannten \emph{ganzen Abschluss}\index{Ringerweiterung@\textbf{Ringerweiterung}!Ganzer Abschluss} von $A$ in $B$.
 		
 		
 		\begin{proof}
-			Jedes Element von $A$ ist nat\"urlich ganz \"uber $A$. Sind $x,y \in B$ ganz \"uber $A$, so auch $x+y, -x, x\cdot y$, denn $x+y,-x,x\cdot y\in A[x,y]$ und $A[x,y]$ ist nach \ref{2.1.7} ein endlich erzeugter $A$-Modul (benutze \ref{2.1.5}$(c)\Rightarrow(a)$) 
+			Jedes Element von $A$ ist nat\"urlich ganz \"uber $A$. Sind $x,y \in B$ ganz \"uber $A$, so auch $x+y, -x, x\cdot y$, denn $x+y,-x,x\cdot y\in A[x,y]$ und $A[x,y]$ ist nach \ref{2.1.7} ein endlich erzeugter $A$-Modul (benutze \ref{2.1.5}$(c)\Longrightarrow(a)$) 
 		\end{proof} 
  	\end{def-satz}
  
- 	\begin{definition}\label{2.1.11}
+ 	\begin{definition}\label{2.1.11}\hfill\newline
  		Sei $A \subseteq B$ eine Ringerweiterung. Dann hei\ss t $A$ \emph{ganz abgeschlossen}\index{Ringerweiterung@\textbf{Ringerweiterung}!Ganz abgeschlossen} in $B$, wenn kein Element von $B\setminus A$ ganz \"uber $A$ ist (d.h. der ganze Abschluss von $A$ in $B$ gleich $A$ ist).
  	\end{definition}
  
- 	\begin{definition}\label{2.1.12}
+ 	\begin{definition}\label{2.1.12}\hfill\newline
  		Sei $A$ ein kommutativer Ring
  		\begin{enumerate}[(a)]
  			\item Der \emph{ganze Abschluss}\index{Ringerweiterung@\textbf{Ringerweiterung}!Ganzer Abschluss} von $A$ ist der ganze Abschluss von $A$ in seinem totalen Quotientenring $Q(A)$
  			
- 			\item $A$ hei\ss t \emph{ganz abgeschlossen}\index{Ringerweiterung@\textbf{Ringerweiterung}!Ganz abgeschlossen} , wenn $A$ ganz abgeschlossen in $Q(A)$ ist.
+ 			\item $A$ hei\ss t \emph{ganz abgeschlossen}\index{Ringerweiterung@\textbf{Ringerweiterung}!Ganz abgeschlossen}, wenn $A$ ganz abgeschlossen in $Q(A)$ ist.
  		\end{enumerate}
- 		Erinnerung: $A \subseteq Q(A) = \set{\frac{a}{s}| a,s \in A, \nexists b \in A\setminus\set{0}: sb = 0}$.
+ 		Erinnerung: $\displaystyle A \subseteq Q(A) = \set{\frac{a}{s} \mid a,s \in A, \nexists b \in A\setminus\set{0}: sb = 0}$.
  		
- 		Ist $A$ ein Integrit\"atsring, so $A \subseteq Q(A) = \qf(A) = \set{\frac{a}{s}|a,s \in A, s \neq 0}$ 
+ 		Ist $A$ ein Integrit\"atsring, so $\displaystyle A \subseteq Q(A) = \qf(A) = \set{\frac{a}{s} \mid a,s \in A, s \neq 0}$ 
  	\end{definition}
  
- 	\begin{proposition}\label{2.1.13}
+ 	\begin{proposition}\label{2.1.13}\hfill\newline
  		Jeder faktorielle Ring ist ganz abgeschlossen.
  		
  		\begin{proof}
- 			Sei $A$ ein faktorieller Ring und $x \in \qf(A)$ ganz \"uber $A$. Schreibe $x = \frac{a}{s}, a, s \in A, s \neq 0$ und $\gcd \set{a,s} = 1$. W\"ahle $a_1,\dots, a_n \in A$ mit $x^n + a_1x^{n-1}+\cdots + a_n = 0$. Multiplizieren mit $s^n$ liefert $a^n + a_1sa^{n-1}+\cdots + a_ns^n = 0$, woraus $s|a^n$ folgt. Wegen $\gcd\set{a,s} = 1$, folgt $ \in A^*$, also $\frac{a}{s} \in A$.
+ 			Sei $A$ ein faktorieller Ring und $x \in \qf(A)$ ganz \"uber $A$. Schreibe $\displaystyle x = \frac{a}{s}$, \linebreak $a, s \in A, s \neq 0$ und $\gcd \set{a,s} = 1$. W\"ahle $a_1,\dots, a_n \in A$ mit $x^n + a_1x^{n-1}+\cdots + a_n = 0$. Multiplizieren mit $s^n$ liefert $a^n + a_1sa^{n-1}+\cdots + a_ns^n = 0$, woraus $s \mid a^n$ folgt. Wegen $\gcd\set{a,s} = 1$, folgt $s \in A^*$, also $\displaystyle\frac{a}{s} \in A$.
  		\end{proof}
  	\end{proposition}
  
- 	\begin{satz}\label{2.1.14}
+ 	\begin{satz}\label{2.1.14}\hfill\newline
  		Sei $A$ ein ganz abgeschlossener Integrit\"atsring, $K:= \qf(A)$ und $L/K$ eine K\"orpererweiterung. Dann ist ein Element $x\in L$ genau dann ganz \"uber $A$, wenn es algebraisch \"uber $K$ mit Minimalpolynom $\irr_K(x) \in A[X]$.
  		
  		\begin{proof}
@@ -1457,22 +1458,21 @@ toc=idx
  		\end{proof}
  	\end{satz}
  
- 	\begin{definition}\label{2.1.15}
+ 	\begin{definition}\label{2.1.15}\hfill\newline
  		Ein \emph{Zahlk\"orper}\index{Ringerweiterung@\textbf{Ringerweiterung}!Zahlk\"orper} ist ein Oberk\"orper $K$ von $\Q$ mit $K/\Q$ endlich. Ist $K$ ein Zahlk\"orper, so hei\ss t $[K:\Q]$ der \emph{Grad}\index{Ringerweiterung@\textbf{Ringerweiterung}!Grad} von $K$ und der ganze Abschluss von $\Z$ in $K$ hei\ss t der \emph{Zahlring}\index{Ringerweiterung@\textbf{Ringerweiterung}!Zahlring} $\mathcal{O}_K$ (oder Ganzheitsring) von $K$. Zahlk\"orper von Grad $2$ und ihre Zahlringe hei\ss en \emph{quadratisch} 
  	\end{definition}
  
- 	\begin{notation}\label{2.1.16}
- 		
+ 	\begin{notation}\label{2.1.16}\hfill
  		\begin{itemize}
- 			\item $\nsquare := \set{d\in\Z \setminus\set{0,1}| \nexists p \in \P: p^2|d}$
- 			\item $\nsquare_+ := \set{d\in\Z \setminus\set{0,1}| \nexists p \in \P: p^2|d, d > ß}$
- 			\item $\nsquare_- := \set{d\in\Z \setminus\set{0,1}| \nexists p \in \P: p^2|d, d < 0}$
- 			\item $\nsquare_{2,3} := \set{d\in\Z \setminus\set{0,1}| \nexists p \in \P: p^2|d, d \equiv_{(4)} 2 \textrm{ oder } d \equiv_{(4)} 3 } $
- 			\item $\nsquare_{1} := \set{d\in\Z \setminus\set{0,1}| \nexists p \in \P: p^2|d, d \equiv_{(4)} 1 } $
+ 			\item $\nsquare := \set{d\in\Z \setminus\set{0,1} \mid \nexists p \in \P: p^2|d}$
+ 			\item $\nsquare_+ := \set{d\in\Z \setminus\set{0,1} \mid \nexists p \in \P: p^2|d, d > ß}$
+ 			\item $\nsquare_- := \set{d\in\Z \setminus\set{0,1} \mid \nexists p \in \P: p^2|d, d < 0}$
+ 			\item $\nsquare_{2,3} := \set{d\in\Z \setminus\set{0,1} \mid \nexists p \in \P: p^2|d, d \equiv_{(4)} 2 \textrm{ oder } d \equiv_{(4)} 3 } $
+ 			\item $\nsquare_{1} := \set{d\in\Z \setminus\set{0,1} \mid \nexists p \in \P: p^2|d, d \equiv_{(4)} 1 } $
  		\end{itemize}
  	\end{notation}
  
- 	\begin{proposition}\label{2.1.17}
+ 	\begin{proposition}\label{2.1.17}\hfill\newline
  		F\"ur jedes $d\in \nsquare$ ist $\Q(\sqrt{d}) = \Q \oplus \Q\sqrt{d}$ ein quadratischer Zahlk\"orper  mit Zahlring \[\mathcal{O}_d := \mathcal{O}_{\Q(\sqrt{d})} = \begin{cases}
  			\Z[\sqrt{d}] = \Z \oplus \Z\sqrt{d} & \textrm{falls } d\in \nsquare_{2,3}\\
  			 \Z[\frac{1+\sqrt{d}}{2}] = \Z \oplus \Z\frac{1+\sqrt{d}}{2} & \textrm{falls } d\in \nsquare_{1}
@@ -1484,10 +1484,12 @@ toc=idx
  		$\sqrt{d} \notin \Q$ wegen $d\in \nsquare$. Mit $\sqrt{d}^2 = d$ und $\brac{\frac{1+\sqrt{d}}{2}}^2 = \frac{1+d}{4}+\frac{\sqrt{d}}{2} = \frac{d-1}{4} + \brac{\frac{1+\sqrt{d}}{2}}$ folgen die drei Zerlegungen in direkte Summen. 
  		
  		Seien $a,b\in \Q$. Wir behaupten 
- 			$(*) a+b\sqrt{d} \in \mathcal{O}_d \Leftrightarrow a+ b\sqrt{d} \in \begin{cases}
+ 		\begin{align}
+ 			a+b\sqrt{d} \in \mathcal{O}_d \Leftrightarrow a+ b\sqrt{d} \in \begin{cases}
  				\Z[\sqrt{d}] & \textrm{falls } d\in \nsquare_{2,3}\\
- 				\Z[\frac{1+\sqrt{d}}{2}] & \textrm{falls } d\in \nsquare_1
- 			\end{cases}$.
+ 				\Z[\frac{1+\sqrt{d}}{2}] & \textrm{falls } d\in \nsquare_1 \label{2.1.17.1}\tag{$*$}
+ 			\end{cases}
+ 		\end{align}
  		
  		Ohne Einschr\"ankung $b\neq 0$. Dann
  		\begin{align*}
@@ -1504,7 +1506,11 @@ toc=idx
  			&\Leftrightarrow \set{2a, a^2-b^2d, 2b} \subseteq \Z && d \in \nsquare\\
  		\end{flalign*}
  	
- 		Setzt man $x:= 2a, y:= 2b$, so folgt aus beiden Seiten $\set{x,y} \subseteq \Z$, weshalb wir dies ab jetzt annehmen. Also (**) $a+b\sqrt{d}\in \mathcal{O}_d \Leftrightarrow \overline{x}^2 = \overline{y}^2\overline{d}$ in $\Z/(4)$. 
+ 		Setzt man $x:= 2a, y:= 2b$, so folgt aus beiden Seiten $\set{x,y} \subseteq \Z$, weshalb wir dies ab jetzt annehmen. Also 
+ 		\begin{align}
+ 			a+b\sqrt{d}\in \mathcal{O}_d \Leftrightarrow \overline{x}^2 = \overline{y}^2\overline{d} \textrm{ in } \Z/(4) \label{2.1.17.2}\tag{$**$}
+ 		\end{align}
+ 		
  		Wegen $\overline{x}^2, \overline{y}^2 \in \set{\overline{0},\overline{1}}\subseteq \Z/(4)$ gilt
  		
  		\begin{itemize}
@@ -1523,7 +1529,7 @@ toc=idx
  				&\Leftrightarrow x \equiv_{(2)} y\\
  				&\Leftrightarrow\frac{x-y}{2} \in \Z\\
  				&\Leftrightarrow a-b \in \Z\\
- 				&\Leftrightarrow (a-b) + 2b\brac{\frac{1+\sqrt{d}}{2}} \in \Z[\frac{1+\sqrt{d}}{2}]
+ 				&\Leftrightarrow (a-b) + 2b\brac{\frac{1+\sqrt{d}}{2}} \in \Z\left[\frac{1+\sqrt{d}}{2}\right]
  			\end{align*}
  		\end{itemize}
  	
