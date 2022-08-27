@@ -18,12 +18,11 @@ toc=idx
 \usepackage{datetime}
 %\usepackage{ulem}
 \usepackage{cancel}
+\usepackage{tikz-cd}
 
 \usepackage[headsepline]{scrlayer-scrpage}
 \setkomafont{pageheadfoot}{\normalfont}
 \setkomafont{pagefoot}{\slshape}
-
-\usepackage{tikz-cd}
 
 \defpagestyle{main}
 {
@@ -53,6 +52,7 @@ toc=idx
 \usepackage[pass]{geometry}
 \usepackage{csquotes}
 \usepackage{mathtools}
+\usepackage{nicematrix}
 
 \usepackage{hyperref}
 \MakeOuterQuote{"}
@@ -75,6 +75,9 @@ toc=idx
 
 \newcommand{\textcase}[2]{$\begin{Bmatrix} \textrm{#1} \\ \textrm{#2}\end{Bmatrix}$}
 \newcommand{\case}[2]{\begin{Bmatrix} #1 \\ #2\end{Bmatrix}}
+\newcommand{\schemaSmith}[3]{\begin{NiceTabular}[corners={NE,SE}, hvlines]{cc} #1 & #2 \\ #3 \end{NiceTabular}}
+\newcommand{\schemaSmithH}[2]{\begin{NiceTabular}[corners={NE,SE}, hvlines]{cc} #1 & #2 \end{NiceTabular}}
+\newcommand{\schemaSmithV}[2]{\begin{NiceTabular}[corners={NE,SE}, hvlines]{c} #1 \\ #2 \end{NiceTabular}}
 
 \newcommand*{\ORIGchapterheadstartvskip}{}
 \let\ORIGchapterheadstartvskip=\chapterheadstartvskip
@@ -104,6 +107,8 @@ toc=idx
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\Char}{char}
 
+
+\swapnumbers
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{bemerkung}[definition]{Bemerkung}
@@ -965,9 +970,9 @@ toc=idx
 			Sei $M$ ein unzerlegbarer Modul mit $\ell(M) < \infty$. Wegen $M \neq 0$ gilt $0 \neq 1$ in $\End(M)$.
 			
 			Seien $f, g \in \End(M)$. Statt 
-				\[(f\notin \End(M)^* \land g\notin \End(M)^*) \Rightarrow (f+g \notin \End(M)^*)\]
+				\[(f\notin \End(M)^* \land g\notin \End(M)^*) \Longrightarrow (f+g \notin \End(M)^*)\]
 			k\"onnen wir genauso gut (beachte $\End(M)^* = \Aut(M)$)
-				\[(f\notin \Aut(M) \land f+g \in \Aut(M)) \Rightarrow g \in \Aut(M)\]
+				\[(f\notin \Aut(M) \land f+g \in \Aut(M)) \Longrightarrow g \in \Aut(M)\]
 			zeigen.
 			
 			Gelte also $f \notin \Aut(M)$ und $f+g \in \Aut(M)$. Zu zeigen ist $g \in \Aut(M)$.
@@ -987,12 +992,12 @@ toc=idx
 			Induktion nach $m \in \N_0$. $m = 0$: klar\newline
 			$m-1 \to m$ ($m \in \N$)
 			
-			W\"ahle einen Isomorphismus $f: \underbrace{\bigoplus_{i=1}^m}_{M:=} M_i\to \underbrace{\bigoplus_{j=1}^n N_j}_{N:=}$.
+			W\"ahle einen Isomorphismus $f: \underbrace{\bigoplus_{i=1}^m M_i}_{M:=}\to \underbrace{\bigoplus_{j=1}^n N_j}_{N:=}$.
 			\begin{center}
 				\begin{tikzcd}
 				M_i \arrow[hook, yshift=0.7ex]{r}{\iota_i} & M \arrow[two heads, yshift=-0.7ex]{l}{\pi_i}
 				\arrow{r}{f}[swap]{\cong} & N \arrow[two heads, yshift=-0.7ex]{r}[swap]{\rho_j}
-				& N_i \arrow[hook', yshift=0.7ex]{l}[swap]{\kappa_i}
+				& N_i \arrow[hook', yshift=0.7ex]{l}[swap]{\kappa_j}
 				\end{tikzcd}
 			\end{center}	
 			\begin{align*}
@@ -1039,15 +1044,16 @@ toc=idx
 	\newpage
 	\section{Endlich erzeugte Moduln \"uber Hauptidealringen}\thispagestyle{sectionstart}
 	
-	\begin{definition}\label{1.6.1}
+	\begin{definition}\label{1.6.1}\hfill\newline
 		Sei $R$ ein Integrit\"atsring. Dann hei\ss t eine Funktion $\delta:R \to \N_0$ eine \emph{euklidische Funktion}\index{Modul@\textbf{Modul}!Euklidische Funktion} auf $R$, wenn es f\"ur alle $a \in R$ und $b \in R\setminus \set{0}$ Elemente $q \in R$ ("Quotienten") und $r \in R$ ("Rest") gibt mit $a = bq + r$ und $\delta(r) < \delta(b)$ ("Division mit Rest").
 		
+		\medskip\noindent 
 		Es hei\ss t $R$ \emph{euklidisch}, wenn $R$ eine euklidische Funktion besitzt.
 	\end{definition}
 
-	\begin{beispiel}\label{1.6.2}
+	\begin{beispiel}\label{1.6.2}\hfill
 		\begin{enumerate}[(a)]
-			\item $\Z$ ist euklidisch mit Funktion 
+			\item $\Z$ ist euklidisch mit der euklidischen Funktion 
 				\[\delta: \Z \to \N_0, a \mapsto |a|\]
 			\item Ist $K$ ein K\"orper, so ist $K[X]$ euklidisch mit euklidischer Funktion 
 				\[\delta:K[X]\to\N_0, p \mapsto \begin{cases}
@@ -1061,32 +1067,32 @@ toc=idx
 		\end{enumerate}
 	\end{beispiel}
 
-	\begin{proposition}\label{1.6.3}
+	\begin{proposition}\label{1.6.3}\hfill\newline
 		Jeder euklidische Ring ist ein Hauptidealring.
 		
 		\begin{proof}
 			Sei $R$ ein Integrit\"atsring und $\delta:R\to\N_0$ eine euklidische Funktion. Sei $I$ ein Ideal in $R$, Ohne Einschr\"ankung $I \neq (0)$. W\"ahle $a \in I\setminus\set{0}$
-			mit kleinstm\"oglichem $\delta(a)$. Wir zeigen $I= (a)$. Sei hierzu $x\in (a)$. Schreibe $x = aq+r$ mit $q,r \in R$, $\delta(r)< \delta(a)$. Dann ist $r = x-aq \in I$ und folglich $r=0$ gem\"a\ss\ Wahl von $a$. Also $x = aq \in (a)$.
+			mit kleinstm\"oglichem $\delta(a)$. Wir zeigen $I= (a)$. Sei hierzu $x\in I$. Schreibe $x = aq+r$ mit $q,r \in R$, $\delta(r)< \delta(a)$. Dann ist $r = x-aq \in I$ und folglich $r=0$ gem\"a\ss\ Wahl von $a$. Also $x = aq \in (a)$.
 		\end{proof}
 	\end{proposition}
 
-	\begin{erinnerung}\label{1.6.4}
-		Sei $R$ ein Hauptidealring. Wir fixieren eine Menge $\P_R$ von irreduziblen Elementen von $R$ derart, dass jedes irreduzible Element zu genau einem Element von $\P_R$ assoziiert ist, zum Beispiel $\P_\Z := \P := \set{2,3,5,\dots}$ und $\P_{K[X]} := \set{p \in K[X]|p \textrm{ normiert und irreduzibel}}$ ($K$ ein K\"orper).
+	\begin{erinnerung}\label{1.6.4}\hfill\newline
+		Sei $R$ ein Hauptidealring. Wir fixieren eine Menge $\P_R$ von irreduziblen Elementen von $R$ derart, dass jedes irreduzible Element zu genau einem Element von $\P_R$ assoziiert ist, zum Beispiel $\P_\Z := \P := \set{2,3,5,\dots}$ und $\P_{K[X]} := \set{p \in K[X] \mid p \textrm{ normiert und irreduzibel}}$ ($K$ ein K\"orper).
 		
-		Betrachte $N_R:= \set{0} \cup \set{\prod_{i=1}^np_i| n \in \N_0, p_1, \dots, p_n \in \P_R}$. Zum Beispiel $N_\Z = \N_0$ und $N_{K[X]} = \set{p\in K[X]|p= 0 \textrm{ oder } p \textrm{ normiert}}$ ($K$ K\"orper).
+		\noindent Betrachte $\displaystyle N_R:= \set{0} \cup \set{\prod_{i=1}^np_i \mid n \in \N_0, p_1, \dots, p_n \in \P_R}$. Zum Beispiel $N_\Z = \N_0$ und $N_{K[X]} = \set{p\in K[X] \mid p= 0 \textrm{ oder } p \textrm{ normiert}}$ ($K$ K\"orper).
 		
 		Seien $m,n \in \N_0$ und setze $l := \min \set{m, n}$. Eine Matrix $S=(s_{ij})_{1\leq i \leq m, 1 \leq j \leq n} \in N_R^{m\times n}$ hei\ss t in \emph{Smithscher Normalform}\index{Modul@\textbf{Modul}!Smithsche Normalform}, wenn $s_{ij} = 0$ f\"ur $i\neq j$ und $s_{ii} | s_{(i+1)(i+1)}$ f\"ur alle $i \in \set{1, \dots, l-1}$. 
 		
-		Betrachte die Gruppen $\GL_m(R) = (R^{m\times m})^* = \set{P \in R^{m \times m}| \det P \in R^*}$ und $\GL_n(R)$ und betrachte die \"Aquivalenzrelation $\sim$ auf $R^{m\times n}$ definiert durch
+		Betrachte die Gruppen $\GL_m(R) = (R^{m\times m})^* = \set{P \in R^{m \times m} \mid \det P \in R^*}$ und $\GL_n(R)$ und betrachte die \"Aquivalenzrelation $\sim$ auf $R^{m\times n}$ definiert durch \linebreak
 		$A \sim B \Leftrightarrow \exists P \in \GL_m(R): \exists Q \in \GL_n(R): A=PBQ$ ($A, B \in R^{m \times n}$)
 		
 		
-		Dann gibt es zu jedem $A \in R^{m \times n}$ genau ein $S \in R^{m\times m}$ in Smithscher Normalform mit $A \sim S$.
+		Dann gibt es zu jedem $A \in R^{m \times n}$ genau ein $S \in R^{m\times n}$ in Smithscher Normalform mit $A \sim S$.
 		F\"ur jedes $i \in \set{1, \dots, l}$ nennt man dann $c_i(A) := s_{ii}$ den $i$-ten \emph{Elementarteiler}\index{Modul@\textbf{Modul}!Elementarteiler} von $A$ und $d_i(A) := \gcd\set{i-\textrm{Minoren von } A} \in N_R$ den $i$-ten Determinantenteiler von $A$.
 		
-		Es gilt $d_i(A) = \prod_{j=1}^i c_j(A)$ f\"ur $i \in \set{1, \dots, l}$. 
+		\medskip\noindent Es gilt $\displaystyle d_i(A) = \prod_{j=1}^i c_j(A)$ f\"ur $i \in \set{1, \dots, l}$. 
 		
-		Mit $c(A) := (c_1(A), \dots, c_l(A))$ und $d(A) := (d_1(A), \dots, d_l(A))$ gilt f\"ur $A, B \in R^{m\times n}$
+		\noindent Mit $c(A) := (c_1(A), \dots, c_l(A))$ und $d(A) := (d_1(A), \dots, d_l(A))$ gilt f\"ur $A, B \in R^{m\times n}$
 			\begin{align*}
 				A \sim B &\Leftrightarrow c(A) = c(B)\\
 				&\Leftrightarrow d(A) = d(B)\\
@@ -1099,80 +1105,47 @@ toc=idx
 				
 				\item $Z_i \gets aZ_i$ oder $S_i \gets aS_i$ \hfill $(a \in R^*)$
 				
-				\item $\begin{pmatrix}
-					Z_i\\Z_j
-				\end{pmatrix}\gets \begin{pmatrix}
-				aZ_i + bZ_j\\cZ_i + dZ_j
-			\end{pmatrix}$ oder 
-			$\begin{pmatrix}
-				S_i\\S_j
-			\end{pmatrix}\gets \begin{pmatrix}
-				aS_i + bS_j\\cS_i + dS_j
-			\end{pmatrix}$ \hfill ($i\neq j, a, b, c, d \in R, ad -bc = 1$)
+				\item $\begin{pmatrix}  Z_i\\Z_j \end{pmatrix} \gets \begin{pmatrix} aZ_i + bZ_j\\cZ_i + dZ_j \end{pmatrix}$ oder 
+					$\begin{pmatrix} S_i\\S_j \end{pmatrix} \gets \begin{pmatrix} aS_i + bS_j\\cS_i + dS_j \end{pmatrix}$ 
+				\hfill ($i\neq j, a, b, c, d \in R, ad -bc = 1$)
 			\end{enumerate}
 		All diese Operationen sind umkehrbar. Die Operationen (1) und (3) ver\"andern die Determinante nicht, die Operation (2) ver\"andert sie nur bis auf eine Einheit. 
 		
 		Man \"uberlegt ich leicht, dass man mit den Operationen (1) und (2) die Operation (4)\newline
-		$\begin{pmatrix}
-			Z_i\\Z_j
-		\end{pmatrix}\gets \begin{pmatrix}
-			Z_j\\Z_i
-		\end{pmatrix}$ oder $\begin{pmatrix}
-			S_i\\S_j
-		\end{pmatrix}\gets \begin{pmatrix}
-		S_j\\S_i
-	\end{pmatrix}$ \hfill ($i\neq j$)\newline
+		$\begin{pmatrix} Z_i\\Z_j \end{pmatrix} \gets \begin{pmatrix} Z_j\\Z_i \end{pmatrix}$ oder 
+		$\begin{pmatrix} S_i\\S_j \end{pmatrix}\gets \begin{pmatrix} S_j\\S_i \end{pmatrix}$ 
+		\hfill ($i\neq j$)\newline
 
 	simulieren kann. Ist $R$ \emph{euklidisch}, so \"uberlegt man sich, dass man damit auch (3) simulieren kann, weshalb in diesem Fall (3) \"uberfl\"ussig ist.
 	
-	Ist $A \in R^{m\times n}$ gegeben und interessiert man sich nicht nur f\"ur ein zu $A$ \"aquivalentes $B \in R^{m\times n}$ (z.B. die Smithsche Normalform), sondern auch f\"ur ein $P \in \GL_m(R)$ und $Q \in \GL_n(R)$ mit $B = PAQ$, so kann man im Schema \begin{tabular}{|c|c}\hline
-		$A$ & $I_m$\vline \\\hline $I_n$ &\\\cline{1-1}
-	\end{tabular} Zeilenoperationen auf \begin{tabular}{|c|c|}\hline
-		$A$ & $I_m$\\\hline
-	\end{tabular} und Spaltenoperationen auf \begin{tabular}{|c|}\hline
-	$A$ \\\hline $I_n$\\\hline
-	\end{tabular} anwenden, um \begin{tabular}{|c|c}\hline
-	$B$ & $P$\vline \\\hline $Q$ &\\\cline{1-1}
-	\end{tabular} mit $P \in \GL_m(R), Q \in \GL_n(R)$ und $B=PAQ$ zu erhalten.
+	Ist $A \in R^{m\times n}$ gegeben und interessiert man sich nicht nur f\"ur ein zu $A$ \"aquivalentes $B \in R^{m\times n}$ (z.B. die Smithsche Normalform), sondern auch f\"ur ein $P \in \GL_m(R)$ und $Q \in \GL_n(R)$ mit $B = PAQ$, so kann man im Schema \schemaSmith{$A$}{$I_m$}{$I_n$} Zeilenoperationen auf \schemaSmithH{$A$}{$I_m$} und Spaltenoperationen auf \schemaSmithV{$A$}{$I_n$} anwenden, um \schemaSmith{$B$}{$P$}{$Q$} mit $P \in \GL_m(R), Q \in \GL_n(R)$ und $B=PAQ$ zu erhalten.
 	
-	Interessiert man sich nicht nur f\"ur $P$ oder nur f\"ur $Q$, so arbeitet man mit dem Schema \begin{tabular}{|c|c|}\hline
-		$A$ & $I_m$\\\hline
-	\end{tabular} oder \begin{tabular}{|c|}\hline
-	$A$ \\\hline $I_n$\\\hline
-	\end{tabular}
+	Interessiert man sich nicht nur f\"ur $P$ oder nur f\"ur $Q$, so arbeitet man mit dem Schema \schemaSmithH{$A$}{$I_m$} oder \schemaSmithV{$A$}{$I_n$}
 
  	\end{erinnerung}
  
-	\begin{notation}\label{1.6.5}
+	\begin{notation}\label{1.6.5}\hfill\newline
 		Sei $R$ ein kommutativer Ring. Dann definiert jede Matrix $A \in R^{m \times n}$ einen $R$-Modulhomomorphismus
 			\[f_A:R^n \to R^m, x \mapsto Ax\]
 		Man nennt $\im A := \im f_A$ das \emph{Bild}\index{Modul@\textbf{Modul}!Bild (Matrix)} von $A$
 	\end{notation}
 
-	\begin{bemerkung}\label{1.6.6}
+	\begin{bemerkung}\label{1.6.6}\hfill
 		\begin{enumerate}[(a)]
-			\item Sei $R$ ein kommutativer Ring und seien $A, B \in R^{m\times n}, P \in \GL_m(R)$ und $Q \in \GL_n(R)$ mit $B=PAQ$. Dann gilt $f_P(\im A) = \im B$, weshalb es (genau) einen $R$-Modulisomorphismus
+			\item Sei $R$ ein kommutativer Ring und seien $A, B \in R^{m\times n}, P \in \GL_m(R)$ und \linebreak $Q \in \GL_n(R)$ mit $B=PAQ$. Dann gilt $f_P(\im A) = \im B$, weshalb es (genau) einen $R$-Modulisomorphismus
 			\begin{align*}
 				R^m/\im A &\to R^m/\im B\\
 				\overline{x} &\mapsto \overline{Px}
 			\end{align*}
 			($x \in R^m$) gibt.
 			
-			\item Sei $R$ ein Hauptidealring und sei $A \in R^{m\times n}$. Dann kann man mittels der Operationen (1), (2), (3) (falls $R$ euklidisch ist, reichen (1) und (2)) $A$ auf Smithsche Normalform bringen, wobei man die Zeilenoperationen auf \begin{tabular}{|c|c|}\hline
-				$A$ & $I_m$\\\hline
-			\end{tabular} anwendet, um \begin{tabular}{|c|c|}\hline
-			$S$ & $P$\\\hline
-			\end{tabular} zu erhalten mit $S \in R^{m \times n}$ in Smithscher Normalform und $P \in \GL_m(R)$, derart, dass $Q \in \GL_n(R)$ existiert mit $S=PAQ$.
+			\item Sei $R$ ein Hauptidealring und sei $A \in R^{m\times n}$. Dann kann man mittels der Operationen (1), (2), (3) (falls $R$ euklidisch ist, reichen (1) und (2)) $A$ auf Smithsche Normalform bringen, wobei man die Zeilenoperationen auf \schemaSmithH{$A$}{$I_m$} anwendet, um \schemaSmithH{$S$}{$P$} zu erhalten mit $S \in R^{m \times n}$ in Smithscher Normalform und $P \in \GL_m(R)$, derart, dass $Q \in \GL_n(R)$ existiert mit $S=PAQ$.
 		
 			Da $S$ in Smithscher Normalform ist, kann man sofort $a_1, \dots, a_k \in N_R \setminus \set{1}$ mit $a_1|\dots|a_k$ ablesen mit
 				\[\im S = R^{m-k} \times a_1R \times \cdots \times a_kR\]
 				
-			Gilt $P = \begin{pmatrix}
-				&*&\\\hline b_{11} &\cdots& b_{1m}\\\vdots&\ddots&\vdots\\
-				b_{k1} &\cdots & b_{km} 
-			\end{pmatrix}$, so ist 
-			
-			\begin{align*}
+			Gilt $P = \begin{pmatrix} &*&\\\hline b_{11} &\cdots& b_{1m}\\\vdots&\ddots&\vdots\\ b_{k1} &\cdots & b_{km}\end{pmatrix}$, so ist 
+			\begin{align*} 
 				R^m/\im A &\to \prod_{i=1}^k R/a_iR\\
 				\overline{x} &\mapsto (\overline{b_{11}x_1+\cdots+b_{1m}x_m}, \dots, \overline{b_{k1}x_1+\cdots+b_{km}x_m})
 			\end{align*}
@@ -1180,7 +1153,7 @@ toc=idx
 			ein $R$-Modulisomorphismus
 		\end{enumerate}
 	
-		\begin{beispiel}\label{1.6.7}
+		\begin{beispiel}\label{1.6.7}\hfill
 			\begin{align*}
 				\Z^3 / \brac{\Z\begin{pmatrix}
 						413\\-385\\427
@@ -1203,15 +1176,13 @@ toc=idx
 		\end{beispiel}
 	\end{bemerkung}
 
-	\begin{prop-def}\label{1.6.8}
+	\begin{prop-def}\label{1.6.8}\hfill\newline
 		Sei $R$ ein Integrit\"atsring und $M$ ein $R$-Modul. Dann bildet die Menge der Torsionselemente vo $M$ [$\to$\ref{1.2.4}] einen Untermodul
 			\[T(M):= \set{x \in M| \exists a \in R \setminus \set{0}: ax = 0}\]
 		von $M$, den wir den \emph{Torsionsteil}\index{Modul@\textbf{Modul}!Torsionsteil} von $M$ nennen.
 	\end{prop-def}
 
-	\begin{satz}\label{1.6.9}
-		Struktursatz f\"ur endlich erzeugte Moduln \"uber Hauptidealringen
-		
+	\begin{satz}\label{1.6.9} Struktursatz f\"ur endlich erzeugte Moduln \"uber Hauptidealringen\newline
 		Sei $R$ ein Hauptidealring und $M$ ein endlich erzeugter $R$-Modul. Dann gibt es eindeutig bestimmte
 		
 		\begin{enumerate}[(a)]
@@ -1225,27 +1196,34 @@ toc=idx
 			\emph{Existenz}
 			\begin{enumerate}[(a)]
 				\item 
-				Schreibe $M = Rx_1 + \cdots + Rx_m$ f\"ur ein $m \in \N_0$ und $x_1, \dots, x_m \in M$. Als Hauptidealring ist $R$ nat\"urlich noethersch (vgl. \ref{1.4.3} und \ref{1.1.5}). Daher ist auch $R^m$ noethersch (nach \ref{1.4.6} oder \ref{1.4.7}) und w\"ahle mit \ref{1.2.5} einen Homomorphismus $f: R^m \to M$ mit $f(e_i) = x_i$ f\"ur alle $i \in \set{1, \dots, m}$. Als Untermodul von $R^m$ ist der Kern von $f$ endlich erzeugt und kann daher als Bild einer Matrix $A\in R^{m\times n}$ (mit $m gro\ss genug$) geschrieben werden. $\ker f = \im A$. Nun gilt nach dem Isomorphiesatz $M \cong R^m/\ker f = R^m / \im A$ und wir k\"onnen das Verfahren aus Bemerkung \ref{1.6.6}(b) anwenden.
+				Schreibe $M = Rx_1 + \cdots + Rx_m$ f\"ur ein $m \in \N_0$ und $x_1, \dots, x_m \in M$. Als Hauptidealring ist $R$ nat\"urlich noethersch (vgl. \ref{1.4.3} und \ref{1.1.5}). Daher ist auch $R^m$ noethersch (nach \ref{1.4.6} oder \ref{1.4.7}) und w\"ahle mit \ref{1.2.5} einen Homomorphismus \begin{tikzcd} f: R^m \rar[two heads] & M \end{tikzcd} mit $f(e_i) = x_i$ f\"ur alle $i \in \set{1, \dots, m}$. Als Untermodul von $R^m$ ist der Kern von $f$ endlich erzeugt und kann daher als Bild einer Matrix $A\in R^{m\times n}$ (mit $m$ gro\ss\ genug) geschrieben werden. $\ker f = \im A$. Nun gilt nach dem Isomorphiesatz $M \cong R^m/\ker f = R^m / \im A$ und wir k\"onnen das Verfahren aus Bemerkung \ref{1.6.6}(b) anwenden.
 				
-				\item $n:= |\set{i \in \set{1, \dots, k}| a_i = 0}|$ (*)
+				\item 
+				\begin{align}
+					n:= |\set{i \in \set{1, \dots, k} \mid a_i = 0}| \label{1.6.9.1}\tag{$*$}
+				\end{align}
 				
 				Zerlege die $a_i$ mit $a_i \neq 0$ in Produkte von Potenzen von paarweise verschiedenen Primfaktoren. Wende den Chinesischen Restsatz an (vgl. Beweis von \ref{1.5.4})
 			\end{enumerate}
 			
-			\emph{Eindeutigkeit}
+			\medskip\noindent\textbf{Eindeutigkeit}:
 			
-			Sowohl in (a) als auch in (b) kann man $n$ aus $M$ zur\"uckgewinnen, wobei im Fall (a) $n$ durch (*) definiert sei. In der Tat gilt
-				\begin{flalign*}
-					T(M) &\cong \prod_{i=1}^l R/p_i^{k_i}R && (**)
-				\end{flalign*}
-			bzw. $T(M) \cong \prod_{i=1}^l R/p_i^{k_i}/R$, woraus $M/T(M) \cong R^n$ und daher $n \overset{\ref{1.2.13}}{=} \rk(M/T(M))$ folgt. Deswegen und wegen (**) kann man nun sowohl in (a) als auch in (b) $n=0$ voraussetzen. 
+			\noindent Sowohl in (a) als auch in (b) kann man $n$ aus $M$ zur\"uckgewinnen, wobei im Fall (a) $n$ durch (\ref{1.6.9.1}) definiert sei. In der Tat gilt
+			\begin{align}
+				T(M) &\cong \prod_{i=1, a_i \neq 0}^k R/a_iR \label{1.6.9.2} \tag{$**$}
+			\end{align}
+			bzw. 
+			\begin{align*}
+				T(M) \cong \prod_{i=1}^l R/p_i^{k_i}R
+			\end{align*}
+			woraus $M/T(M) \cong R^n$ und daher $n \overset{\ref{1.2.13}}{=} \rk(M/T(M))$ folgt. Deswegen und wegen (\ref{1.6.9.2}) kann man nun sowohl in (a) als auch in (b) $n=0$ voraussetzen. 
 			
 			Da $M$ in (b) dann endllich L\"ange hat [$\to$\ref{1.4.17}(b)] folgt dort Eindeutigkeit sofort aus dem Satz von Krull-Remak-Schmidt \ref{1.5.13} in Verbindung mit \ref{1.5.4} und \ref{1.4.16}. Schlie\ss lich zu (a).
 			
 			Seien $k \in \N_0$ und $a_1, \dots, a_k, b_1, \dots, b_k \in N_R \setminus \set{0}$ mit $a_1|\dots|a_k, b_1|\dots|b_k$ und 
 				\[\prod_{i=1}^k R/a_iR \cong \prod_{i=1}^kR/b_iR\]
 				
-			Es reicht zu zeigen, dass $(a_1, \dots, a_k) = (b_1, \dots, b_k)$. Wir zeigen dazu $(a_j, \dots, a_k) = (b_j, \dots, b_k)$ f\"ur alle $j\in \set{1,\dots,k+1}$ durch Induktion nach $j$.
+			\noindent Es reicht zu zeigen, dass $(a_1, \dots, a_k) = (b_1, \dots, b_k)$. Wir zeigen dazu \linebreak $(a_j, \dots, a_k) = (b_j, \dots, b_k)$ f\"ur alle $j\in \set{1,\dots,k+1}$ durch Induktion nach $j$.
 			
 			$j=k:$ klar
 			
@@ -1263,20 +1241,19 @@ toc=idx
 		\end{proof}
 	\end{satz}
 
-	\begin{korollar}\label{1.6.10}
+	\begin{korollar}\label{1.6.10}\hfill\newline
 		Jede endlich erzeugte abelsche Gruppe ist isomorph zu einem direkten Produkt endlich vieler zyklischer Gruppen.
 	\end{korollar}
 
-	\begin{korollar}\label{1.6.11}
+	\begin{korollar}\label{1.6.11}\hfill\newline
 		Jede endliche abelsche Gruppe ist isomorph zu einem direkten Produkt von zyklischen Gruppen von Primzahlpotenzordnung.
 	\end{korollar}
 
-	\begin{beispiel}\label{1.6.12}
-		(Fortsetzung von Beispiel \ref{1.6.7})\newline
+	\begin{beispiel}\label{1.6.12} Fortsetzung von Beispiel \ref{1.6.7}\newline
 		$133 = 7 \cdot 19$, also nach dem Chinesischen Restsatz
 		\begin{align*}
 			\Z^3/\brac{\Z\begin{pmatrix}413\\-385\\427\end{pmatrix} + \Z\begin{pmatrix}140\\-126\\147\end{pmatrix}} &\overset{\cong}{\rightarrow} (\Z/7\Z) \times (\Z/7\Z) \times (\Z/19\Z) \times \Z\\
-				x &\mapsto (\overline{-x_1+x_3}, \overline{-9x_1-10x_2}, \overline{-9x_1-10x_2}, \overline{3x_1+x_2-2x_3})
+				x &\mapsto (\overline{-x_1+x_3}, \overline{-9x_1-10x_2}, \overline{-9x_1-10x_2}, 3x_1+x_2-2x_3)
 		\end{align*}
 	\end{beispiel}
 
