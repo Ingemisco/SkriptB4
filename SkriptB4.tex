@@ -1259,7 +1259,7 @@ toc=idx
 
 	\newpage
 	\section{Der Satz von Cayley-Hamilton}\thispagestyle{sectionstart}
-	\begin{def-prop}\label{1.7.1}
+	\begin{def-prop}\label{1.7.1}\hfill\newline
 		Sei $R$ ein Ring und $M$ ein $R$-Modul. F\"ur $A \in R^{m\times n}$ und $X\in M^{n\times r}$ definieren wir $AX$ durch
 			\[(AX)_{ik} := \sum_{j=1}^n A_{ij}X_{jk}\]
 		F\"r $1\leq i \leq m, 1 \leq k \leq r$
@@ -1271,48 +1271,46 @@ toc=idx
 			0 & 0 & \cdots & 1
 		\end{pmatrix}$ und $M^{n \times r}$ ein $R^{n \times n}$-Modul [$\to$ 1.1.1].
 	
-		Im Folgenden benutzen wir, dass $M^n = M^{n\times 1}$ ein $R^{n\times n}$-Modul ist.
+		\noindent Im Folgenden benutzen wir, dass $M^n = M^{n\times 1}$ ein $R^{n\times n}$-Modul ist.
 	\end{def-prop}
 	
-	\begin{def-ueb}\label{1.7.2}
-		[vgl. \ref{1.5.6}]\newline
+	\begin{def-ueb}\label{1.7.2} [vgl. \ref{1.5.6}]\newline
 		Sei $R$ ein \emph{kommutativer} Ring und $M$ und $N$ $R$-Moduln. Dann bildet 
-			\[\Hom(M,N) := \set{f|f:M \to N \textrm{ Homomorphismus}}\]
+			\[\Hom(M,N) := \set{f \mid f:M \to N \textrm{ Homomorphismus}}\]
 		mit punktweiser Addition und Skalarmultiplikation einen $R$-Modul.
 	\end{def-ueb}
 
-	\begin{bem-not}\label{1.7.3}
+	\begin{bem-not}\label{1.7.3}\hfill\newline
 		Sei $R$ ein \emph{kommutativer} Ring mit $0\neq 1$, $M$ ein $R$-Modul und $f \in \End(M)$. Dann ist 
-		\[R[f] := \set{\sum_k a_k f^k|a_k \in R}\]
+		\[R[f] := \set{\sum_k a_k f^k \mid a_k \in R}\]
 		ein \emph{kommutativer} Unterring von $\End(M)$.
 		
-		Es gibt genau einen Ringhomomorphismus $\phi:R[X] \to R[f]$ mit $\phi\brac{\sum_k a_k X^k} = \sum_k a_k f^k$ f\"ur alle $a_k \in R$- Schreibe $p(f) = \varphi(p)$ f\"ur $p \in R[X]$.
+		Es gibt genau einen Ringhomomorphismus $\varphi:R[X] \to R[f]$ mit \linebreak $\displaystyle \varphi\brac{\sum_k a_k X^k} = \sum_k a_k f^k$ f\"ur alle $a_k \in R$. Schreibe $p(f) = \varphi(p)$ f\"ur $p \in R[X]$.
 	\end{bem-not}
 
-	\begin{uebung}\label{1.7.4}
+	\begin{uebung}\label{1.7.4}\hfill\newline
 		Sei $R$ ein \emph{kommutativer} Ring mit $0\neq 1$ und $M$ ein $R$-Modul. Dann vermitteln die Zuordnungen
 		
 		\begin{align*}
 			f &\mapsto \begin{pmatrix}
-				R[X]\times M \to M\\ (p,x) \mapsto (p(f))(x)
+				R[X]\times M &\to& M\\ (p,x) &\mapsto& (p(f))(x)
 			\end{pmatrix}\\
 			\begin{pmatrix}
-				M \to M\\
-				x \mapsto X \cdot x
-			\end{pmatrix} \mapsfrom \cdot
+				M &\to& M\\
+				x &\mapsto& X \cdot x
+			\end{pmatrix} &\mapsfrom \cdot
 		\end{align*}
 		Eine Bijektion zwischen $\End(M)$ und der Menge der Skalarmultiplikationen, die $M$ zu einem $R[X]$-Modul machen und die Skalarmultiplikation des $R$-Moduls $M$ fortsetzen.
 	\end{uebung}
 
-	\begin{satz}\label{1.7.5}
-		Satz von Cayley-Hamilton\newline
+	\begin{satz}\label{1.7.5} Satz von Cayley-Hamilton\newline
 		Sei $R$ ein kommutativer Ring, $I \subseteq R$ ein Ideal (z.B. $I = R$), $n\in \N_0$, $M$ ein $R$-Modul, der von $n$ Elementen erzeugt ist und $f \in \End(M)$ mit 
-		$\im f \subseteq IM := \set{\sum_i a_ix_i|a_i \in I, x_i \in M}$. 
+		$\displaystyle \im f \subseteq IM := \set{\sum_i a_ix_i \mid a_i \in I, x_i \in M}$. 
 		Dann gibt es $a_1 \in I, a_2 \in I^2, \dots a_n \in I^n$ mit $f^n + a_1f^{n-1} + \cdots + a_n \id_M = 0$.
 		
 		\begin{proof}
 			Ist $0 = 1$ in $R$, so $M = 0$ nach \ref{1.2.8}. Also sei ohne Einschr\"ankung $0\neq 1$ in $R$. Schreibe 
-			$M = Rx_1 + \cdots + Rx_n$ mit $x_1, \dots, x_n \in M$. W\"ahle $A \in I^{n\times n}$ mit $f(x_j) = \sum_{i=1}^n A_{ij}x_i$ f\"ur alle $j \in \set{1, \dots, n}$.
+			$M = Rx_1 + \cdots + Rx_n$ mit $x_1, \dots, x_n \in M$. W\"ahle $A \in I^{n\times n}$ mit \linebreak $\displaystyle f(x_j) = \sum_{i=1}^n A_{ij}x_i$ f\"ur alle $j \in \set{1, \dots, n}$.
 			Mache nun $M$ zu einem $R[X]$-Modul verm\"oge $X \cdot x = f(x)$ f\"ur alle $x \in R^n$ [$\to$ \ref{1.7.4}].
 			
 			Dann ist $M^n$ ein $R[X]^{n\times n}$-Modul [$\to$ \ref{1.7.1}], in dem gilt 
@@ -1330,10 +1328,10 @@ toc=idx
 		\end{pmatrix} = \underbrace{A^T}_{\in R^{n\times n} \subseteq R[X]^{n\times n}}\underbrace{\begin{pmatrix}
 			x_1\\x_2\\\vdots\\x_n
 		\end{pmatrix}}_{\in M^n}\] 
-		also  $(A^T-XI_n\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}) = 0$. Multipliziere nun von links mit der transponierten \emph{Komatrix} $\brac{\com(A^T - XI_n)}^T = \com(A-XI_n)$.
+		also  $(A^T-XI_n)\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix} = 0$. Multipliziere nun von links mit der transponierten \emph{Komatrix} $\brac{\com(A^T - XI_n)}^T = \com(A-XI_n)$.
 		\begin{flalign*}
-			0&= (\brac{\com(A - XI_n)})\brac{(A^T-XI_n)\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}}\\
-			&=  (\brac{\com(A - XI_n)}(A^T-XI_n))\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}   &&\ref{1.7.1}\\
+			0&= \com(A - XI_n)\brac{(A^T-XI_n)\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}}\\
+			&=  \com(A - XI_n)(A^T-XI_n)\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}   &&\ref{1.7.1}\\
 			&= \det(A-XI_n)I_n\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}\\
 			&= \underbrace{\det(A-XI_n)}_{=:p\in R[X]}\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}
 		\end{flalign*}
