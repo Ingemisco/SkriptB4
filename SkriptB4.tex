@@ -1725,17 +1725,35 @@ toc=idx
    			
    		\begin{proof}
    			Ist $A$ ein Dedekindring, so besitzt $A$ die gew\"unschten Eigenschaften nach \ref{2.2.12}. Sei umgekehrt $A$ ein noetherscher, ganz abgeschlossener Integrit\"atsring, in dem alle Primideale $\neq (0)$ maximal sind.
+   			
+   			{\color{red}	
+   			\noindent
+   			\textbf{Behauptung 1}: Seien $I$ und $J$ gebrochene Ideale von $A$ mit $J \neq (0)$ und $IJ \subseteq J$. Dann $I \subseteq A$.
    				
-   			\emph{Behauptung 1: Seien $I$ und $J$ gebrochene Ideale von $A$ mit $J \neq (0)$ und $IJ \subseteq J$. Dann $I \subseteq A$.}
-   				
-   			\emph{Begr\"undung}: Sei $x \in I$. Zu zeigen ist $x \in A$. Nach \ref{2.1.5} reicht es zu zeigen, dass $A[x]$ ein endlich erzeugter $A$-Modul ist. 
+   			\smallskip\noindent
+   			\textbf{Begr\"undung}: Sei $x \in I$. Zu zeigen ist $x \in A$. Es reicht zu zeigen, dass $x$ ganz \"uber $A$ ist. Nach \ref{2.1.5} reicht es zu zeigen, dass $A[x]$ ein endlich erzeugter $A$-Modul ist. 
    				
    			Durch Induktion zeigt man $\forall n \in \N_0: x^nJ \subseteq J$  (In der Tat $x^{n-1}J \subseteq J$ f\"ur ein $n\in \N$, so $x^nJ = x(x^{n-1}J) \subseteq xJ \subseteq IJ \subseteq J$)
    				
    			Es folgt $A[x]J \subseteq J$. W\"ahlt man $y \in J \setminus \set{0}$, so folgt also $A[x]y \subseteq J$. Da $A$ noethersch ist, ist $J$ ein endlich erzeugter $A$-Modul [$\to$\ref{2.2.7}(e)] und daher selber noethersch [$\to$\ref{1.4.7}], womit $A[x]y \cong A[x]$ ein endlich erzeugter $A$-Modul ist.
    				
-   			\vspace*{2mm}
-   			\emph{Behauptung 2: Sei $\mathfrak{p} \neq (0)$ ein Primideal von $A$. Dann ist $\mathfrak{p}$ invertierbar.}
+   			\medskip\noindent
+   			\textbf{Behauptung 2}: Sei $\mathfrak{p} \neq (0)$ ein Primideal von $A$. Dann ist $\mathfrak{p}$ invertierbar.
+   		
+   			\smallskip\noindent
+   			\textbf{Begründung}: Wegen $\mathfrak{p} = 1 \cdot \mathfrak{p} \subseteq (A:\mathfrak{p})\mathfrak{p} \subseteq A$ und da $\mathfrak{p}$ maximal ist, reicht es $\mathfrak{p} \neq (A:\mathfrak{p})\mathfrak{p}$, d.h. $(A:\mathfrak{p})\mathfrak{p} \nsubseteq \mathfrak{p}$ zu zeigen, was nach Behauptung 1 mit $A:\mathfrak{p} \nsubseteq A$ gleichbedeutend ist.
+   			
+   			\noindent W\"ahle $b \in \mathfrak{p} \setminus \set{0}$. Nach Lemma \ref{2.3.1} gibt es ein $n \in \N_0$ und Primideale $\mathfrak{p}_1, \dots, \mathfrak{p}_n \neq (0)$ mit $\mathfrak{p}_1 \cdot \cdots \cdot \mathfrak{p}_n \subseteq (b) \subseteq \mathfrak{p}$, wobei wir $n$ so klein wie m\"oglich w\"ahlen.
+   			
+   			\noindent Dann gibt es $i$ mit $\mathfrak{p}_i \subseteq \mathfrak{p}$, ohne Einschr\"ankung $i = 1$. Da $\mathfrak{p}_1$ maximal ist, folgt $\mathfrak{p}_1 = \mathfrak{p}$.
+   			
+   			\noindent Nach Wahl von $n$ gilt $\mathfrak{p}_2 \cdot \cdots \cdot \mathfrak{p}_n \nsubseteq (b)$ und wir k\"onnen $a \in (\mathfrak{p}_2 \cdot \cdots \cdot \mathfrak{p}_n) \setminus (b)$ w\"ahlen. Dann $a\mathfrak{p} \subseteq (b)$, also $\frac{a}{b}\mathfrak{p} \subseteq A$, das hei\ss t, $\frac{a}{b} \in A: \mathfrak{p}$. Aber $\frac{a}{b} \notin A$, da $a \notin (b)$.
+			}
+		
+			\medskip\noindent
+			Angenommen $A$ w\"are kein Dedekindring. Da $A$ noethersch g\"abe es dann ein Ideal $I \subseteq A$, welches bez\"uglich der Eigenschaft, kein Produkt von Primidealen zu sein, maximal ist. W\"ahle ein maximales Ideal $\mathfrak{p}$ von $A$ mit $I \subseteq \mathfrak{p}$. Es g\"alte $I \subsetneq I \mathfrak{p}^{-1}$ [$\rightarrow$Beh. 2] (, denn $A \subseteq A: \mathfrak{p} = \mathfrak{p}^{-1}$ und daher $I \subseteq I\mathfrak{p}^{-1}$ und w\"are $I = I\mathfrak{p}^{-1}$, so $\mathfrak{p}^{-1} \subseteq A$ nach Beh. 1 und daher $A \subseteq \mathfrak{p} \lightning$ ) 
+			
+			\noindent Wegen der Maximalit\"at von $I$ w\"are $I\mathfrak{p}^{-1} \subseteq \mathfrak{p}\mathfrak{p}^{-1} = A$ und daher auch $I = \mathfrak{p}(I\mathfrak{p}^{-1})$ ein Produkt von Primidealen $\lightning$
    		\end{proof}
    	\end{satz}
    	\newpage
