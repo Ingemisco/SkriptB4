@@ -1759,29 +1759,31 @@ toc=idx
    	\newpage
    	
    	\section{Norm, Spur und Diskriminante}\thispagestyle{sectionstart}
-   	\begin{definition}\label{2.4.1}
+   	\begin{definition}\label{2.4.1}\hfill\newline
    		Sei $L|K$ eine endlich K\"orpererweiterung und $a \in L$. Dann ist $\varphi_a:L \to L, x \mapsto ax$ ein Endomorphismus des $K$-Vektorraumes $L$.
    		
-   		Ist $\underline{v} = (v_1, \dots, v_n)$ eine beliebige Basis des $K$-Vektorraumes $L$ (insbesondere $n = [L:K]$) und $A = (a_{ij})_{1\leq i,j \leq n} = M(\varphi_a, \underline{v})$ die Darstellungsmatrix von $\varphi_a$ bez\"uglich $\underline{v}$ (also $av_j = \sum_{i=1}^{n} a_{ij}v_i$ f\"ur alle $j \in \set{1,\dots, n}$), so hei\ss t $\chi_{L|K}(a) := \chi_{\varphi(a)} = \det (A-XI_n) \in K[X]$ das \emph{charakteristische Polynom}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Charakteristisches Polynom},
-   		$N_{L|K}(a) := \det(A) = \chi_{L|K}(0)$ die \emph{Norm}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Norm} und $\tr_{L|K}(a) := \tr A = \sum_{i=1}^n a_{ii} = (-1)^{n-1}\glqq\textrm{Koeffizient von } X^{n-1} \textrm{ in } \chi_{L|K}(a)\grqq$ die \emph{Spur}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Spur} von $A$ bez\"uglich $L|K$ [diese Begriffe h\"angen nicht von der Wahl der Basis $\underline{v}$ ab].
+   		\noindent Ist $\underline{v} = (v_1, \dots, v_n)$ eine beliebige Basis des $K$-Vektorraumes $L$ (insbesondere \linebreak $n = [L:K]$) und $A = (a_{ij})_{1\leq i,j \leq n} = M(\varphi_a, \underline{v})$ die Darstellungsmatrix von $\varphi_a$ bez\"uglich $\underline{v}$ (also $\displaystyle av_j = \sum_{i=1}^{n} a_{ij}v_i$ f\"ur alle $j \in \set{1,\dots, n}$), so hei\ss t \[\chi_{L|K}(a) := \chi_{\varphi(a)} = \det (A-XI_n) \in K[X]\] 
+   		das \emph{charakteristische Polynom}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Charakteristisches Polynom}, 
+   		\[N_{L|K}(a) := \det(A) = \chi_{L|K}(0)\] 
+   		die \emph{Norm}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Norm} und 
+   		\[\displaystyle \tr_{L|K}(a) := \tr A = \sum_{i=1}^n a_{ii} = (-1)^{n-1}\glqq\textrm{Koeffizient von } X^{n-1} \textrm{ in } \chi_{L|K}(a)\grqq\] die \emph{Spur}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Spur} von $A$ bez\"uglich $L|K$ [diese Begriffe h\"angen nicht von der Wahl der Basis $\underline{v}$ ab].
    	\end{definition}
    	
-   	\begin{beispiel}\label{2.4.2}
+   	\begin{beispiel}\label{2.4.2}\hfill\newline
    		Sei $d \in \nsquare$ [$\to$ \ref{2.1.16}]. Seien $a,b \in \Q$ und $x = a + b\sqrt{d} \in \Q(d)$.
    		
-   		Betrachte Basis $\underline{v}= (1,\sqrt{d})$ von $\Q(\sqrt{d})$ [$\to$\ref{2.1.17}]. Dann $x\cdot 1 = a + b\sqrt{d}$ und $x \sqrt{d} = bd + a\sqrt{d}$.
+   		\noindent Betrachte Basis $\underline{v}= (1,\sqrt{d})$ von $\Q(\sqrt{d})$ [$\to$\ref{2.1.17}]. Dann $x\cdot 1 = a + b\sqrt{d}$ und \linebreak $x \sqrt{d} = bd + a\sqrt{d}$.
    		
-   		Setzt man also $A = \begin{pmatrix}
-   			a&bd\\b&a
-   		\end{pmatrix} \in \Q^{2\times 2}$, so $\chi_{\Q(\sqrt{d})|\Q}(x) = \det \begin{pmatrix}
-   		a - X&bd\\b&a - X
-   	\end{pmatrix} = (a-X)^2 - b^2d = X^2 - 2aX + (a^2-b^2d)$ und daher $N_{Q(\sqrt{d})|\Q}(x) = a^2-b^2d$ und $\tr_{Q(\sqrt{d})|\Q}(x) = 2a$
+   		\noindent Setzt man also $A = \begin{pmatrix} a&bd\\b&a \end{pmatrix} \in \Q^{2\times 2}$, so 
+   		
+   		\[\chi_{\Q(\sqrt{d})|\Q}(x) = \det \begin{pmatrix} a - X&bd\\b&a - X\end{pmatrix} = (a-X)^2 - b^2d = X^2 - 2aX + (a^2-b^2d)\] 
+   		und daher $N_{Q(\sqrt{d})|\Q}(x) = a^2-b^2d$ und $\tr_{Q(\sqrt{d})|\Q}(x) = 2a$
    	\end{beispiel}
 
-	\begin{proposition}\label{2.4.3}
+	\begin{proposition}\label{2.4.3}\hfill\newline
 		Sei $L|K$ eine endliche K\"orpererweiterung. Dann ist $\tr_{L|K}:L \to K$ $K$-linear und es gilt $N_{L|K}(ab) = N_{L|K}(a)N_{L|K}(b)$ f\"ur alle $a,b \in L$.
 		
-		Es ist $N_{K|L}\big|_{L^*} \to K^*$ ein Gruppenhomomorphismus.
+		Es ist $N_{K|L}\big|_{L^*} L^* \to K^*$ ein Gruppenhomomorphismus.
 		
 		\begin{proof}
 			W\"ahle eine Basis $\underline{v} = (v_1, \dots, v_n)$ des $K$-Vektorraumes $L$. Sind $a,b \in L$ und $c \in K$, so gilt 
@@ -1818,7 +1820,7 @@ toc=idx
 		\end{proof} 
 	\end{proposition}
 
-	\begin{proposition}\label{2.4.4}
+	\begin{proposition}\label{2.4.4}\hfill\newline
 		Sei $F$ ein Zwischenk\"orper der endlichen K\"orpererweiterung $L|K$. Dann gilt f\"ur alle $a \in F$
 			\[\chi_{L|K}(a) = (\chi_{F|K}(a))^{[L:F]}\]
 			\[N_{L|K}(a) = (N_{F|K}(a))^{[L:F]}\]
@@ -1837,11 +1839,11 @@ toc=idx
 					& & & M(\psi_a, \underline{u})
 				\end{pmatrix}\]
 			
-			wobei $\varphi_a: L \to L, x \mapsto ax$ und $\psi: F \to F, x \mapsto ax$
+			wobei $\varphi_a: L \to L, x \mapsto ax$ und $\psi_a: F \to F, x \mapsto ax$
 		\end{proof}
 	\end{proposition}
 	
-	\begin{proposition}\label{2.4.5}
+	\begin{proposition}\label{2.4.5}\hfill\newline
 		Sei $L|K$ eine endliche K\"orpererweiterung und $a \in L$. Dann $\chi_{L|K}(a) = (-a)^{[L:K]}(\irr_K(a))^{[L:K(a)]}$
 		
 		\begin{proof}
@@ -1851,7 +1853,7 @@ toc=idx
 		\end{proof}
 	\end{proposition}
 	
-	\begin{satz}\label{2.4.6}
+	\begin{satz}\label{2.4.6}\hfill\newline
 		Sei $L|K$ eine endliche separable K\"orpererweiterung und seien $\varphi_1, \dots, \varphi_n$ die verschiedenen $K$-Einbettungen ($K$-Homomorphismen) von $L$ in einen festen algebraischen Abschluss $\overline{K}$ von $K$ (insbesondere $[L:K] = [L:K]_s = n$).
 		
 		Dann gilt f\"ur alle $a \in L$
@@ -1859,8 +1861,8 @@ toc=idx
 		und daher $N_{L|K}(a) = \prod_{i=1}^n \varphi_i(a)$ sowie $\tr_{L|K}(a) = \sum_{i=1}^{n}\varphi_i(a)$.
 		
 		\begin{proof}
-			Sei $a \in L$. Jeder K\"orperhomomorphismus $K(a) \to \overline{K}$ l\"asst sich zu genau $[L:K(a)]_s = [L:K(a)]$ K\"orperhomomorphismen $L \to \overline{K}$ fortsetzen.
-			Daher kann man die $\varphi_i$ so neu indizieren, dass $\varphi_{ij}\ (1 \leq i \leq l, 1 \leq j \leq m)$ die verschiedenen $K$-Homomorphismen $L \to \overline{K}$ sind mit $\varphi_{ij}\big|_{K(a)} = \varphi_{st}\big|_{K(a)} \Leftrightarrow i = s\ (1 \leq i,s\leq l, 1 \leq j, t \leq m)$.
+			Sei $a \in L$. Jeder K\"orperhomomorphismus $K(a) \to \overline{K}$ l\"asst sich zu genau \linebreak $[L:K(a)]_s = [L:K(a)]$ K\"orperhomomorphismen $L \to \overline{K}$ fortsetzen.
+			Daher kann man die $\varphi_i$ so neu indizieren, dass $\varphi_{ij}\ (1 \leq i \leq l, 1 \leq j \leq m)$ die verschiedenen \linebreak $K$-Homomorphismen $L \to \overline{K}$ sind mit \[\varphi_{ij}\big|_{K(a)} = \varphi_{st}\big|_{K(a)} \Leftrightarrow i = s\ (1 \leq i,s\leq l, 1 \leq j, t \leq m)\]
 			
 			Hierbei gilt $l = [K(a):K]_s = [K(a):K]$ und 
 			$m = [L:K(a)]_s = [L:K(a)]$.
@@ -1876,17 +1878,17 @@ toc=idx
 		\end{proof}
 	\end{satz}
 	
-	\begin{erinnerung}\label{2.4.7}
+	\begin{erinnerung}\label{2.4.7}\hfill
 		\begin{enumerate}[(a)]
 			\item Sei $K$ ein K\"orper der Charakteristik $p \in \set{0} \cup \P$ und $f \in K[X]$ irreduzibel. Dann gibt es genau ein Paar $(n,g)$ mit $n \in \N_0, g \in K[X]$ irreduzibel und separabel und $f = g(X^{p^n})$
 			
 			\item Sei $F$ ein Zwischenk\"orper der algebraischen K\"orpererweiterung $L|K$. Dann gilt $[L:K]=[L:F][F:K]$ und 
-			$[L:K]_s = [L:F]_s[F:K]_s$, wobei man $n\cdot \infty := \infty \cdot n := \infty \cdot \infty := \infty$ setzt f\"ur $n \in \N$
+			$[L:K]_s = [L:F]_s[F:K]_s$, wobei man \linebreak $n\cdot \infty := \infty \cdot n := \infty \cdot \infty := \infty$ setzt f\"ur $n \in \N$
 			
 			\item Ist $K$ ein K\"orper der Charakteristik $0$, so ist $K$ vollkommen, das hei\ss t, jede algebraische K\"orpererweiterung $L|K$ ist separabel.
 			
 			\item Sei $L|K$ eine algebraische K\"orpererweiterung. Dann ist der separable Abschluss von $K$ in $L$ $\overline{k^{s_L}} = \set{a \in L| a \textrm{ separabel \"uber } K}$ ein
-			Zwischenk\"orper von $L|K$ mit $[L:K]_s = [\overline{K^{s_L}}:K]$
+			Zwischenk\"orper von $L|K$ mit \linebreak $[L:K]_s = [\overline{K^{s_L}}:K]$
 			
 			\item Ist $R$ ein kommutativer Ring mit $p:= \Char R \in \P$, so ist 
 				\[\Phi_R: R  \to R, a \mapsto a^p\]
@@ -1894,11 +1896,11 @@ toc=idx
 		\end{enumerate}
 	\end{erinnerung}
 
-	\begin{definition}\label{2.4.8}
+	\begin{definition}\label{2.4.8}\hfill\newline
 		Eine algebraische K\"orpererweiterung $L|K$ hei\ss t \emph{rein inseparabel}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Rein Inseparabel}, wenn kein $a \in L \setminus K$ separabel \"uber $K$ ist.
 	\end{definition}
 
-	\begin{proposition}\label{2.4.9}
+	\begin{proposition}\label{2.4.9}\hfill\newline
 		Sei $L|K$ eine algebraische K\"orpererweiterung mit $p:= \Char K > 0$. Dann sind \"aquivalent
 		\begin{enumerate}[(a)]
 			\item $L|K$ ist rein inseparabel
@@ -1911,7 +1913,7 @@ toc=idx
 		\end{proof}
 	\end{proposition}
 
-	\begin{beispiel}\label{2.4.10}
+	\begin{beispiel}\label{2.4.10}\hfill
 		\begin{enumerate}[(a)]
 			\item 
 			Ist $L|K$ eine algebraische K\"orpererweiterung, so ist wegen der Transitivit\"at der Separabilit\"at $L|\overline{K^{s_L}}$ rein inseparabel.
@@ -1924,14 +1926,16 @@ toc=idx
 		\end{enumerate}
 	\end{beispiel}
 
-	\begin{definition}\label{2.4.11}
+	\begin{definition}\label{2.4.11}\hfill\newline
 		Sei $L|K$ eine endliche K\"orpererweiterung. Dann hei\ss t
-			$[L:K]_i := \frac{[L:K]}{[L:K]_s} \overset{\ref{2.4.7}(d)}{=} \frac{[L:K]}{[\overline{K^{s_L}}:K]} = \overset{\ref{2.4.7}(b)}{=} [L:\overline{K^{s_L}}]$
+			\[[L:K]_i := \frac{[L:K]}{[L:K]_s} \overset{\ref{2.4.7}(d)}{=} \frac{[L:K]}{[\overline{K^{s_L}}:K]} \overset{\ref{2.4.7}(b)}{=} [L:\overline{K^{s_L}}]\]
 			der \emph{Inseparabilit\"atsgrad}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Inseparabilit\"atsgrad} von $L|K$.
 	\end{definition}
 
-	\begin{proposition}\label{2.4.12}
-		Sei $F$ ein Zwischenk\"orper der endlichen K\"orpererweiterung $L|K$. Dann $[L:K]_i = [L:F]_i[F:K]_i$.
+	\begin{proposition}\label{2.4.12}\hfill\newline
+		Sei $F$ ein Zwischenk\"orper der endlichen K\"orpererweiterung $L|K$. 
+		
+		\noindent Dann $[L:K]_i = [L:F]_i[F:K]_i$.
 		
 		\begin{proof}
 			\begin{flalign*}
@@ -1942,7 +1946,7 @@ toc=idx
 		\end{proof}
 	\end{proposition}
 
-	\begin{korollar}\label{2.4.13}
+	\begin{korollar}\label{2.4.13}\hfill\newline
 		Sei $L|K$ eine endliche K\"orpererweiterung und $p:= \Char K$. Dann gibt es $n \in \N_0$ mit $[L:K]_i = p^n$.
 		
 		\begin{proof}
@@ -1950,8 +1954,7 @@ toc=idx
 		\end{proof}
 	\end{korollar}
 
-	\begin{satz}\label{2.4.14}
-		(vergleiche \ref{2.4.6})\newline
+	\begin{satz}\label{2.4.14} (vergleiche \ref{2.4.6})\newline
 		Sei $L|K$ eine endliche K\"orpererweiterung und seien $\varphi_1, \dots, \varphi_n$ die verschiedenen $K$-Einbettungen von $L$ in einen festen algebraischen Abschluss $\overline{K}$ von $K$.
 		
 		Dann 
@@ -1964,11 +1967,11 @@ toc=idx
 			Wegen $[L: \overline{K^{s_L}}] \overset{\ref{2.4.7}(b)}{=} \frac{[L:K]_s}{[\overline{K^{s_L}}:K]_s} \overset{\ref{2.4.7}(a)}{=} \frac{[L:K]_s}{[L:K]_s} = 1$ sind 
 			$\varphi_1\big|_{\overline{K^{s_L}}}, \dots, \varphi_n\big|_{\overline{K^{s_L}}}$ verschiedene $K$-Einbettungen von $\overline{K^{s_L}}$ in $\overline{K}$.
 			
-			Weil $[L:K]_i = [L:\overline{K^{s_L}}]$gilt und $\overline{K^{s_L}}:K$ separabel ist, folgen die behaupteten Gleichungen f\"ur alle $a \in \overline{K^{s_L}}$ mit \ref{2.4.4} und \ref{2.4.6}.
+			Weil $[L:K]_i = [L:\overline{K^{s_L}}]$ gilt und $\overline{K^{s_L}}:K$ separabel ist, folgen die behaupteten Gleichungen f\"ur alle $a \in \overline{K^{s_L}}$ mit \ref{2.4.4} und \ref{2.4.6}.
 			
 			Sei also nun $a \in L \setminus \overline{K^{s_L}}$. Dann gibt es nach \ref{2.4.7}(a) ein $m \in \N$ und $g \in K[X]$ irreduzibel und separabel mit $\irr_K(a) = g(X^{p^m})$, wobei $p:= \Char K \overset{\ref{2.4.7}(c)}{\in} \P$. Mit \ref{2.4.5}folgt 
 				\[\chi_{L|K}(a) = (-1)^{[L:K]}\brac{g(X^{p^m})}^{[L:K(a)]} \]
-			woraus sicher $\tr_{L|K}(a) = 0$ folgt (beachte $m \geq 1$), was wegen $[L:K]_i \overset{\ref{2.4.13}}{\cong}_{(p)} 0$ die Gleichung mit der Spur zeigt.
+			woraus sicher $\tr_{L|K}(a) = 0$ folgt (beachte $m \geq 1$), was wegen $[L:K]_i \overset{\ref{2.4.13}}{\equiv}_{(p)} 0$ die Gleichung mit der Spur zeigt.
 			
 			Wegen \ref{2.4.7}(e) reicht es f\"ur die Gleichung mit der Norm zu zeigen, dass
 				\[\Phi_p^m(N_{L|K}(a)) = \Phi_p^m\brac{\brac{\prod_{i=1}^m \varphi_i(a)}^{[L:K]_i} } \],
@@ -1978,8 +1981,7 @@ toc=idx
 		\end{proof}
 	\end{satz}
 
-	\begin{satz}\label{2.4.15}
-		("Schachtelungsformel f\"ur Norm und Spur")\newline
+	\begin{satz}\label{2.4.15} ("Schachtelungsformel f\"ur Norm und Spur")\newline
 		Sei $F$ ein Zwischenk\"orper der endlichen K\"orpererweiterung $L|K$. Dann
 			\begin{align*}
 				N_{L|K} &= N_{F|K} \circ N_{L|F}\\
@@ -1990,7 +1992,7 @@ toc=idx
 		\end{proof}
 	\end{satz}
 
-	\begin{erinnerung}\label{2.4.16}
+	\begin{erinnerung}\label{2.4.16}\hfill\newline
 		Sei $V$ ein $K$-Vektorraum mit Basis $\underline{v} := (v_1, \dots, v_n)$
 		\begin{enumerate}[(a)]
 			\item 
@@ -2000,11 +2002,11 @@ toc=idx
 			\end{cases}$
 			($i, j \in \set{1, \dot, n}$) ist eine Basis des Dualraums $V^* = \Hom(V, K)$ [$\to$ \ref{1.6.8}] genannt die zu $\underline{v}$ duale Basis.
 			
-			\item $b:V \times V \to K$ hei\ss t eine Bilinearform auf $V$, wenn f\"ur alle $v \in V$ sowohl $b(\cdot, v) : V \to K, w \mapsto b(w,v)$ als auch 
+			\item $b:V \times V \to K$ hei\ss t eine Bilinearform auf $V$, wenn f\"ur alle $v \in V$ sowohl \linebreak $b(\cdot, v) : V \to K, w \mapsto b(w,v)$ als auch 
 			$b(v, \cdot): V \to K, w \mapsto b(v,w)$ linear sind. Es hei\ss t $b$ symmetrisch, wenn $b(v, w) = b(w,v)$ f\"ur alle $v,w \in V$.
 			
 			\item Sei $b$ eine Bilinearform auf $V$. Dann sind 
-			$\overset{\leftarrow}{b}: V \to V^*, v \mapsto b(\cdot, v)$ und 
+			$\overset{\leftarrow}{b}: V \to V^*, v \mapsto b(\cdot, v)$ und \linebreak
 			$\overset{\rightarrow}{b}: V \to V^*, v \mapsto b(v, \cdot)$ linear und es gilt 
 			\[M(b,\underline{v}) := (b(v_i, v_j))_{1 \leq i,j \leq n} = M(\overset{\leftarrow}{b}, \underline{v}, \underline{v}^*) = M(\overset{\rightarrow}{b}, \underline{v}, \underline{v}^*)^T\]
 			denn $\overset{\leftarrow}{b}(v_j) = \sum_{i=1}^n b(v_i, v_j)v_i^*$ und $\overset{\rightarrow}{b}(v_j) = \sum_{i=1}^n b(v_j, v_i)v_i^*$ f\"ur $j \in \set{1, \dots, n}$,
@@ -2034,7 +2036,7 @@ toc=idx
 		\end{enumerate}
 	\end{erinnerung}
 
-	\begin{prop-def}\label{2.4.17}
+	\begin{prop-def}\label{2.4.17}\hfill\newline
 		Sei $V$ ein $K$-Vektorraum mit Basis $\underline{v} := (v_1, \dots, v_n)$ und $b: V \times V \to K$ eine nicht ausgeartete Bilinearform. 
 		
 		Dann gibt es genau ein Tupel $\underline{w} = (w_1, \dots, w_n) \in V^n$ mit $b(v_i, w_j) = \delta_{ij}$ f\"ur alle $i,j \in \set{1,\dots, n}$.
@@ -2052,27 +2054,27 @@ toc=idx
 		\end{proof}  
 	\end{prop-def}
 
-	\begin{sprechweise}\label{2.4.18}
+	\begin{sprechweise}\label{2.4.18}\hfill\newline
 		Sei $L|K$ eine endliche K\"orpererweiterung. Dann ist $L \times L \to K, (x,y)\mapsto \tr_{L|K}(xy)$ eine symmetrische Bilinearform auf dem $K$-Vektorraum $L$, genannt die \emph{Spurform}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Spurform} von $L|K$
 	\end{sprechweise}
 
-	\begin{definition}\label{2.4.19}
+	\begin{definition}\label{2.4.19}\hfill\newline
 		Sei $L|K$ eine K\"orpererweiterung mit $n:= [L:K] < \infty$. F\"ur alle $x_1, \dots, x_n \in L$ hei\ss t 
 			\[d_{L|K}(x_1,\dots, x_n) := \det((\tr_{L|K}(x_ix_j))_{1\leq i,j \leq n} )\]
 		die \emph{Diskriminante}\index{Norm, Spur, Diskriminante@\textbf{Norm, Spur, Diskriminante}!Diskriminante} von $(x_1, \dots, x_n)$ bez\"uglich $L|K$.
 	\end{definition}
 
-	\begin{bemerkung}\label{2.4.20}
+	\begin{bemerkung}\label{2.4.20}\hfill\newline
 		Sei $L|K$ eine K\"orpererweiterung mit $n:=[L:K] < \infty$.
 		
-		Dann $d_{L|K}(x_1, \dots, x_n) = d_{L|K}(x_{\sigma(1)}, \dots, x_{\sigma(n)})$ f\"ur alle $x_1, \dots, x_n \in L$ und $\sigma \in S_n$, da jede Permutation ein Produkt von Transpositionen ist und eine simultane Zeilen- und Spaltenvertauschung die Determinante nicht \"ander.
+		Dann $d_{L|K}(x_1, \dots, x_n) = d_{L|K}(x_{\sigma(1)}, \dots, x_{\sigma(n)})$ f\"ur alle $x_1, \dots, x_n \in L$ und $\sigma \in S_n$, da jede Permutation ein Produkt von Transpositionen ist und eine simultane Zeilen- und Spaltenvertauschung die Determinante nicht \"andert.
 	\end{bemerkung}
 
-	\begin{proposition}\label{2.4.21}
+	\begin{proposition}\label{2.4.21}\hfill\newline
 		Sei $L|K$ endlich und separabel. Seien $\varphi_1, \dots, \varphi_n$ die verschiedenen $K$-Einbettungen von $L$ in $\overline{K}$. 
 		
 		Dann gilt f\"ur alle $x_1, \dots, x_n \in L$
-			\[d_{x_1, \dots, x_n} = \brac{\det\begin{pmatrix}
+			\[d_{L|K}(x_1, \dots, x_n) = \brac{\det\begin{pmatrix}
 					\varphi_1(x_1) & \cdots & \varphi_1(x_n)\\
 					\vdots & \ddots & \vdots\\
 					\varphi_n(x_1) & \cdots & \varphi_n(x_n)
@@ -2089,7 +2091,7 @@ toc=idx
 		\end{proof}
 	\end{proposition}
 
-	\begin{satz}\label{2.4.22}
+	\begin{satz}\label{2.4.22}\hfill\newline
 		Sei $L|K$ endlich und separabel und $a \in L$ mit $L=K(a)$. Seien $\varphi_1, \dots, \varphi_n$ die verschiedenen $K$-Einbettungen von $L$ in $\overline{K}$. Bezeichne $f$ das Minimalpolynom von $a$ \"uber $K$ und $f'$ seine formale Ableitung.
 		
 		Dann gilt 
@@ -2100,11 +2102,8 @@ toc=idx
 		\end{proof} 
 	\end{satz}
 
-	\begin{korollar}\label{2.4.23}
-		Sei $L|K$ eine endliche K\"orpererweiterung und $\underline{v} =(v_1, \dots, v_n)$ eine Basis des $K$-Vektorraumes $L$.
-		
-		Dann sind \"aquivalent:
-		
+	\begin{korollar}\label{2.4.23}\hfill\newline
+		Sei $L|K$ eine endliche K\"orpererweiterung und $\underline{v} =(v_1, \dots, v_n)$ eine Basis des $K$-Vektorraumes $L$. Dann sind \"aquivalent:
 		\begin{enumerate}[(a)]
 			\item $L|K$ ist separabel
 			\item Sie Spurform [$\to$ \ref{2.4.18}] von $L|K$ ist nicht ausgeartet
@@ -2112,8 +2111,8 @@ toc=idx
 			\item $\tr_{L|K} \neq 0$
 		\end{enumerate}
 	
-		\begin{proof}
-			$(a)\Rightarrow (b)$: Gelta (a). W\"ahle mit dem Satz vom primitiven Element ein $a \in L$ mit $L= K(a)$. Sind $\varphi_1, \dots, \varphi_n$ die verschiedenen $K$-Homomorphismen $K \to \overline{K}$ so 
+		\begin{proof}\hfill\newline
+			\textbf{(a)$\Longrightarrow$(b)}: Gelte (a). W\"ahle mit dem Satz vom primitiven Element ein $a \in L$ mit $L= K(a)$. Sind $\varphi_1, \dots, \varphi_n$ die verschiedenen $K$-Homomorphismen $K \to \overline{K}$ so 
 			\begin{flalign*}
 				d_{L|K}(1, \dots, a^{n-1}) &= (-1)^{\frac{n(n-1)}{2}} \prod_{i,j=1; i \neq j}^{n} (\varphi_i(a) - \varphi_j(a)) \neq 0&& \ref{2.4.22}
 			\end{flalign*}
@@ -2121,25 +2120,28 @@ toc=idx
 			Es ist $\underline{w} := (1, a, \dots, a^{n-1})$ eine Basis des $K$-Vektorraumes $L$ und daher $d_{L|K}(1, a, \dots, a^{n-1})$ die Determinante der Darstellungsmatrix der Spurform bez\"uglich $\underline{w}$. Nach \ref{2.4.16} folgt (b)
 			
 			
-			$(b)\Rightarrow (c)$: wieder mit \ref{2.4.16}
+			\medskip\noindent 
+			\textbf{(b)$\Longrightarrow$(c)}: wieder mit \ref{2.4.16}
 			
-			$(c)\Rightarrow (d)$: trivial
+			\medskip\noindent
+			\textbf{(c)$\Longrightarrow$(d)}: trivial
 			
-			$(d) \Rightarrow (a)$: mit \ref{2.4.14}
+			\medskip\noindent
+			\textbf{(d)$\Longrightarrow$(a)}: mit \ref{2.4.14}
 		\end{proof}
  	\end{korollar}
  
- 	\begin{proposition}\label{2.4.24}
+ 	\begin{proposition}\label{2.4.24}\hfill\newline
  		Sei $L|K$ separabel mit $n:=[L:K] < \infty$ und seien $x_1, \dots, x_n \in L$. Dann gilt
  		\begin{enumerate}[(a)]
- 			\item \[d_[{L|K}(x_1, \dots, x_n) = 0 \Leftrightarrow x_1, \dots, x_n \textrm{ linear abh\"angig \"uber } K]\]
- 			\item F\"ur jede $K$-lineare Abbildung $f::L \to L$ gilt 
+ 			\item \[d_{L|K}(x_1, \dots, x_n) = 0 \Leftrightarrow x_1, \dots, x_n \textrm{ linear abh\"angig \"uber } K\]
+ 			\item F\"ur jede $K$-lineare Abbildung $f:L \to L$ gilt 
  				\[d_{L|K}(f(x_1), \dots, f(x_n) ) = (\det f)^2 d_{L|K}(x_1, \dots, x_n)\]
  		\end{enumerate}
  	
  		\begin{proof}
  			\begin{enumerate}[(a)]
- 				\item "$\Rightarrow$" aus \ref{2.4.23} und "$\Leftrightarrow$" aus Definition \ref{2.4.19}
+ 				\item "$\Longrightarrow$" aus \ref{2.4.23} und "$\Longleftarrow$" aus Definition \ref{2.4.19}
   				\item Setze $\underline{v}:=(x_1, \dots, x_n)$ und $\underline{w}:=(f(x_1), \dots, f(x_n))$.
   				
   				Ist $\underline{v}$ keine Basis von $L$, so auch $\underline{w}$ nicht und beide Diskriminanten sind null.
@@ -2156,7 +2158,7 @@ toc=idx
  		\end{proof}
  	\end{proposition}
  
- 	\begin{proposition}\label{2.4.25}
+ 	\begin{proposition}\label{2.4.25}\hfill\newline
  		Sei $A$ ein ganz abgeschlossener Integrit\"atsring, $K:=\qf(A)$, $L|K$ eine endliche K\"orpererweiterung und $B$ der ganze Abschluss von $A$ in $L$.
  		(z.B. $A \Z, K = \Q, L$ ein Zahlk\"orper und $B$ ein Zahlring [$\to$ \ref{2.1.15}]).
  		
@@ -2164,15 +2166,15 @@ toc=idx
  		
  		\begin{proof}
  			Sei $b \in B$. Nach \ref{2.4.15} gilt $\chi_{L|K}(b) = (-1)^{[L:K]}(\irr_K(b))^{[L:K]}$ und nach \ref{2.1.14} gilt $\irr_K(b) \in A[X]$, also $\chi_{L|K}(b) \in A[X]$ und damit
- 			$N_{L|K}(b) \in A$ und $\tr_{L|K}(b) \in A$ [$\to$ \ref{2.4.1}].
+ 			$N_{L|K}(b) \in A$ und $\tr_{L|K}(b) \in A$ \newline [$\to$ \ref{2.4.1}].
  			
  			Wegen $N_{L|K}(B) \subseteq A$ und der Multiplikativit\"at von $N_{L|K}$ folgt $B^* \subseteq \set{b \in B| N_{L|K}(b) \in A^*}$
  			
- 			Sei umgekehrt $b \in B$ mit $N_{L|K}(b) \in A^*$. Dann gibt es $a_1, \dots, a_n \in A$ mit $b^n + a_1b^{n-1} + \cdots a_n = 0$ und
+ 			Sei umgekehrt $b \in B$ mit $N_{L|K}(b) \in A^*$. Dann gibt es $a_1, \dots, a_n \in A$ mit \linebreak $b^n + a_1b^{n-1} + \cdots + a_n = 0$ und
  			$a_n \in A^*$ (wegen $(\chi_{L|K}(b))(b) = 0$ und $(\chi_{L|K}(b)(0) \in A^*)$).
  			
  			Teilt man durch $a_nb^n \neq 0$, so ist 
- 				\[\brac{\frac{1}{b}}^n + \frac{a_{n-1}}{a_n}\brac{\frac{1}{b}} + \cdots + \frac{a_1}{a_n}\brac{\frac{1}{b}} + \frac{1}{a_n} = 0\]
+ 				\[\brac{\frac{1}{b}}^n + \frac{a_{n-1}}{a_n}\brac{\frac{1}{b}}^{n-1} + \cdots + \frac{a_1}{a_n}\brac{\frac{1}{b}} + \frac{1}{a_n} = 0\]
  			eine Ganzheitsgleichung von $\frac{1}{b}$ \"uber $A$, also ist $\frac{1}{b} \in B$ und somit $b \in B^*$. 
  		\end{proof}
  	\end{proposition}
