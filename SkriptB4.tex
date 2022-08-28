@@ -337,7 +337,7 @@ toc=idx
 
 	\section{Direkte Summen von Moduln und freie Moduln}\thispagestyle{sectionstart}
 	\begin{definition}\label{1.2.1}\hfill\newline
-		Sei $R$ ein Ring und $(M_i)_{i \in I}$ eine Familie von $R$-Moduln. Dann nennt man den $R$-Untermodul 
+		Sei $R$ ein Ring und $(M_i)_{i \in I}$ eine Familie von $R$-Moduln. Dann nennt man den \linebreak$R$-Untermodul 
 			\[\bigoplus_{i \in I} M_i := \set{x \in \prod_{i\in I}M_i \mid \supp(x)\ \mathrm{endlich} } \]
 		von $\displaystyle\prod_{i\in I} M_i$ die \emph{(\"au\ss ere) direkte Summe}\index{Modul@\textbf{Modul}!\"Au\ss ere Direkte Summe} der $M_i$ ($i \in I$). Man fasst $M_j$ ($j \in I$ h\"aufig) als Untermodul von $\displaystyle\bigoplus_{i \in I} M_i$ auf verm\"oge der Einbettung 
 		 \[\rho_j:M_j \to \prod_{i\in I} M_i, x \mapsto \brac{i \mapsto \begin{cases}
@@ -442,7 +442,7 @@ toc=idx
 		\begin{proof}
 			Sei $M$ ein $R$-Modul mit Basen $B$ und $C$. Im Fall von $|B| =  \infty = |C|$ sind wir fertig, sonst ist $M$ endlich erzeugt und daher $m = |B|, n = |C| \in \N_0$ nach Lemma \ref{1.2.9}. Nach \ref{1.2.7} gilt $R^n \cong M \cong R^m$, somit reicht es zu zeigen: Sei $R$ ein kommutativer Ring und $m, n \in \N_0, m > n$ mit $R^m \cong R^n$ als $R$-Modul, dann gilt $1 = 0$ in $R$. 
 			
-			\noindent Um dies zu zeigen, w\"ahle zueinander inverse $R$-Modulisomorphismen $f:R^n \to R^m, g: R^m \to R^n$. Bezeichne mit $\underline{x} = (x_1, \dots, x_n)$ und $\underline{y} = (y_1, \dotsm y_m)$ die Standardbasen des $R^n$ und $R^m$. W\"ahle $A=(a_{ij})_{1\leq i \leq m, 1 \leq j \leq n}\in R^{m \times n}$ mit $\displaystyle f(x_j) = \sum_{i=1}^m a_{ij}y_i$ f\"ur $j \in \set{1, \dots, n}$ und $B = (b_{ji})_{1 \leq j \leq n, 1 \leq i \leq m} \in R^{n \times m}$ mit $\displaystyle g(y_i) = \sum_{j=1}^n b_{ji}x_j$ f\"ur $i \in \set{1, \dots, m}$. Dann gilt f\"ur $k \in \set{1, \dots, m}$
+			\noindent Um dies zu zeigen, w\"ahle zueinander inverse $R$-Modulisomorphismen $f:R^n \to R^m$, \linebreak $g: R^m \to R^n$. Bezeichne mit $\underline{x} = (x_1, \dots, x_n)$ und $\underline{y} = (y_1, \dotsm y_m)$ die Standardbasen des $R^n$ und $R^m$. W\"ahle $A=(a_{ij})_{1\leq i \leq m, 1 \leq j \leq n}\in R^{m \times n}$ mit $\displaystyle f(x_j) = \sum_{i=1}^m a_{ij}y_i$ f\"ur $j \in \set{1, \dots, n}$ und $B = (b_{ji})_{1 \leq j \leq n, 1 \leq i \leq m} \in R^{n \times m}$ mit $\displaystyle g(y_i) = \sum_{j=1}^n b_{ji}x_j$ f\"ur $i \in \set{1, \dots, m}$. Dann gilt f\"ur $k \in \set{1, \dots, m}$
 				\begin{align*}
 					y_k &= (f \circ g)(y_k) = f(g(y_k))\\
 					&= f\brac{\sum_{j=1}^n b_{jk}x_j}\\
@@ -477,7 +477,7 @@ toc=idx
 			von $R^n$
 			
 			\noindent Mit dem Isomorphiesatz erhalten wir einen Modulisomorphismus $R^m/\mathfrak{m}^m \to R^n/\mathfrak{m}^n$ und offensichtlich gilt $R^m/\mathfrak{m}^m  \cong (R/\mathfrak{m})^m$ (betrachte z.B. $R^m \to (R/\mathfrak{m})^m$).\newline
-			Da nun $(R/\mathfrak{m})^m$ und $(R/\mathfrak{m})^n$ als $R$-Moduln isomorph sind, sind sie auch als $(R/\mathfrak{m})$-Moduln isomorph. F\"ur den K\"orper $K:= R/\mathfrak{m}$ gilt also 
+			Da nun $(R/\mathfrak{m})^m$ und $(R/\mathfrak{m})^n$ als $R$-Moduln isomorph sind, sind sie auch als \linebreak $(R/\mathfrak{m})$-Moduln isomorph. F\"ur den K\"orper $K:= R/\mathfrak{m}$ gilt also 
 			\[m = \dim_K K^m = \dim_K K^n = n\]
 		\end{proof}
 	\end{bemerkung}
@@ -608,7 +608,8 @@ toc=idx
 			{\color{red}
 			\textbf{Hilfsbehauptung}: Jeder Untermodul eines Untermoduls $N$ von $M$ ist ein direkter Summand von $N$.
 			
-			\noindent \textbf{Begr\"undung}: Sei $N$ ein Untermodul von $M$ und $P$ ein Untermodul von $N$.
+			\smallskip\noindent
+			\textbf{Begr\"undung}: Sei $N$ ein Untermodul von $M$ und $P$ ein Untermodul von $N$.
 			W\"ahle $Q$ mit $M = P \oplus Q$. Setze $R = Q \cap N$. Wir zeigen $N = P \oplus R$. Es ist klar, dass $P \cap R = 0$ (denn $P \cap Q = 0$) und $P + R \subseteq N$. Zu zeigen ist also noch $N \subseteq P + R$. \newline
 			Sei hierzu $x \in N$. Schreibe $x = p + q$ mit $p \in P$ und $q \in Q$, dann $q = x - p \in N \cap Q = R$. } 
 			
@@ -799,20 +800,24 @@ toc=idx
 					L &= L \cap M_0 \supseteq \cdots \supseteq L \cap M_n = 0 \label{1.4.14.2}\tag{$**$}
 				\end{align}
 			{\color{red}
-			\noindent Hilfsbehauptung: F\"ur alle $i \in \set{1, \dots, n}$ gilt 
+			\noindent 
+			\textbf{Hilfsbehauptung}: F\"ur alle $i \in \set{1, \dots, n}$ gilt 
 			
 			\textbf{entweder} $(L+M_{i+1})/(L+M_i) = 0$ und $(L\cap M_{i+1})/(L\cap M_i) \cong M_{i-1}/M_i$
 			
 			\textbf{oder} $(L+M_{i+1})/(L+M_i) \cong M_{i-1}/M_i$ und $(L\cap M_{i+1})/(L\cap M_i) = 0$
 			
-			\noindent Begr\"undung: Sei $i \in \set{1, \dots, n}$. Ist $(L\cap M_{i-1})/(L\cap M_i) \neq 0$, so ist \linebreak $(L~\cap~M_{i-1})~/~(L~\cap~M_i)~\hookrightarrow~ M_{i-1}/M_i$
+			\smallskip\noindent
+			\textbf{Begr\"undung}: Sei $i \in \set{1, \dots, n}$. Ist $(L\cap M_{i-1})/(L\cap M_i) \neq 0$, so ist \linebreak $(L~\cap~M_{i-1})~/~(L~\cap~M_i)~\hookrightarrow~ M_{i-1}/M_i$
 			ein Isomorphismus, da $M_{i-1}/M_i$ einfach.
 			
 			\noindent Ist $(L+M_{i-1})/(L+M_i) \neq 0$, so ist $M_{i-1}/M_i \twoheadrightarrow (L+M_{i-1})/(L+M_i)$ ein Isomorphismus, da $M_{i-1}/M_i$ einfach. Daher reicht es zu zeigen, dass genau einer der Moduln $(L\cap M_{i-1})/(L\cap M_i)$ und $(L+M_{i-1})/(L+M_i)$ ein Nullmodul ist.
 			
 			\noindent Wegen Lemma \ref{1.4.4} k\"onnen nicht beide $0$ sein. Es reicht daher zu zeigen, dass genau $n$ der $2n$ Inklusionen (\ref{1.4.14.1}) und (\ref{1.4.14.2}) echt sind. Dies folgt mit Obigem aus (\ref{1.4.13}), indem man aus (\ref{1.4.14.1}) und (\ref{1.4.14.2}) eine Kompositionsreihe gewinnt. }
 			
-			\noindent Da $M/L$ einfach ist, ist genau eine der $n$ Inklusionen in (\ref{1.4.14.1}) echt, etwa $L+M_{k-1} \supsetneq L + M_k$. Nach der Hilfsbehauptung erh\"alt man aus (\ref{1.4.14.2}) eine Kompositionsreihe von $L$ der L\"ange $n-1$ (beachte $L\cap M_{k-1} = L\cap M_k$). Da $L=N_1\supsetneq \cdots \supsetneq N_n = 0$ ebenfalls eine solche ist, gibt es nach Induktionsvoraussetzung eine Bijektion $\tau: \set{2, \dots, n} \to \set{1, \dots, n} \setminus \set{k}$ mit $N_{i-1}/N_i \cong (L\cap M_{\tau(i)-1})/(L\cap M_{\tau(i)}) \cong M_{\tau(i)-1} / M_{\tau(i)}$ f\"ur $i \in \set{2,\dots, n}$. Zusammen mit $N_0/N_1 \cong M/L = (L+M_{k-1})/(L+M_k) \cong M_{k-1}/M_k$ liefert dies die gew\"unschte Bijektion.
+			
+			\medskip\noindent
+			Da $M/L$ einfach ist, ist genau eine der $n$ Inklusionen in (\ref{1.4.14.1}) echt, etwa $L+M_{k-1} \supsetneq L + M_k$. Nach der Hilfsbehauptung erh\"alt man aus (\ref{1.4.14.2}) eine Kompositionsreihe von $L$ der L\"ange $n-1$ (beachte $L\cap M_{k-1} = L\cap M_k$). Da $L=N_1\supsetneq \cdots \supsetneq N_n = 0$ ebenfalls eine solche ist, gibt es nach Induktionsvoraussetzung eine Bijektion $\tau: \set{2, \dots, n} \to \set{1, \dots, n} \setminus \set{k}$ mit $N_{i-1}/N_i \cong (L\cap M_{\tau(i)-1})/(L\cap M_{\tau(i)}) \cong M_{\tau(i)-1} / M_{\tau(i)}$ f\"ur $i \in \set{2,\dots, n}$. Zusammen mit $N_0/N_1 \cong M/L = (L+M_{k-1})/(L+M_k) \cong M_{k-1}/M_k$ liefert dies die gew\"unschte Bijektion.
 		\end{proof}
 	\end{satz}
 
@@ -1012,14 +1017,16 @@ toc=idx
 				M_1 \arrow[yshift=0.7ex]{r}{h_j} & N_j \arrow[yshift=-0.7ex]{l}{g_j}
 			\end{tikzcd} sind Isomorphismen.
 			
-			Begr\"undung: Wegen $g_jh_j \in \Aut(M)$ ist $h_j$ injektiv und $g_j$ surjektiv. Es gen\"ugt zu zeigen, dass $h_jg_j \in \Aut(N_j)$. Dies ist klar, denn sonst gilt nach \ref{1.5.12} $(h_jg_j)^s = 0$ f\"ur ein $s \in \N$ und damit 
+			\smallskip\noindent
+			\textbf{Begr\"undung}: Wegen $g_jh_j \in \Aut(M)$ ist $h_j$ injektiv und $g_j$ surjektiv. Es gen\"ugt zu zeigen, dass $h_jg_j \in \Aut(N_j)$. Dies ist klar, denn sonst gilt nach \ref{1.5.12} $(h_jg_j)^s = 0$ f\"ur ein $s \in \N$ und damit 
 			\[0 = g_j(h_jg_j)^s = (g_jh_j)^sg_j\]
 			was $g_j = 0$ impliziert $\lightning$.
 			
+			\medskip\noindent
+			\textbf{Behauptung 2}: $M = f^{-1}(N_j) \oplus M_2 \oplus \cdots \oplus M_m$.
 			
-			\noindent \textbf{Behauptung 2}: $M = f^{-1}(N_j) \oplus M_2 \oplus \cdots \oplus M_m$.
-			
-			Begr\"undung: Zu zeigen ist 
+			\smallskip\noindent
+			\textbf{Begr\"undung}: Zu zeigen ist 
 			\begin{enumerate}[(a)]
 				\item $f^{-1}(N_j) \cap \sum_{i=2}^mM_i = 0$
 				
@@ -1419,7 +1426,6 @@ toc=idx
 	\begin{def-satz}\label{2.1.10}\hfill\newline
 		Sei $A \subseteq B$ eine Ringerweiterung. Dann bilden die Elemente von $B$, die ganz \"uber $A$ sind, einen Unterring von $B$, der $A$ enth\"alt, den sogenannten \emph{ganzen Abschluss}\index{Ringerweiterung@\textbf{Ringerweiterung}!Ganzer Abschluss} von $A$ in $B$.
 		
-		
 		\begin{proof}
 			Jedes Element von $A$ ist nat\"urlich ganz \"uber $A$. Sind $x,y \in B$ ganz \"uber $A$, so auch $x+y, -x, x\cdot y$, denn $x+y,-x,x\cdot y\in A[x,y]$ und $A[x,y]$ ist nach \ref{2.1.7} ein endlich erzeugter $A$-Modul (benutze \ref{2.1.5}$(c)\Longrightarrow(a)$) 
 		\end{proof} 
@@ -1541,34 +1547,34 @@ toc=idx
  	\newpage
  	
  	\section{Dedekindringe}\thispagestyle{sectionstart}
- 	\begin{erinnerung}\label{2.2.1}
+ 	\begin{erinnerung}\label{2.2.1}\hfill\newline
  		Sei $R$ ein kommutativer Ring
  		\begin{enumerate}[(a)]
  			\item Ein Ideal $\mathfrak{p}$ in $R$ hei\ss t prim (oder Primideal), wenn $1\notin \mathfrak{p}$ und
  				\[\forall a,b \in R: (ab \in \mathfrak{p} \Rightarrow (a \in \mathfrak{p} \lor b \in \mathfrak{p}))\]
  			
- 			\item Ein Element $p \in R$ hei\ss t prim (oder Primelement), wenn $(p)$ ein Primideal ist, d.h. $p\in R^*$ und
- 				\[\forall a,b \in R: (p|ab \Rightarrow (p|a \lor p|b))\]
+ 			\item Ein Element $p \in R$ hei\ss t prim (oder Primelement), wenn $(p)$ ein Primideal ist, d.h. $p\notin R^*$ und
+ 				\[\forall a,b \in R: (p \mid ab \Rightarrow (p \mid a \lor p \mid b))\]
  			
  			\item Sind $I_1, \dots, I_n$ Ideale von $R$, so nennt man
  			\begin{align*}
- 				\prod_{k=1}^n I_k &:= I_1 \cdot \cdots \cdot I_n := \brac{\set{a_1\cdot\cdots\cdot a_n|a_1 \in I_1, \dots, a_n \in I_n}}\\
+ 				\prod_{k=1}^n I_k &:= I_1 \cdot \cdots \cdot I_n := \brac{\set{a_1\cdot\cdots\cdot a_n \mid a_1 \in I_1, \dots, a_n \in I_n}}\\
  				&= \begin{cases}
  					R & \textrm{falls } n = 0\\
- 					\set{\sum_i a_{i_1}\dots a_{i_n}| a_{i_1} \in I_1, \dots a_{i_n} \in I_n} & \textrm{falls } n\geq 1
+ 					\set{\sum_i a_{i_1}\dots a_{i_n} \mid a_{i_1} \in I_1, \dots a_{i_n} \in I_n} & \textrm{falls } n\geq 1
  				\end{cases}
  			\end{align*} 
  			deren \emph{Produkt}\index{Dedekindringe@\textbf{Dedekindringe}!Produkt} 
  			
- 			\item In Integrit\"atsringen sind Primfaktorzerlegungen (im Wesentlichen) eindeutig, d.h. it $R$ ein Integrit\"atsring, $m,n \in\N_0$ und $p_1, \dots, p_m, q_1, \dots, q_n \in R\setminus \set{0}$ prim mit $p_1\cdot\cdots\cdot p_m = q_1\cdot\cdots\cdot q_m$, so gilt $m=n$ und es gibt ein $\sigma \in S_n$ mit $(p_i) = (q_{\sigma(i)})$ f\"ur $i \in \set{1,\dots, n}$ (vergleiche auch \ref{1.4.17}(b)).
+ 			\item In Integrit\"atsringen sind Primfaktorzerlegungen (im Wesentlichen) eindeutig, d.h. ist $R$ ein Integrit\"atsring, $m,n \in\N_0$ und $p_1, \dots, p_m, q_1, \dots, q_n \in R\setminus \set{0}$ prim mit $p_1\cdot\cdots\cdot p_m = q_1\cdot\cdots\cdot q_m$, so gilt $m=n$ und es gibt ein $\sigma \in S_n$ mit $(p_i) = (q_{\sigma(i)})$ f\"ur $i \in \set{1,\dots, n}$ (vergleiche auch \ref{1.4.17}(b)).
  			
  			\item $R$ hei\ss t faktoriell, wenn $R$ ein Integrit\"atsring ist und jedes $a \in R$ eine Primfaktorzerlegung besitzt, d.h. es gibt $c \in R^*, n \in \N_0$ und Primelemente $p_1, \dots, p_n \in R$ mit $a = cp_1 \cdot \cdots \cdot p_n$.
  			
- 			\item $R$ euklidisch $\overset{\ref{1.6.3}}{\Rightarrow}$ $R$ Hauptidealring $\Rightarrow$ $R$ faktoriell $\Rightarrow$ $R$ Integrit\"atsring  
+ 			\item $R$ euklidisch $\overset{\ref{1.6.3}}{\Longrightarrow}$ $R$ Hauptidealring $\Longrightarrow$ $R$ faktoriell $\Longrightarrow$ $R$ Integrit\"atsring  
  		\end{enumerate}
  	\end{erinnerung}
  
- 	\begin{beispiel}\label{2.2.2}
+ 	\begin{beispiel}\label{2.2.2}\hfill\newline
  		Wegen $-5 \equiv_{(4)} -1 \equiv_{(4)} 3$ sind $\Z[\sqrt{-1}] = \Z[i]$ und $\Z[\sqrt{-5}] = \Z[\sqrt{5}i]$ quadratische Zahlringe [$\to$\ref{2.1.17}].
  		
  		Der Beweis von \ref{1.6.2}(c) daf\"ur, dass $\Z[\sqrt{-1}]$ euklidisch ist, funktioniert f\"ur $\Z[\sqrt{-5}]$ nicht mehr, da man nur noch 
@@ -1576,7 +1582,9 @@ toc=idx
  		erh\"alt, aber $\frac{6}{4} \geq 1$. 
  		
  		Tats\"achlich ist $\Z[\sqrt{-5}]$ nicht einmal faktoriell, denn $2$ besitzt darin keine Primfaktorzerlegung, weil sonst $2$ prim in $\Z[\sqrt{-5}]$ sein m\"usste, was aber nicht der Fall
- 		ist, denn $2|6 = (1+\sqrt{-5})(1-\sqrt{-5})$, aber $2\nmid (1+\sqrt{-5})$ und $2 \nmid (1+\sqrt{-5})$ in $\Z[\sqrt{-5}]$. Andererseits besitzt $(2)$ eine \emph{Primidealzerlegung}\index{Dedekindringe@\textbf{Dedekindringe}!Primidealzerlegung}, d.h. es ist Produkt von Primidealen, denn $(2,1+\sqrt{-5}) \in \Z[\sqrt{-5}]$ ist ein Primideal mit 
+ 		ist, denn $2 \mid 6 = (1+\sqrt{-5})(1-\sqrt{-5})$, aber $2\nmid (1+\sqrt{-5})$ und $2 \nmid (1+\sqrt{-5})$ in $\Z[\sqrt{-5}]$. 
+ 		
+ 		\medskip\noindent Andererseits besitzt $(2)$ eine \emph{Primidealzerlegung}\index{Dedekindringe@\textbf{Dedekindringe}!Primidealzerlegung}, d.h. es ist Produkt von Primidealen, denn $(2,1+\sqrt{-5}) \in \Z[\sqrt{-5}]$ ist ein Primideal mit 
  		\begin{align*}
  			(2,1+\sqrt{-5})^2 &= (2,1+\sqrt{-5})(2,1+\sqrt{-5})\\
  			&= (4, 2 + 2\sqrt{-5}, -4 + 2\sqrt{-5})\\
@@ -1589,26 +1597,25 @@ toc=idx
  		ist, wie man unter Beachtung von $\varphi(\sqrt{-5})^2 = 1 = -5$ in $\F_2$ sofort nachrechnet.
  	\end{beispiel}
  
- 	\begin{motivation}\label{2.2.3}
+ 	\begin{motivation}\label{2.2.3}\hfill\newline
  		Zahlringe spielen eine wichtige Rolle bei der Untersuchung arithmetischer Eigenschaften von $\Z$. Leider sind sie nicht immer faktoriell. Der Ausweg wird sein, statt Elemente Ideale und statt Primelemente Primideale zu betrachten
  	\end{motivation}
  
- 	\begin{definition}\label{2.2.4}
- 		[vgl. \ref{2.2.1}(e)]
+ 	\begin{definition}\label{2.2.4} [vgl. \ref{2.2.1}(e)]\newline
  		Ein Integrit\"atsring hei\ss t \emph{Dedekindring}\index{Dedekindringe@\textbf{Dedekindringe}}, wenn darin jedes Ideal ein Produkt von Primidealen ist.
  	\end{definition}
  
- 	\begin{beispiel}\label{2.2.5}
+ 	\begin{beispiel}\label{2.2.5}\hfill\newline
  		Jeder Hauptidealring ist ein Dedekindring
  	\end{beispiel}
  
- 	\begin{definition}\label{2.2.6}
+ 	\begin{definition}\label{2.2.6}\hfill\newline
  		ei $A$ ein Integrit\"atsring. Ein \emph{gebrochenes Ideal}\index{Dedekindringe@\textbf{Dedekindringe}!Gebrochenes Ideal} von $A$ ist ein $A$-Untermodul von $\qf(A)$ mit $sI \subseteq A$ f\"ur ein $s \in A\setminus\set{0}$.
  		
  		Zyklische [$\to$\ref{1.1.4}(d)] gebrochene Ideale nennt man \emph{gebrochene Hauptideale}\index{Dedekindringe@\textbf{Dedekindringe}!Gebrochene Hauptideale}.
  	\end{definition}
  
- 	\begin{bemerkung}\label{2.2.7}
+ 	\begin{bemerkung}\label{2.2.7}\hfill\newline
  		Sei $A$ ein Integrit\"atsring.
  		\begin{enumerate}[(a)]
  			\item Jedes gebrochene Ideal von $A$ ist als $A$-Modul isomorph zu einem Ideal von $A$ (ist n\"amlich $s \in A \setminus \set{0}$ mit $sI \subseteq A$, so $I \xrightarrow{\cong} sI, a\mapsto sa$).
@@ -1619,17 +1626,17 @@ toc=idx
  		\end{enumerate}
  	\end{bemerkung}
  
- 	\begin{prop-def}\label{2.2.8}
- 		Seien $A$ ein Integrit\"atsring und $I, J$ gebrochene Ideale von $A$. Dann sind auch $I+J, I \cap J, I \cdot J = \set{\sum_{i}a_ib_i|a_i \in I, b_i \in J}$ und f\"ur $J \neq 0$ auch 
- 		$I:J := \set{a \in \qf(A)| aJ \subseteq I}$ gebrochene Ideale von $A$.
+ 	\begin{prop-def}\label{2.2.8}\hfill\newline
+ 		Seien $A$ ein Integrit\"atsring und $I, J$ gebrochene Ideale von $A$. Dann sind auch $I+J$, \linebreak $\displaystyle I \cap J, I \cdot J = \set{\sum_{i}a_ib_i \mid a_i \in I, b_i \in J}$ und f\"ur $J \neq 0$ auch 
+ 		$I:J := \set{a \in \qf(A)\mid aJ \subseteq I}$ gebrochene Ideale von $A$.
  		
  		\begin{proof}
  			Mit $I$ und $J$ sind auch $I + J, I \cap J$ (trivial), $IJ$ und $I:J$ $A$-Untermoduln von $\qf(A)$. Sind $s,t \in A \setminus \set{0}$ mit $sI \subseteq A$ und $tJ \subseteq A$, so ist auch $st(I+J) \subseteq A, s(I \cap J)\subseteq A$ und $(st)(IJ) \subseteq A$. Ist ferner $J \neq 0$, so gibt es $b \in J \cap (A \setminus \set{0})$ und es gilt f\"ur $a \in I:J$, dass $(sb)a = s(ab) \in s(aJ)\subseteq sI \subseteq A$, also $sb(I:J) \subseteq A$.
  		\end{proof}
  	\end{prop-def}
  
- 	\begin{def-prop}\label{2.2.9}
- 		Sei $A$ ein Integrit\"atsring und $I$ ein gebrochenes Ideal von $A$. Dann hei\ss t $I$ \emph{invertierbar}\index{Dedekindringe@\textbf{Dedekindringe}!Invertierbares gebrochenes Ideal}, wenn es ein gebrochenes Ideal $J$ von $A$ gibt mit $IJ = A$. In diesem Fall gilt $J=I^{-1}:=A:I$ und $I$ und $J$ sind endlich erzeugt.
+ 	\begin{def-prop}\label{2.2.9}\hfill\newline
+ 		Sei $A$ ein Integrit\"atsring und $I$ ein gebrochenes Ideal von $A$. Dann hei\ss t $I$ \emph{invertierbar}\index{Dedekindringe@\textbf{Dedekindringe}!Invertierbares gebrochenes Ideal}, wenn es ein gebrochenes Ideal $J$ von $A$ gibt mit $IJ = A$. In diesem Fall gilt \linebreak $J=I^{-1}:=A:I$ und $I$ und $J$ sind endlich erzeugt.
  		
  		\begin{proof}
  			Gelte $IJ = A$. Dann $J \subseteq A:I = (A:I)IJ \subseteq AJ = J$, also $J = A:I$. 
@@ -1640,25 +1647,24 @@ toc=idx
  		\end{proof}
  	\end{def-prop}
  
- 	\begin{beispiel}\label{2.2.10}
+ 	\begin{beispiel}\label{2.2.10}\hfill\newline
  		Jedes gebrochene Hauptideal $\neq 0$ eines Integrit\"atsring ist invertierbar.
  	\end{beispiel}
  
- 	\begin{satz}\label{2.2.11}
- 		(Eindeutigkeit der Primidealzerlegung invertierbarer Ideale, unter Beachtung von \ref{2.2.10} und \ref{2.2.1}(b) Verallgemeinerung von \ref{2.2.1}(d))
+ 	\begin{satz}\label{2.2.11} (Eindeutigkeit der Primidealzerlegung invertierbarer Ideale, unter Beachtung von \ref{2.2.10} und \ref{2.2.1}(b) Verallgemeinerung von \ref{2.2.1}(d)) \newline
  		
- 		Sei $A$ ein Integrit\"atsring und $I$ ein Ideal von $A$, was als gebrochenes Ideal invertierbar ist. Seien $m, n \in \N_0$ und $\mathfrak{p}_1,\dots, \mathfrak{p}_m,\mathfrak{q}_1,\dots,\mathfrak{q}_n$ Primideale in $A$ mit $\mathfrak{p}_1\cdot \cdots \cdot \mathfrak{p}_m = \mathfrak{q}_1 \cdot \cdots \cdot \mathfrak{q}_n = I$. Dann gilt $m = n$ und es gibt $\sigma \in S_n$ mit $\mathfrak{p}_i = \mathfrak{q}_{\sigma(i)}$ f\"ur alle $i \in \set{1,\dots, n}$.
+ 		Sei $A$ ein Integrit\"atsring und $I$ ein Ideal von $A$, was als gebrochenes Ideal invertierbar ist. Seien $m, n \in \N_0$ und $\mathfrak{p}_1,\dots, \mathfrak{p}_m,\mathfrak{q}_1,\dots,\mathfrak{q}_n$ Primideale in $A$ mit \linebreak $\mathfrak{p}_1\cdot \cdots \cdot \mathfrak{p}_m = \mathfrak{q}_1 \cdot \cdots \cdot \mathfrak{q}_n = I$. Dann gilt $m = n$ und es gibt $\sigma \in S_n$ mit $\mathfrak{p}_i = \mathfrak{q}_{\sigma(i)}$ f\"ur alle $i \in \set{1,\dots, n}$.
  		
  		\begin{proof}
  			Induktion nach $m$. $m = 0$: trivial.
  			
- 			$m-1 \to m (m \in \N)$. Mit $I$ sind alle $\mathfrak{p}_i$ und $\mathfrak{q}_j$ invertierbar. Aus $\mathfrak{q}_1\cdot \cdots \cdot \mathfrak{q}_n \subseteq \mathfrak{p}_1$ folgt, dass es ein $j$ mit $\mathfrak{q}_j \subseteq \mathfrak{p}_1$ gibt (insbesondere $n\geq 1$). denn andernfalls g\"abe es $b_1 \in \mathfrak{q}_1\setminus \mathfrak{p}_1, \dots b_n \in \mathfrak{q}_n\setminus \mathfrak{p}_1$ und $b1\cdot \cdots \cdot b_n \in \mathfrak{q}_1\cdot \cdots \cdot \mathfrak{q}_n \setminus \mathfrak{p}_1$.
+ 			$m-1 \to m (m \in \N)$. Mit $I$ sind alle $\mathfrak{p}_i$ und $\mathfrak{q}_j$ invertierbar. Aus $\mathfrak{q}_1\cdot \cdots \cdot \mathfrak{q}_n \subseteq \mathfrak{p}_1$ folgt, dass es ein $j$ mit $\mathfrak{q}_j \subseteq \mathfrak{p}_1$ gibt (insbesondere $n\geq 1$). denn andernfalls g\"abe es $b_1 \in \mathfrak{q}_1\setminus \mathfrak{p}_1, \dots b_n \in \mathfrak{q}_n\setminus \mathfrak{p}_1$ und $b_1\cdot \cdots \cdot b_n \in \mathfrak{q}_1\cdot \cdots \cdot \mathfrak{q}_n \setminus \mathfrak{p}_1$.
  			
  			Ohne Einschr\"ankung $j=1$. Nun ist $\mathfrak{p}^{-1}\mathfrak{q}_1$ ein Ideal, weil $\mathfrak{p}_1^{-1}\mathfrak{q}_1 \subseteq \mathfrak{p}_1^{-1}\mathfrak{p}_1 = A$, weshalb $\mathfrak{p}_1(\mathfrak{p}_1^{-1}\mathfrak{q}_1) = \mathfrak{q}_1$ impliziert, dass $\mathfrak{p}_1 \subseteq \mathfrak{q}_1$ oder $\mathfrak{p}_1^{-1}\mathfrak{q}_1 \subseteq \mathfrak{q}_1$, aber letzteres ist unm\"oglich, da sonst $A = \mathfrak{p}_1\mathfrak{p}_1^{-1}\mathfrak{q}_1\mathfrak{q}_1^{-1}\subseteq \mathfrak{p}_1\mathfrak{q}_1\mathfrak{q}_1^{-1} = \mathfrak{p}_1$. Also $\mathfrak{q}_1 \subseteq \mathfrak{p}_1 \subseteq \mathfrak{q}_1$ und daher $\mathfrak{p}_1 = \mathfrak{q}_1$. Somit $\mathfrak{p}_2 \cdot \cdots \cdot \mathfrak{p}_n = I\mathfrak{p}_1^{-1} = \mathfrak{q}_2 \cdot \cdots \cdot \mathfrak{q}_m$. Wende nun die Induktionsvoraussetzung an.
  		\end{proof}
  	\end{satz}
  
- 	\begin{satz}\label{2.2.12}
+ 	\begin{satz}\label{2.2.12}\hfill\newline
  		Sei $A$ ein Dedekindring. Dann gilt 
  		\begin{enumerate}[(a)]
  			\item Jedes Ideal $\neq (0)$ von $A$ ist invertierbar [$\to$\ref{2.2.9}].
@@ -1667,33 +1673,36 @@ toc=idx
  			\item In $A$ ist jedes Primideal $\neq (0)$ maximal.
  		\end{enumerate}
  	
- 		\begin{proof}
- 			\emph{Behauptung 1: Jedes invertierbare Primideal von $A$ ist ein maximales Ideal} [In (d) wird dies sogar f\"ur alle Primideale $\neq (0)$ behauptet].
+ 		\begin{proof}\hfill\newline
+ 			{\color{red}
+ 			\textbf{Behauptung 1}: Jedes invertierbare Primideal von $A$ ist ein maximales Ideal [In (d) wird dies sogar f\"ur alle Primideale $\neq (0)$ behauptet].
  			
- 			\emph{Begr\"undung}: Sei $\mathfrak{p}$ ein invertierbares Primideal von $A$. Wir zeigen, dass $A/\mathfrak{p}$ ein K\"orper ist. Sei hierzu $a \in A$ mit $\overline{a} \neq 0$ in $A/\mathfrak{p}$, das hei\ss t $a \notin \mathfrak{p}$. Zu zeigen ist $\overline{a} \in (A/\mathfrak{p})^*$. Es reicht zu zeigen, dass $I:= aA + \mathfrak{p} = A$. Da $\mathfrak{p}$ invertierbar ist, reich es $a\mathfrak{p} + \mathfrak{p}^2 = \mathfrak{p}$ zu zeigen. Wir zeigen zun\"achst $I^2 = J:= a^2A + \mathfrak{p}$, was wegen $I^2 = a^2A + a\mathfrak{p} + \mathfrak{p}^2$ eine Abschw\"achung der Behauptung ist. Wir wissen $(I/\mathfrak{p})^2 = J/\mathfrak{p}$.
+ 			\smallskip\noindent
+ 			\textbf{Begr\"undung}: Sei $\mathfrak{p}$ ein invertierbares Primideal von $A$. Wir zeigen, dass $A/\mathfrak{p}$ ein K\"orper ist. Sei hierzu $a \in A$ mit $\overline{a} \neq 0$ in $A/\mathfrak{p}$, das hei\ss t $a \notin \mathfrak{p}$. Zu zeigen ist $\overline{a} \in (A/\mathfrak{p})^*$. Es reicht zu zeigen, dass $I:= aA + \mathfrak{p} = A$. Da $\mathfrak{p}$ invertierbar ist, reich es $a\mathfrak{p} + \mathfrak{p}^2 = \mathfrak{p}$ zu zeigen. Wir zeigen zun\"achst $I^2 = J:= a^2A + \mathfrak{p}$, was wegen $I^2 = a^2A + a\mathfrak{p} + \mathfrak{p}^2$ eine Abschw\"achung der Behauptung ist. Wir wissen $(I/\mathfrak{p})^2 = J/\mathfrak{p}$.
  			
- 			Da $A$ ein Dedekindring ist, gibt es $m,n \in \N_0$ und Primideale $\mathfrak{p}_1,\cdots, \mathfrak{p}_m$ und $\mathfrak{q}_1,\dots, \mathfrak{q}_n$ mit $I = \mathfrak{p}_1 \cdots \mathfrak{p}_m$ und $J = \mathfrak{q}_1 \cdots \mathfrak{q}_n$. Es gilt $\mathfrak{p} \subseteq I \subseteq \mathfrak{p}_i$ f\"ur alle $i \in \set{1,\dots, m}$ und $\mathfrak{p} \subseteq J \subseteq \mathfrak{q}_j$ f\"ur alle $j \in\set{1,\dots,n}$. 
+ 			Da $A$ ein Dedekindring ist, gibt es $m,n \in \N_0$ und Primideale $\mathfrak{p}_1,\dots, \mathfrak{p}_m$ und $\mathfrak{q}_1,\dots, \mathfrak{q}_n$ von $A$ mit $I = \mathfrak{p}_1 \cdots \mathfrak{p}_m$ und $J = \mathfrak{q}_1 \cdots \mathfrak{q}_n$. Es gilt $\mathfrak{p} \subseteq I \subseteq \mathfrak{p}_i$ f\"ur alle $i \in \set{1,\dots, m}$ und $\mathfrak{p} \subseteq J \subseteq \mathfrak{q}_j$ f\"ur alle $j \in\set{1,\dots,n}$. 
  			
  			Da die Primideale in $A/\mathfrak{p}$ den Primidealen von $A$ entsprechen, die $\mathfrak{p}$ enthalten, erhalten wir im Integrit\"atsring $A/\mathfrak{p}$ die Primidealzerlegungen
  				\[I/\mathfrak{p} = (\mathfrak{p}_1/\mathfrak{p}) \cdots (\mathfrak{p}_m/\mathfrak{p})\]
  			und 
  				\[J/\mathfrak{p} = (\mathfrak{q}_1/\mathfrak{p}) \cdots (\mathfrak{q}_n/\mathfrak{p})\]
  			
- 			Es folgt $(\mathfrak{p}_1/\mathfrak{p})^2 \cdots (\mathfrak{p}_m/\mathfrak{p})^n = (I/\mathfrak{p})^2 = J/\mathfrak{p} = (\mathfrak{q}_1/\mathfrak{p})\cdots (\mathfrak{q}_n/\mathfrak{p})$
+ 			Es folgt $(\mathfrak{p}_1/\mathfrak{p})^2 \cdots (\mathfrak{p}_m/\mathfrak{p})^2 = (I/\mathfrak{p})^2 = J/\mathfrak{p} = (\mathfrak{q}_1/\mathfrak{p})\cdots (\mathfrak{q}_n/\mathfrak{p})$
  			
- 			Da $J/\mathfrak{p} = (\overline{a}^2) \neq 0$ als Hauptideal nach \ref{2.2.10} invertierbar ist, folgt mit \ref{2.2.11} ohne Einschr\"ankung $(\mathfrak{p}_1/\mathfrak{p}, \mathfrak{p}_1/\mathfrak{p}, \dots, \mathfrak{p}_m/\mathfrak{p}, \mathfrak{p}_m/\mathfrak{p}) = (\mathfrak{q}_1/\mathfrak{p},\dots, \mathfrak{q}_n/\mathfrak{p})$  und daher 
+ 			Da $J/\mathfrak{p} = (\overline{a}^2) \neq 0$ als Hauptideal nach \ref{2.2.10} invertierbar ist, folgt mit \ref{2.2.11} ohne Einschr\"ankung $(\mathfrak{p}_1/\mathfrak{p}, \mathfrak{p}_1/\mathfrak{p}, \dots, \mathfrak{p}_m/\mathfrak{p}, \mathfrak{p}_m/\mathfrak{p}) = (\mathfrak{q}_1/\mathfrak{p},\dots, \mathfrak{q}_n/\mathfrak{p})$  und daher \linebreak
  			$(\mathfrak{p}_1,\mathfrak{p}_1,\dots,\mathfrak{p}_m,\mathfrak{p}_m) = (\mathfrak{q}_1,\dots,\mathfrak{q}_n)$, also $I^2 = J$.
  			
- 			Um schlie\ss lich $a\mathfrak{p} + \mathfrak{p}^2 = \mathfrak{p}$, sei $b \in \mathfrak{p}$. Zu zeigen ist $b \in a\mathfrak{p} + \mathfrak{p}^2$. Wegen $b \in J$ gilt $b \in I^2 = a^2A + a\mathfrak{p}+ \mathfrak{p}^2$. Schreibe $b = a^2c + b'$ mit $c \in A, b' \in a\mathfrak{p}+\mathfrak{p}^2$. Dann $a^2c = b - b' in \mathfrak{p}$ und daher $c \in \mathfrak{p}$. Somit auch $b \in a \mathfrak{p} + \mathfrak{p}^2$
+ 			Um schlie\ss lich $a\mathfrak{p} + \mathfrak{p}^2 = \mathfrak{p}$, sei $b \in \mathfrak{p}$. Zu zeigen ist $b \in a\mathfrak{p} + \mathfrak{p}^2$. Wegen $b \in J$ gilt $b \in I^2 = a^2A + a\mathfrak{p}+ \mathfrak{p}^2$. Schreibe $b = a^2c + b'$ mit $c \in A, b' \in a\mathfrak{p}+\mathfrak{p}^2$. Dann $a^2c = b - b' \in \mathfrak{p}$ und daher $c \in \mathfrak{p}$. Somit auch $b \in a \mathfrak{p} + \mathfrak{p}^2$
+ 			
+ 			\medskip\noindent 
+ 			\textbf{Behauptung 2}: Jedes Primideal $\neq (0)$ von $A$ ist invertierbar [In (a) wird dies sogar f\"ur alle Ideale $\neq 0$ behauptet]
+ 			
+ 			\smallskip\noindent 
+ 			\textbf{Begr\"undung}: Sei $\mathfrak{p} \neq (0)$ ein Primideal von $A$. W\"ahle ein $a \in \mathfrak{p}\setminus \set{0}$. Schreibe $aA = \mathfrak{p}_1 \cdots \mathfrak{p}_n$ mit Primidealen $\mathfrak{p}_1,\dots, \mathfrak{p}_n$ von $A$. Da $aA$ invertierbar ist [$\to$\ref{2.2.10}] ist es auch jedes $\mathfrak{p}_i$. Wegen $\mathfrak{p}_1\cdots \mathfrak{p}_n \subseteq \mathfrak{p}$ ist aber auch $\mathfrak{p}$ eines dieser $\mathfrak{p}_i$, denn es gibt ein $i$ mit $\mathfrak{p}_i \subseteq \mathfrak{p}$ und $\mathfrak{p}_i$ ist maximal nach Behauptung 1.
+ 			}
  			
  			
- 			\emph{Behauptung 2: Jedes Primideal $\neq (0)$ von $A$ ist invertierbar} [In (a) wird dies sogar f\"ur alle Ideale $\neq 0$ behauptet]
- 			
- 			\emph{Begr\"undung}: Sei $\mathfrak{p} \neq (0)$ ein Primideal von $A$. W\"ahle ein $a \mathfrak{p}\setminus \set{0}$. Schreibe $aA = \mathfrak{p}_1 \cdots \mathfrak{p}_n$ mit Primidealen $\mathfrak{p}_1,\dots, \mathfrak{p}_n$ von $A$. Da $aA$ invertierbar ist [$\to$\ref{2.2.10}] ist es auch jedes $\mathfrak{p}_i$. Wegen $\mathfrak{p}_1\cdots \mathfrak{p}_n \subseteq \mathfrak{p}$ ist aber auch $\mathfrak{p}$ eines dieser $\mathfrak{p}_i$, denn es gibt ein $i$ mit $\mathfrak{p}_i \subseteq \mathfrak{p}$ und $\mathfrak{p}_i$ ist maximal nach Behauptung 1.
- 			
- 			\vspace*{2mm}
- 			
- 			Wegen der Existenz der Primfaktorzerlegung in $A$, folgt aus Behauptung 2 sofort (a)- Damit ist Behauptung 1 gleichbedeutend mit (d). 
+ 			\medskip\noindent Wegen der Existenz der Primfaktorzerlegung in $A$, folgt aus Behauptung 2 sofort (a). Damit ist Behauptung 1 gleichbedeutend mit (d). 
  			
  			Aus (a) folgt (c) mit \ref{2.2.9}. Um schlie\ss lich (b) zu zeigen, sei $a \in \qf(A)$ ganz \"uber $A$. Dann ist $A[a]$ ein endlich erzeugter $A$-Modul [$\to$\ref{2.1.5}] und damit ein gebrochenes Ideal von $A$ [$\to$ \ref{2.2.7}(d)], das nach (a) invertierbar ist. 
  			
