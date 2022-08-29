@@ -2279,7 +2279,7 @@ toc=idx
  	
  	\section{Die Idealklassengruppe}\thispagestyle{sectionstart}
  	
- 	\begin{proposition}\label{2.6.1}
+ 	\begin{proposition}\label{2.6.1}\hfill\newline
  		Sei $A$ ein kommutativer Ring. Es sind \"aquivalent:
  		\begin{enumerate}[(a)]
  			\item $A$ ist lokal [$\to$ \ref{1.5.8}(b)]
@@ -2288,54 +2288,68 @@ toc=idx
  			\item $0\neq 1$ und $\forall x \in A: (x \in A^* \lor 1-x \in A^*)$
  		\end{enumerate}
  	
- 		\begin{proof}
- 			$(a) \Rightarrow (b)$: Gelta (a) und setzte $I:= A \setminus A^*$. Dann $ 0 \in I$ (denn $0 \neq 1$ in $A$), $I + I \subseteq I$ und 
- 			$AI \subseteq I$ (denn sind $a \in A$ und $x \in I$, so $ax \in I$, denn w\"are $ax \in A^*$, so auch $x \in A^*$, dann A kommutativ ist)
+ 		\begin{proof}\hfill\newline
+ 			\textbf{(a)$\Longrightarrow$(b)}: Gelte (a) und setzte $I:= A \setminus A^*$. Dann $ 0 \in I$ (denn $0 \neq 1$ in $A$), $I + I \subseteq I$ und 
+ 			$AI \subseteq I$ (denn sind $a \in A$ und $x \in I$, so $ax \in I$, denn w\"are $ax \in A^*$, so auch $x \in A^*$, da A kommutativ ist)
  			
- 			$(b) \Rightarrow (c)$: Ist $I := A \setminus A^*$ ein Ideal von $A$, so ist jedes Ideal $J$ von $A$ mit $1 \notin J$ in $I$ enthalten. Es ist also $I$ das gr\"o\ss te Ideal $\neq A$ von $A$.
+ 			\medskip\noindent
+ 			\textbf{(b)$\Longrightarrow$(c)}: Ist $I := A \setminus A^*$ ein Ideal von $A$, so ist jedes Ideal $J$ von $A$ mit $1 \notin J$ in $I$ enthalten. Es ist also $I$ das gr\"o\ss te Ideal $\neq A$ von $A$.
  			Insbesondere ist $I$ ein maximales Ideal und jedes maximale Ideal von $A$ gleich $I$.
  			
- 			$(c) \Rightarrow (d)$: Beweis durch Kontraposition. Gelte $0 = 1$ oder $\exists x \in A: (x \notin A^* \land 1-x \notin A^*)$. 
+ 			\medskip\noindent
+ 			\textbf{(c)$\Longrightarrow$(d)}: Beweis durch Kontraposition. Gelte $0 = 1$ oder $\exists x \in A: (x \notin A^* \land 1-x \notin A^*)$. 
  			
  			Falls $0 = 1$ in $A$, so besitzt $A$ kein maximales Ideal. 
  			
  			Sei nun $x \in A$ mit $x \notin A^*$ und $1-x \notin A^*$. Wegen $1 \notin (x)$ und $1 \notin (1-x)$ gibt es maximale Ideale $(x) \subseteq \mathfrak{m}, (1-x) \subseteq \mathfrak{n}$. Es gilt $\mathfrak{m} \neq \mathfrak{n}$, denn sonst $1 = x + (1-x) \in \mathfrak{m} = \mathfrak{n}$.
  			
- 			$(d) \Rightarrow (a)$: Gelte (d) und seien $a, b \in A$ mit $a+b \in A^*$. Zu zeigen $a \in A^*$ oder $b \in A^*$.
+ 			\medskip\noindent
+ 			\textbf{(d)$\Longrightarrow$(a)}: Gelte (d) und seien $a, b \in A$ mit $a+b \in A^*$. Zu zeigen $a \in A^*$ oder $b \in A^*$.
  			
  			W\"ahle $c \in A$ mit $ac+ bc = (a+b)c = 1$. Wegen (d) gilt $ac \in A^*$ oder $bc \in A^*$, also $a \in A^*$ oder $b \in A^*$.
  		\end{proof}
  	\end{proposition}
  
- 	\begin{erinnerung}\label{2.6.2}
+ 	\begin{erinnerung}\label{2.6.2}\hfill
  		\begin{enumerate}[(a)]
  			\item Sei $K$ ein K\"orper. Dann hei\ss t $v:K \to \Z \cup \set{\infty}$ ein \emph{diskrete Bewertung} auf $K$, wenn $v(0) = \infty$, $v\big|_{K^*}$ ein Gruppenhomomorphismus von $(K^*, \cdot)$ nach $(\Z, +)$ ist und $v(a + b)\geq \min \set{v(a), v(b)}$ f\"ur alle $a, b \in K$.
  			
- 			\item Sei $K$ ein K\"orper und $v$ eine diskrete Bewertung auf $K$. Dann ist $\mathcal{O}_v := \set{a \in K| v(a) \geq 0}$ ein Unterring von $K$, er sogenannte Bewertungsring von $v$. Es gilt 
- 			$\mathcal{O}_v^* = \set{a \in K| v(a) = 0}$ und $\mathcal{O}_v$ ist ein lokaler Ring mit maximalem Ideal $\mathfrak{m}_v = \set{a \in K| v(a) > 0}$ und Restklassenk\"orper $\mathcal{O}_v / \mathfrak{m}_v$.
+ 			\item Sei $K$ ein K\"orper und $v$ eine diskrete Bewertung auf $K$. Dann ist $\mathcal{O}_v := \set{a \in K \mid v(a) \geq 0}$ ein Unterring von $K$, der sogenannte Bewertungsring von $v$. Es gilt 
+ 			$\mathcal{O}_v^* = \set{a \in K \mid v(a) = 0}$ und $\mathcal{O}_v$ ist ein lokaler Ring mit maximalem Ideal $\mathfrak{m}_v = \set{a \in K \mid v(a) > 0}$ und Restklassenk\"orper $\mathcal{O}_v / \mathfrak{m}_v$.
  			
- 			\item Sei $A$ ein faktorieller Ring, $K:= \qf(A)$. F\"ur jedes $x \in K^*$ gibt es genau ein $(c \alpha_x) \in A^*\times \Z^{(\P_A)}$ mit $x = c \prod_{p \in \supp(\alpha_x)} p^{\alpha_x(p)}$. Dann ist f\"ur jedes $p \in \P_A$ die $p$-Bewertung $v_p: K \to \Z, x \mapsto \begin{cases}
+ 			\item Sei $A$ ein faktorieller Ring, $K:= \qf(A)$. F\"ur jedes $x \in K^*$ gibt es genau ein \linebreak $(c, \alpha_x) \in A^*\times \Z^{(\P_A)}$ mit $x = c \prod_{p \in \supp(\alpha_x)} p^{\alpha_x(p)}$. Dann ist f\"ur jedes $p \in \P_A$ die $p$-Bewertung $v_p: K \to \Z, x \mapsto \begin{cases}
  				\infty & \textrm{falls } x = 0\\
  				\alpha_x(p) & \textrm{sonst}
  			\end{cases}$ eine diskrete Bewertung auf $K$.
  		\end{enumerate}
  	\end{erinnerung}
  
- 	\begin{notation}\label{2.6.3}
- 		Sei $A$ ein Dedekindring.  $M_A := \set{\mathfrak{p}| \mathfrak{p} \textrm{ Primideal von } A, \mathfrak{p} \neq (0)} \overset{\ref{2.2.12}(d)}{=} \set{\mathfrak{m}| \mathfrak{m} \textrm{ maximales von } A, \mathfrak{m} \neq (0)}$
+ 	\begin{notation}\label{2.6.3}\hfill\newline
+ 		Sei $A$ ein Dedekindring.  
+ 		\[M_A := \set{\mathfrak{p} \mid \mathfrak{p} \textrm{ Primideal von } A, \mathfrak{p} \neq (0)} \overset{\ref{2.2.12}(d)}{=} \set{\mathfrak{m} \mid \mathfrak{m} \textrm{ maximales von } A, \mathfrak{m} \neq (0)}\]
  		
- 		$I_A := \set{I| I \textrm{ gebrochenes Ideal von } A, I \neq (0)} \overset{\ref{2.2.7}(e), \ref{2.2.12}(c)}{=} \set{I | I \textrm{ e.e. A-Untermodul von } \qf(A), I \neq 0}$
- 		
- 		$P_A := \set{I| I \textrm{ gebrochenes Hauptideal von } A, I \neq (0)} = \overset{\ref{2.2.6}}{=} \set{I | I \textrm{ zyklischer A-Untermodul von} \qf(A), I \neq 0}$
+ 		\begin{align*}
+ 			I_A &:= \set{I \mid I \textrm{ gebrochenes Ideal von } A, I \neq (0)} \\
+ 			&\overset{\ref{2.2.7}(e), \ref{2.2.12}(c)}{=} \set{I \mid I \textrm{ e.e. A-Untermodul von } \qf(A), I \neq 0}
+ 		\end{align*}
+		\begin{align*}
+			P_A &:= \set{I \mid I \textrm{ gebrochenes Hauptideal von } A, I \neq (0)} \\
+			&\overset{\ref{2.2.6}}{=} \set{I \mid I \textrm{ zyklischer A-Untermodul von} \qf(A), I \neq 0}
+		\end{align*}
  	\end{notation}
  
- 	\begin{satz-not}\label{2.6.4}
- 		Sei $A$ ein Dedekindring, $K:= \qf(A)$. F\"ur jedes $I \in I_A$ gibt es genau ein $\alpha_I \in \Z^{(M_A)}$ mit $I=\prod_{\mathfrak{p} \in \supp(\alpha_I)} \mathfrak{p}^{\alpha_I(\mathfrak{p})}$
+ 	\begin{satz-not}\label{2.6.4}\hfill\newline
+ 		Sei $A$ ein Dedekindring, $K:= \qf(A)$. F\"ur jedes $I \in I_A$ gibt es genau ein $\alpha_I \in \Z^{(M_A)}$ mit $\displaystyle I=\prod_{\mathfrak{p} \in \supp(\alpha_I)} \mathfrak{p}^{\alpha_I(\mathfrak{p})}$
  		
- 		Definiere f\"ur $\mathfrak{p} \in M_A$ $\tilde{v}_\mathfrak{p}: I_A \cup \set{0} \to \Z \cup \set{\infty}$, $I \mapsto \begin{cases}
- 			\infty & \textrm{ falls } I = 0\\
+ 		\medskip\noindent 
+ 		Definiere f\"ur $\mathfrak{p} \in M_A$ 
+ 		\begin{align*}
+ 			\tilde{v}_\mathfrak{p}: I_A \cup \set{0} &\to \Z \cup \set{\infty}\\
+ 			I &\mapsto \begin{cases}
+ 			\infty & \textrm{falls } I = 0\\
  			\alpha_I(\mathfrak{p}) & \textrm{sonst}
- 		\end{cases}$
+ 			\end{cases}
+ 		\end{align*}
  	
  		und die \emph{$\mathfrak{p}$-Bewertung} $v_\mathfrak{p}: K \to \Z \cup \set{\infty}, x \mapsto \tilde{v}_\mathfrak{p}(xA)$.
  		
@@ -2343,10 +2357,13 @@ toc=idx
  		\begin{enumerate}[(a)]
  			\item 
  			$I_A \to \Z^{(M_A)}, I \mapsto \alpha_I = (\tilde{v}_\mathfrak{p}(I))_{\mathfrak{p} \in M_A}$ ist ein Isomorphismus zwischen der Menge der durch Inklusion halbgeordneten Menge $I_A$ und der durch
- 			$\alpha \preceq \beta : \Leftrightarrow \forall \mathfrak{p} \in M_A: \alpha(\mathfrak{p}) \geq \beta(\mathfrak{p})$ ($\alpha, \beta \in \Z^{(M_A)}$) halbgeordneten Menge $\Z^{M_A}$
+ 			\begin{align}
+ 				\alpha \preceq \beta : \Longleftrightarrow \forall \mathfrak{p} \in M_A: \alpha(\mathfrak{p}) \geq \beta(\mathfrak{p}) \label{2.6.4.1}\tag{$*$}
+ 			\end{align}
+ 			 ($\alpha, \beta \in \Z^{(M_A)}$) halbgeordneten Menge $\Z^{M_A}$
  			
  			\item
- 			F\"ur alle $\mathfrak{p} \in M_A$ und $I, J \in I_A$ gilt $\tilde{v}_\mathfrak{p}(IJ) = \tilde{v}_\mathfrak{p}(I) + \tilde{v}_\mathfrak{p}(J)$ und $\tilde{v}_\mathfrak{p}(I+J) = \min \set{\tilde{v}_\mathfrak{p}, \tilde{v}_\mathfrak{p}(J)}$
+ 			F\"ur alle $\mathfrak{p} \in M_A$ und $I, J \in I_A$ gilt $\tilde{v}_\mathfrak{p}(IJ) = \tilde{v}_\mathfrak{p}(I) + \tilde{v}_\mathfrak{p}(J)$, $\tilde{v}_\mathfrak{p}(I\cap J) = \max \set{\tilde{v}_\mathfrak{p}(I), \tilde{v}_\mathfrak{p}(J)}$ und $\tilde{v}_\mathfrak{p}(I+J) = \min \set{\tilde{v}_\mathfrak{p}(I), \tilde{v}_\mathfrak{p}(J)}$
  			
  			\item F\"ur alle $\mathfrak{p} \in M_A$ ist $v_\mathfrak{p}$ ein diskrete Bewertung auf $K$. 
  		\end{enumerate}
@@ -2354,7 +2371,7 @@ toc=idx
  		\begin{proof}
  			Die Existenz von $\alpha_I \in \N_0^{(M_A)}$ mit $I = \prod_{\mathfrak{p} \in \supp(\alpha_I)} \mathfrak{p}^{\alpha_I(\mathfrak{p})}$ folgt f\"ur Ideale $I \in I_A$ aus der Definition eines Dedekindringes \ref{2.2.4}. 
  			
- 			Da jedes $I \in I_A$ von der Form $JK^{-1}$ f\"ur Ideale $J,K \in I_A$ ist (sogar mit $K$ Hauptideal, siehe \ref{2.2.7}(b))m folgt die Existenz von $\alpha_I \in \Z^{(M_A)}$ mit $I = \prod_{\mathfrak{p} \in \supp(\alpha_I)} \mathfrak{p}^{\alpha_I(\mathfrak{p})}$.
+ 			Da jedes $I \in I_A$ von der Form $JK^{-1}$ f\"ur Ideale $J,K \in I_A$ ist (sogar mit $K$ Hauptideal, siehe \ref{2.2.7}(b)) folgt die Existenz von $\alpha_I \in \Z^{(M_A)}$ mit $I = \prod_{\mathfrak{p} \in \supp(\alpha_I)} \mathfrak{p}^{\alpha_I(\mathfrak{p})}$.
  			
  			Die Eindeutigkeit dieses $\alpha_I$ folgert man leicht aus \ref{2.2.11} mit \ref{2.2.12}(a).
  			
@@ -2364,12 +2381,13 @@ toc=idx
  			\begin{enumerate}[(1)]
  				\item $\Phi \circ \Psi = \id_{\Z^{(M_A)}}$
  				\item $\Psi \circ \Phi = \id_{I_A}$
- 				\item $\forall I, J \in I_A: (I \subseteq J \Rightarrow \Phi(I) \preceq \Phi(J))$
- 				\item $\forall \alpha, \beta \in \Z^{(M_A)}: ( \alpha \preceq \beta \Rightarrow \Psi(\alpha) \subseteq \Psi(\beta))$
+ 				\item $\forall I, J \in I_A: (I \subseteq J \Longrightarrow \Phi(I) \preceq \Phi(J))$
+ 				\item $\forall \alpha, \beta \in \Z^{(M_A)}: ( \alpha \preceq \beta \Longrightarrow \Psi(\alpha) \subseteq \Psi(\beta))$
  			\end{enumerate}
  		
- 			(1) und (2) sind klar. Zu (3). Seien $I, J \in I_A$ mit $I \subseteq J$. Dann ist $J^{-1}I \subseteq J^{-1}J = A$ ein Produkt von Primidealen, also $\Phi(J^{-1}I) \preceq 0$. Somit 
- 			$\Phi(I) = \Phi((JJ^{-1})I) = \Phi(J(J^{-1}I)) = \Phi(J) + \Phi(J^{-1}I) \preceq \Phi(J)$.
+ 			(1) und (2) sind klar. Zu (3). Seien $I, J \in I_A$ mit $I \subseteq J$. Dann ist $J^{-1}I \subseteq J^{-1}J = A$ ein Produkt von Primidealen, also $\Phi(J^{-1}I) \preceq 0$. 
+ 			
+ 			Somit $\Phi(I) = \Phi((JJ^{-1})I) = \Phi(J(J^{-1}I)) = \Phi(J) + \Phi(J^{-1}I) \preceq \Phi(J)$.
  			
  			Zu (4). Seien $\alpha, \beta \in \Z^{(M_A)}$ mit $\alpha \preceq \beta$. Dann $\alpha - \beta \preceq 0$ und daher $\Psi(\alpha - \beta ) \subseteq A$.
  			
@@ -2377,34 +2395,38 @@ toc=idx
  			
  			(b) Die erste Gleichung ist trivial. Die beiden anderen Gleichungen folgen aus (a) durch die folgenden Beobachtungen:
  			
- 			In der halbgeordneten Menge $I_A$ ist $\inf \set{I, J} = I \cap J$ und $\sup \set{I, J} = I + J$ f\"ur alle $I, J \in I_A$ und in der durch (*) halbgeordneten Menge
- 			$\Z^{(M_A)}$ ist $\inf \set{\alpha, \beta} = \begin{pmatrix}
- 					M_A &\to \Z\hfill\\
- 					\mathfrak{p} &\mapsto \max \set{\alpha(\mathfrak{p}), \beta(\mathfrak{p})}
- 			\end{pmatrix}$
+ 			In der halbgeordneten Menge $I_A$ ist $\inf \set{I, J} = I \cap J$ und $\sup \set{I, J} = I + J$ f\"ur alle $I, J \in I_A$ und in der durch (\ref{2.6.4.1}) halbgeordneten Menge
+ 			$\Z^{(M_A)}$ ist \[\inf \set{\alpha, \beta} = \begin{pmatrix}
+ 					M_A &\to& \Z\\
+ 					\mathfrak{p} &\mapsto& \max \set{\alpha(\mathfrak{p}), \beta(\mathfrak{p})}
+ 			\end{pmatrix}\]
  		
- 			und $\sup \set{\alpha, \beta} = \begin{pmatrix}
- 					M_A &\to \Z\hfill\\
- 					\mathfrak{p} &\mapsto \min \set{\alpha(\mathfrak{p}), \beta(\mathfrak{p})}
- 			\end{pmatrix}$ f\"ur alle $\alpha, \beta \in \Z^{(M_A)}$
+ 			und 
+ 			\[\sup \set{\alpha, \beta} = \begin{pmatrix}
+ 					M_A &\to& \Z\hfill\\
+ 					\mathfrak{p} &\mapsto& \min \set{\alpha(\mathfrak{p}), \beta(\mathfrak{p})}
+ 			\end{pmatrix}\] 
+ 			f\"ur alle $\alpha, \beta \in \Z^{(M_A)}$
  		
- 			(c) Sei $\mathfrak{p} \in M_A$. Dann gilt $v_\mathfrak{p}(0) = \tilde{v}_\mathfrak{p}(0) = \infty$, $v_\mathfrak{p}(xy) = \tilde{v}_\mathfrak{p}((xy)A) = \tilde{v}_\mathfrak{p}((xA)(yA)) \overset{(b)}{=} \tilde{v}_\mathfrak{p}(xA) + \tilde{v}_\mathfrak{p}(yA)$ f\"ur alle $x, y\in K^*$ und $v_\mathfrak{p}(x+y) = \tilde{v}_\mathfrak{p}((x+y)A) \geq \tilde{v}_\mathfrak{p}(xA) + \tilde{v}_\mathfrak{p}(yA) \overset{(b)}{=} \min \set{\tilde{v}_\mathfrak{p}(xA), \tilde{v}_\mathfrak{p}(yA)} = \min \set{v_\mathfrak{p}(x), v_\mathfrak{p}(y)}$ f\"ur alle $x,y \in K^*$ mit $x+y\neq 0$
+ 			(c) Sei $\mathfrak{p} \in M_A$. Dann gilt $v_\mathfrak{p}(0) = \tilde{v}_\mathfrak{p}(0) = \infty$, 
+ 			\[v_\mathfrak{p}(xy) = \tilde{v}_\mathfrak{p}((xy)A) = \tilde{v}_\mathfrak{p}((xA)(yA)) \overset{(b)}{=} \tilde{v}_\mathfrak{p}(xA) + \tilde{v}_\mathfrak{p}(yA)\] f\"ur alle $x, y\in K^*$ und 
+ 			\[v_\mathfrak{p}(x+y) = \tilde{v}_\mathfrak{p}((x+y)A) \geq \tilde{v}_\mathfrak{p}(xA) + \tilde{v}_\mathfrak{p}(yA) \overset{(b)}{=} \min \set{\tilde{v}_\mathfrak{p}(xA), \tilde{v}_\mathfrak{p}(yA)} = \min \set{v_\mathfrak{p}(x), v_\mathfrak{p}(y)}\] f\"ur alle $x,y \in K^*$ mit $x+y\neq 0$
  		\end{proof}
  	\end{satz-not}
  
- 	\begin{korollar}\label{2.6.5}
+ 	\begin{korollar}\label{2.6.5}\hfill\newline
  		Sei $A$ ein Dedekindring. $I_A$ ist eine multiplikativ geschriebene abelsche Gruppe und als solche ein freier $\Z$-Modul mit Basis $M_A$.
  		
  		\begin{proof}
- 			Dass $I_A$ eine abelsche Gruppe ist , ist klar. Aus \ref{2.6.4} folgt, dass $I_A \to \Z^{(M_A)}, I \mapsto  (\tilde{v}_\mathfrak{p}(I))_{\mathfrak{p} \in M_A}$ auch ein Isomorphismus zwischen der multiplikativ geschriebenen Gruppe $I_A$ und der additiv geschriebenen Gruppe $\Z^{(M_A)}$ ist. Unter diesem Isomorphismus wird $M_A$ auf die kanonische Basis des $\Z$-Moduls $\Z^{(M_A)}$ abgebildet wird. 
+ 			Dass $I_A$ eine abelsche Gruppe ist , ist klar. Aus \ref{2.6.4} folgt, dass \linebreak  $I_A \to \Z^{(M_A)}, I \mapsto  (\tilde{v}_\mathfrak{p}(I))_{\mathfrak{p} \in M_A}$ auch ein Isomorphismus zwischen der multiplikativ geschriebenen Gruppe $I_A$ und der additiv geschriebenen Gruppe $\Z^{(M_A)}$ ist. Unter diesem Isomorphismus wird $M_A$ auf die kanonische Basis des $\Z$-Moduls $\Z^{(M_A)}$ abgebildet wird. 
  		\end{proof}
  	\end{korollar}
  
- 	\begin{bem-not}\label{2.6.6}
+ 	\begin{bem-not}\label{2.6.6}\hfill\newline
  		Sei $A$ ein Dedekindring. Dann ist $P_A$ eine Untergruppe von $I_A$. Man nennt $C_A := I_A /P_A$ die \emph{(Ideal-)Klassengruppe} von $A$ und deren Ordnung $\#C_A \in \N \cup \set{\infty}$ die \emph{Klassenzahl} von $A$. 
  	\end{bem-not}
  
- 	\begin{proposition}\label{2.6.7}
+ 	\begin{proposition}\label{2.6.7}\hfill\newline
  		Sei $A$ ein Dedekindring. Es sind \"aquivalent
  		
  		\begin{enumerate}[(a)]
@@ -2415,20 +2437,22 @@ toc=idx
  			\item $A$ ist faktoriell
  		\end{enumerate}
  	
- 		\begin{proof}
- 			(a) $\Leftrightarrow I_A = P_A \Leftrightarrow I_A / P_A = \set{1} \Leftrightarrow C_A = \set{1} \Leftrightarrow \#C_A = 1 \Leftrightarrow (b)$.
+ 		\begin{proof}\hfill\newline
+ 			\textbf{(a)} $\Longleftrightarrow I_A = P_A \Leftrightarrow I_A / P_A = \set{1} \Longleftrightarrow C_A = \set{1} \Longleftrightarrow \#C_A = 1 \Longleftrightarrow (b)$.
  			
- 			(a) $\Rightarrow$ (c) klar
+ 			\medskip\noindent
+ 			\textbf{(a)$\Longrightarrow$(c)} klar
  			
- 			(c) $\Rightarrow$ (a). Gelte (c). Da die Gruppe $I_A$ von $M_A$ erzeugt wird, reicht es $M_A \subseteq P_A$ zu zeigen. Sei hierzu $\mathfrak{p} \in M_A$. W\"ahle $x \in \mathfrak{p} $ mit $x \neq 0$. W\"ahle $n \in \N$ und Primelemente $p_1, \dots, p_n \in A$ mit $x = p_1 \cdot \cdots \cdot p_n$. Wegen $p_1 \cdot \cdots \cdot p_n \in \mathfrak{p}$ gibt es $i \in \set{1,\dots, n}$ mit $p_i \in \mathfrak{p}$. Weil $(p_i) \in M_A$ gilt muss $(p_i) = \mathfrak{p}$ sein.		
+ 			\medskip\noindent
+ 			\textbf{(c)$\Longrightarrow$(a)}. Gelte (c). Da die Gruppe $I_A$ von $M_A$ erzeugt wird, reicht es $M_A \subseteq P_A$ zu zeigen. Sei hierzu $\mathfrak{p} \in M_A$. W\"ahle $x \in \mathfrak{p} $ mit $x \neq 0$. W\"ahle $n \in \N$ und Primelemente $p_1, \dots, p_n \in A$ mit $x = p_1 \cdot \cdots \cdot p_n$. Wegen $p_1 \cdot \cdots \cdot p_n \in \mathfrak{p}$ gibt es $i \in \set{1,\dots, n}$ mit $p_i \in \mathfrak{p}$. Weil $(p_i) \in M_A$ gilt muss $(p_i) = \mathfrak{p}$ sein.		
  		\end{proof}
  	\end{proposition}
  
- 	\begin{korollar}\label{2.6.8}
+ 	\begin{korollar}\label{2.6.8}\hfill\newline
  		Ein Ring genau dann ein Hauptidealring, wenn er ein faktorieller Dedekindring ist.
  	\end{korollar}
  
- 	\begin{bemerkung}\label{2.6.9}
+ 	\begin{bemerkung}\label{2.6.9}\hfill\newline
  		Sei $A$ ein Hauptidealring. Dann gilt f\"ur alle $p \in \P_A, v_p = v_\mathfrak{p}$, wobei $\mathfrak{p} = (p) \in M_A$.
  	\end{bemerkung}
 
