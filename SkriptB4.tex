@@ -2106,7 +2106,7 @@ toc=idx
 		Sei $L|K$ eine endliche K\"orpererweiterung und $\underline{v} =(v_1, \dots, v_n)$ eine Basis des $K$-Vektorraumes $L$. Dann sind \"aquivalent:
 		\begin{enumerate}[(a)]
 			\item $L|K$ ist separabel
-			\item Sie Spurform [$\to$ \ref{2.4.18}] von $L|K$ ist nicht ausgeartet
+			\item Die Spurform [$\to$ \ref{2.4.18}] von $L|K$ ist nicht ausgeartet
 			\item $d_{L|K}(v_1, \dots, v_n) \neq 0$
 			\item $\tr_{L|K} \neq 0$
 		\end{enumerate}
@@ -2181,38 +2181,45 @@ toc=idx
  
  	\newpage
  	\section{Dedekindringe und K\"orpererweiterungen}\thispagestyle{sectionstart}
- 	\begin{lemma}\label{2.5.1}
+ 	\begin{lemma}\label{2.5.1}\hfill\newline
  		Sei $A$ ein Integrit\"atsring, $K:= \qf(A), L|K$ eine endliche K\"orpererweiterung und $B$ der ganze Abschluss von $A$ in $L$.
  		
- 		Dann ist $L = \brac{A\setminus \set{0}}^{-1} B$ und es gibt Elemente von $B$, die eine Basis de $K$-Vektorraumes $L$ bilden.
+ 		\medskip\noindent 
+ 		Dann ist $L = \brac{A\setminus \set{0}}^{-1} B = \set{a^{-1}b \mid a \in A \setminus \set{0}, b \in B}$ und es gibt Elemente von $B$, die eine Basis des $K$-Vektorraumes $L$ bilden.
  		
  		\begin{proof}
- 			Sei $x \in L$. Dann gibt $n \in \N$ und $a_0, \dots, a_n \in A$ mit $a_nx^n + \cdots + a_0 = 0$ und $a_n \neq 0$. Multiplizieren mit $a_n^{n-1}$ liefert
+ 			Sei $x \in L$. Dann gibt es $n \in \N$ und $a_0, \dots, a_n \in A$ mit $a_nx^n + \cdots + a_0 = 0$ und $a_n \neq 0$. Multiplizieren mit $a_n^{n-1}$ liefert
  				\[(a_nx)^n + a_{n-1}(a_nx)^{n-1} + \cdots + a_0a_n^{n-1} = 0\]
  			woraus $a_nx \in B$ folgt und damit $x = a_n^{-1}(a_nx) \in \brac{A \setminus \set{0}}^{-1}B$ folgt.
  		\end{proof} 
  	\end{lemma}
  	
- 	\begin{satz}\label{2.5.2}
+ 	\begin{satz}\label{2.5.2}\hfill\newline
  		Sei $A$ ein ganz abgeschlossener noetherscher Integrit\"atsring, $K:= \qf(A), L|K$ eine endliche separable K\"orpererweiterung und $B$ der ganze Abschluss von $A$ in $L$.
  		
+ 		\medskip\noindent 
  		Dann ist $B$ als $A$-Modul und daher als Ring noethersch.
  		
  		\begin{proof}
- 			Nach Lemma \ref{2.5.1} gibt es $n \in \N_0$ und $v_1, \dot, v_n \in B$ derart, dass $\underline{v} := (v_1, \dots, v_n)$ eine Basis des $K$-Vektorraumes $L$ ist.
+ 			Nach Lemma \ref{2.5.1} gibt es $n \in \N_0$ und $v_1, \dots, v_n \in B$ derart, dass \linebreak $\underline{v} := (v_1, \dots, v_n)$ eine Basis des $K$-Vektorraumes $L$ ist.
  			
  			Bezeichne $\underline{w} := (w_1, \dots, w_n)$ die dazu bez\"uglich der nach \ref{2.4.23} nicht ausgearteten Spurform von $L|K$ duale Basis [$\to$ \ref{2.4.17}]
  			
- 			\emph{Behauptung: $\forall x \in Lx = \sum_{i=1}^{n} \tr_{L|K}(v_ix)w_i$}.
+ 			{\color{red}
+ 			\noindent
+ 			\textbf{Behauptung}: $\forall x \in L: x = \sum_{i=1}^{n} \tr_{L|K}(v_ix)w_i$.
  			
- 			\emph{Begr\"undung: } W\"ahle $a_1, \dots, a_n \in K$ mit $x = \sum_{i=1}^{n} a_iw_i$. Dann 
+ 			\smallskip\noindent
+ 			\textbf{Begr\"undung: } W\"ahle $a_1, \dots, a_n \in K$ mit $x = \sum_{i=1}^{n} a_iw_i$. Dann 
  			\begin{align*}
  				\tr_{L|K}(v_jx) &= \tr_{L|K}\brac{v_j\sum_{i=1}^{n}a_iw_i}\\
  				&= \sum_{i=1}^{n} a_i\tr_{L|K}(v_jw_i)\\
  				&= a_j
  			\end{align*}
  			f\"ur alle $j \in \set{1,\dots, n}$.
- 			
+ 			}
+ 		
+ 			\medskip\noindent
  			Wegen $v_1, \dots, v_n \in B$ und $\tr_{L|K}(B) \overset{\ref{2.4.25}}{\subseteq} A$, folgt, dass $B \subseteq \sum_{i=1}^{n} Aw_i =: M$. Da $A$ noethersch ist,
  			ist $M$ als endlich erzeugter $A$-Modul nach \ref{1.4.7} auch noethersch. Damit ist auch $B$ ein noetherscher $A$-Modul.
  			
@@ -2221,36 +2228,40 @@ toc=idx
  		\end{proof}
  	\end{satz}
  
- 	\begin{lemma}\label{2.5.3}
+ 	\begin{lemma}\label{2.5.3}\hfill\newline
  		Sei $A \subseteq B$ ein ganze Erweiterung von Integrit\"atsringe. Sei $\mathfrak{p}$ ein Primideal und $I$ ein Ideal von $B$ mit $\mathfrak{p} \subseteq I$. Dann 
- 		\[(A \cap \mathfrak{p} = A \cap I) \Rightarrow \mathfrak{p} = I\]
+ 		\[(A \cap \mathfrak{p} = A \cap I) \Longrightarrow \mathfrak{p} = I\]
  		
  		\begin{proof}
- 			Gelta $A \cap \mathfrak{p} = A \cap I$ und sei $x \in I$. Zu zeigen ist $x \in \mathfrak{p}$.
+ 			Gelte $A \cap \mathfrak{p} = A \cap I$ und sei $x \in I$. Zu zeigen ist $x \in \mathfrak{p}$.
  			
  			W\"ahle $n \in \N_0$ und $a_0, \dots, a_n \in A$ mit $a_0x^n + \cdots + a_n = 0$ und $a_0 = 1$. W\"ahle $m \in \set{0, \dots, n}$ mit $a_m \notin \mathfrak{p}$ und $a_{m+1}, \dots, a_n \in \mathfrak{p}$. Nun 
  			\[x^{n-m}(a_0x^m + a_1x^{m-1} + \cdots + a_m) = -a_{m+1}x^{n-m-1} \cdots - a_n \in \mathfrak{p}\]
- 			also $x \in \mathfrak{p}$ oder $a_0x^m + \cdots a_m \in \mathfrak{p} \subseteq I$. G\"alte letzteres, so $a_m \in I$ wegen $x \in I$ und daher $a_m \in A \cap I = A \cap \mathfrak{p} \subseteq \mathfrak{p}$.
+ 			also $x \in \mathfrak{p}$ oder $a_0x^m + \cdots a_m \in \mathfrak{p} \subseteq I$. G\"alte letzteres, so $a_m \in I$ wegen $x \in I$ und daher $a_m \in A \cap I = A \cap \mathfrak{p} \subseteq \mathfrak{p}\lightning$.
  		\end{proof}
  	\end{lemma}
  
- 	\begin{satz}\label{2.5.4}
- 		Sei $A$ ein Dedekindring, $K:= \qf(A), L|K$ eine endliche separable K\"orpererweiterung und $B$ der ganze Abschluss von $A$ in $L$. Dann ist $B$ ein Dedekindring.
+ 	\begin{satz}\label{2.5.4}\hfill\newline
+ 		Sei $A$ ein Dedekindring, $K:= \qf(A), L|K$ eine endliche separable K\"orpererweiterung und $B$ der ganze Abschluss von $A$ in $L$. 
+ 		
+ 		\medskip\noindent 
+ 		Dann ist $B$ ein Dedekindring.
  		
  		\begin{proof}
  			Wir benutzen die Charakterisierung \ref{2.3.2} von Dedekindringen.
  			
  			Wegen \ref{2.5.2} ist $B$ noethersch. Wegen Lemma \ref{2.5.1} ist $L = \qf(B)$ und daher $B$ ganz abgeschlossen.
  			
- 			Sei schlie\ss lich $\mathfrak{p} \neq (0)$ ein Primideal von $B$. ZU zeigen: $\mathfrak{p}$ ist maximal. Sei $I$ ein Ideal von $B$ mit $1 \notin I$ und $\mathfrak{p} \subseteq I$. Zu zeigen $\mathfrak{p} = I$.
+ 			Sei schlie\ss lich $\mathfrak{p} \neq (0)$ ein Primideal von $B$. Zu zeigen: $\mathfrak{p}$ ist maximal. Sei $I$ ein Ideal von $B$ mit $1 \notin I$ und $\mathfrak{p} \subseteq I$. Zu zeigen $\mathfrak{p} = I$.
  			
  			Nach Lemma \ref{2.5.3} reicht es $A \cap \mathfrak{p} = A \cap I$ zu zeigen. Dies folgt daraus, dass $A$ ein Dedekindring ist, denn $A \cap \mathfrak{p}$ ist ein Primideal und $A \cap I$ ist ein Ideal von $A$ mit $A \cap \mathfrak{p} \subseteq A \cap I, 1 \notin A \cap I$ und $A \cap \mathfrak{p} \neq (0)$ (w\"are $A \cap \mathfrak{p} = (0)$, so wende man Lemma \ref{2.5.3} nochmal an mit $(0)$ als Primideal und $\mathfrak{p}$ als Ideal).
  		\end{proof}
  	\end{satz}
  
- 	\begin{satz}\label{2.5.5}
+ 	\begin{satz}\label{2.5.5}\hfill\newline
  		Sei $A$ ein Hauptidealring, $K:=\qf(A), L|K$ eine endliche separable K\"orpererweiterung und $B$ der ganze Abschluss von $A$ in $L$. 
  		
+ 		\medskip\noindent
  		Dann ist $B$ ein freier $A$-Modul vom Rang $[L:K]$. Jede Basis des $A$-Moduls $B$ ist auch eine Basis des $K$-Vektorraumes $L$.
  		
  		\begin{proof}
@@ -2260,8 +2271,8 @@ toc=idx
  		\end{proof}
  	\end{satz}
  
- 	\begin{korollar}\label{2.5.6}
- 		Jeder Zahlring vom Grad $n$ [$\to$ \ref{2.1.15}] ist ein Dedekindring, dessen additive GRuppe ein freier $\Z$-Modul vom Rang $n$ ist.
+ 	\begin{korollar}\label{2.5.6}\hfill\newline
+ 		Jeder Zahlring vom Grad $n$ [$\to$ \ref{2.1.15}] ist ein Dedekindring, dessen additive Gruppe ein freier $\Z$-Modul vom Rang $n$ ist.
  	\end{korollar}
  
  	\newpage
