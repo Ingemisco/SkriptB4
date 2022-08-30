@@ -2461,8 +2461,9 @@ toc=idx
  	
  	\begin{satz}\label{2.7.1}
  		(Nakayama-Lemma)\newline
- 		Sei $R$ ein kommutativer Ring, $I$ ein Ideal von $R$ und $M$ ein endlich erzeugter $R$-Modul mit $IM := \set{\sum_i a_ix_i|a_i \in R, x_i \in M} = M$.
+ 		Sei $R$ ein kommutativer Ring, $I$ ein Ideal von $R$ und $M$ ein endlich erzeugter $R$-Modul mit $IM := \set{\sum_i a_ix_i \mid a_i \in R, x_i \in M} = M$.
  		
+ 		\medskip\noindent 
  		Dann gibt es $a \in R$ mit $1-a \in I$ und $aM = 0$.
  		
  		\begin{proof}
@@ -2470,23 +2471,26 @@ toc=idx
  		\end{proof}
  	\end{satz}
  
- 	\begin{bemerkung}\label{2.7.2}
- 		In der Situation \ref{2.7.1} ist $1-a \in I$ ein "Zeuge" f\"ur $IM = M$, denn $M = 1 \cdot M = (1-a+a)M \subseteq (1-a)M + aM = (1-a)M$, also $(\underbrace{1-a}_{\in I})M = M$.
+ 	\begin{bemerkung}\label{2.7.2}\hfill\newline
+ 		In der Situation \ref{2.7.1} ist $1-a \in I$ ein "Zeuge" f\"ur $IM = M$, denn \linebreak $M = 1 \cdot M = (1-a+a)M \subseteq (1-a)M + aM = (1-a)M$, also $(\underbrace{1-a}_{\in I})M = M$.
  	\end{bemerkung}
  
- 	\begin{lemma}\label{2.7.3}
- 		Sei $A$ ein Dedekindring, $I \in I_A$ und $\mathfrak{p} \in M_A$. Dann $A/\mathfrak{p} \cong I / I\mathfrak{p}$ als $A$-Modul [schon in \ref{1.4.17}(b) gezeigt, falls $A$ Hauptidealring]
+ 	\begin{lemma}\label{2.7.3}\hfill\newline
+ 		Sei $A$ ein Dedekindring, $I \in I_A$ und $\mathfrak{p} \in M_A$. 
+ 		
+ 		\medskip\noindent
+ 		Dann $A/\mathfrak{p} \cong I / I\mathfrak{p}$ als $A$-Modul [schon in \ref{1.4.17}(b) gezeigt, falls $A$ Hauptidealring]
  		
  		\begin{proof}
- 			Es gibt $x \in I \setminus I_\mathfrak{p}$ (sonst $I = I\mathfrak{p}$ und daher $A = \mathfrak{p}$). Der Kern des $A$-Modulhomomorphismus $A\to I/I\mathfrak{p}, a \mapsto \overline{ax}$ umfasst $\mathfrak{p}$, aber enth\"alt nicht $1$, und somit $\mathfrak{p}$. Z.z. ist dieser Homomorphismus ist surjektiv, da $I = Ax + I\mathfrak{p}$. Dies folgt mit $I\mathfrak{p} \subsetneq Ax + I \mathfrak{p} \subseteq I$ aus \ref{2.6.4}(a)
+ 			Es gibt $x \in I \setminus I\mathfrak{p}$ (sonst $I = I\mathfrak{p}$ und daher $A = \mathfrak{p}$). Der Kern des \linebreak $A$-Modulhomomorphismus $A\to I/I\mathfrak{p}, a \mapsto \overline{ax}$ umfasst $\mathfrak{p}$, aber enth\"alt nicht $1$, und somit $\mathfrak{p}$. Z.z. ist dieser Homomorphismus ist surjektiv, da $I = Ax + I\mathfrak{p}$. Dies folgt mit $I\mathfrak{p} \subsetneq Ax + I \mathfrak{p} \subseteq I$ aus \ref{2.6.4}(a)
  		\end{proof}
  	\end{lemma}
  
- 	\begin{bem-not}\label{2.7.4}
- 		Ist $A\subseteq B$ eine Ringerweiterung und $I$ ein Ideal von $A$, so bezeichne $BI$ das von $I$ in $B$ erzeugte Ideal. Es gilt $BI = \set{\sum_i b_ia_i|b_i \in B, a_i \in I}$
+ 	\begin{bem-not}\label{2.7.4}\hfill\newline
+ 		Ist $A\subseteq B$ eine Ringerweiterung und $I$ ein Ideal von $A$, so bezeichne $BI$ das von $I$ in $B$ erzeugte Ideal. Es gilt $\displaystyle BI = \set{\sum_i b_ia_i \mid b_i \in B, a_i \in I}$
  	\end{bem-not}
  	
- 	\begin{def-satz}
+ 	\begin{def-satz}\label{2.7.5}\hfill\newline
  		Sei $A$ ein Dedekindring, $K:= \qf(A)$, $L|K$ eine endliche separable K\"orpererweiterung und $B$ der ganze Abschluss von $A$ in $L$ (damit $B$ ein Dedekindring nach \ref{2.5.4})
  		
  		\begin{enumerate}[(a)]
@@ -2497,58 +2501,63 @@ toc=idx
  			
  			\item 
  			Sei $\mathfrak{p} \in M_A$. Dann ist $Q:= \set{\mathfrak{q} \in M_B| \mathfrak{p} \subseteq \mathfrak{q}}$ endlich. Es gilt $B\mathfrak{p} = \prod_{\mathfrak{q} \in Q} \mathfrak{q}^{e_A(\mathfrak{q})}$ und 
- 			$\sum_{\mathfrak{q} \in Q} e_A(\mathfrak{q})f_A(\mathfrak{q}) = \dim_{A/\mathfrak{p}}(B/B\mathfrak{p}) = [L:K]$, wobei man $B/B\mathfrak{p}$ verm\"oge $\overline{a^\mathfrak{p}}\overline{b^{B\mathfrak{p}}} (a \in A, b \in B)$ als $A/\mathfrak{p}$ Vektorraum auffasst. Insbesondere $Q \neq \emptyset$
+ 			$\sum_{\mathfrak{q} \in Q} e_A(\mathfrak{q})f_A(\mathfrak{q}) = \dim_{A/\mathfrak{p}}(B/B\mathfrak{p}) = [L:K]$, wobei man $B/B\mathfrak{p}$ verm\"oge \linebreak $\overline{a^\mathfrak{p}}\overline{b^{B\mathfrak{p}}} := \overline{ab^{B\mathfrak{p}}} \ (a \in A, b \in B)$ als $A/\mathfrak{p}$ Vektorraum auffasst. Insbesondere $Q \neq \emptyset$
  		\end{enumerate}
  	
- 		\begin{proof}
+ 		\begin{proof}\hfill
  			\begin{enumerate}[(a)]
  				\item 
  				Nach Lemma \ref{2.5.3} gilt $A \cap \mathfrak{q} \neq (0)$ also $A \cap \mathfrak{q} \in M_A$. Ist $\mathfrak{p} \in M_A$ mit $\mathfrak{p} \subseteq \mathfrak{q}$, so ist $\mathfrak{p} \subseteq A \cap \mathfrak{q}$ und daher $\mathfrak{p} = A \cap \mathfrak{q}$.
  				
  				Wegen $(0) \neq B\mathfrak{p} \subseteq B$ ist $e_A(\mathfrak{q}) = \tilde{v}_\mathfrak{q}(B\mathfrak{p}) \in \N$ klar.
  				
- 				Nach Satz \ref{2.5.2} (und \ref{2.2.12}) ist $B$ als $A$-Modul endlich erzeugt und daher $B/\mathfrak{q}$ ein endlich erzeugter  $A/\mathfrak{p}$ Vektorraum, also $f_A(\mathfrak{q}) = [(B/\mathfrak{q}):(A/\mathfrak{p})] = \dim_{A/\mathfrak{p}}(B/\mathfrak{q} ) \in \N$.
+ 				Nach Satz \ref{2.5.2} (und \ref{2.2.12}) ist $B$ als $A$-Modul endlich erzeugt und daher $B/\mathfrak{q}$ ein endlich erzeugter  $A/\mathfrak{p}$ Vektorraum, also $f_A(\mathfrak{q}) = [(B/\mathfrak{q}):(A/\mathfrak{p})] = \dim_{A/\mathfrak{p}}(B/\mathfrak{q} )~\in~\N$.
  				
  				
  				\item 
- 				Es ist $Q = \set{\mathfrak{q} \in M_B| B\mathfrak{p} \subseteq \mathfrak{q}} \overset{\ref{2.4.6}(a)}{\subseteq} \set{\mathfrak{q} \in M_B| \tilde{v}_\mathfrak{q}(B\mathfrak{p}) \geq 1} $ endlich und $B\mathfrak{p} = \prod_{\mathfrak{q} \in Q} \mathfrak{q}^{e_A(\mathfrak{q})}$ nach \ref{2.6.4}.
+ 				Es ist $Q = \set{\mathfrak{q} \in M_B \mid B\mathfrak{p} \subseteq \mathfrak{q}} \overset{\ref{2.4.6}(a)}{\subseteq} \set{\mathfrak{q} \in M_B \mid \tilde{v}_\mathfrak{q}(B\mathfrak{p}) \geq 1} $ endlich und \linebreak $B\mathfrak{p} = \prod_{\mathfrak{q} \in Q} \mathfrak{q}^{e_A(\mathfrak{q})}$ nach \ref{2.6.4}.
  				
- 				Wie in \ref{1.4.17}(b) kann man eine Kompositionsreihe des $B$-Moduls $B/B\mathfrak{p}$ der L\"ange $\sum_{\mathfrak{q} \in Q} e_A(\mathfrak{q})$ hinschreiben, deren Faktoren nach Lemma \ref{2.7.3} gerade die $B/\mathfrak{q}$ ($\mathfrak{q} \in Q, B/\mathfrak{q} \ e_A(\mathfrak{q})$-mal) sind.
+ 				Wie in \ref{1.4.17}(b) kann man eine Kompositionsreihe des $B$-Moduls $B/B\mathfrak{p}$ der L\"ange $\sum_{\mathfrak{q} \in Q} e_A(\mathfrak{q})$ hinschreiben, deren Faktoren nach Lemma \ref{2.7.3} gerade die $B/\mathfrak{q}$ \linebreak ($\mathfrak{q} \in Q, B/\mathfrak{q} \ e_A(\mathfrak{q})$-mal) sind.
  				
- 				Die in dieser Kompositionsreihe vorkommenden abelschen Gruppen bilden auch Untervektorr\"aume des $A/\mathfrak{p}$-Vektorraum $B/B\mathfrak{p}$ und es folgt (vgl. \ref{1.4.10}) $\dim_{A/\mathfrak{p}} (B/B\mathfrak{p}) = \sum_{\mathfrak{q} \in Q} e_A(\mathfrak{q})\dim_{A/\mathfrak{p}} (B/\mathfrak{q}) = \sum_{\mathfrak{q} \in Q} e_A(\mathfrak{q})f_A(\mathfrak{q})$.
+ 				Die in dieser Kompositionsreihe vorkommenden abelschen Gruppen bilden auch Untervektorr\"aume des $A/\mathfrak{p}$-Vektorraum $B/B\mathfrak{p}$ und es folgt (vgl. \ref{1.4.10}) \[\dim_{A/\mathfrak{p}} (B/B\mathfrak{p}) = \sum_{\mathfrak{q} \in Q} e_A(\mathfrak{q})\dim_{A/\mathfrak{p}} (B/\mathfrak{q}) = \sum_{\mathfrak{q} \in Q} e_A(\mathfrak{q})f_A(\mathfrak{q})\]
  				
  				Es bleibt noch $\dim_{A/\mathfrak{p}}(B/B\mathfrak{p}) = \dim_K L$ zu zeigen. W\"ahle hierzu $n \in \N_0$ und $x_1, \dots, x_n \in B$ derart, dass $\overline{x_1^{B\mathfrak{p}}}, \dots, \overline{x_n^{B\mathfrak{p}}}$ eine Basis des $A/\mathfrak{p}$-Vektorraumes $B/B\mathfrak{p}$ ist (beachte, dass $B$ ein endlich erzeugter $A$-Modul ist, wie schon erw\"ahnt).
  				
  				Wir zeigen, dass $x_1, \dots, x_n$ eine Basis des $K$-Vektorraumes $L$ bilden.
  				
- 				Um die lineare Unabh\"angigkeit zu zeigen: Seien $a_1, \dots, a_n \in K$ mit $a_1x_1 + \cdots + a_nx_n = 0$. Annahme $I:= a_1A + \cdots a_nA \neq 0$. Dann $I \in I_A$. F\"ur jedes $s \in I^{-1}$ gilt dann $\overline{sa_1^{B}}\overline{x_1^{B\mathfrak{p}}} + \cdots + \overline{sa_n^{B}}\overline{x_n^{B\mathfrak{p}}} = 0$, also $\overline{sa_1^{B}} = \cdots = \overline{sa_n^{B}}  = 0$ und somit $sI \subseteq \mathfrak{p}$. Da $s\in I^{-1}$ beliebig war, folgt $A = I^{-1}I \subseteq \mathfrak{p}$.
+ 				Um die lineare Unabh\"angigkeit zu zeigen: Seien $a_1, \dots, a_n \in K$ mit \linebreak $a_1x_1 + \cdots + a_nx_n = 0$. Annahme $I:= a_1A + \cdots a_nA \neq 0$. Dann $I \in I_A$. F\"ur jedes $s \in I^{-1}$ gilt dann $\overline{sa_1^{B}}\overline{x_1^{B\mathfrak{p}}} + \cdots + \overline{sa_n^{B}}\overline{x_n^{B\mathfrak{p}}} = 0$, also $\overline{sa_1^{B}} = \cdots = \overline{sa_n^{B}}  = 0$ und somit $sI \subseteq \mathfrak{p}$. Da $s\in I^{-1}$ beliebig war, folgt $A = I^{-1}I \subseteq \mathfrak{p}\lightning$.
  				
- 				Schlie\ss lich zeigen wir $L = Kx_1 + \cdots + Kx_n$. Wegen $L = (A \setminus \set{0})^{-1}B$ [$\to$ \ref{2.5.1}] reicht e $B \subseteq Kx_1 + \cdots + Kx_n$ zu zeigen.  
+ 				Schlie\ss lich zeigen wir $L = Kx_1 + \cdots + Kx_n$. Wegen $L = (A \setminus \set{0})^{-1}B$ [$\to$ \ref{2.5.1}] reicht es $B \subseteq Kx_1 + \cdots + Kx_n$ zu zeigen.  
  				
  				Tats\"achlich zeigen wir $B \subseteq \frac{1}{a} (Ax_1 + \cdots + Ax_n)$ f\"ur ein $a \in A \setminus \set{0}$.
  				
  				Dies ist \"aquivalent zu $aB \subseteq Ax_1 + \cdots Ax_n$ f\"ur ein $a \in A \setminus \set{0}$, was wiederum zu $a(B/(Ax_1 + \cdots Ax_n)) = 0$ f\"ur ein $a \in A \setminus \set{0}$ \"aquivalent ist.
  				
- 				Wegen des Nakayama Lemma \ref{2.7.1} reicht es zu zeigen $B/(Ax_1 + \cdots+ Ax_n) = \mathfrak{p}(B/(Ax_1 + \cdots + Ax_n))$. Die folgt aber aus $B \subseteq Ax_1 
- 				+ \cdots Ax_n + B\mathfrak{p}$
+ 				Wegen des Nakayama Lemma \ref{2.7.1} reicht es zu zeigen \[B/(Ax_1 + \cdots+ Ax_n) = \mathfrak{p}(B/(Ax_1 + \cdots + Ax_n))\] 
+ 				Dies folgt aber aus $B \subseteq Ax_1 + \cdots Ax_n + B\mathfrak{p}$
  			\end{enumerate}
  		\end{proof}
  	\end{def-satz}
  	
- 	\begin{satz-def}\label{2.7.6}
- 		Sei $A$ ein Dedekindring, $K:= \qf(A), L|K$ eine endliche Galoiserweiterung, $B$ der ganze Abschluss von $A$ in $L$ und $\mathfrak{p} \in M_A$. Dann wirkt die Galoisgruppe $G:= \Aut(L|K)$ in nat\"urlicher Weise auf $L$, auf $B$, auf $M_B$ und auf $Q:= \set{\mathfrak{q} \in M_B| \mathfrak{p} \subseteq \mathfrak{q}} \overset{\ref{2.7.5}(b)}{\neq} \emptyset$.
+ 	\begin{satz-def}\label{2.7.6}\hfill\newline
+ 		Sei $A$ ein Dedekindring, $K:= \qf(A), L|K$ eine endliche Galoiserweiterung, $B$ der ganze Abschluss von $A$ in $L$ und $\mathfrak{p} \in M_A$. 
+ 		
+ 		\medskip\noindent 
+ 		Dann wirkt die Galoisgruppe $G:= \Aut(L|K)$ in nat\"urlicher Weise auf $L$, auf $B$, auf $M_B$ und auf $Q:= \set{\mathfrak{q} \in M_B| \mathfrak{p} \subseteq \mathfrak{q}} \overset{\ref{2.7.5}(b)}{\neq} \emptyset$.
  		
  		Die Wirkung von $G$ auf $Q$ ist transitiv. Insbesondere ist f\"ur $\mathfrak{p} \in M_A$ der \emph{Verzweigungsgrad \"uber} $\mathfrak{p}$ in $B$ $e_\mathfrak{p}(B) := e_A(\mathfrak{q})$ und der Tr\"agheitsindex \"uber $\mathfrak{p}$ in $B$ $f_\mathfrak{p}(B) := f_A(\mathfrak{q})$ unabh\"angig von $\mathfrak{q} \in Q$ und es gilt $e_\mathfrak{p}(B)f_\mathfrak{p}(B)\#Q = [L:K]$
  		
  		\begin{proof}
- 			Angenommen $G:= \Aut(L|K)$ wirkt auf $Q$ nicht transitiv. Dann gibt es $\mathfrak{m}, \mathfrak{q} \in Q$ mit $\mathfrak{m} \neq \varphi \mathfrak{q}$ f\"ur alle $\varphi \in G$. Nach \ref{2.6.4}(b) gilt dann $\mathfrak{m} + \prod_{\varphi \in G} \varphi \mathfrak{q} = B$. W\"ahle $x \in \mathfrak{m}, y \in \prod_{\varphi \in G} \varphi \mathfrak{q}$  mit $x+y = 1$.
+ 			Angenommen $G:= \Aut(L|K)$ wirkt auf $Q$ nicht transitiv. Dann gibt es \linebreak $\mathfrak{m}, \mathfrak{q} \in Q$ mit $\mathfrak{m} \neq \varphi \mathfrak{q}$ f\"ur alle $\varphi \in G$. Nach \ref{2.6.4}(b) gilt dann $\mathfrak{m} + \prod_{\varphi \in G} \varphi \mathfrak{q} = B$. W\"ahle $x \in \mathfrak{m}, y \in \prod_{\varphi \in G} \varphi \mathfrak{q}$  mit $x+y = 1$.
  			
  			Es gilt $x \notin \varphi \mathfrak{q}$ f\"ur alle $\varphi \in G$, denn sonst $1 = x + y \in \varphi \mathfrak{q}$ f\"ur ein $\varphi \in G$.
  			\newline
  			
  			Also $\varphi^{-1}(x) \notin \mathfrak{q}$ f\"ur alle $\varphi \in G$.
  			
- 			Da $\mathfrak{q}$ ein Primideal ist, folgt $\prod_{\varphi \in G} \varphi^{-1}(x) \notin \mathfrak{q} $, also $N_{L|K}(x) \overset{\ref{2.4.6}}{=} \prod_{p \in G} \varphi(x) = \prod_{\varphi \in G} \varphi^{-1}(x) \notin \mathfrak{q}$. Andererseits $N_{L|K}(x) = x \prod_{\varphi \in G \setminus \set{1}} \varphi(x) \in \mathfrak{m} \cap A = \mathfrak{p} \subseteq \mathfrak{q}$, da $x \in \mathfrak{m}$ und $N_{L|K}(x) \in A$ (\ref{2.4.5}).
+ 			Da $\mathfrak{q}$ ein Primideal ist, folgt $\prod_{\varphi \in G} \varphi^{-1}(x) \notin \mathfrak{q} $, also 
+ 			\[N_{L|K}(x) \overset{\ref{2.4.6}}{=} \prod_{p \in G} \varphi(x) = \prod_{\varphi \in G} \varphi^{-1}(x) \notin \mathfrak{q}\]
+ 			Andererseits $N_{L|K}(x) = x \prod_{\varphi \in G \setminus \set{1}} \varphi(x) \in \mathfrak{m} \cap A = \mathfrak{p} \subseteq \mathfrak{q}$, da $x \in \mathfrak{m}$ und $N_{L|K}(x) \in A$ (\ref{2.4.5}).
  		\end{proof}
  	\end{satz-def}
  
