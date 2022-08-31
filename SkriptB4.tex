@@ -2564,9 +2564,10 @@ toc=idx
  	\newpage
  	\chapter[tocentry={Zahlringe}]{Zahlringe}
  	\section{Gitter in Zahlk\"orpern}
- 	\begin{prop-def}\label{3.1.1}
+ 	\begin{prop-def}\label{3.1.1}\hfill\newline
  		Sei $K$ ein Zahlk\"orper vom Grad $n$. 
  		
+ 		\medskip\noindent
  		Jede endlich erzeugte Untergruppe $M$ von $K$ ist als $\Z$-Modul frei vom Rang $\leq n$ und es sind \"aquivalent:
  		\begin{enumerate}[(a)]
  			\item $\rk M = n$
@@ -2575,36 +2576,39 @@ toc=idx
  			\item $\forall a \in K: \exists s \in \N: sa \in M$
  		\end{enumerate}
  		
+ 		\noindent
  		Sind (a)-(d) erf\"ullt, so hei\ss t $M$ ein \emph{Gitter} in $K$.
  		\begin{proof}
  			\"Ubung
  		\end{proof}
  	\end{prop-def}
  
- 	\begin{definition}\label{3.1.2}
+ 	\begin{definition}\label{3.1.2}\hfill\newline
  		Ein Gitter $M$ hei\ss t \emph{multiplikativ}, wenn es eine multiplikative Menge ist, das hei\ss t $1 \in M$ und $\forall x,y \in M: xy \in M$.
  	\end{definition}
  
- 	\begin{beispiel}\label{3.1.3}
+ 	\begin{beispiel}\label{3.1.3}\hfill\newline
  		Nach \ref{2.5.6} ist jeder Zahlring ein multiplikatives Gitter im zugeh\"origen Zahlk\"orper.
  	\end{beispiel}
  
- 	\begin{lemma}\label{3.1.4}
+ 	\begin{lemma}\label{3.1.4}\hfill\newline
  		Seien $M$ und $N$ Gitter im Zahlk\"orper $K$. 
  		
+ 		\medskip\noindent
  		Dann gibt es ein $s \in \N$ mit $sM \subseteq N$ und $sN \subseteq M$. Gilt zus\"atzlich $N \subseteq M$, so ist $M/N$ endlich.
  		
  		\begin{proof}
- 			Nach \ref{3.1.1}(d) gilt $\forall a \in K: \exists s \in \N: sa \in N$, insbesondere $\forall a \in M: \exists s \in \N: sa \in N$. Da $M$ endlich erzeugt ist, haben wir sogar 
+ 			Nach \ref{3.1.1}(d) gilt $\forall a \in K: \exists s \in \N: sa \in N$, insbesondere \linebreak $\forall a \in M: \exists s \in \N: sa \in N$. Da $M$ endlich erzeugt ist, haben wir sogar \linebreak
  			$\exists s \in \N: \forall a \in M: sa \in N$. Also gibt es $s_1 \in \N$ mit $s_1M \subseteq N$ und analog $s_2 \in \N$ mit $s_2N \subseteq M$. Dann $sM \subseteq N$ und $sN \subseteq M$ f\"ur $s:= s_1s_2 \in \N$.
  			
  			Gelte nun $N \subseteq M$. Dann $s(M/N) = 0$ und da $M/N$ ein endlich erzeugter $\Z$-Modul ist, folgt $\#(M/N) < \infty$.
  		\end{proof}
  	\end{lemma}
  
-	\begin{satz}\label{3.1.5}
+	\begin{satz}\label{3.1.5}\hfill\newline
 		Sei $K$ ein Zahlk\"orper und $M \subseteq K$. 
 		
+		\medskip\noindent
 		Dann ist $M$ ein multiplikatives Gitter in $K$ genau dann, wenn $M$ ein Unterring von $\mathcal{O}_K$ mit $K = \qf(M)$ ist.
 		
 		\begin{proof}
@@ -2612,17 +2616,18 @@ toc=idx
 		\end{proof}
 	\end{satz}
 
-	\begin{def-prop}\label{3.1.6}
+	\begin{def-prop}\label{3.1.6}\hfill\newline
 		Sei $M$ ein Gitter im Zahlk\"orper $K$ und $x_1, \dots, x_n$ ein $\Z$-Basis von $M$.
 		
+		\medskip\noindent
 		Dann hei\ss t $d(M) := d_{K|\Q}(x_1, \dots, x_n) \overset{\ref{2.4.24}(a)}{\in} \Q^*$ die \emph{Diskriminante} des Gitters $M$. Sie h\"angt nicht 
 		von der Wahl der Basis ab. Gilt $M \subseteq \mathcal{O}_K$, so $d(M) \in \Z$.
 		
 		\begin{proof}
 			Seien $\underline{x} = (x_1, \dots, x_n)$ und $\underline{y} = (y_1, \dots, y_n)$ $\Z$-Basen von $M$. 
 			
-			Dann sind nach \ref{3.1.1}(c) $\underline{x}$ und $\underline{y}$ auch $\Q$-Basen von $K$. Bezeichne $f:K\to K$ die $\Q$-lineare Abbildung von $K$ mit 
-			$f(x_i) = y_i$ f\"ur $i \in \set{1,\dots, n}$. Wegen $y_i \in \Z x_1 + \cdots + \Z x_n$ f\"ur $i \in \set{1,\dots, n}$ gilt $M(f, \underline{x}) \in \Z^{n\times n}$.
+			Dann sind nach \ref{3.1.1}(c) $\underline{x}$ und $\underline{y}$ auch $\Q$-Basen von $K$. Bezeichne $f:K\to K$ die \linebreak $\Q$-lineare Abbildung von $K$ mit 
+			$f(x_i) = y_i$ f\"ur $i \in \set{1,\dots, n}$. Wegen \linebreak $y_i \in \Z x_1 + \cdots + \Z x_n$ f\"ur $i \in \set{1,\dots, n}$ gilt $M(f, \underline{x}) \in \Z^{n\times n}$.
 			Also $\det f = \det M(f, \underline{x}) \in \Z$.
 			Analog $\det f^{-1} \in \Z$. Wegen $(\det f) (\det f^{-1}) = \det \id_K = 1$, also $\det f \in \Z^* = \set{-1, 1}$, also $(\det f)^2 = 1$. Nach \ref{2.4.24}(b) gilt 
 			$d_{K|\Q}(f(x_1), \dots, f(x_n)) = d_{K|\Q}(x_1, \dots, x_n)$.
@@ -2631,13 +2636,13 @@ toc=idx
 		\end{proof}
 	\end{def-prop}
 
-	\begin{satz}\label{3.1.7}
+	\begin{satz}\label{3.1.7}\hfill\newline
 		Seien $M$ und $N$ Gitter des Zahlk\"orpers $K$ mit $N \subseteq M$. Dann $d(N) = [M:N]^2 d(M)$.
 		
 		\begin{proof}
 			W\"ahle $\Z$-Basen $\underline{x} = (x_1, \dots, x_n)$ von $M$ und $\underline{y} = (y_1, \dots, y_n)$ von $N$.
 			
-			Bezeichne wieder $f:K\to K$ die $\Q$-lineare Abbildung mit $f(x_i) = y_i$ f\"ur $i \in \set{1, \dots, n}$.
+			Bezeichne wieder $f:K\to K$ die $\Q$-lineare Abbildung mit $f(x_i) = y_i$ f\"ur \linebreak $i \in \set{1, \dots, n}$.
 			
 			Nach \ref{2.4.24}(b) ist $\det f = [M:N]$ zu zeigen. Betrachte den $\Z$-Modulisomorphismus $\iota : \Z^n \to M, \begin{pmatrix}
 				a_1\\ \vdots \\ a_n
@@ -2650,11 +2655,12 @@ toc=idx
 			Smithscher Normalform) und $P, Q \in \GL_n(\Z)$ mit $S = PM(f, \underline{x})Q$.
 			
 			Ist $S = \begin{pmatrix}
-				a_1, 0 \cdots & 0\\
-				0 & a_2 & \cdots 0\\
+				a_1 & 0 & \cdots & 0\\
+				0 & a_2 & \cdots & 0\\
 				\vdots & \vdots & \ddots & \vdots\\
 				0 & 0 & \cdots & a_n
-			\end{pmatrix}$, so gilt nach \ref{1.6.6}(a) $\Z^n/N' \cong \Z^n / (a_1\Z \times \cdots \times a_n \Z) \cong (\Z/a_1\Z) \times \cdots \times (\Z/a_n\Z)$ 
+			\end{pmatrix}$, so gilt nach \ref{1.6.6}(a) 
+			\[\Z^n/N' \cong \Z^n / (a_1\Z \times \cdots \times a_n \Z) \cong (\Z/a_1\Z) \times \cdots \times (\Z/a_n\Z)\]
 			und somit $[M:N] = [\Z^n:N'] = a_1 \cdots a_n = \det S = \underbrace{(\det P)}_{\in \Z^*} (\det M(f, \underline{x})) \underbrace{(\det Q)}_{\in \Z^*}$.
 			
 			Also wegen $\Z^* = \set{-1, 1}$ 
@@ -2662,9 +2668,10 @@ toc=idx
  		\end{proof}
 	\end{satz}
 
-	\begin{korollar}\label{3.1.8}
+	\begin{korollar}\label{3.1.8}\hfill\newline
 		Sei $K$ ein Zahlk\"orper und $M$ ein multiplikatives Gitter in $K$ mit $\forall p \in \P: p^2 \nmid d(M)$.
 		
+		\medskip\noindent
 		Dann gilt $M = \mathcal{O}_K$
 		
 		\begin{proof}
@@ -2673,11 +2680,12 @@ toc=idx
 		\end{proof}
 	\end{korollar}
 
-	\begin{beispiel}\label{3.1.9}
+	\begin{beispiel}\label{3.1.9}\hfill\newline
 		Sei $d \in \nsquare$ [$\to$ \ref{2.1.16}]. Dann sind die Identit\"at und $x+y\sqrt{d} \mapsto (x+y\sqrt{d})^* := x- y \sqrt{d}$ ($x,y \in \Q$) die beiden verschiedenen
 		Einbettungen des quadratischen Zahlk\"orpers $\Q(\sqrt{d})$ in seinen algebraischen Abschluss.
 		
-		Dann ist $\Z[\sqrt{d}] = \Z \oplus \Z\sqrt{d}$ ein multiplikatives Gitter in $\Q(\sqrt{d})$ mit Diskriminante [$\to$ \ref{2.4.21}]
+		\medskip\noindent
+		Dann ist $\Z[\sqrt{d}] = \Z \oplus \Z\sqrt{d}$ ein multiplikatives Gitter in $\Q(\sqrt{d})$ mit Diskriminante [$\to$\ref{2.4.21}]
 		\[\brac{\det \begin{pmatrix}
 				1 & \sqrt{d}\\1^* & \sqrt{d}^*
 		\end{pmatrix}}^2 = (-2\sqrt{d})^2 = 4d\]
@@ -2695,7 +2703,7 @@ toc=idx
 		$\mathcal{O}_d = \Z[\frac{1+\sqrt{d}}{2}]$.
 		
 		F\"ur $d \in \nsquare_{2,3}$ liefert \ref{3.1.7} die (auch sonst leicht zu sehende) Tatsache 
-		\[[(\Z+\Z\frac{1+\sqrt{d}}{2}): \Z[\sqrt{d}]] = \sqrt{\frac{d(\Z[\sqrt{d}])}{d(\Z + \Z\frac{1+\sqrt{d}}{2})}} = \sqrt{\frac{4d}{d}} = 2\]
+		\[\left[\brac{\Z+\Z\frac{1+\sqrt{d}}{2}}: \Z[\sqrt{d}]\right] = \sqrt{\frac{d(\Z[\sqrt{d}])}{d(\Z + \Z\frac{1+\sqrt{d}}{2})}} = \sqrt{\frac{4d}{d}} = 2\]
 	\end{beispiel}
 	\newpage
 	
