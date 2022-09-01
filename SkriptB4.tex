@@ -61,6 +61,7 @@ toc=idx
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\F}{\mathbb{F}}
 \renewcommand{\P}{\mathbb{P}}
@@ -121,6 +122,7 @@ toc=idx
 \newtheorem{notation}[definition]{Notation}
 \newtheorem{korollar}[definition]{Korollar}
 \newtheorem{erinnerung}[definition]{Erinnerung}
+\newtheorem{erinnerung-und-sprechweise}[definition]{Erinnerung und Sprechweise}
 \newtheorem{prop-def}[definition]{Proposition und Definition}
 \newtheorem{def-prop}[definition]{Definition und Proposition}
 \newtheorem{def-satz}[definition]{Definition und Satz}
@@ -2835,6 +2837,169 @@ toc=idx
 			\end{enumerate}
 		\end{enumerate}
  	\end{beispiel}
+ 
+ 	\newpage
+ 	\section{Die Endlichkeit der Klassenzahl}\thispagestyle{sectionstart}
+ 	\begin{lemma}\label{3.3.1}\hfill\newline
+ 		Sei $K$ ein Zahlk\"orper, $M$ ein Gitter in $K$ und $x \in K^*$.
+ 		
+ 		\medskip\noindent
+ 		Dann ist auch $xM$ ein Gitter in $K$ mit $d(xM) = (N_{K|\Q}(x))^2d(M)$
+ 		
+ 		\begin{proof}
+ 			W\"ahle eine $\Z$-Basis $x_1, \dots, x_n$ von $M$ und betrachte $f:K\to K, a \mapsto ax$ als $\Q$-lineare Abbildung.
+ 			Dann ist $f(x_1), \dots, f(x_n)$ eine $\Z$-Basis von $xM$ und damit $xM$ ein Gitter mit
+ 			\begin{flalign*}
+ 				d(xM) &= d_{K|\Q}(f(x_1), \dots, f(x_n))\\
+ 				&= (\det f)^2 d_{K|\Q}(x_1, \dots, x_n) && \ref{2.4.24}(b)\\
+ 				&= (N_{K|\Q}(x))^2d(M)
+ 			\end{flalign*}
+ 		\end{proof} 
+ 	\end{lemma}
+ 	
+ 	\begin{proposition}\label{3.3.2}\hfill\newline
+ 		Sei $K$ ein Zahlk\"orper und $x \in \mathcal{O}_K \setminus \set{0}$.
+ 		
+ 		\medskip\noindent
+ 		Dann $|N_{K|\Q}(x)| = \#(\mathcal{O}_K/x\mathcal{O}_K)$
+ 		
+ 		\begin{proof}
+ 			Es ist $x\mathcal{O}_K \subseteq \mathcal{O}_K$ und daher nach \ref{3.1.7} $d(x\mathcal{O}_K) = [\mathcal{O}_K:x\mathcal{O}_K]^2d(\mathcal{O}_K)$
+ 			andererseits gilt nach \ref{3.3.1} $d(x\mathcal{O}_K) = (N_{K|\Q}(x))^2d(\mathcal{O}_K)$
+ 		\end{proof}
+ 	\end{proposition}
+ 	
+ 	\begin{definition}\label{3.3.3}\hfill\newline
+ 		Sei $A$ ein Zahlring und $I$ ein Ideal von $A$ mit $I \neq (0)$.
+ 		
+ 		\medskip\noindent
+ 		Dann hei\ss t $N(I) := \#(A/I) \overset{\ref{3.2.1}(a)}{<} \infty$ die \emph{Norm} von $I$.
+ 	\end{definition}
+ 	
+ 	\begin{bemerkung}\label{3.3.4}\hfill\newline
+ 		Sei $K$ ein Zahlk\"orper und $x \in \mathcal{O}_K \setminus \set{0}$.
+ 		
+ 		\medskip\noindent
+ 		Dann $N(x\mathcal{O}_K) \overset{\ref{3.3.2}}{=} |N_{K|\Q}(x)|$
+ 	\end{bemerkung}
+ 
+ 	\begin{lemma}\label{3.3.5}\hfill\newline
+ 		Sei $R$ ein endlicher Ring mit $p:= \#R \in \P$.
+ 		
+ 		\medskip\noindent
+ 		Dann gilt $R \cong \F_p$.
+ 		
+ 		\begin{proof}
+ 			$\set{a \in R\mid \forall x \in R: ax = xa}$ ist eine Untergruppe (sogar Unterring) von $R$, also
+ 			gleich $R$, womit $R$ kommutativ ist. F\"ur jedes $a \in R \setminus \set{0}$ ist weiter
+ 			$R \to R, x \mapsto ax$ surjektiv (denn $0$ und $a$ liegen im Bild, womit dieses ganz $R$ ist).
+ 		\end{proof}
+ 	\end{lemma}
+ 	
+ 	\begin{proposition}\label{3.3.6}\hfill\newline
+ 		Sei $A$ ein Zahlring und $I \neq (0)$ ein Ideal von $A$ mit $N(I) \in \P$. 
+ 		
+ 		\medskip\noindent 
+ 		Dann ist $I$ ein Primideal von $A$.
+ 		
+ 		\begin{proof}
+ 			Wegen $\#(A/I) \in \P$ ist $A/I$ ein K\"orper, insbesondere ein Integrit\"atsring.
+ 		\end{proof}
+ 	\end{proposition}
+ 	
+ 	\begin{proposition}\label{3.3.7}\hfill\newline
+ 		Sei $A$ ein Zahlring und $I, J $ Ideale $\neq (0)$ von $A$.
+ 		
+ 		\medskip\noindent
+ 		Dann $N(IJ) = N(I)N(J)$.
+ 		
+ 		\begin{proof}
+ 			Ohne Einschr\"ankung $\mathfrak{p} := I \in M_A$, denn $A$ ist ein Dedekindring nach \ref{2.5.6}.
+ 			$A/J \cong (A/\mathfrak{p}J)/(J/\mathfrak{p}J)$ als $A$-Modul (oder abelsche Gruppe).
+ 			
+ 			\noindent Nach dem Satz von Lagrange gilt $\#(A/\mathfrak{p}J) = (\#(A/J))(\#(J/\mathfrak{p}J))$.
+ 			
+ 			\noindent Es reicht also $N(\mathfrak{p}) = \#(J/\mathfrak{p}J)$ zu zeigen. Nach \ref{2.7.3} gilt $A/\mathfrak{p} \cong J/J\mathfrak{p}$ als $A$-Modul.  
+ 		\end{proof}
+ 	\end{proposition}
+ 	
+ 	\begin{lemma}\label{3.3.8}\hfill\newline
+ 		Sei $K$ ein Zahlk\"orper. 
+ 		
+ 		\medskip\noindent Dann gibt es eine reelle Zahl $c > 0$ derart, dass es f\"ur jedes Ideal $I \neq (0)$ von $\mathcal{O}_K$ ein $x \in I \setminus \set{0}$ gibt
+ 		mit $|N_{K|\Q}(x)| \leq cN(I)$.
+ 		
+ 		\begin{proof}
+ 			W\"ahle eine $\Z$-Basis $x_1, \dots, x_n$ von $\mathcal{O}_K$. Dann $[K:\Q] = n = [K:\Q]_s$. 
+ 			Bezeichne die verschiedenen Einbettungen von $K$ in $\C$ mit $\varphi_1, \dots, \varphi_n$. \linebreak
+ 			Setze $c:= \prod_{i=1}^n \sum_{j=1}^n |\varphi_i(x_j)| > 0$. Sei $I \neq (0)$ Ideal von $\mathcal{O}_K$.
+ 			W\"ahle ein $m \in \N$ mit $m^n \leq N(I) < (m+1)^n$. W\"ahle $s_1, \dots, s_n, t_1, \dots, t_n \in \set{0, \dots, m}$ mit
+ 				\[\sum_{j=1}^{n} s_jx_j \equiv_I \sum_{j=1}^{n} t_jx_j\]
+ 			und $(s_1, \dots, s_n) \neq (t_1, \dots, t_n)$.
+ 			
+ 			\noindent Dann ist $x:= \sum_{j=1}^n (s_j-t_j)x_j \in I \setminus \set{0}$ und 
+ 			\begin{flalign*}
+ 				|N_{K|\Q}(x)| &= \prod_{i=1}^n |\varphi_i(x)| && \ref{2.4.6}\\
+ 				&= \prod_{i=1}^n \sum_{j=1}^n |(s_j-t_j)\varphi_i(x)|\\
+ 				&\leq m^c \leq N(I)c
+ 			\end{flalign*}
+ 		\end{proof}
+ 	\end{lemma}
+ 
+ 	\begin{erinnerung-und-sprechweise}\label{3.3.9}\hfill\newline
+ 		Sei $A$ ein Dedekindring.
+ 		
+ 		\medskip\noindent
+ 		Dann ist $I_A$ eine multiplikativ geschriebene abelsche Gruppe und als solche ein freier $\Z$-Modul mit Basis $M_A$.
+ 		
+ 		\noindent 
+ 		Es ist $P_A$ eine Untergruppe von $I_A$, deren Nebenklassen wir die (Ideal-)Klassen von $A$ nennen. Wir bilden die Klassengruppe
+ 		$C_A := I_A/P_A$ und ihre Anzahl $\#C_A$ nennt man die Klassenzahl von $A$ [$\to$\ref{2.6.6}]
+ 	\end{erinnerung-und-sprechweise}
+ 	
+ 	\begin{lemma}\label{3.3.10}\hfill\newline
+ 		Sei $A$ ein Zahlring.
+ 		
+ 		\medskip\noindent
+ 		Dann gibt es eine reelle Zahl $c > 0$ derart, dass jede Idealklasse von $A$ ein Ideal $I$ von $A$ enth\"alt mit $N(I) \leq c$.
+ 		
+ 		\begin{proof}
+ 			W\"ahle $c > 0$ wie in \ref{3.3.8}. Sei $J \in I_A$. Zu zeigen: Es gibt ein $I \in I_A$ mit $I \subseteq A, I \equiv_{P_A} J$ und $N(I) \leq c$.
+ 			
+ 			W\"ahle $s \in A \setminus \set{0}$ mit $sJ^{-1} \subseteq A$. W\"ahle $x \in (sJ^{-1})\setminus \set{0}$. 
+ 			
+ 			\noindent Setze $I:= xs^{-1}J \subseteq sJ^{-1}s^{-1}J = A$. Dann $I = (\underbrace{xs^{-1}A}_{\in P_A})J \equiv_{P_A} J$ und 
+ 				\[N(I)N(sJ^{-1}) \overset{\ref{3.3.7}}{=} N(IsJ^{-1}) =N(xA) \overset{\ref{3.3.4}}{=} |N_{K|\Q}(x)| \leq cN(sJ^{-1})\]
+ 			wobei $K:= \qf(A)$. Also $N(I) \leq c$.
+ 		\end{proof}
+ 	\end{lemma}
+ 
+	\begin{satz}\label{3.3.11}\hfill\newline
+		Die Klassenzahl eines jeden Zahlrings ist endlich.
+		
+		\begin{proof}
+			Sei $A$ ein Zahlring. Nach \ref{3.3.10} reicht es zu zeigen, dass es f\"ur jedes $c \in \N$ nur endlich viele Ideale $I \neq (0)$ von $A$ mit $N(I) \leq c$ gibt.
+			
+			Sei also $c \in \N$. Die Menge 
+				\[F:= \set{I\mid I \textrm{ Ideal von } A, I \neq (0), \exists m \in \set{1, \dots, c}: I \cap \Z = (m)}\]
+			$F$ ist nach \ref{3.2.1}(a) eine Vereinigung von endlichen Mengen und daher endlich.
+			
+			Sei $I \neq(0)$ ein Ideal von $A$ mit $d:= N(I) \leq c$. Wir zeigen $I \in F$.
+			
+			Wegen $\#(A/I) = d$ gilt nach dem Satz von Lagrange $dA \subseteq I$, also $d \in I \cap \Z$.
+			W\"ahle $m \in \N$ mit $I \cap \Z = (m)$ [$\to$\ref{3.2.1}(a)]. Dann $m \leq d \leq c$ und daher $I \in F$. 
+		\end{proof}
+	\end{satz} 
+
+ 	\newpage
+ 	\chapter[tocentry={Kreisteilungsk\"orper}]{Kreisteilungsk\"orper}
+ 	\section{Die Endlichkeit der Klassenzahl}
+ 	
+ 	\newpage
+ 	\section{Zahlringe von Kreisteilungsk\"orpern}\thispagestyle{sectionstart}
+ 	
+ 	\newpage
+ 	\section{Das Legendre-Symbol}\thispagestyle{sectionstart}
 \backmatter
 \printindex
 \end{document}
