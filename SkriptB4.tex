@@ -20,6 +20,7 @@ toc=idx
 \usepackage{cancel}
 \usepackage{tikz-cd}
 
+
 \usepackage[headsepline]{scrlayer-scrpage}
 \setkomafont{pageheadfoot}{\normalfont}
 \setkomafont{pagefoot}{\slshape}
@@ -53,7 +54,7 @@ toc=idx
 \usepackage{csquotes}
 \usepackage{mathtools}
 \usepackage{nicematrix}
-
+\usepackage[shortlabels]{enumitem}
 \usepackage{hyperref}
 \MakeOuterQuote{"}
 
@@ -2709,8 +2710,8 @@ toc=idx
 	
 	\section{Zerlegung von Primzahlen in Zahlringen}\thispagestyle{sectionstart}
 	
-	\begin{bemerkung}\label{3.2.1}
-		Ein wesentlicher Grund f\"ur die Betrachtung von Gittern und vor allem von multiplikativen Gittern ist, dass sie oftmals " einfacher" sind als der Zahlring (zum Beispiel ist f\"ur $d \in \nsquare_{1}$ das multiplikative Gitter $\Z[\sqrt{d}]$ " einfacher" als $\Z[\frac{1+\sqrt{d}}{2}] = \mathcal{O}_d$) und f\"ur gewisse Zwecke doch den Zahlring ersetzen k\"onnen.
+	\begin{bemerkung}\label{3.2.1}\hfill\newline
+		Ein wesentlicher Grund f\"ur die Betrachtung von Gittern und vor allem von multiplikativen Gittern ist, dass sie oftmals "einfacher" sind als der Zahlring (zum Beispiel ist f\"ur $d \in \nsquare_{1}$ das multiplikative Gitter $\Z[\sqrt{d}]$ "einfacher" als $\Z[\frac{1+\sqrt{d}}{2}] = \mathcal{O}_d$) und f\"ur gewisse Zwecke doch den Zahlring ersetzen k\"onnen.
 		Siehe Zeile (b) und (c) dieser Bemerkung und Satz \ref{3.2.2} unten.
 		
 		Seien $K$ ein Zahlk\"orper und $x_1, \dots, x_n$ eine $\Z$-Basis von $\mathcal{O}_K$.
@@ -2719,12 +2720,121 @@ toc=idx
 			
 			Insbesondere gilt $m \mathcal{O}_K \subseteq I$ und man kann $I$ sehen als $m$ zusammen mit dem Bild von $I$ unter $\mathcal{O}_K \to \mathcal{O}_K/m\mathcal{O}_K$.
 			
-			ein Ideal $\neq (0)$ des Zahlringes $\mathcal{O}_K$ ist also gegeben durch eine nat\"urliche Zahl $m$ und ein Ideal des endlichen Ringes $\mathcal{O}_K/m\mathcal{O}_K = (\Z x_1 \oplus \cdots \oplus \Z x_n) / (m\Z x_1 + \cdots + m\Z x_n)$,
+			ein Ideal $\neq (0)$ des Zahlringes $\mathcal{O}_K$ ist also gegeben durch eine nat\"urliche Zahl $m$ und ein Ideal des endlichen Ringes 
+			\[\mathcal{O}_K/m\mathcal{O}_K = (\Z x_1 \oplus \cdots \oplus \Z x_n) / (m\Z x_1 + \cdots + m\Z x_n)\]
 			dessen additive Gruppe in nat\"urlicher Weise ein freier $\Z/m\Z$-Modul mit Basis $\overline{x_1}, \dots, \overline{x_n}$ ist.
 			
-			Insbesondere ist $\mathcal{O}_K /I$ endlich mit $\#(\mathcal{O}_K / I) | m^n$
-		\end{enumerate}
+			Insbesondere ist $\mathcal{O}_K /I$ endlich mit $\#(\mathcal{O}_K / I) \mid m^n$
+			
+			\item Sei $m \in \N$. In Anbetracht von (a) ist der $m^n$-elementige Ring $\mathcal{O}_K/m\mathcal{O}_K$ von besonderem Interesse. Um diesen zu kennen, braucht man aber den
+			Zahlring $\mathcal{O}_K$ oft gar nicht genau zu kennen. Es reicht, ein multiplikatives Gitter $M$ in $K$ zu kennen mit $(m, [\mathcal{O}_K:M]) = (1)$. Dann gibt es $s, t \in \Z$ mit 
+			$sm + t[\mathcal{O}:M] = 1$.
+			
+			\noindent F\"ur jedes $x \in \mathcal{O}_K$ gilt dann
+				\[x = 1 \cdot x = s \underbrace{mx}_{\in m\mathcal{O}_K} + t\underbrace{[\mathcal{O}:M]x}_{\in M}\]		
+			weshalb der kanonische Homomorphismus $M/mM \to \mathcal{O}_K/m\mathcal{O}_K$ surjektiv ist. Wegen $\#(M/mM) \overset{M \textrm{ Gitter}}{=} m^n = \#(\mathcal{O}_K/m\mathcal{O}_K)$ ist dieser auch injektiv und wir haben eine kanonische Isomorphie
+				\[M/mM \cong \mathcal{O}_K/m\mathcal{O}_K\]
+				
+			\item Wir spezialisieren das unter (a) und (b) Gesagte auf Primideale. Sei $\mathfrak{p} \in M_{\mathcal{O}_K}$. Dann gibt es genau ein $p \in \P$ mit $\mathfrak{p} \cap \Z = (p)$. Insbesondere
+			$p\mathcal{O}_K \subseteq \mathfrak{p}$ und man kann $\mathfrak{p}$ sehen als $p$ zusammen mit dem Bild von $\mathfrak{p}$ unter $\mathcal{O}_K \to \mathcal{O}_K/p\mathcal{O}_K$.
+			Ein Primideal $\neq (0)$ des Zahlrings $\mathcal{O}_K$ ist also gegeben durch eine Primzahl $p$ und ein Primdideal des endlichen Ringes $\mathcal{O}_K/p\mathcal{O}_K$, dessen additive Gruppe in nat\"urlicher Weise ein \linebreak $\F_p$-Vektorraum mit Basis $\overline{x_1}, \dots, \overline{x_n}$ ist. Insbesondere ist $\#(\mathcal{O}_K/\mathfrak{p}) \in \set{p, p^2, \dots, p^n}$. Ist $M$ ein multiplikatives Gitter in $K$ mit $p\nmid [\mathcal{O}_K:M]$, so gilt kanonisch \linebreak $M/pM \cong \mathcal{O}_K/p\mathcal{O}_K$.
+			
+			\item nach dem Satz vom primitiven Element gibt es $a \in K$ mit $K = \Q(a)$.  Wegen $K = (\Z\setminus\set{0})^{-1}\mathcal{O}_K$ kann man leicht $a \in \mathcal{O}_K$ w\"ahlen. Dann ist $\Z[a]$ ein multiplikatives Gitter in $K$. Setze $f:= \irr_\Q(a) \in \Q[X]$. Nach \ref{2.1.14} gilt $f \in \Z[X]$. Da $f$ normiert ist, gilt $f\Q[X] \cap \Z[X] = f\Z[X]$ (benutze zum Beispiel das Lemma von Gau\ss). Daher kanonisch $\Z[X]/(f) \hookrightarrow \Q[X]/(f)$. Bezeichne $\Z[X] \to \F_p[X], g \mapsto \overline{g}$ den Homomorphismus mit $\overline{m} = \overline{m}^{(p)}$ ($m \in \Z$) und $\overline{X} = X$. Dann liegt $\overline{f}$ im Kern des Epimorphismus $\F_p[X]\to \Z[a]/p\Z[a]$ mit $X\mapsto \overline{a}$. Da $f$ normiert ist, gilt \linebreak $\deg \overline{f} = \deg f = n$ und daher $\#(\F_p[X]/(\overline{f})) = p^n \overset{\Z[a] \textrm{ Gitter}}{=} \#(\Z[a]/p\Z[a])$. Daher haben wir $\F_p[X]/(\overline{f}) \overset{\cong}{\to} \Z[a]/p\Z[a]$. Falls $\underline{\underline{p \nmid [\mathcal{O}_K:\Z[a]]}}$, so haben wir auch noch kanonisch $\Z[a]/p\Z[a] \cong \mathcal{O}_K/p\mathcal{O}_K$ und es ergibt sich folgendes kommutative Diagramm:
+			
+			\begin{center}
+				\begin{tikzcd}
+					\Q[X]/(f) \rar{\cong}[swap]{\overline{X} \mapsto a} & K\\
+					& & \mathcal{O}_K \ular[hook][description, sloped]{\supseteq} \ar[dd, two heads]\\
+					\Z[X]/(f) \ar[uu, hook] \rar{\cong}[swap]{\overline{X} \mapsto a} \dar[two heads] & \Z[a] \urar[hook][description, sloped]{\subseteq} \dar[two heads]\\
+					\F_p[X]/(\overline{f}) \rar{\cong}[swap]{\overline{X} \mapsto a} & \Z[a]/p\Z[a] \rar{\overset{\overset{p\nmid[\mathcal{O}_K:\Z[a]]}{\Downarrow}}{\cong}} & \mathcal{O}_K/p\mathcal{O}_K
+				\end{tikzcd}
+			\end{center}
+ 		\end{enumerate}
 	\end{bemerkung}
+
+	\begin{satz}\label{3.2.2}\hfill\newline
+		Seien $K = \Q(a)$ ein Zahlk\"orper, $a$ ganz \"uber $\Z$, $p \in \P$ mit $p\nmid [\mathcal{O}_K:\Z[a]]$, \linebreak $f:= \irr_\Q(a) \in \Z[X], m \in \N, g_1, \dots, g_m \in \Z[X]$ und $\alpha_1, \dots, \alpha_m \in \N$ mit
+			\[\overline{f} = \overline{g_1}^{\alpha_1} \cdots \overline{g_m}^{\alpha_m} \quad \textrm{ in } \F_p[X],\]
+		wobei $\overline{g_1}, \dots, \overline{g_m}$ paarweise verschiedene normierte irreduzible Polynome in $\F_p[X]$ seien.
+		
+		\medskip\noindent
+		Dann ist $\mathfrak{p}_i := g_i(a)\mathcal{O}_K + p\mathcal{O}_K$ f\"ur jedes $i \in \set{1, \dots, m}$ eion Primideal von $\mathcal{O}_K$ mit Tr\"agheitsindex $f_\Z(\mathfrak{p}_i) = \deg \overline{g_i}, \mathfrak{p}_1, \dots, \mathfrak{p}_m$ sind paarweise verschieden und es gilt 
+			\[p\mathcal{O}_K = \mathfrak{p}_1^{\alpha_1} \cdots \mathfrak{p}_m^{\alpha_m}\]
+		
+		\begin{proof}
+			Da $\F_p[X]$ ein Hauptidealring ist, sind die verschiedenen Primideale darin, die $(\overline{f})$ enthalten, genau die $(\overline{g_1}), \dots, (\overline{g_m})$. Gem\"a\ss der letzten Zeile des Diagramms von \ref{3.2.1}(d) sind deren Bilder $(\overline{g_1(a)}), \dots, (\overline{g_m(a)})$ unter
+				\[\varphi: \F_p[X] \to \mathcal{O}_K/p\mathcal{O}_K, \overline{X} \mapsto \overline{a}\]
+			genau die verschiedenen Primideale von $\mathcal{O}_K/p\mathcal{O}_K$ genau die verschiedenen Primideale von $\mathcal{O}_K$. Daher sind $\mathfrak{p}_1, \dots, \mathfrak{p}_m$ als deren
+			Urbilder unter $\mathcal{O}_K \to p\mathcal{O}_K$ genau die verschiedenen Primideale von $\mathcal{O}_K$, die $(p)$ enthalten. Mit
+				\[e_i := e_\Z(\mathfrak{p}_i) \quad \textrm{ und } \quad f_i := f_\Z(\mathfrak{p}_i) \quad \textrm{ f\"ur } i \in \set{1, \dots, m}\]
+			folgt nach \ref{2.7.5} $e_1, \dots, e_m, f_1, \dots, f_m \in \N$,
+				\[p\mathcal{O}_K = \mathfrak{p}_1^{e_1} \cdots \mathfrak{p}_m^{e_m} \quad\textrm{ und }\quad \sum_{i=1}^m e_if_i = n := [K:\Q] = \deg f = \deg \overline{f}\]
+			 Es gilt $f_I = [\mathcal{O}_K/(g_i(a)\mathcal{O}_K + p\mathcal{O}_K):\F_p]$ und  
+			 	\[\mathcal{O}_K/(g_i(a)\mathcal{O}_K + p\mathcal{O}_K) \cong (\mathcal{O}_K/p\mathcal{O}_K)/(\overline{g_i(a)}) \cong \F_p[X]/(\overline{g_i})\]
+			 als Ring und somit als abelsche Gruppe, das hei\ss t als $\Z$-Modul, also auch als \linebreak $\Z/(p)$-Modul, das hei\ss t als $\F_p$-Vektorraum. Somit $f_i = \deg \overline{g_i}$.
+			 Wendet man $\varphi$ auf die Gleichung $\overline{f} = \overline{g_1}^{\alpha_1}\cdots \overline{g_m}^{\alpha_m} = 0$ in $\mathcal{O}_K/p\mathcal{O}_K$, also $\mathfrak{p}_1^{\alpha_1}\cdots \mathfrak{p}_m^{\alpha_m} \subseteq p\mathcal{O}_K$, das hei\ss t
+			 	\[1 \leq e_i = \tilde{v}(p\mathcal{O}_K) \overset{\ref{2.6.4}(a)}{\leq} \alpha_i\]
+			 f\"ur alle $i \in \set{1, \dots, m}$. Es folgt $n \overset{\ref{2.7.5}(a)}{=} \sum_{i=1}^m e_if_i \leq \sum_{i=1}^m \alpha_if_i = \sum_{i=1}^m \alpha_i\deg \overline{g_i} = n$ und daher $e_i = \alpha_i$ f\"ur alle $i \in \set{1, \dots, m}$
+		\end{proof}
+	\end{satz}
+
+	\begin{bemerkung}\label{3.2.3}\hfill\newline
+		Sei $K=\Q(a)$ ein Zahlk\"orper, $a$ ganz \"uber $\Z. f:= \irr_\Q(a)$ und $p \in \P$ mit $p^2\nmid N_{K|\Q}(f'(a))$. Dann $p\nmid [\mathcal{O}_K:\Z[a]]$, denn
+			\[|N_{K|\Q}(f'(a))| \overset{\ref{2.4.22}}{=} |d(\Z[a])| \overset{\ref{3.1.7}}{=} [\mathcal{O}_K:\Z[a]]^2d(\mathcal{O}_K)\]
+	\end{bemerkung}
+
+	\begin{beispiel}\label{3.2.4}\hfill\newline
+		Sei $d\in \nsquare, p \in \P$ und $K:= \Q(\sqrt{d})$. Da $K|\Q$ eine Galoiserweiterung vom Grad 2 ist, tritt nach \ref{2.7.6} genau einer der folgenden F\"alle ein:
+		\begin{itemize}
+			\item $p\mathcal{O}_K = \mathfrak{q}^2$ mit $\mathfrak{q} \in M_{\mathcal{O}_K}$ ("$p$ \underline{verzweigt} in $K$") und $\mathcal{O}_K/\mathfrak{q} \cong \F_p$
+			\item $p\mathcal{O}_K \in M_{\mathcal{O}_K}$ ("$p$ \underline{tr\"age} in $K$") und $\mathcal{O}_K/p\mathcal{O}_K \cong \F_{p^2}$
+			\item $p\mathcal{O}_K = \mathfrak{q}_1\mathfrak{q}_2$ mit $\mathfrak{q}_1, \mathfrak{q}_2 \in M_{\mathcal{O}_K}$ und $\mathfrak{q}_1 \neq \mathfrak{q}_2$ ("$p$ \underline{zerlegt} in $K$") und 
+				\[\mathcal{O}_K/\mathfrak{q}_1 \cong \mathcal{O}_K/\mathfrak{q}_2 \cong \F_p\]
+		\end{itemize}
+		Setze $f:= \irr_\Q(\sqrt{d})$. \newline 
+		Nach \ref{2.4.22} gilt $N_{K|\Q}(f'(\sqrt{d})) = (\sqrt{d} - (-\sqrt{d}))((-\sqrt{d}) -\sqrt{d}) = -4d$, also $p^2\nmid N_{K|\Q}(f'(\sqrt{d}))$ f\"ur alle $p \in \P \setminus \set{2}$.
+		Nach \ref{3.2.3} k\"onnen wir f\"ur $p \in \P\setminus \set{2}$ also \ref{3.2.2} mit $a:= \set{d}$ anwenden. F\"ur $p=2$ k\"onnen wir im Fall $d \in \nsquare_{2,3}$ wegen $\mathcal{O}_K = \Z[\sqrt{d}]$ immer noch $a:= \sqrt{d}$ setzen, w\"ahrend wir im Fall $d \in \nsquare_1$ die kompliziertere Wahl $a:= \frac{1+\sqrt{d}}{2}$ treffen m\"ussen (beachte $\Q(\sqrt{d}) = \Q(\frac{1+\sqrt{d}}{2})$).
+		
+		\begin{enumerate}[label = \underline{Fall \arabic*}]
+			\item $p \in \P \setminus \set{2}$\newline
+			Setze $a:= \sqrt{d}, f:= \irr_\Q(a) = X^2-d$
+			\begin{enumerate}[label = \underline{Fall 1.\arabic*}]
+				\item $\overline{d}$ ist ein Quadrat in $\F_p$.\newline
+				W\"ahle $c \in \Z$ mit $\overline{d} = \overline{c}^2$ in $\F_p$. Dann $\overline{f} = (X-\overline{c})(X+\overline{c})$ in $\F_p[X]$.
+				\begin{enumerate}[label = \underline{Fall 1.1.\arabic*}]
+					\item $p\mid d$\newline
+					$\overline{c} = \overline{d} = 0$ und $\overline{f} = X^2$ in $\F_p[X]$\newline
+					$p\mathcal{O}_K = {\underbrace{(\sqrt{d}, p)}_{\in M_{\mathcal{O}_K}}}^2 \leadsto$ \underline{verzweigt}
+					
+					\item $p\nmid d$\newline
+					$\overline{c} \neq 0$, da $\overline{d} \neq 0$ in $\F_p$\newline
+					$\overline{c} \neq -\overline{c}$ in $\F_p$, da $\overline{2} \in \F_p^*$ (beachte $p \neq 2$)\newline
+					$p\mathcal{O}_K = \underbrace{(\sqrt{d} - c, p)}_{\in M_{\mathcal{O}_K}}\underbrace{(\sqrt{d} + c, p)}_{\in M_{\mathcal{O}_K}} \leadsto$ \underline{zerlegt} 
+				\end{enumerate}
+				\item $\overline{d}$ ist kein Quadrat in $\F_p$.\newline
+				Dann ist $\overline{f}$ irreduzibel in $\F_p[X]$, also nach \ref{3.2.2} $p\mathcal{O}_K \in M_{\mathcal{O}_K} \leadsto$ \underline{tr\"age}
+			\end{enumerate}
+			\item $p = 2$
+			\begin{enumerate}[label = \underline{Fall 2.\arabic*}]
+				\item $d \in \nsquare_{2,3}$\newline
+				Setze $a := \sqrt{d}, f:= \irr_\Q(a) = X^2 - d$.\newline
+				$\overline{f} = X^2 - \overline{d} = X^2 - \overline{d}^2 = (X-\overline{d})(X+\overline{d}) = (X-\overline{d})^2$ in $\F_p[X]$,\newline
+				also nach \ref{3.2.2} $2\mathcal{O}_K = {\underbrace{(\sqrt{d} - d, 2)}_{\in M_{\mathcal{O}_K}}}^2 \leadsto$ \underline{verzweigt}
+				
+				\item $d \in \nsquare_1$\newline
+				Setze $a := \frac{1+\sqrt{d}}{2}, f:= \irr_\Q(a) \overset{\ref{3.1.9}}{\underset{\ref{2.1.17}}{=}} X^2 - X- \frac{d-1}{4}$.
+				\begin{enumerate}[label = \underline{Fall 2.2.\arabic*}]
+					\item $d \equiv_{(8)} 1$\newline
+					$\overline{f} = X^2-X = X(X-1)$ in $\F_2[X]$,\newline
+					also nach \ref{3.2.2} $2\mathcal{O}_K = \underbrace{\brac{\frac{1+\sqrt{d}}{2}, 2}}_{\in M_{\mathcal{O}_K}}\underbrace{\brac{\frac{1-\sqrt{d}}{2}, 2}}_{\in M_{\mathcal{O}_K}} \leadsto$ \underline{zerlegt}
+					
+					\item $d \equiv_{(8)} 5$\newline
+					$\overline{f} = X^2-X-1$ irreduzibel in $\F_2[X]$, \newline
+					also nach \ref{3.2.2} $2\mathcal{O}_K \in M_{\mathcal{O}_K} \leadsto$ \underline{tr\"age}
+				\end{enumerate} 
+			\end{enumerate}
+		\end{enumerate}
+ 	\end{beispiel}
 \backmatter
 \printindex
 \end{document}
