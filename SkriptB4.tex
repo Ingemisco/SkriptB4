@@ -2992,9 +2992,177 @@ toc=idx
 	\end{satz} 
 
  	\newpage
- 	\chapter[tocentry={Kreisteilungsk\"orper}]{Kreisteilungsk\"orper}
- 	\section{Die Endlichkeit der Klassenzahl}
+ 	\chapter[tocentry={Das quadratische Reziprozit\"atsgesetz}]{Das quadratische Reziprozit\"atsgesetz}
+ 	\section{Kreisteilungsk\"orper}
  	
+ 	\begin{proposition}\label{4.1.1}\hfill
+ 		\begin{enumerate}[(a)]
+ 			\item Sind $a, n \in \Z$, so
+ 				\[\overline{a}^{(n)} \in (\Z/(n))^* \Longleftrightarrow (a,n) = (1).\]
+ 			\item Ist $n \in \N$, so 
+ 				\[(\Z/(n))^* = \set{\overline{a}^{(n)} \mid a \in \set{0, \dots, n-1}, (a,n) = (1)}\]
+ 		\end{enumerate}
+ 		
+ 		\begin{proof}
+ 				Seien $a, n \in \Z$. Ist $\overline{a} \in (\Z/(n))^*$, so gibt es $s \in \Z$ mit $\overline{sa} = 1$ und daher auch $t \in \Z$ mit $sa + tn = 1$.
+ 				Ist umgekehrt $(a,n) = (1)$, so gibt es $s, t \in \Z$ mit $st + an = 1$ und daher $\overline{s}^{(n)}\overline{a}^{(n)} = 1$.
+ 		\end{proof}
+ 	\end{proposition}
+ 
+ 	\begin{definition}\label{4.1.2}\hfill\newline
+ 		Die Abbildung 
+ 			\[\varphi: \N \to \N, n \mapsto \#(\Z/(n))^*\]
+ 		hei\ss t \emph{Eulersche $\varphi$-Funktion}.
+ 	\end{definition}
+ 	
+ 	\begin{proposition}\label{4.1.3}\hfill
+ 		\begin{enumerate}[(a)]
+ 			\item $\forall m,n \in \N: ((m,n) = (1) \Longrightarrow \varphi(mn) = \varphi(m)\varphi(n))$
+ 			\item $\forall p \in \P: \forall k \in \N: \varphi(p^k) = (p-1)p^{k-1}$
+ 			\item $\displaystyle \forall n \in \N: \varphi(n) = n \prod_{\overset{p \in \P}{p\mid n}} \brac{1- \frac{1}{p}}$
+ 		\end{enumerate}
+ 	
+ 		\begin{proof}
+ 			\begin{enumerate}[(a)]
+ 				\item Sind $m, n \in \N$ mit $(m, n) = (1)$, so gilt nach dem Chinesischen Restsatz $\Z/(mn) \cong \Z/(m) \times \Z/(n)$ und daher 
+ 				$(\Z/(mn))^* \cong (\Z/(m))^* \times (\Z/(n))^*$.
+ 				\item Sind $p \in \P$ und $k \in \N$, so 
+				\begin{flalign*}
+					\varphi(p^k) &= \#\set{a \in \set{0, \dots, p^k-1} \mid p \nmid a} && \ref{4.1.1}(b)\\
+					&= \#(\set{0, \dots, p^k-1} \setminus \set{0, p, \dots, p^k - p}\\)
+					&= p^k - p^{k-1} = (p-1)p^{k-1}.
+				\end{flalign*}
+ 				\item Sei $n \in \N$. Schreibe $n = p_1^{\alpha_1} \cdots p_m^{\alpha_m}$ mit $m \in \N_0, p_1, \dots, p_m \in \P$ paarweise verschieden und 
+ 				$\alpha_1, \dots, \alpha_m \in \N$. Dann
+ 				\begin{flalign*}
+ 					\varphi(n) &= \varphi(p_1^{\alpha_1}) \cdots \varphi(p_m^{\alpha_m}) && (a)\\
+ 					&= p_1^{\alpha_1-1} \cdots p_m^{\alpha_m-1}(p_1-1) \cdots (p_m - 1) && (b)\\
+ 					&= \underbrace{p_1^{\alpha_1} \cdots p_m^{\alpha_m}}_{=n}\brac{1-\frac{1}{p_1}} \cdots \brac{1-\frac{1}{p_m}}.
+ 				\end{flalign*}
+ 			\end{enumerate}
+ 		\end{proof}
+ 	\end{proposition}
+ 
+ 	\begin{bemerkung}\label{4.1.4}\hfill\newline
+ 		Sei $G$ eine multiplikativ geschriebene endliche zyklische Gruppe der Ordnung $n$. Sei $a \in G$ mit $G = \bracC{a}$. Dann ist
+ 			\[\Z/\bracC{n} \to G, \overline{k} \mapsto a^k \quad (k \in \Z)\]
+		wohldefiniert und ein Gruppenhomomorphismus. F\"ur alle $k \in \Z$ gilt
+			\[(k, n) = (1) \Longleftrightarrow \overline{k} \in (\Z/(n))^* \Longleftrightarrow G = \bracC{a^k}.\]
+ 	\end{bemerkung}
+ 
+ 	\begin{definition}\label{4.1.5}\hfill\newline
+ 		Sei $K$ ein K\"orper und $\zeta \in K$. Man nennt $\zeta$
+ 		\begin{itemize}
+ 			\item eine \emph{Einheitswurzel} in $K$, wenn $\exists n \in \N: \zeta^n = 1$
+ 			\item eine \emph{$n$-te Einheitswurzel} in $K$ ($n \in \N$), wenn $\zeta^n = 1$ und
+ 			\item eine \emph{primitive $n$-te Einheitswurzel} in $K$ ($n \in \N$), wenn $\zeta \in K^*$ die Ordnung $n$ hat. 
+ 		\end{itemize}
+ 	\end{definition}
+ 	
+ 	\begin{bemerkung}\label{4.1.6}\hfill\newline
+ 		Sei $K$ ein K\"orper 
+ 		\begin{enumerate}[(a)]
+ 			\item Die Einheitswurzeln in $K$ bilden eine Untergruppe von $K^*$.
+ 			\item Ist $n \in \N$, so bilden die $n$-ten Einheitswurzeln in $K$ eine zyklische Untergruppe von $K^*$, deren Ordnung $n$ teilt ($X^n-1$ hat nur endlich viele Nullstellen,
+ 			aber endliche Untergruppen von $K^*$ sind zyklisch und nach Lagrange teilt die Ordnung eines Erzeugers $n$).
+ 		\end{enumerate}
+ 	\end{bemerkung}
+ 
+ 	\begin{beispiel}\label{4.1.7}\hfill\newline
+ 		Sei $n \in \N$. Die $n$-ten Einheitswurzeln in $\C$ sind 	
+ 			\[e^{\frac{2k \pi i}{n}} \quad (k \in \set{0, \dots, n-1})\]
+ 		Ist $k \in \Z$, so ist $e^{\frac{2k \pi i}{n}}$ gem\"a\ss Bemerkung \ref{4.1.4} genau dann eine primitive $n$-te Einheitswurzel in $\C$, wenn $(k, n) = (1)$.
+ 	\end{beispiel}
+ 
+ 	\begin{proposition}\label{4.1.8}\hfill\newline
+ 		Sei $K$ ein K\"orper, $p := \Char K \in \set{0} \cup \P$ und $n \in \N$. 
+ 		
+ 		\medskip\noindent 
+ 		Dann sind folgende Aussagen \"aquivalent:
+ 		\begin{enumerate}[(a)]
+ 			\item $K$ besitzt eine primitve $n$-te Einheitswurzel
+ 			\item $K$ besitzt $n$ $n$-te Einheitswurzeln
+ 			\item $p \nmid n$ und $X^n-1$ zerf\"allt in $K[X]$
+ 		\end{enumerate}
+ 		
+ 		\begin{proof}\hfill\newline
+ 			\textbf{(a) $\Longrightarrow$(b)} ist trivial.
+ 			
+ 			\medskip\noindent
+ 			\textbf{(b) $\Longrightarrow$(a)} ist klar mit \ref{4.1.6}(b).
+ 			
+ 			\medskip\noindent
+ 			Setzt man $f:= X^n - 1$, so $f' = nX^{n-1}$ und daher 
+ 				\[f \textrm{ separabel } \Longleftrightarrow f' \neq 0 \Longleftrightarrow n \neq 0 \textrm{ in } K \Longleftrightarrow p\nmid n.\]
+ 			Hieraus folgt \textbf{(b)$\Longleftrightarrow$(c)}.
+ 		\end{proof}
+ 	\end{proposition}
+ 
+ 	\begin{definition}\label{4.1.9}\hfill\newline
+ 		Sei $n \in \N$. Dann hei\ss t
+ 			\[\Phi_n := \prod_{\overset{\overset{\zeta \textrm{ primitive}}{n\textrm{-te Einheitswurzel}}}{\textrm{in } \C}}(X-\zeta) \overset{\ref{4.1.7}}{=} \prod_{\overset{k=0}{(k,n)=(1)}}^{n-1} \brac{X- e^{\frac{2k\pi i}{n}}} \in \Q[X]\]
+ 		[mit Galoistheorie angewandt auf den Zerf\"allungsk\"orper von $X^n-1$ \"uber $\Q$ folgt leicht $\Phi_n \in \Q[X]$] das \emph{$n$-te Kreisteilungspolynom} und sein Zerf\"allungsk\"orper \"uber $\Q$ der $n$-te \emph{Kreisteilungsk\"orper}.
+ 	\end{definition}
+ 
+ 	\begin{bemerkung}\label{4.1.10}\hfill\newline
+ 		Sei $n \in \N$ und $\zeta$ eine primitive $n$-te Einheitswurzel in $\C$. 
+ 		
+ 		\medskip\noindent
+ 		Dann ist $\Q(\zeta)$ der Zerf\"allungsk\"orper von $X^n-1$ und damit auch der $n$-te Kreisteilungsk\"orper.
+ 	\end{bemerkung}
+ 
+ 	\begin{satz}\label{4.1.11}\hfill\newline
+ 		Sei $n \in \N$. Der $n$-te Kreisteilungsk\"orper ist galoissch \"uber $\Q$ mit Galoisgruppe $G\cong (\Z/(n))^*$. Sei $\zeta$ eine primitive $n$-te Einheitswurzel in $\C$.
+ 		
+ 		\medskip\noindent
+ 		Dann
+ 			\[G \overset{\cong}{\to} (\Z/(n))^*, \varphi \mapsto \overline{k} \textrm{ falls } k \in \Z \textrm{ mit } \varphi(\zeta) = \zeta^k.\]
+ 		
+ 		\begin{proof}
+ 			Als Zerf\"allungsk\"orper von $X^n-1$ \"uber $\Q$ ist der $n$-te Kreisteilungsk\"orper galoissch \"uber $\Q$. Wendet man \ref{4.1.4} auf die Gruppe der $n$-ten
+ 			Einheitswurzeln in $\C$ an, so sieht man, dass die Abbildung wohldefiniert ist. Sie ist auch ein Gruppenhomomorphismus, denn sind $\varphi, \psi \in G$ und $k, l \in \Z$ mit 
+ 			$\varphi(\zeta) = \zeta^k$ und $\psi(\zeta) = \zeta^l$, so $(\varphi\psi)(\zeta) = \varphi(\psi(\zeta)) = \varphi(\zeta^l) = \varphi(\zeta)^l = (\zeta^k)^l = \zeta^{kl}$. Die Abbildung ist offensichtlich injektiv, womit $\#G \leq \varphi(n)$ folgt. F\"ur die Surjektivit\"at zeigen wir $\#G \geq \varphi(n)$. Mit Galoistheorie gilt $[\Q(\zeta):\Q] =\#G$. Es ist daher $[\Q(\zeta):\Q] \geq \varphi(n)$ zu zeigen. Setze $f:=\irr_\Q(\zeta) \in \Q[X]$. Zu zeigen: $\deg f \geq \varphi(n)$. Es reicht zu zeigen, dass jede primitive $n$-te Einheitswurzel in $\C$ eine Nullstelle von $f$ ist. Man \"uberlegt sich, dass es wegen \ref{4.1.4} reicht zu zeigen, dass f\"ur jede primitive $n$-te Einheitswurzel $z$ in $\C$ und alle $p \in \P$ mit $p \nmid n$ gilt
+ 				\[f(z) = 0 \Longrightarrow f(z^p) = 0\]
+ 			Sei hierzu $z \in \C$ und $p \in \P$ mit $f(z) = 0$ und $f(z^p) \neq 0$. Zu zeigen ist $p \mid n$. Schreibe $X^n-1 = fg$ mit
+ 			$f,g \in \Q[X]$ normiert. Nach dem Lemma von Gau\ss\ gilt $f, g \in \Z[X]$. Wegen $f(z^p) \neq 0$ und $(fg)(z^p) = 0$ folgt $g(z^p) = 0$, das 
+ 			hei\ss t $z$ ist eine Nullstelle von $g(X^p)$ und es gibt $h \in \Q[X]$ mit $g(X^p) = fh$. Wieder mit dem Lemma von Gau\ss\ sieht man $h \in \Z[X]$. Reduziere nun die Koeffizienten modulo $p$ (das hei\ss t, wende den Ringhomomorphismus $\Z[X] \to \F_p[X], p \mapsto \overline{p}$ mit $\overline{X} = X$ an) und benutze den Frobeniushomomorphismus $\F_p[X] \to \F_p[X]$, um $X^n-1 = \overline{f}\overline{g}$ und
+ 				\[\overline{g}^p = \overline{g}(X^p) = \overline{g(X^p)} = \overline{fh} = \overline{f}\overline{h}\]
+ 			zu erhalten. Wegen $\overline{f} \mid \overline{g}^p$ ist $X^n-1$ nicht separabel \"uber $\F_p$. 
+ 			
+ 			\noindent Wegen $(X^p-1)' = nX^{n-1} \in \F_p[X]$
+ 			gilt dann aber $n=0$ in $\F_p[X]$, das hei\ss t $p \mid n$ wie gew\"unscht.
+ 		\end{proof}
+ 	\end{satz}
+ 
+ 	\begin{korollar}\label{4.1.12}\hfill\newline
+ 		Sei $n \in \N$. Der $n$-te Kreisteilungsk\"orper ist ein Zahlk\"orper vom Grad $\varphi(n)$.
+ 	\end{korollar}
+ 
+ 	\begin{korollar}\label{4.1.13}\hfill\newline
+ 		Sei $n \in \N$. Dann ist $\Phi_n$ irreduzibel in $\Q[X]$ und es gilt $\Phi_n \in \Z[X]$
+ 		
+ 		\begin{proof}
+ 			Bezeichne $\zeta$ eine primitive $n$-te Einheitswurzel in $\C$. Nach \ref{4.1.12} gilt
+ 				\[[\Q(\zeta):\Q] = \varphi(n) = \deg(\Phi_n).\]
+ 			Also ist $\Phi_n = \irr_\Q(\zeta)$. Mit \ref{2.1.14} folgt $\Phi_n \in \Z[X]$, da $\zeta$ ganz \"uber $\Z$ ist.
+ 		\end{proof}
+ 	\end{korollar}
+ 	
+ 	\begin{bemerkung}\label{4.1.14}\hfill\newline
+ 		Die f\"ur alle $n \in \N$ g\"ultige Formel
+ 			\[X^n-1 = \prod_{\substack{\zeta \in \C\\\zeta^n = 1}}(X-\zeta) = \prod_{\substack{d \in \N\\ d\mid n}}\prod_{\substack{\zeta \textrm{ primitive}\\ d\textrm{-te Einheitswurzel}}}(X-\zeta) = \prod_{\substack{d \in \N\\d\mid n}}\Phi_d\]
+ 		liefert ein rekursives Berechnungsverfahren f\"ur $\Phi_n$. Zum Beispiel gilt
+ 		\begin{align*}
+ 			\Phi_{12} &= \frac{X^{12}-1}{\Phi_1\Phi_2\Phi_3\Phi_4\Phi_6} = \frac{X^{12}-1}{(X^6-1)\Phi_4} = \frac{X^6+1}{\Phi_4} \quad \textrm{und}\\
+ 			\Phi_4 &= \frac{X^4-1}{\Phi_1\Phi_2} = \frac{X^4-1}{X^2-1} = X^2+1.
+ 		\end{align*}
+ 		Also $\Phi_{12} = \frac{X^6+1}{X^2+1} = X^4-X^2+1$
+ 	\end{bemerkung}
+ 	
+ 	\begin{bemerkung}\label{4.1.15}\hfill\newline
+ 		Aus \ref{4.1.14} folgt leicht $\Phi_n(0) = 1$ f\"ur alle $n \in \N$ mit $n \geq 2$.
+ 	\end{bemerkung}
+ 
  	\newpage
  	\section{Zahlringe von Kreisteilungsk\"orpern}\thispagestyle{sectionstart}
  	
