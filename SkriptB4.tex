@@ -3165,6 +3165,105 @@ toc=idx
  
  	\newpage
  	\section{Zahlringe von Kreisteilungsk\"orpern}\thispagestyle{sectionstart}
+ 	\begin{lemma}\label{4.2.1}\hfill\newline
+ 		Sei $p \in \P, m \in \N, n := p^m, \zeta$ eine primitive $n$-te Einheitswurzel in $\C$ und $K:= \Q(\zeta)$.
+ 		
+ 		\medskip\noindent
+ 		Dann gilt:
+ 		\begin{enumerate}[(a)]
+ 			\item $d_{K|\Q}(1,\zeta,\dots, \zeta^{\varphi(n)-1}) = (-1)^{\frac{\varphi(n)(\varphi(n)-1)}{2}} p^{p^{m-1}(m(p-1)-1)}$
+ 			\item F\"ur alle weiteren primitiven $n$-ten Einheitswurzeln $\xi$ in $\C$ gilt $\frac{1-\xi}{1-\zeta} \in \mathcal{O}_K^*$.
+ 			\item $p\mathcal{O}_K = (1-\zeta)^{\varphi(n)}\mathcal{O}_K$
+ 			\item $1-\zeta$ ist prim in $\mathcal{O}_K$
+ 			\item $\mathcal{O}_K/(1-\zeta)\mathcal{O}_K \cong \F_p$
+ 		\end{enumerate}
+ 	
+ 		\begin{proof}\hfill
+ 			\begin{enumerate}[(a)]
+ 				\item Nach \ref{2.4.22} gilt $d_{K|\Q}(1,\dots, \zeta^{\varphi(n)-1}) = (-1)^{\frac{\varphi(n)(\varphi(n)-1)}{2}}N_{K|\Q}(\Phi_n'(\zeta))$.
+ 				Nach \ref{4.1.14} gilt $X^n-1 = \Phi_n\cdot (X^{p^{m-1}}-1)$. Ableiten liefert
+ 					\[nX^{n-1} = \Phi_n'\cdot (X^{p^{m-1}}-1) + \Phi_n \cdot p^{m-1}X^{p^{m-1}-1}\]
+ 				Setzt man hier $\zeta$ ein, so erh\"alt man $n\zeta^{n-1} = \Phi_n'(\zeta)(\zeta^{p^{m-1}} - 1)$, also 
+ 				\begin{align}
+ 					\Phi_n'(\zeta)\zeta(z-1) = n, \label{4.2.1.1}\tag{$*$}
+ 				\end{align}
+ 				wobei $z:= \zeta^{p^{m-1}}$ eine primitive $p$-te Einheitswurzel ist. Wegen
+ 				\begin{align*}
+ 					\irr_\Q(z) &= \Phi_p \overset{\ref{4.1.14}}{=} \frac{X^p-1}{X-1} = X^{p-1} + \cdots + 1 \textrm{ und }\\
+ 					\irr_\Q(z-1) &= \Phi_p(X+1)
+ 				\end{align*}
+ 				gilt nach \ref{2.4.5} $N_{K|\Q}(z-1) = (-1)^{\varphi(n)}p^{[K:\Q(z-1)]}$. 
+ 				
+ 				\noindent Weiter gilt $N_{K|\Q}(\zeta) \overset{\ref{2.4.5}}{=} (-1)^{\varphi(n)}\Phi_n(0) \overset{\ref{4.1.15}}{=} (-1)^{\varphi(n)}$. Wendet man die Norm auf beiden Seiten von (\ref{4.2.1.1}) an, so folgt also
+ 				\begin{align*}
+ 					N_{K|\Q}(\Phi_n'(\zeta))p^{[K:\Q(z)]} = n^{[K:\Q]} \label{4.2.1.2}\tag{$**$}
+ 				\end{align*}
+ 				Mit $\varphi(n) = [K:\Q] = [K:\Q(z)][\Q(z):\Q] = [K:\Q(z)]\varphi(p)$ und
+ 					\[\varphi(n) = \varphi(p^m) \overset{\ref{4.1.3}(b)}{=} (p-1)p^{m-1} \overset{\ref{4.1.3}(b)}{=} \varphi(p)p^{m-1}\]
+ 				folgt $[K:\Q(z)] = p^{m-1}$. Aus (\ref{4.2.1.2}) folgt daher
+ 					\[N_{K|\Q}(\Phi_n'(\zeta)) = p^{m\varphi(n) -p^{m-1}} = p^{m(p-1)p^{m-1} - p^{m-1}} = p^{p^{m-1} (m(p-1)-1)}.\]
+ 				
+ 				\item Sei $\xi$ eine primitive $n$-te Einheitswurzel in $\C$. Nach Bemerkung \ref{4.1.4} kann man dann $\xi = \zeta^k$ f\"ur ein $k \in \set{0, \dots, n-1}$ mit
+ 				$(k, n) = (1)$ schreiben. Dann
+ 					\[\frac{1-\xi}{1-\zeta} = \frac{1-\zeta^k}{1-\zeta} = \zeta^{k-1} + \cdots + 1 \in \mathcal{O}_K.\]
+ 				Analog folgt $\frac{1-\zeta}{1-\xi} \in \mathcal{O}_K.$
+ 				
+ 				\item Es gilt 
+ 					\[\Phi_n \overset{\ref{4.1.14}}{=} \frac{X^n-1}{X^{p^{m-1}} - 1} = X^{p^{m-1}(p-1)} + \cdots + X^{p^{m-1}}+ 1\]
+ 				und daher 
+ 					\[p = \Phi_n(1) = \prod_{\substack{k=0\\(k,n)=(1)}}^{n-1} (1-\zeta^k),\]
+ 				woraus mit (b) das Gew\"unschte folgt.
+ 				
+ 				\item folgt aus \ref{2.7.6}, denn w\"are $1-\zeta$ nicht prim in $\mathcal{O}_K$, so w\"urde eine Primidealzerlegung $(1-\zeta)\mathcal{O}_K$ in $\mathcal{O}_K$ wegen
+ 				(c) zeigen, dass $e_{p\Z}(\mathcal{O}_K) > \varphi(n) = [K:\Q].$
+ 				
+ 				\item folgt aus (c) und (d) wieder mit \ref{2.7.6}.
+ 			\end{enumerate}
+ 		\end{proof}
+ 	\end{lemma}
+ 	
+ 	\begin{satz}\label{4.2.2}\hfill\newline
+ 		Sei $p \in \P, m \in \N, n:= p^m, K$ der $n$-te Kreisteilungsk\"orper und $\zeta$ eine primitive $n$-te Einheitswurzel in $\C$. 
+ 		
+ 		\medskip\noindent
+ 		Dann
+ 			\[\mathcal{O}_K = \Z[\zeta] = \Z\oplus\Z\zeta\oplus\cdots \oplus\Z\zeta^{\varphi(n)-1}\]
+ 		und
+ 			\[d(\mathcal{O}_K) = (-1)^{\frac{\varphi(n)(\varphi(n)-1)}{2}}p^{p^{m-1}(m(p-1)-1)}.\]
+ 			
+ 		\begin{proof}
+ 			Da das $n$-te Kreisteilungspolynom $\Phi_n$ ein normiertes Polynom vom Grad $\varphi(n)$ mit ganzzahligen Koeffizienten ist [$\to$\ref{4.1.9}, \ref{4.1.12}, \ref{4.1.13}],
+ 			folgt aus $\Phi_n(\zeta) = 0$, dass $\Z[\zeta] = \Z+\Z\zeta+\cdots+\Z\zeta^{\varphi(n)-1}$. Nat\"urlich bilden $1,\zeta,\dots, \zeta^{\varphi(n)-1}$ wegen $[\Q(\zeta):\Q] = \varphi(n)$
+ 			eine Basis des $\Q$-Vektorraumes $\Q(\zeta)$, woraus insbesondere folgt, dass $1, \dots, \zeta^{\varphi(n)-1}$ linear unabh\"angig im $\Z$-Modul $\Z[\zeta]$ sind. Daraus folgt, dass
+ 			$1, \dots, \zeta^{\varphi(n)-1}$ eine Basis des $\Z$-Moduls $\Z[\zeta]$ ist, weswegen $\Z[\zeta]$ ein Gitter in $K$ ist und die behauptete Gleichheit $\Z[\zeta] = \Z\oplus\Z\zeta\oplus\cdots \oplus\Z\zeta^{\varphi(n)-1}$ gilt. Die Diskriminante $d(\Z[\zeta])$ [$\to$\ref{3.1.5}] des multiplikativen Gitters $\Z[\zeta]$ ist nach \ref{4.2.1}(a) bis auf Vorzeichen eine Potenz von $p$ und daher ist nach \ref{3.1.7} auch $[\mathcal{O}_K:\Z[\zeta]]$ eine Potenz von $p$. Es gibt also $k \in \N_0$ mit $p^k\mathcal{O}_K \subseteq \Z[\zeta] \subseteq \mathcal{O}_K$.
+ 			Setzt man
+ 				\[\mathfrak{q}:=(1-\zeta)\mathcal{O}_K \overset{\ref{4.2.1}(d)}{\in} M_{\mathcal{O}_K}\]
+ 			so gilt nach \ref{4.2.1}(e) $\mathcal{O}_K/\mathfrak{q} \cong \F_p \cong \Z/p\Z$, also $\mathcal{O}_K = \Z + \mathfrak{q}$ und daher erst recht $\mathcal{O}_K = \Z[\zeta] + \mathfrak{q}$.
+ 			Durch Multiplizieren mit $(1-\zeta)^l$ ergibt sich $\mathfrak{q}^l = (1-\zeta)^l\Z[\zeta] + \mathfrak{q}^{l+1}$ f\"ur alle $l \in \N_0$ und durch Induktion $\mathcal{O}_K = \Z[\zeta] + \mathfrak{q}^l$ f\"ur alle $l \in \N_0$. Speziell $l:= k\varphi(n)$ folgt laut \ref{4.2.1}(c)
+ 				\[\mathcal{O}_K = \Z[\zeta] + ((1-\zeta)^{\varphi(n)})^k\mathcal{O}_K = \Z[\zeta] +p^k\mathcal{O}_K = \Z[\zeta].\]
+ 			Schlie\ss lich gilt $d(\mathcal{O}_K) = d(\Z[\zeta]) \overset{\ref{4.2.1}(a)}{=} (-1)^{\frac{\varphi(n)(\varphi(n)-1)}{2}}p^{p^{m-1}(m(p-1) -1)}$
+ 		\end{proof}
+ 	\end{satz}
+ 
+ 	\begin{korollar}\label{4.2.3}\hfill\newline
+ 		Sei $p$ eine ungerade Primzahl und $K$ der $p$-te Kreisteilungsk\"orper. 
+ 		
+ 		\medskip\noindent
+ 		Dann gibt es genau einen Zwischenk\"orper $E$ von $K|\Q$ mit $[K:\Q] = 2$ und zwar gilt 
+ 			\[E=\Q\brac{\sqrt{(-1)^{\frac{p-1}{2}} p}}\]
+ 		
+ 		\begin{proof}
+ 			Nach \ref{4.1.3}(b) gilt $\varphi(p) = p - 1$. Daher gilt nach Satz \ref{4.2.2}
+ 				\[d(\mathcal{O}_K) = (-1)^{\frac{(p-1)(p-2)}{2}}p^{p-2} \]
+ 			und dies muss wegen Proposition \ref{2.4.21} ein Quadrat in $K$ sein, weil $K|\Q$ normal ist. Da $p-1$ gerade und $p-2$ ungerade is, gilt $(-1)^{\frac{(p-1)(p-2)}{2}} = ((-1)^{\frac{p-1}{2}})^{p-2} = (-1)^{\frac{p-1}{2}}$. Da $p-3$ gerade ist, ist weiter $p^{p-3}$ ein Quadrat in $K$. Insgesamt ist daher $(-1)^{\frac{p-1}{2}}p$ ein Quadrat in $K$ und somit 
+ 				\[E:= \Q\brac{\sqrt{(-1)^{\frac{p-1}{2}}p }}\]
+ 			ein Unterk\"orper von $K$. Wegen $(-1)^{\frac{p-1}{2}}p \in \nsquare$ gilt $[E:\Q] = 2$ [$\to$\ref{3.2.4}]. Dass $E$ der einzige Zwischenk\"orper von $K|\Q$ vom Grad $2$ \"uber $\Q$, folgt 
+ 			leicht aus Galoistheorie, denn die Galoisgruppe von $K|\Q$ besitzt genau eine Untergruppe vom Index $2$. In der Tat: Diese Galoisgruppe ist  nach \ref{4.1.11} isomorph zu $\F_p^*$ und daher 
+ 			zyklisch (endliche Untergruppen von multiplikativen Gruppen von K\"orpern sind zyklisch). Aber endliche zyklische Gruppen besitzen zu jedem Teiler ihrer Gruppenordnung genau eine Untergruppe vom entsprechenden Index, wie man sich sofort \"uberlegt.
+ 		\end{proof}
+ 	\end{korollar}
+ 
+ 
  	
  	\newpage
  	\section{Das Legendre-Symbol}\thispagestyle{sectionstart}
