@@ -19,7 +19,7 @@ toc=idx
 %\usepackage{ulem}
 \usepackage{cancel}
 \usepackage{tikz-cd}
-
+\usepackage{tcolorbox}
 
 \usepackage[headsepline]{scrlayer-scrpage}
 \setkomafont{pageheadfoot}{\normalfont}
@@ -65,7 +65,6 @@ toc=idx
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\F}{\mathbb{F}}
 \renewcommand{\P}{\mathbb{P}}
-\newcommand{\comment}[1]{}
 \newcommand{\nsquare}{\cancel{\square}}
 
 
@@ -74,6 +73,8 @@ toc=idx
 \newcommand{\bracC}[1]{\left< #1 \right>}
 \newcommand{\abs}[1]{\left| #1 \right|}
 \newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\legendre}[2]{\brac{\frac{#1}{#2}}}
+
 
 \newcommand{\textcase}[2]{$\begin{Bmatrix} \textrm{#1} \\ \textrm{#2}\end{Bmatrix}$}
 \newcommand{\case}[2]{\begin{Bmatrix} #1 \\ #2\end{Bmatrix}}
@@ -608,13 +609,15 @@ toc=idx
 			
 			\medskip\noindent 
 			\textbf{(c)$\Longrightarrow$(a)}: Gelte (c).\newline
-			{\color{red}
-			\textbf{Hilfsbehauptung}: Jeder Untermodul eines Untermoduls $N$ von $M$ ist ein direkter Summand von $N$.
+
+			\begin{tcolorbox}[colback=white,colframe=blue,arc=0cm]
+				\textbf{Hilfsbehauptung}: Jeder Untermodul eines Untermoduls $N$ von $M$ ist ein direkter Summand von $N$.
 			
-			\smallskip\noindent
-			\textbf{Begr\"undung}: Sei $N$ ein Untermodul von $M$ und $P$ ein Untermodul von $N$.
-			W\"ahle $Q$ mit $M = P \oplus Q$. Setze $R = Q \cap N$. Wir zeigen $N = P \oplus R$. Es ist klar, dass $P \cap R = 0$ (denn $P \cap Q = 0$) und $P + R \subseteq N$. Zu zeigen ist also noch $N \subseteq P + R$. \newline
-			Sei hierzu $x \in N$. Schreibe $x = p + q$ mit $p \in P$ und $q \in Q$, dann $q = x - p \in N \cap Q = R$. } 
+				\tcblower
+				\textbf{Begr\"undung}: Sei $N$ ein Untermodul von $M$ und $P$ ein Untermodul von $N$.
+				W\"ahle $Q$ mit $M = P \oplus Q$. Setze $R = Q \cap N$. Wir zeigen $N = P \oplus R$. Es ist klar, dass $P \cap R = 0$ (denn $P \cap Q = 0$) und $P + R \subseteq N$. Zu zeigen ist also noch $N \subseteq P + R$. \newline
+				Sei hierzu $x \in N$. Schreibe $x = p + q$ mit $p \in P$ und $q \in Q$, dann \linebreak $q = x - p \in N \cap Q = R$. 
+			\end{tcolorbox}
 			
 			\bigskip
 			\noindent Betrachte nun die durch Inklusion halbgeordnete Menge 
@@ -802,25 +805,23 @@ toc=idx
 					M &= L + M_0 \supseteq \cdots \supseteq L + M_n = L \label{1.4.14.1}\tag{$*$}\\
 					L &= L \cap M_0 \supseteq \cdots \supseteq L \cap M_n = 0 \label{1.4.14.2}\tag{$**$}
 				\end{align}
-			{\color{red}
-			\noindent 
-			\textbf{Hilfsbehauptung}: F\"ur alle $i \in \set{1, \dots, n}$ gilt 
+			\begin{tcolorbox}[colback=white,colframe=blue,arc=0cm]
+				\textbf{Hilfsbehauptung}: F\"ur alle $i \in \set{1, \dots, n}$ gilt 
+				
+				\textbf{entweder} $(L+M_{i+1})/(L+M_i) = 0$ und $(L\cap M_{i+1})/(L\cap M_i) \cong M_{i-1}/M_i$
+				
+				\textbf{oder} $(L+M_{i+1})/(L+M_i) \cong M_{i-1}/M_i$ und $(L\cap M_{i+1})/(L\cap M_i) = 0$
+				
+				\tcblower
+				\textbf{Begr\"undung}: Sei $i \in \set{1, \dots, n}$. Ist $(L\cap M_{i-1})/(L\cap M_i) \neq 0$, so ist \linebreak $(L~\cap~M_{i-1})~/~(L~\cap~M_i)~\hookrightarrow~ M_{i-1}/M_i$
+				ein Isomorphismus, da $M_{i-1}/M_i$ einfach.
+				
+				\noindent Ist $(L+M_{i-1})/(L+M_i) \neq 0$, so ist $M_{i-1}/M_i \twoheadrightarrow (L+M_{i-1})/(L+M_i)$ ein Isomorphismus, da $M_{i-1}/M_i$ einfach. Daher reicht es zu zeigen, dass genau einer der Moduln $(L\cap M_{i-1})/(L\cap M_i)$ und $(L+M_{i-1})/(L+M_i)$ ein Nullmodul ist.
+				
+				\noindent Wegen Lemma \ref{1.4.4} k\"onnen nicht beide $0$ sein. Es reicht daher zu zeigen, dass genau $n$ der $2n$ Inklusionen (\ref{1.4.14.1}) und (\ref{1.4.14.2}) echt sind. Dies folgt mit Obigem aus (\ref{1.4.13}), indem man aus (\ref{1.4.14.1}) und (\ref{1.4.14.2}) eine Kompositionsreihe gewinnt. 
+			\end{tcolorbox}
 			
-			\textbf{entweder} $(L+M_{i+1})/(L+M_i) = 0$ und $(L\cap M_{i+1})/(L\cap M_i) \cong M_{i-1}/M_i$
-			
-			\textbf{oder} $(L+M_{i+1})/(L+M_i) \cong M_{i-1}/M_i$ und $(L\cap M_{i+1})/(L\cap M_i) = 0$
-			
-			\smallskip\noindent
-			\textbf{Begr\"undung}: Sei $i \in \set{1, \dots, n}$. Ist $(L\cap M_{i-1})/(L\cap M_i) \neq 0$, so ist \linebreak $(L~\cap~M_{i-1})~/~(L~\cap~M_i)~\hookrightarrow~ M_{i-1}/M_i$
-			ein Isomorphismus, da $M_{i-1}/M_i$ einfach.
-			
-			\noindent Ist $(L+M_{i-1})/(L+M_i) \neq 0$, so ist $M_{i-1}/M_i \twoheadrightarrow (L+M_{i-1})/(L+M_i)$ ein Isomorphismus, da $M_{i-1}/M_i$ einfach. Daher reicht es zu zeigen, dass genau einer der Moduln $(L\cap M_{i-1})/(L\cap M_i)$ und $(L+M_{i-1})/(L+M_i)$ ein Nullmodul ist.
-			
-			\noindent Wegen Lemma \ref{1.4.4} k\"onnen nicht beide $0$ sein. Es reicht daher zu zeigen, dass genau $n$ der $2n$ Inklusionen (\ref{1.4.14.1}) und (\ref{1.4.14.2}) echt sind. Dies folgt mit Obigem aus (\ref{1.4.13}), indem man aus (\ref{1.4.14.1}) und (\ref{1.4.14.2}) eine Kompositionsreihe gewinnt. }
-			
-			
-			\medskip\noindent
-			Da $M/L$ einfach ist, ist genau eine der $n$ Inklusionen in (\ref{1.4.14.1}) echt, etwa $L+M_{k-1} \supsetneq L + M_k$. Nach der Hilfsbehauptung erh\"alt man aus (\ref{1.4.14.2}) eine Kompositionsreihe von $L$ der L\"ange $n-1$ (beachte $L\cap M_{k-1} = L\cap M_k$). Da $L=N_1\supsetneq \cdots \supsetneq N_n = 0$ ebenfalls eine solche ist, gibt es nach Induktionsvoraussetzung eine Bijektion $\tau: \set{2, \dots, n} \to \set{1, \dots, n} \setminus \set{k}$ mit $N_{i-1}/N_i \cong (L\cap M_{\tau(i)-1})/(L\cap M_{\tau(i)}) \cong M_{\tau(i)-1} / M_{\tau(i)}$ f\"ur $i \in \set{2,\dots, n}$. Zusammen mit $N_0/N_1 \cong M/L = (L+M_{k-1})/(L+M_k) \cong M_{k-1}/M_k$ liefert dies die gew\"unschte Bijektion.
+			\noindent Da $M/L$ einfach ist, ist genau eine der $n$ Inklusionen in (\ref{1.4.14.1}) echt, etwa $L+M_{k-1} \supsetneq L + M_k$. Nach der Hilfsbehauptung erh\"alt man aus (\ref{1.4.14.2}) eine Kompositionsreihe von $L$ der L\"ange $n-1$ (beachte $L\cap M_{k-1} = L\cap M_k$). Da $L=N_1\supsetneq \cdots \supsetneq N_n = 0$ ebenfalls eine solche ist, gibt es nach Induktionsvoraussetzung eine Bijektion $\tau: \set{2, \dots, n} \to \set{1, \dots, n} \setminus \set{k}$ mit $N_{i-1}/N_i \cong (L\cap M_{\tau(i)-1})/(L\cap M_{\tau(i)}) \cong M_{\tau(i)-1} / M_{\tau(i)}$ f\"ur $i \in \set{2,\dots, n}$. Zusammen mit $N_0/N_1 \cong M/L = (L+M_{k-1})/(L+M_k) \cong M_{k-1}/M_k$ liefert dies die gew\"unschte Bijektion.
 		\end{proof}
 	\end{satz}
 
@@ -1016,19 +1017,21 @@ toc=idx
 			\end{align*}
 			Da $\End(M_1)$ nach \ref{1.5.12} lokal ist, gibt es $j \in \set{1, \dots, n}$ mit $g_jh_j \in \Aut(M_1)$. Insbesondere $n \geq 1$.
 			
-			\noindent {\color{red} \textbf{Behauptung 1}: \begin{tikzcd}
-				M_1 \arrow[yshift=0.7ex]{r}{h_j} & N_j \arrow[yshift=-0.7ex]{l}{g_j}
-			\end{tikzcd} sind Isomorphismen.
+			\begin{tcolorbox}[colback=white,colframe=blue,arc=0cm]
+				\textbf{Behauptung 1}: \begin{tikzcd}
+					M_1 \arrow[yshift=0.7ex]{r}{h_j} & N_j \arrow[yshift=-0.7ex]{l}{g_j}
+				\end{tikzcd} sind Isomorphismen.
+				
+				\tcblower
+				\textbf{Begr\"undung}: Wegen $g_jh_j \in \Aut(M)$ ist $h_j$ injektiv und $g_j$ surjektiv. Es gen\"ugt zu zeigen, dass $h_jg_j \in \Aut(N_j)$. Dies ist klar, denn sonst gilt nach \ref{1.5.12} $(h_jg_j)^s = 0$ f\"ur ein $s \in \N$ und damit 
+				\[0 = g_j(h_jg_j)^s = (g_jh_j)^sg_j\]
+				was $g_j = 0$ impliziert $\lightning$.
+			\end{tcolorbox}
 			
-			\smallskip\noindent
-			\textbf{Begr\"undung}: Wegen $g_jh_j \in \Aut(M)$ ist $h_j$ injektiv und $g_j$ surjektiv. Es gen\"ugt zu zeigen, dass $h_jg_j \in \Aut(N_j)$. Dies ist klar, denn sonst gilt nach \ref{1.5.12} $(h_jg_j)^s = 0$ f\"ur ein $s \in \N$ und damit 
-			\[0 = g_j(h_jg_j)^s = (g_jh_j)^sg_j\]
-			was $g_j = 0$ impliziert $\lightning$.
-			
-			\medskip\noindent
+			\begin{tcolorbox}[colback=white,colframe=blue,arc=0cm]
 			\textbf{Behauptung 2}: $M = f^{-1}(N_j) \oplus M_2 \oplus \cdots \oplus M_m$.
 			
-			\smallskip\noindent
+			\tcblower
 			\textbf{Begr\"undung}: Zu zeigen ist 
 			\begin{enumerate}[(a)]
 				\item $f^{-1}(N_j) \cap \sum_{i=2}^mM_i = 0$
@@ -1043,7 +1046,8 @@ toc=idx
 				\pi_1(x-f^{-1}(y))&=\pi_1(x) - (\pi_1(f^{-1}\kappa_j)(y))\\
 				&= \pi_1(g_j(y)) - g_j(y) \\
 				&= g_j(y) - g_j(y) = 0
-			\end{align*} }
+			\end{align*} 
+			\end{tcolorbox}
 		
 			\noindent Der Kern von \begin{tikzcd} M \arrow{r}{f}[swap]{\cong} & N \arrow[two heads]{r} & N/N_j \end{tikzcd} ist $f^{-1}(N_j)$ und es folgt mit dem Isomorphiesatz $M/f^{-1}(N_j) \cong N/N_j$, also
 				\[\bigoplus_{i=2}^mM_i \overset{\textrm{Beh 2}}{\cong} M/f^{-1}(N_j) \cong N/N_j \cong \bigoplus_{k=1, k \neq j}^n N_k\]
@@ -1677,33 +1681,33 @@ toc=idx
  		\end{enumerate}
  	
  		\begin{proof}\hfill\newline
- 			{\color{red}
- 			\textbf{Behauptung 1}: Jedes invertierbare Primideal von $A$ ist ein maximales Ideal [In (d) wird dies sogar f\"ur alle Primideale $\neq (0)$ behauptet].
+ 			\begin{tcolorbox}[colback=white,colframe=blue,arc=0cm]
+	 			\textbf{Behauptung 1}: Jedes invertierbare Primideal von $A$ ist ein maximales Ideal [In (d) wird dies sogar f\"ur alle Primideale $\neq (0)$ behauptet].
+	 			
+	 			\tcblower
+	 			\textbf{Begr\"undung}: Sei $\mathfrak{p}$ ein invertierbares Primideal von $A$. Wir zeigen, dass $A/\mathfrak{p}$ ein K\"orper ist. Sei hierzu $a \in A$ mit $\overline{a} \neq 0$ in $A/\mathfrak{p}$, das hei\ss t $a \notin \mathfrak{p}$. Zu zeigen ist $\overline{a} \in (A/\mathfrak{p})^*$. Es reicht zu zeigen, dass $I:= aA + \mathfrak{p} = A$. Da $\mathfrak{p}$ invertierbar ist, reich es $a\mathfrak{p} + \mathfrak{p}^2 = \mathfrak{p}$ zu zeigen. Wir zeigen zun\"achst $I^2 = J:= a^2A + \mathfrak{p}$, was wegen $I^2 = a^2A + a\mathfrak{p} + \mathfrak{p}^2$ eine Abschw\"achung der Behauptung ist. Wir wissen $(I/\mathfrak{p})^2 = J/\mathfrak{p}$.
+	 			
+	 			Da $A$ ein Dedekindring ist, gibt es $m,n \in \N_0$ und Primideale $\mathfrak{p}_1,\dots, \mathfrak{p}_m$ und $\mathfrak{q}_1,\dots, \mathfrak{q}_n$ von $A$ mit $I = \mathfrak{p}_1 \cdots \mathfrak{p}_m$ und $J = \mathfrak{q}_1 \cdots \mathfrak{q}_n$. Es gilt $\mathfrak{p} \subseteq I \subseteq \mathfrak{p}_i$ f\"ur alle $i \in \set{1,\dots, m}$ und $\mathfrak{p} \subseteq J \subseteq \mathfrak{q}_j$ f\"ur alle $j \in\set{1,\dots,n}$. 
+	 			
+	 			Da die Primideale in $A/\mathfrak{p}$ den Primidealen von $A$ entsprechen, die $\mathfrak{p}$ enthalten, erhalten wir im Integrit\"atsring $A/\mathfrak{p}$ die Primidealzerlegungen
+	 				\[I/\mathfrak{p} = (\mathfrak{p}_1/\mathfrak{p}) \cdots (\mathfrak{p}_m/\mathfrak{p})\]
+	 			und 
+	 				\[J/\mathfrak{p} = (\mathfrak{q}_1/\mathfrak{p}) \cdots (\mathfrak{q}_n/\mathfrak{p})\]
+	 			
+	 			Es folgt $(\mathfrak{p}_1/\mathfrak{p})^2 \cdots (\mathfrak{p}_m/\mathfrak{p})^2 = (I/\mathfrak{p})^2 = J/\mathfrak{p} = (\mathfrak{q}_1/\mathfrak{p})\cdots (\mathfrak{q}_n/\mathfrak{p})$
+	 			
+	 			Da $J/\mathfrak{p} = (\overline{a}^2) \neq 0$ als Hauptideal nach \ref{2.2.10} invertierbar ist, folgt mit \ref{2.2.11} ohne Einschr\"ankung $(\mathfrak{p}_1/\mathfrak{p}, \mathfrak{p}_1/\mathfrak{p}, \dots, \mathfrak{p}_m/\mathfrak{p}, \mathfrak{p}_m/\mathfrak{p}) = (\mathfrak{q}_1/\mathfrak{p},\dots, \mathfrak{q}_n/\mathfrak{p})$  und daher \linebreak
+	 			$(\mathfrak{p}_1,\mathfrak{p}_1,\dots,\mathfrak{p}_m,\mathfrak{p}_m) = (\mathfrak{q}_1,\dots,\mathfrak{q}_n)$, also $I^2 = J$.
+	 			
+	 			Um schlie\ss lich $a\mathfrak{p} + \mathfrak{p}^2 = \mathfrak{p}$, sei $b \in \mathfrak{p}$. Zu zeigen ist $b \in a\mathfrak{p} + \mathfrak{p}^2$. Wegen $b \in J$ gilt $b \in I^2 = a^2A + a\mathfrak{p}+ \mathfrak{p}^2$. Schreibe $b = a^2c + b'$ mit $c \in A, b' \in a\mathfrak{p}+\mathfrak{p}^2$. Dann $a^2c = b - b' \in \mathfrak{p}$ und daher $c \in \mathfrak{p}$. Somit auch $b \in a \mathfrak{p} + \mathfrak{p}^2$
+ 			\end{tcolorbox}
  			
- 			\smallskip\noindent
- 			\textbf{Begr\"undung}: Sei $\mathfrak{p}$ ein invertierbares Primideal von $A$. Wir zeigen, dass $A/\mathfrak{p}$ ein K\"orper ist. Sei hierzu $a \in A$ mit $\overline{a} \neq 0$ in $A/\mathfrak{p}$, das hei\ss t $a \notin \mathfrak{p}$. Zu zeigen ist $\overline{a} \in (A/\mathfrak{p})^*$. Es reicht zu zeigen, dass $I:= aA + \mathfrak{p} = A$. Da $\mathfrak{p}$ invertierbar ist, reich es $a\mathfrak{p} + \mathfrak{p}^2 = \mathfrak{p}$ zu zeigen. Wir zeigen zun\"achst $I^2 = J:= a^2A + \mathfrak{p}$, was wegen $I^2 = a^2A + a\mathfrak{p} + \mathfrak{p}^2$ eine Abschw\"achung der Behauptung ist. Wir wissen $(I/\mathfrak{p})^2 = J/\mathfrak{p}$.
- 			
- 			Da $A$ ein Dedekindring ist, gibt es $m,n \in \N_0$ und Primideale $\mathfrak{p}_1,\dots, \mathfrak{p}_m$ und $\mathfrak{q}_1,\dots, \mathfrak{q}_n$ von $A$ mit $I = \mathfrak{p}_1 \cdots \mathfrak{p}_m$ und $J = \mathfrak{q}_1 \cdots \mathfrak{q}_n$. Es gilt $\mathfrak{p} \subseteq I \subseteq \mathfrak{p}_i$ f\"ur alle $i \in \set{1,\dots, m}$ und $\mathfrak{p} \subseteq J \subseteq \mathfrak{q}_j$ f\"ur alle $j \in\set{1,\dots,n}$. 
- 			
- 			Da die Primideale in $A/\mathfrak{p}$ den Primidealen von $A$ entsprechen, die $\mathfrak{p}$ enthalten, erhalten wir im Integrit\"atsring $A/\mathfrak{p}$ die Primidealzerlegungen
- 				\[I/\mathfrak{p} = (\mathfrak{p}_1/\mathfrak{p}) \cdots (\mathfrak{p}_m/\mathfrak{p})\]
- 			und 
- 				\[J/\mathfrak{p} = (\mathfrak{q}_1/\mathfrak{p}) \cdots (\mathfrak{q}_n/\mathfrak{p})\]
- 			
- 			Es folgt $(\mathfrak{p}_1/\mathfrak{p})^2 \cdots (\mathfrak{p}_m/\mathfrak{p})^2 = (I/\mathfrak{p})^2 = J/\mathfrak{p} = (\mathfrak{q}_1/\mathfrak{p})\cdots (\mathfrak{q}_n/\mathfrak{p})$
- 			
- 			Da $J/\mathfrak{p} = (\overline{a}^2) \neq 0$ als Hauptideal nach \ref{2.2.10} invertierbar ist, folgt mit \ref{2.2.11} ohne Einschr\"ankung $(\mathfrak{p}_1/\mathfrak{p}, \mathfrak{p}_1/\mathfrak{p}, \dots, \mathfrak{p}_m/\mathfrak{p}, \mathfrak{p}_m/\mathfrak{p}) = (\mathfrak{q}_1/\mathfrak{p},\dots, \mathfrak{q}_n/\mathfrak{p})$  und daher \linebreak
- 			$(\mathfrak{p}_1,\mathfrak{p}_1,\dots,\mathfrak{p}_m,\mathfrak{p}_m) = (\mathfrak{q}_1,\dots,\mathfrak{q}_n)$, also $I^2 = J$.
- 			
- 			Um schlie\ss lich $a\mathfrak{p} + \mathfrak{p}^2 = \mathfrak{p}$, sei $b \in \mathfrak{p}$. Zu zeigen ist $b \in a\mathfrak{p} + \mathfrak{p}^2$. Wegen $b \in J$ gilt $b \in I^2 = a^2A + a\mathfrak{p}+ \mathfrak{p}^2$. Schreibe $b = a^2c + b'$ mit $c \in A, b' \in a\mathfrak{p}+\mathfrak{p}^2$. Dann $a^2c = b - b' \in \mathfrak{p}$ und daher $c \in \mathfrak{p}$. Somit auch $b \in a \mathfrak{p} + \mathfrak{p}^2$
- 			
- 			\medskip\noindent 
- 			\textbf{Behauptung 2}: Jedes Primideal $\neq (0)$ von $A$ ist invertierbar [In (a) wird dies sogar f\"ur alle Ideale $\neq 0$ behauptet]
- 			
- 			\smallskip\noindent 
- 			\textbf{Begr\"undung}: Sei $\mathfrak{p} \neq (0)$ ein Primideal von $A$. W\"ahle ein $a \in \mathfrak{p}\setminus \set{0}$. Schreibe $aA = \mathfrak{p}_1 \cdots \mathfrak{p}_n$ mit Primidealen $\mathfrak{p}_1,\dots, \mathfrak{p}_n$ von $A$. Da $aA$ invertierbar ist [$\to$\ref{2.2.10}] ist es auch jedes $\mathfrak{p}_i$. Wegen $\mathfrak{p}_1\cdots \mathfrak{p}_n \subseteq \mathfrak{p}$ ist aber auch $\mathfrak{p}$ eines dieser $\mathfrak{p}_i$, denn es gibt ein $i$ mit $\mathfrak{p}_i \subseteq \mathfrak{p}$ und $\mathfrak{p}_i$ ist maximal nach Behauptung 1.
- 			}
- 			
+ 			\begin{tcolorbox}[colback=white,colframe=blue,arc=0cm]
+	 			\textbf{Behauptung 2}: Jedes Primideal $\neq (0)$ von $A$ ist invertierbar [In (a) wird dies sogar f\"ur alle Ideale $\neq 0$ behauptet]
+	 			
+	 			\tcblower 
+	 			\textbf{Begr\"undung}: Sei $\mathfrak{p} \neq (0)$ ein Primideal von $A$. W\"ahle ein $a \in \mathfrak{p}\setminus \set{0}$. Schreibe $aA = \mathfrak{p}_1 \cdots \mathfrak{p}_n$ mit Primidealen $\mathfrak{p}_1,\dots, \mathfrak{p}_n$ von $A$. Da $aA$ invertierbar ist [$\to$\ref{2.2.10}] ist es auch jedes $\mathfrak{p}_i$. Wegen $\mathfrak{p}_1\cdots \mathfrak{p}_n \subseteq \mathfrak{p}$ ist aber auch $\mathfrak{p}$ eines dieser $\mathfrak{p}_i$, denn es gibt ein $i$ mit $\mathfrak{p}_i \subseteq \mathfrak{p}$ und $\mathfrak{p}_i$ ist maximal nach Behauptung 1.
+ 			\end{tcolorbox}
  			
  			\medskip\noindent Wegen der Existenz der Primfaktorzerlegung in $A$, folgt aus Behauptung 2 sofort (a). Damit ist Behauptung 1 gleichbedeutend mit (d). 
  			
@@ -1729,29 +1733,29 @@ toc=idx
    		\begin{proof}
    			Ist $A$ ein Dedekindring, so besitzt $A$ die gew\"unschten Eigenschaften nach \ref{2.2.12}. Sei umgekehrt $A$ ein noetherscher, ganz abgeschlossener Integrit\"atsring, in dem alle Primideale $\neq (0)$ maximal sind.
    			
-   			{\color{red}	
-   			\noindent
-   			\textbf{Behauptung 1}: Seien $I$ und $J$ gebrochene Ideale von $A$ mit $J \neq (0)$ und $IJ \subseteq J$. Dann $I \subseteq A$.
-   				
-   			\smallskip\noindent
-   			\textbf{Begr\"undung}: Sei $x \in I$. Zu zeigen ist $x \in A$. Es reicht zu zeigen, dass $x$ ganz \"uber $A$ ist. Nach \ref{2.1.5} reicht es zu zeigen, dass $A[x]$ ein endlich erzeugter $A$-Modul ist. 
-   				
-   			Durch Induktion zeigt man $\forall n \in \N_0: x^nJ \subseteq J$  (In der Tat $x^{n-1}J \subseteq J$ f\"ur ein $n\in \N$, so $x^nJ = x(x^{n-1}J) \subseteq xJ \subseteq IJ \subseteq J$)
-   				
-   			Es folgt $A[x]J \subseteq J$. W\"ahlt man $y \in J \setminus \set{0}$, so folgt also $A[x]y \subseteq J$. Da $A$ noethersch ist, ist $J$ ein endlich erzeugter $A$-Modul [$\to$\ref{2.2.7}(e)] und daher selber noethersch [$\to$\ref{1.4.7}], womit $A[x]y \cong A[x]$ ein endlich erzeugter $A$-Modul ist.
-   				
-   			\medskip\noindent
-   			\textbf{Behauptung 2}: Sei $\mathfrak{p} \neq (0)$ ein Primideal von $A$. Dann ist $\mathfrak{p}$ invertierbar.
-   		
-   			\smallskip\noindent
-   			\textbf{Begründung}: Wegen $\mathfrak{p} = 1 \cdot \mathfrak{p} \subseteq (A:\mathfrak{p})\mathfrak{p} \subseteq A$ und da $\mathfrak{p}$ maximal ist, reicht es $\mathfrak{p} \neq (A:\mathfrak{p})\mathfrak{p}$, d.h. $(A:\mathfrak{p})\mathfrak{p} \nsubseteq \mathfrak{p}$ zu zeigen, was nach Behauptung 1 mit $A:\mathfrak{p} \nsubseteq A$ gleichbedeutend ist.
+   			\begin{tcolorbox}[colback=white,colframe=blue,arc=0cm]
+	   			\textbf{Behauptung 1}: Seien $I$ und $J$ gebrochene Ideale von $A$ mit $J \neq (0)$ und $IJ \subseteq J$. Dann $I \subseteq A$.
+	   				
+	   			\tcblower
+	   			\textbf{Begr\"undung}: Sei $x \in I$. Zu zeigen ist $x \in A$. Es reicht zu zeigen, dass $x$ ganz \"uber $A$ ist. Nach \ref{2.1.5} reicht es zu zeigen, dass $A[x]$ ein endlich erzeugter $A$-Modul ist. 
+	   				
+	   			Durch Induktion zeigt man $\forall n \in \N_0: x^nJ \subseteq J$  (In der Tat $x^{n-1}J \subseteq J$ f\"ur ein $n\in \N$, so $x^nJ = x(x^{n-1}J) \subseteq xJ \subseteq IJ \subseteq J$)
+	   				
+	   			Es folgt $A[x]J \subseteq J$. W\"ahlt man $y \in J \setminus \set{0}$, so folgt also $A[x]y \subseteq J$. Da $A$ noethersch ist, ist $J$ ein endlich erzeugter $A$-Modul [$\to$\ref{2.2.7}(e)] und daher selber noethersch [$\to$\ref{1.4.7}], womit $A[x]y \cong A[x]$ ein endlich erzeugter $A$-Modul ist.
+   			\end{tcolorbox}
    			
-   			\noindent W\"ahle $b \in \mathfrak{p} \setminus \set{0}$. Nach Lemma \ref{2.3.1} gibt es ein $n \in \N_0$ und Primideale $\mathfrak{p}_1, \dots, \mathfrak{p}_n \neq (0)$ mit $\mathfrak{p}_1 \cdot \cdots \cdot \mathfrak{p}_n \subseteq (b) \subseteq \mathfrak{p}$, wobei wir $n$ so klein wie m\"oglich w\"ahlen.
-   			
-   			\noindent Dann gibt es $i$ mit $\mathfrak{p}_i \subseteq \mathfrak{p}$, ohne Einschr\"ankung $i = 1$. Da $\mathfrak{p}_1$ maximal ist, folgt $\mathfrak{p}_1 = \mathfrak{p}$.
-   			
-   			\noindent Nach Wahl von $n$ gilt $\mathfrak{p}_2 \cdot \cdots \cdot \mathfrak{p}_n \nsubseteq (b)$ und wir k\"onnen $a \in (\mathfrak{p}_2 \cdot \cdots \cdot \mathfrak{p}_n) \setminus (b)$ w\"ahlen. Dann $a\mathfrak{p} \subseteq (b)$, also $\frac{a}{b}\mathfrak{p} \subseteq A$, das hei\ss t, $\frac{a}{b} \in A: \mathfrak{p}$. Aber $\frac{a}{b} \notin A$, da $a \notin (b)$.
-			}
+   			\begin{tcolorbox}[colback=white,colframe=blue,arc=0cm]
+	   			\textbf{Behauptung 2}: Sei $\mathfrak{p} \neq (0)$ ein Primideal von $A$. Dann ist $\mathfrak{p}$ invertierbar.
+	   		
+	   			\tcblower
+	   			\textbf{Begründung}: Wegen $\mathfrak{p} = 1 \cdot \mathfrak{p} \subseteq (A:\mathfrak{p})\mathfrak{p} \subseteq A$ und da $\mathfrak{p}$ maximal ist, reicht es $\mathfrak{p} \neq (A:\mathfrak{p})\mathfrak{p}$, d.h. $(A:\mathfrak{p})\mathfrak{p} \nsubseteq \mathfrak{p}$ zu zeigen, was nach Behauptung 1 mit $A:\mathfrak{p} \nsubseteq A$ gleichbedeutend ist.
+	   			
+	   			\noindent W\"ahle $b \in \mathfrak{p} \setminus \set{0}$. Nach Lemma \ref{2.3.1} gibt es ein $n \in \N_0$ und Primideale $\mathfrak{p}_1, \dots, \mathfrak{p}_n \neq (0)$ mit $\mathfrak{p}_1 \cdot \cdots \cdot \mathfrak{p}_n \subseteq (b) \subseteq \mathfrak{p}$, wobei wir $n$ so klein wie m\"oglich w\"ahlen.
+	   			
+	   			\noindent Dann gibt es $i$ mit $\mathfrak{p}_i \subseteq \mathfrak{p}$, ohne Einschr\"ankung $i = 1$. Da $\mathfrak{p}_1$ maximal ist, folgt $\mathfrak{p}_1 = \mathfrak{p}$.
+	   			
+	   			\noindent Nach Wahl von $n$ gilt $\mathfrak{p}_2 \cdot \cdots \cdot \mathfrak{p}_n \nsubseteq (b)$ und wir k\"onnen $a \in (\mathfrak{p}_2 \cdot \cdots \cdot \mathfrak{p}_n) \setminus (b)$ w\"ahlen. Dann $a\mathfrak{p} \subseteq (b)$, also $\frac{a}{b}\mathfrak{p} \subseteq A$, das hei\ss t, $\frac{a}{b} \in A: \mathfrak{p}$. Aber $\frac{a}{b} \notin A$, da $a \notin (b)$.
+			\end{tcolorbox}
 		
 			\medskip\noindent
 			Angenommen $A$ w\"are kein Dedekindring. Da $A$ noethersch g\"abe es dann ein Ideal $I \subseteq A$, welches bez\"uglich der Eigenschaft, kein Produkt von Primidealen zu sein, maximal ist. W\"ahle ein maximales Ideal $\mathfrak{p}$ von $A$ mit $I \subseteq \mathfrak{p}$. Es g\"alte $I \subsetneq I \mathfrak{p}^{-1}$ [$\rightarrow$Beh. 2] (, denn $A \subseteq A: \mathfrak{p} = \mathfrak{p}^{-1}$ und daher $I \subseteq I\mathfrak{p}^{-1}$ und w\"are $I = I\mathfrak{p}^{-1}$, so $\mathfrak{p}^{-1} \subseteq A$ nach Beh. 1 und daher $A \subseteq \mathfrak{p} \lightning$ ) 
@@ -2208,21 +2212,20 @@ toc=idx
  			
  			Bezeichne $\underline{w} := (w_1, \dots, w_n)$ die dazu bez\"uglich der nach \ref{2.4.23} nicht ausgearteten Spurform von $L|K$ duale Basis [$\to$ \ref{2.4.17}]
  			
- 			{\color{red}
- 			\noindent
- 			\textbf{Behauptung}: $\forall x \in L: x = \sum_{i=1}^{n} \tr_{L|K}(v_ix)w_i$.
+ 			\begin{tcolorbox}[colback=white,colframe=blue,arc=0cm]
+	 			\textbf{Behauptung}: $\forall x \in L: x = \sum_{i=1}^{n} \tr_{L|K}(v_ix)w_i$.
+	 			
+	 			\tcblower
+	 			\textbf{Begr\"undung: } W\"ahle $a_1, \dots, a_n \in K$ mit $x = \sum_{i=1}^{n} a_iw_i$. Dann 
+	 			\begin{align*}
+	 				\tr_{L|K}(v_jx) &= \tr_{L|K}\brac{v_j\sum_{i=1}^{n}a_iw_i}\\
+	 				&= \sum_{i=1}^{n} a_i\tr_{L|K}(v_jw_i)\\
+	 				&= a_j
+	 			\end{align*}
+	 			f\"ur alle $j \in \set{1,\dots, n}$.
+ 			\end{tcolorbox}
  			
- 			\smallskip\noindent
- 			\textbf{Begr\"undung: } W\"ahle $a_1, \dots, a_n \in K$ mit $x = \sum_{i=1}^{n} a_iw_i$. Dann 
- 			\begin{align*}
- 				\tr_{L|K}(v_jx) &= \tr_{L|K}\brac{v_j\sum_{i=1}^{n}a_iw_i}\\
- 				&= \sum_{i=1}^{n} a_i\tr_{L|K}(v_jw_i)\\
- 				&= a_j
- 			\end{align*}
- 			f\"ur alle $j \in \set{1,\dots, n}$.
- 			}
- 		
- 			\medskip\noindent
+ 			\noindent
  			Wegen $v_1, \dots, v_n \in B$ und $\tr_{L|K}(B) \overset{\ref{2.4.25}}{\subseteq} A$, folgt, dass $B \subseteq \sum_{i=1}^{n} Aw_i =: M$. Da $A$ noethersch ist,
  			ist $M$ als endlich erzeugter $A$-Modul nach \ref{1.4.7} auch noethersch. Damit ist auch $B$ ein noetherscher $A$-Modul.
  			
@@ -3267,6 +3270,212 @@ toc=idx
  	
  	\newpage
  	\section{Das Legendre-Symbol}\thispagestyle{sectionstart}
+ 	
+ 	\begin{definition}\label{4.3.1}\hfill\newline
+ 		Seien $a, n \in \Z$. Wir nennen $a$ einen \emph{quadratischen Rest modulo $n$}, wenn es ein $k \in \Z$ gibt mit 
+ 		$a \equiv_{(n)} k^2$. Andernfalls nennen wir $a$ einen \emph{quadratischen Nichtrest modulo $n$}.
+ 	\end{definition}
+ 
+ 	\begin{definition}\label{4.3.2}\hfill\newline
+ 		Sei $a \in \Z$ und $p \in \P$ eine ungerade Primzahl. Dann ist das \emph{Legendre-Symbol} $\displaystyle\legendre{a}{p}$ durch
+ 			\[\legendre{a}{p} := 
+ 			\begin{cases}
+ 				1 & \textrm{falls } a \textrm{ ein quadratischer Rest modulo } p \textrm{ ist und } p \nmid a\\
+ 				0 & \textrm{falls } p \mid a\\
+ 				-1& \textrm{falls } a \textrm{ ein quadratischer Nichtrest modulo } p \textrm{ ist}
+ 			\end{cases}\]
+ 		definiert.
+ 	\end{definition}
+ 
+ 	\begin{satz}\label{4.3.3}\hfill\newline
+ 		Sei $p \in \P$ eine ungerade Primzahl.
+ 		
+ 		\medskip\noindent
+ 		Dann gilt:
+ 		\begin{enumerate}[(a)]
+ 			\item $\displaystyle \legendre{a}{p} = \legendre{b}{p}$ f\"ur alle $a, b \in \Z$ mit $a \equiv_{(p)} b$.
+ 			\item $\displaystyle \legendre{a}{p} \equiv_{(p)} a^{\frac{p-1}{2}}$ f\"ur alle $a \in \Z$ ("Legendres Charakterisierung").
+ 			\item $\displaystyle \legendre{a}{p}\legendre{b}{p} = \legendre{ab}{p}$ f\"ur alle $a, b \in \Z$ ("Multiplikativit\"at").
+ 			\item $\displaystyle \legendre{-1}{p} = 
+ 			\begin{cases}
+ 				1 & \textrm{falls } p \equiv_{(4)} 1\\
+ 				-1& \textrm{falls } p \equiv_{(4)} 3
+ 			\end{cases}$ \newline ("Erster Erg\"anzungssatz zum quadratischen Reziprozit\"atsgesetz")
+ 			\item $\displaystyle \legendre{2}{p} = 
+ 			\begin{cases}
+ 			1 & \textrm{falls } p \equiv_{(8)} 1 \textrm{ oder } p \equiv_{(8)} 7\\
+ 			-1& \textrm{falls } p \equiv_{(8)} 3 \textrm{ oder } p \equiv_{(8)} 5
+ 			\end{cases}$ \newline ("Zweiter Erg\"anzungssatz zum quadratischen Reziprozit\"atsgesetz")
+ 		\end{enumerate}
+ 	
+ 		\begin{proof}\hfill\newline
+ 			\textbf{(a)} ist trivial
+ 			
+ 			\medskip\noindent
+ 			\textbf{(b)} Es reicht zu zeigen, dass die Untergruppe $(\F_p^*)^2 := \set{a^2 \mid a \in \F_p^*}$ von $\F_p^*$ gleich
+ 			$A:= \set{a \in \F_p^* \mid a^{\frac{p-1}{2}} = 1}$ ist, wobei die Inklusion $(\F_p^*)^2 \subseteq A$ klar ist. Offenbar ist
+ 			der Gruppenhomomorphismus $\F_p^* \to (\F_p^*)^2, x \mapsto x^2$ surjektiv mit genau zweielementigem Kern $\set{-1, 1}$.
+ 			Also $\#(\F_p^*)^2 = \frac{p-1}{2}$. Wegen \ref{4.1.6}(b) gilt andererseits $\#A \leq \frac{p-1}{2}$. Es folgt $A = (\F_p^*)^2$ wie gew\"unscht.
+ 			
+ 			\medskip\noindent
+ 			\textbf{(c)} und \textbf{(d)} folgen leicht aus (b) mit Hilfe der trivialen Tatsache, dass zwei Elemente von $\set{-1, 0, 1} \subseteq \Z$ gleich sind, wenn sie
+ 			modulo $(p)$ kongruent sind.
+ 			
+ 			\medskip\noindent
+ 			\textbf{(e)} beweisen wir wieder mit (b) durch Rechnen im Ring $A:= \Z[i]/(p)$, in dem $\F_p$ kanonisch eingebettet ist. Wegen $p = 0$ in $A$ gilt f\"ur alle 
+ 			$a, b \in A$
+ 			\begin{align}
+ 				(a+b)^p = a^p + b^p.\label{4.3.3.1}\tag{$*$}
+ 			\end{align}
+ 			Bezeichne $i \in A$ die Kongruenzklasse von $i := \sqrt{-1}$ modulo $(p)$. Man sieht leicht
+ 			\begin{align}
+ 				a+ib = 0 \Longleftrightarrow (a = 0 \land b = 0) \label{4.3.3.2}\tag{$**$}
+ 			\end{align}
+ 			f\"ur alle $a, b \in \F_p$. Nun rechnen wir 
+ 				\[1+i^p = 1^p+i^p \overset{(\textrm{\ref{4.3.3.1}})}{=} (1+i)^p = (1+i)((1+i)^2)^{\frac{p-1}{2}} = (1+i)(2i)^{\frac{p-1}{2}} = (1+i)i^{\frac{p-1}{2}}2^{\frac{p-1}{2}}.\]
+ 			Im Folgenden benutzen wir, dass wegen $i^4 = 1$ gilt $i^{\frac{k}{2}} = i^{\frac{l}{2}}$ f\"ur alle geraden $k, l \in \Z$ mit $k \equiv_{(8)} l$.
+ 			
+ 			Fall 1: $p \equiv_{(8)} 1$
+ 			
+ 			Dann $1+i = (1+i)i^{\frac{1-1}{2}}2^{\frac{p-1}{2}} = (1+i)2^{\frac{p-1}{2}}$ und daher $2^{\frac{p-1}{2}} = 1$ in $\F_p$.
+ 			
+ 			Fall 2: $p \equiv_{(8)} 3$
+ 			
+ 			Dann $1-i = 1 + i^3  = (1+i)i^{\frac{3-1}{2}}2^{\frac{p-1}{2}}$ und daher $2^{\frac{p-1}{2}} = -1$ in $\F_p$.
+ 			
+ 			Fall 3: $p \equiv_{(8)} 5$
+ 			
+ 			Dann $1+i = 1+i^5 = (1+i)i^{\frac{5-1}{2}}2^{\frac{p-1}{2}} = (-1-i)2^{\frac{p-1}{2}}$ und daher $2^{\frac{p-1}{2}} = -1$ in $\F_p$.
+ 			
+ 			Fall 4: $p \equiv_{(8)} 7$
+ 			
+ 			Dann $1-i = 1+i^7 = (1+i)i^{\frac{7-1}{2}}2^{\frac{p-1}{2}} = (1-i)2^{\frac{p-1}{2}}$ und daher $2^{\frac{p-1}{2}} = 1$ in $\F_p$.
+ 		\end{proof}
+ 	\end{satz}
+ 
+ 	\begin{lemma}\label{4.3.4}\hfill\newline
+		Sei $p$ eine ungerade Primzahl und $K$ der $p$-te Kreisteilungsk\"orper. Sei weiter $q$ eine Primzahl ungleich $p$.
+		
+		\medskip\noindent
+		Dann gilt
+		\begin{enumerate}[(a)]
+			\item Der Verzweigungsindex $e_{q\Z}(\mathcal{O}_K)$ des Primideals $q\Z$ von $\Z$ in $\mathcal{O}_K$ [$\to$\ref{2.7.6}] ist $1$.
+			\item Der Tr\"agheitsindex $f_{q\Z}(\mathcal{O}_K)$ des Primideals $q\Z$ von $\Z$ in $\mathcal{O}_K$ [$\to$\ref{2.7.6}] ist gleich der 
+			Ordnung von $\overline{q}$ in $\F_p^*$
+		\end{enumerate}
+	
+		\begin{proof}
+			W\"ahle eine primitive $p$-te Einheitswurzel $\zeta$ in $\C$ [$\to$\ref{4.1.7}].
+			\begin{enumerate}[(a)]
+				\item Es ist nat\"urlich $\zeta$ ganz \"uber $\Z$ und ge\"a\ss\ \ref{4.1.13} ist $\Phi_p \in \Z[X]$ das Minimalpolynom von $\zeta$ \"uber $\Q$.
+				Nach Satz \ref{3.2.2} ist zu zeigen, dass $\overline{\Phi_o}$ in $\F_q[X]$ ein Produkt von paarweise verschiedenen normierten irreduziblen Polynomen ist. 
+				Dazu reicht es zu zeigen, dass $\overline{\Phi_p}$ separabel ist. Da $\Phi_p$ in $\Z[X]$ und damit $\overline{\Phi_p}$ in $\F_p[X]$ ein Teiler von $X^p-1$ ist [$\to$\ref{4.1.14}],
+				reicht es dann zu zeigen, dass $X^p-1 \in \F_p[X]$ separabel ist- Wegen $q\nmid p$, folgt dies aber aus Proposition \ref{4.1.8}.
+				
+				\item Um $m:= f_{q\Z}(\mathcal{O}_K)$ zu bestimmen, w\"ahlen wir ein Primideal $\mathfrak{q}$ von $\mathcal{O}_K$ mit $(q) \subseteq \mathfrak{q}$ [$\to$\ref{2.7.5}(b)].
+				Dann gilt $m = [(\mathcal{O}_K/\mathfrak{q}):\F_q]$ nach \ref{2.7.6} und \ref{2.7.5}(a). Da $m$ endlich ist oder auch wegen \ref{3.2.1}, ist $\mathcal{O}_K/\mathfrak{q}$ ein endlicher K\"orper. Es gilt also $\mathcal{O}_K/\mathfrak{q} = \F_{q^m}$. Wegen Satz \ref{4.2.2} gilt andererseits $\mathcal{O}_K/\mathfrak{q} = \F_q[\overline{\zeta}]$. Also $\F_{q^m} = \F_q[\overline{\zeta}]$.
+				
+				\begin{tcolorbox}[colback=white,colframe=blue,arc=0cm]
+				 	\textbf{Hilfsbehauptung}: $\overline{\zeta}$ ist ein Element von $(\mathcal{O}_K/\mathfrak{q})^*$ der Ordnung $p$.
+					\tcblower
+					\textbf{Begr\"undung}: Wegen $\zeta^p = 1$ in $\mathcal{O}_K$ gilt $\overline{\zeta}^p = 1$ in $\mathcal{O}_K/\mathfrak{q}$. Daher teilt die Ordnung von $\overline{\zeta}$ in
+					$(\mathcal{O}_K/\mathfrak{q})^*$ die Primzahl $p$, ist also gleich $1$ oder $p$. W\"are die Ordnung $1$, dann $\overline{\zeta} = 1$ in $\mathcal{O}_K/\mathfrak{q}$, das hei\ss t
+					$1 - \zeta \in \mathfrak{q}$ und daher erst recht $(1-\zeta)^{p-1} \in \mathfrak{q}$ und somit nach Lemma \ref{4.2.1}(c) auch $p \in \mathfrak{q}$, was wegen
+					$q \in \mathfrak{q}$ und $p \neq q$ nicht m\"oglich ist.
+				\end{tcolorbox}
+				Der Frobenius-Automorphismus 
+					\[\varphi: \F_{q^m} \to \F_{q^m}, x \mapsto x^q\]
+				hat bekanntlich die Ordnung $m$ in der Automorphismengruppe der K\"orpererweiterung $\F_{q^m}|\F_{q}$. Daher ist zu zeigen, dass f\"ur alle $k \in \Z$ gilt
+					\[\overline{q}^k = 1 \textrm{ in } \F_{p}^* \Longleftrightarrow \varphi^k = \id_{\F_{q^m}}\]
+				Wegen $\F_{q^m} = \F_{q}[\overline{\zeta}]$ kann man das umschreiben zu
+					\[\overline{q}^k = 1 \textrm{ in } \F_{p}^* \Longleftrightarrow \overline{\zeta}^{q^k} = \overline{\zeta},\]
+				was sofort aus der Hilfsbehauptung folgt.
+			\end{enumerate}
+		\end{proof}
+ 	\end{lemma}
+ 
+ 	\begin{lemma}\label{4.3.5}\hfill\newline
+ 		Sei $p \in \P$ ungerade und $K$ der $p$-te Kreisteilungsk\"orper. Sei weiter $q$ eine Primzahl ungleich $p$
+ 		und $E$ der eindeutig bestimmte Zwischenk\"orper von $K|\Q$ mit $[K:\Q] = 2$ [$\to$\ref{4.2.3}].
+ 		\begin{enumerate}[(a)]
+ 			\item Ist $q$ in $E$ zerlegt [$\to$\ref{2.1.17}, \ref{3.2.4}], so ist $\#Q$ gerade f\"ur $Q := \set{\mathfrak{q} \in M_{\mathcal{O}_K} \mid \mathfrak{q} \cap \Z = q\Z}$
+ 			\item Ist $q$ in $E$ tr\"age [$\to$\ref{2.1.17}, \ref{3.2.4}], so ist $f_{q\Z}(\mathcal{O}_K)$ gerade.
+		\end{enumerate}
+		
+		\begin{proof}\hfill
+			\begin{enumerate}[(a)]
+				\item W\"ahle $\mathfrak{p}_1, \mathfrak{p}_2 \in M_{\mathcal{O}_E}$ mit $\mathfrak{p}_1 \neq \mathfrak{p}_2$ und $q\mathcal{O}_E = \mathfrak{p}_1\mathfrak{p}_2$. Setze
+					\[Q_i := \set{\mathfrak{q} \in M_{\mathcal{O}_K} \mid \mathfrak{q} \cap M_{\mathcal{O}_E} = \mathfrak{p}_i} \overset{\ref{2.7.5}(a)}{=} \set{\mathfrak{q} \in M_{\mathcal{O}_K} \mid \mathfrak{p}_i \subseteq \mathfrak{q} }.\]
+				f\"ur $i \in \set{1, 2}$. Man zeigt leicht $Q = Q_1 \dot\cup Q_2$, so dass es reicht, $\#Q_1 = \#Q_2$ zu zeigen. Nach \ref{2.7.5}(b) ist dann weder $Q_1$ noch $Q_2$ leer.
+				W\"ahle dementsprechend $q_1 \in Q_1$ und $q_2 \in Q_2$- Wegen $q_1, q_2 \in Q$, gibt es nach \ref{2.7.6} einen Automorphismus $\varphi$ der K\"orpererweiterung $K|\Q$ mit $\varphi(q_1) = q_2$. Wegen $\varphi(\mathcal{O}_E) = \mathcal{O}_E$ gilt dann $\varphi(\mathfrak{p}_1) = \mathfrak{p}_2$ und $\varphi(\mathfrak{q}) \in Q_2$ f\"ur alle $\mathfrak{q} \in Q_1$ sowie
+				$\varphi^{-1}(\mathfrak{q}) \in Q_1 $ f\"ur alle $\mathfrak{q} \in Q_2$.
+				
+				\item Sei $\mathfrak{q}$ in $E$ tr\"age. Dann $[\mathcal{O}_E/q\mathcal{O}_E : \Z/q\Z] = 2$ und daher ist \linebreak $f_{q\Z}(\mathcal{O}_K) = [\mathcal{O}_K/\mathfrak{r}\mathcal{O}_E: \mathcal{O}_E/q\mathcal{O}_E][\mathcal{O}_E/q\mathcal{O}_E: \Z/q\Z]$ gerade, wobei $\mathfrak{r} \in M_{O_K}$ mit $\mathfrak{r} \cap E = q\mathcal{O}_E$ beliebig gew\"ahlt ist.
+			\end{enumerate}
+		\end{proof}
+ 	\end{lemma}
+ 
+ 	\begin{lemma}\label{4.3.6}\hfill\newline
+ 		Seien $p, q \in \P$ ungerade mit $p\neq q$ und setze $p^* := (-1)^{\frac{p-1}{2}}p$.
+ 		\begin{enumerate}[(a)]
+ 			\item $\displaystyle \legendre{p^*}{q} = 1 \Longrightarrow \legendre{q}{p} = 1$
+ 			\item $\displaystyle \brac{\legendre{p^*}{q} = -1 \land p \equiv_{(4)} 3} \Longrightarrow \legendre{q}{p} = -1$
+ 		\end{enumerate}
+ 	
+ 		\begin{proof}
+ 			Bezeichne $K$ den $p$-ten Kreisteilungsk\"orper und $E := \Q(\sqrt{p^*})$ den eindeutig bestimmten Zwischenk\"orper von $K|\Q$ mit
+ 			$[E:\Q] = 2$ [$\to$\ref{4.2.3}]. Weiter setzen wir $Q:= \set{\mathfrak{q} \in M_{\mathcal{O}_K} \mid \mathfrak{q} \cap \Z = q\Z}$ und benutzen die Gleichung 
+ 			\begin{align}
+ 				f_{q\Z}(\mathcal{O}_K)\#Q = p - 1, \label{4.3.6.1}\tag{$*$}
+ 			\end{align}
+ 			die aus Lemma \ref{4.3.4} und aus $[K:\Q] = \varphi(p) = p - 1$ folgt.
+ 			\begin{enumerate}[(a)]
+ 				\item Gelte $\displaystyle \legendre{p^*}{q} = 1$. Gem\"a\ss\ Fall 1.1.2 in \ref{3.2.4} ist dann $q$ zerlegt in $E$. Dann ist $\#Q$ gerade nach Lemma
+ 				\ref{4.3.5}(a). Daher ist $f_{q\Z}/(\mathcal{O}_K)$ wegen (\ref{4.3.6.1}) ein Teiler von $\frac{p-1}{2}$ und nach Lemma \ref{4.3.4}(b) daher $q^{\frac{p-1}{2}} \equiv_{(p)} 1$.
+ 				Aus Legendres Charakterisierung \ref{4.3.3}(b) folgt daher $\displaystyle \legendre{q}{p} = 1$.
+ 				
+ 				\item Gelte $\displaystyle \legendre{p^*}{q} = -1$ und $p \equiv_{(4)} 3$. Gem\"a\ss\ Fall 1.2 in \ref{3.2.4} ist dann $q$ tr\"age in $E$. Dann ist $f_{q\Z}(\mathcal{O}_K)$ gerade nach
+ 				Lemma \ref{4.3.5}(b). Nach Lemma \ref{4.3.4}(b) ist damit die Ordnung von $\overline{q}$ in $\F_p^*$ gerade. Wegen $p \equiv_{(4)} 3$ ist $\frac{p-1}{2}$ ungerade und daher $\overline{q}^{\frac{p-1}{2}} \neq 1$ in $\F_p^*$. Aus Legendres Charakterisierung \ref{4.3.3}(b) folgt dann $\displaystyle \legendre{q}{p} = -1$.
+ 			\end{enumerate} 
+ 		\end{proof}
+ 	\end{lemma}
+ 
+ 	\begin{satz}\label{4.3.7} Quadratisches Reziprozit\"atsgesetz\newline
+ 		Seien $p$ und $q$ verschiedene ungerade Primzahlen.
+ 		
+ 		\medskip\noindent
+ 		Dann gilt 
+ 		\[\legendre{p}{q}\legendre{q}{p} = 
+ 		\begin{cases}
+ 			-1 & \textrm{falls } p \equiv_{(4)} q \equiv_{(4)} 3\\
+ 			1 & \textrm{sonst}
+ 		\end{cases}\]
+ 		
+ 		\begin{proof}
+ 			Setze $p^* := (-1)^{\frac{p-1}{2}} p$ und $q^* := (-1)^{\frac{q-1}{2}}q$. Ist $p \equiv_{(4)} q \equiv_{(4)} 1$, so gilt $p = p^*$ sowie $q = q^*$ und die Behauptung
+ 			des Satzes folgt durch zweimalige Anwendung von Lemma \ref{4.3.6}(a). Da die Aussage des Satzes symmetrisch in $p$ und $q$ ist, k\"onnen wir also im folgenden ohne Einschr\"ankung
+ 				\[p \equiv_{(4)} 3\]
+ 			voraussetzen. Aus Lemma \ref{4.3.6} folgt daher $\displaystyle \legendre{p^*}{q} = \legendre{q}{p}$. Es folgt
+ 				\[\legendre{p}{q}\legendre{q}{p} \overset{\ref{4.3.3}(c)}{=} \legendre{(-1)^{\frac{p-1}{2}}}{q}\legendre{p^*}{q}\legendre{q}{p} = \legendre{(-1)^{\frac{p-1}{2}}}{q}\]
+ 			Wegen $p \equiv_{(4)} 3$ ist $\frac{p-1}{2}$ ungerade und daher 
+ 				\[\legendre{(-1)^{\frac{p-1}{2}}}{q} = \legendre{-1}{q} \overset{\ref{4.3.3}(d)}{=} 
+ 				\begin{cases}
+ 					1 & \textrm{falls } q \equiv_{(4)} 1\\
+ 					-1& \textrm{falls } q \equiv_{(4)} 3
+ 				\end{cases}\]
+ 			wie behauptet.
+ 		\end{proof}
+ 	\end{satz}
+ 
+ 	\begin{beispiel}\label{4.3.8}\hfill\newline
+ 		$221$ ist ein quadratischer Nichtrest modulo der Primzahl $383$ [$\to$\ref{4.3.1}]. Um dies zu zeigen, berechnen
+ 		wir zun\"achst die Primfaktorzerlegung $221 = 13 \cdot 17$ von $221$ und benutzen dann das quadratische Reziprozit\"atsgesetz
+ 		flankiert von \ref{4.3.3}(a)(c)(d)(e):
+ 		\begin{align*}
+ 			\legendre{221}{383} &= \legendre{13}{383}\legendre{17}{383} = \legendre{383}{13}\legendre{383}{17} = \legendre{6}{13}\legendre{9}{17}\\
+ 			&= \legendre{6}{17} = \legendre{2}{17}\legendre{3}{17} = -\legendre{3}{13} = -\legendre{13}{3} = \legendre{1}{3} = -1
+ 		\end{align*}
+ 	\end{beispiel}
 \backmatter
 \printindex
 \end{document}
